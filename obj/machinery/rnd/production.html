@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <base href="../../../" />
+    <link rel="stylesheet" href="dmdoc.css" />
+    <title>&#x2F;obj&#x2F;machinery&#x2F;rnd&#x2F;production - &#x2F;tg&#x2F; Station 13</title>
+</head>
+<body>
+<header>
+    <a href="index.html">&#x2F;tg&#x2F; Station 13</a> -
+    <a href="index.html#modules">Modules</a> -
+    <a href="index.html#types">Types</a>
+ &mdash; <a href="obj/machinery/rnd/production.html#var">Var Details</a> - <a href="obj/machinery/rnd/production.html#proc">Proc Details</a></header>
+<main>
+<h1>production <aside>/<a href="obj.html">obj</a>/<a href="obj/machinery.html">machinery</a>/<a href="obj/machinery/rnd.html">rnd</a>/<a href="obj/machinery/rnd/production.html">production</a></aside>
+        
+    
+            <a href="https://github.com/tgstation/tgstation/blob/7c752a090b3dae6292c9141fd8b12bc64457b79c/code/modules/research/machinery/_production.dm#L2">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;machinery&#x2F;_production.dm 2"/></a></h1>
+
+<table class="summary" cellspacing="0"><tr><td colspan="2"><h2>Vars</h2></td></tr>
+            <tr><th><a href="obj/machinery/rnd/production.html#var/department_tag">department_tag</a></th><td>Used for material distribution among other things.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/production.html#var/efficiency_coeff">efficiency_coeff</a></th><td>Materials needed / coeff = actual.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/production.html#var/production_animation">production_animation</a></th><td>What's flick()'d on print.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/production.html#var/stripe_color">stripe_color</a></th><td>What color is this machine's stripe? Leave null to not have a stripe.</td></tr><tr><td colspan="2"><h2>Procs</h2></td></tr>
+            <tr><th><a href="obj/machinery/rnd/production.html#proc/check_material_req">check_material_req</a></th><td>Returns how many times over the given material requirement for the given design is satisfied.</td></tr>
+            <tr><th><a href="obj/machinery/rnd/production.html#proc/check_reagent_req">check_reagent_req</a></th><td>Returns how many times over the given reagent requirement for the given design is satisfied.</td></tr></table>
+    <h2 id="var">Var Details</h2><h3 id="var/department_tag"><aside class="declaration">var </aside>department_tag
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/tgstation/tgstation/blob/7c752a090b3dae6292c9141fd8b12bc64457b79c/code/modules/research/machinery/_production.dm#L17">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;machinery&#x2F;_production.dm 17"/></a></h3>
+        <p>Used for material distribution among other things.</p><h3 id="var/efficiency_coeff"><aside class="declaration">var </aside>efficiency_coeff
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/tgstation/tgstation/blob/7c752a090b3dae6292c9141fd8b12bc64457b79c/code/modules/research/machinery/_production.dm#L7">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;machinery&#x2F;_production.dm 7"/></a></h3>
+        <p>Materials needed / coeff = actual.</p><h3 id="var/production_animation"><aside class="declaration">var </aside>production_animation
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/tgstation/tgstation/blob/7c752a090b3dae6292c9141fd8b12bc64457b79c/code/modules/research/machinery/_production.dm#L12">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;machinery&#x2F;_production.dm 12"/></a></h3>
+        <p>What's flick()'d on print.</p><h3 id="var/stripe_color"><aside class="declaration">var </aside>stripe_color
+            <aside>&ndash; </aside>
+        
+    
+            <a href="https://github.com/tgstation/tgstation/blob/7c752a090b3dae6292c9141fd8b12bc64457b79c/code/modules/research/machinery/_production.dm#L23">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;machinery&#x2F;_production.dm 23"/></a></h3>
+        <p>What color is this machine's stripe? Leave null to not have a stripe.</p><h2 id="proc">Proc Details</h2><h3 id="proc/check_material_req"><aside class="declaration">proc </aside>check_material_req<aside>(/<a href="datum.html">datum</a>/<a href="datum/design.html">design</a>/being_built, material) 
+        
+    
+            <a href="https://github.com/tgstation/tgstation/blob/7c752a090b3dae6292c9141fd8b12bc64457b79c/code/modules/research/machinery/_production.dm#L100">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;machinery&#x2F;_production.dm 100"/></a></aside>
+        </h3>
+        <p>Returns how many times over the given material requirement for the given design is satisfied.</p>
+<p>Arguments:</p>
+<ul>
+<li><a href="datum/design.html" title="/datum/design">being_built</a>: The design being referenced.</li>
+<li>material: The material being checked.</li>
+</ul><h3 id="proc/check_reagent_req"><aside class="declaration">proc </aside>check_reagent_req<aside>(/<a href="datum.html">datum</a>/<a href="datum/design.html">design</a>/being_built, reagent) 
+        
+    
+            <a href="https://github.com/tgstation/tgstation/blob/7c752a090b3dae6292c9141fd8b12bc64457b79c/code/modules/research/machinery/_production.dm#L120">
+        <img src="git.png" width="16" height="16" title="code&#x2F;modules&#x2F;research&#x2F;machinery&#x2F;_production.dm 120"/></a></aside>
+        </h3>
+        <p>Returns how many times over the given reagent requirement for the given design is satisfied.</p>
+<p>Arguments:</p>
+<ul>
+<li><a href="datum/design.html" title="/datum/design">being_built</a>: The design being referenced.</li>
+<li>reagent: The reagent being checked.</li>
+</ul></main>
+<footer>
+    tgstation.dme
+    <a href="https://github.com/tgstation/tgstation/tree/7c752a090b3dae6292c9141fd8b12bc64457b79c">7c752a0</a>
+        (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
+</body>
+</html>
