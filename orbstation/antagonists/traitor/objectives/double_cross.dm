@@ -18,7 +18,7 @@
 
 	card_type = /obj/item/paper/calling_card/double_cross
 
-/datum/traitor_objective/assassinate/double_cross/calling_card/generate_objective(datum/mind/generating_for, list/possible_duplicates)
+/datum/traitor_objective/assassinate/calling_card/double_cross/generate_objective(datum/mind/generating_for, list/possible_duplicates)
 	// This objective will only generate if there is another living traitor
 	// and if you have not already completed this objective
 	if(handler.get_completion_count(type))
