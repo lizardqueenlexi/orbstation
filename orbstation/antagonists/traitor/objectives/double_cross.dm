@@ -35,7 +35,7 @@
 	return FALSE
 
 /datum/traitor_objective/assassinate/calling_card/double_cross/on_card_planted(datum/source, mob/living/equipper, slot)
-	SIGNAL_HANDLER
+	..()
 	if(!equipper.mind.has_antag_datum(/datum/antagonist/traitor))
 		return //not a traitor!
 	if(equipper.stat != DEAD)
