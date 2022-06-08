@@ -21,10 +21,6 @@
 	high_threshold_cleared = "<span class='info'>Your vision functions passably once more.</span>"
 	low_threshold_cleared = "<span class='info'>Your vision is cleared of any ailment.</span>"
 
-	// tags to allow wearing eyes as glasses
-	slot_flags = ITEM_SLOT_EYES
-	flags_cover = GLASSESCOVERSEYES
-
 	var/sight_flags = 0
 	/// changes how the eyes overlay is applied, makes it apply over the lighting layer
 	var/overlay_ignore_lighting = FALSE
