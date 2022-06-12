@@ -203,13 +203,6 @@
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 
-/obj/item/clothing/under/costume/gondola
-	name = "gondola hide suit"
-	desc = "Now you're cooking."
-	icon_state = "gondola"
-	inhand_icon_state = "lb_suit"
-	can_adjust = FALSE
-
 /obj/item/clothing/under/costume/skeleton
 	name = "skeleton jumpsuit"
 	desc = "A black jumpsuit with a white bone pattern printed on it. Spooky!"

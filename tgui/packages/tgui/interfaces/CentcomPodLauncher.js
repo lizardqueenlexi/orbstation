@@ -214,7 +214,6 @@ const STYLES = [
   { title: 'Clown Pod' },
   { title: 'Fruit' },
   { title: 'Invisible' },
-  { title: 'Gondola' },
   { title: 'Seethrough' },
 ];
 

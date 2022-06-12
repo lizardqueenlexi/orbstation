@@ -948,20 +948,6 @@
 	foodtypes = MEAT | BREAKFAST
 	burns_on_grill = TRUE
 
-/obj/item/food/meat/slab/gondola
-	name = "gondola meat"
-	desc = "According to legends of old, consuming raw gondola flesh grants one inner peace."
-	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/gondola_mutation_toxin = 5, /datum/reagent/consumable/cooking_oil = 3)
-	tastes = list("meat" = 4, "tranquility" = 1)
-	foodtypes = RAW | MEAT
-
-/obj/item/food/meat/slab/gondola/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/meat/rawcutlet/gondola, 3, 30, table_required = TRUE)
-
-/obj/item/food/meat/slab/gondola/MakeGrillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/meat/steak/gondola, rand(30 SECONDS, 90 SECONDS), TRUE, TRUE) //Add medium rare later maybe?
-
-
 /obj/item/food/meat/slab/penguin
 	name = "penguin meat"
 	icon_state = "birdmeat"
@@ -1079,10 +1065,6 @@
 	tastes = list("meat" = 1, "rock" = 1)
 	foodtypes = MEAT
 
-/obj/item/food/meat/steak/gondola
-	name = "gondola steak"
-	tastes = list("meat" = 1, "tranquility" = 1)
-
 /obj/item/food/meat/steak/penguin
 	name = "penguin steak"
 	icon_state = "birdsteak"
@@ -1193,15 +1175,6 @@
 
 /obj/item/food/meat/rawcutlet/spider/MakeGrillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/spider, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
-/obj/item/food/meat/rawcutlet/gondola
-	name = "raw gondola cutlet"
-	tastes = list("meat" = 1, "tranquility" = 1)
-
-/obj/item/food/meat/rawcutlet/gondola/MakeGrillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/gondola, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
-/obj/item/food/meat/rawcutlet/penguin
-	name = "raw penguin cutlet"
-	tastes = list("beef" = 1, "cod fish" = 1)
 
 /obj/item/food/meat/rawcutlet/penguin/MakeGrillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/meat/cutlet/penguin, rand(35 SECONDS, 50 SECONDS), TRUE, TRUE)
@@ -1271,10 +1244,6 @@
 /obj/item/food/meat/cutlet/spider
 	name = "spider cutlet"
 	tastes = list("cobwebs" = 1)
-
-/obj/item/food/meat/cutlet/gondola
-	name = "gondola cutlet"
-	tastes = list("meat" = 1, "tranquility" = 1)
 
 /obj/item/food/meat/cutlet/penguin
 	name = "penguin cutlet"

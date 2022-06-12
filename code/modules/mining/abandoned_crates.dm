@@ -189,7 +189,7 @@
 		if(71 to 72)
 			new /obj/item/toy/plush/snakeplushie(src)
 		if(73 to 74)
-			new /mob/living/simple_animal/pet/gondola(src)
+			new /mob/living/simple_animal/parrot(src)
 		if(75 to 76)
 			new /obj/item/bikehorn/airhorn(src)
 		if(77 to 78)
@@ -202,7 +202,7 @@
 			new /obj/item/toy/plush/beeplushie(src)
 		if(85 to 86)
 			new /obj/item/defibrillator/compact(src)
-		if(87 to 88) 
+		if(87 to 88)
 			new /obj/item/weed_extract(src)
 		if(89) //1% chance
 			new /obj/item/melee/energy/sword/bananium(src)

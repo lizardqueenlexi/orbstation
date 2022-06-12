@@ -515,27 +515,3 @@
 	B.spring_trap(null, hit_atom, TRUE)
 	qdel(src)
 
-/**
- * A pacifying variant of the bola.
- *
- * It's much harder to remove, doesn't cause a slowdown and gives people /datum/status_effect/gonbola_pacify.
- */
-/obj/item/restraints/legcuffs/bola/gonbola
-	name = "gonbola"
-	desc = "Hey, if you have to be hugged in the legs by anything, it might as well be this little guy."
-	icon_state = "gonbola"
-	inhand_icon_state = "bola_r"
-	breakouttime = 30 SECONDS
-	slowdown = 0
-	var/datum/status_effect/gonbola_pacify/effectReference
-
-/obj/item/restraints/legcuffs/bola/gonbola/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	. = ..()
-	if(iscarbon(hit_atom))
-		var/mob/living/carbon/C = hit_atom
-		effectReference = C.apply_status_effect(/datum/status_effect/gonbola_pacify)
-
-/obj/item/restraints/legcuffs/bola/gonbola/dropped(mob/user)
-	. = ..()
-	if(effectReference)
-		QDEL_NULL(effectReference)

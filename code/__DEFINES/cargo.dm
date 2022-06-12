@@ -10,8 +10,7 @@
 #define STYLE_HONK 10
 #define STYLE_FRUIT 11
 #define STYLE_INVISIBLE 12
-#define STYLE_GONDOLA 13
-#define STYLE_SEETHROUGH 14
+#define STYLE_SEETHROUGH 13
 
 #define POD_SHAPE 1
 #define POD_BASE 2
@@ -55,6 +54,5 @@ GLOBAL_LIST_INIT(podstyles, list(\
 	list(POD_SHAPE_NORML, "clownpod",    TRUE, "clown", "green",    RUBBLE_NORMAL, "\improper HONK pod",     "A brightly-colored supply pod. It likely originated from the Clown Federation."),\
 	list(POD_SHAPE_OTHER, "orange",      TRUE, FALSE, FALSE,   RUBBLE_NONE,     "\improper Orange", "An angry orange."),\
 	list(POD_SHAPE_OTHER, FALSE,         FALSE,    FALSE,            FALSE,   RUBBLE_NONE,     "\improper S.T.E.A.L.T.H. pod MKVII", "A supply pod that, under normal circumstances, is completely invisible to conventional methods of detection. How are you even seeing this?"),\
-	list(POD_SHAPE_OTHER, "gondola",     FALSE, FALSE, FALSE,   RUBBLE_NONE,     "gondola",     "The silent walker. This one seems to be part of a delivery agency."),\
 	list(POD_SHAPE_OTHER, FALSE,         FALSE,    FALSE,            FALSE,   RUBBLE_NONE,         FALSE,      FALSE,      "rl_click", "give_po")\
 ))

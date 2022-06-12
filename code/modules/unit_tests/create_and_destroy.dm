@@ -54,8 +54,6 @@
 	ignore += typesof(/obj/shapeshift_holder)
 	//No tauma to pass in
 	ignore += typesof(/mob/camera/imaginary_friend)
-	//No pod to gondola
-	ignore += typesof(/mob/living/simple_animal/pet/gondola/gondolapod)
 	//No heart to give
 	ignore += typesof(/obj/structure/ethereal_crystal)
 	//No linked console

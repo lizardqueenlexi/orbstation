@@ -130,16 +130,6 @@
 	category= CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-/datum/crafting_recipe/gonbola
-	name = "Gonbola"
-	result = /obj/item/restraints/legcuffs/bola/gonbola
-	reqs = list(/obj/item/restraints/handcuffs/cable = 1,
-				/obj/item/stack/sheet/iron = 6,
-				/obj/item/stack/sheet/animalhide/gondola = 1)
-	time = 40
-	category= CAT_WEAPONRY
-	subcategory = CAT_WEAPON
-
 /datum/crafting_recipe/reciever
 	name = "Modular Rifle Reciever"
 	tool_behaviors = list(TOOL_WRENCH, TOOL_WELDER, TOOL_SAW)

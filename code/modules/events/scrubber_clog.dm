@@ -188,7 +188,6 @@
 	var/static/list/mob_list = list(
 		/mob/living/simple_animal/hostile/retaliate/goose, //Janitors HATE geese.
 		/mob/living/simple_animal/hostile/bear,
-		/mob/living/simple_animal/pet/gondola,
 		/mob/living/simple_animal/hostile/mushroom,
 		/mob/living/simple_animal/hostile/lightgeist,
 	)

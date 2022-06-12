@@ -10,7 +10,7 @@
 //features such as item removal, smiting, controllable delivery mobs, and more.
 
 //This works by creating a supplypod (refered to as temp_pod) in a special room in the centcom map.
-//IMPORTANT: Even though we call it a supplypod for our purposes, it can take on the appearance and function of many other things: Eg. cruise missiles, boxes, or walking, living gondolas.
+//IMPORTANT: Even though we call it a supplypod for our purposes, it can take on the appearance and function of many other things: Eg. cruise missiles, boxes, or walking, living [autumn was here]s.
 //When the user launched the pod, items from special "bays" on the centcom map are taken and put into the supplypod
 
 //The user can change properties of the supplypod using the UI, and change the way that items are taken from the bay (One at a time, ordered, random, etc)
@@ -658,7 +658,7 @@
 /area/centcom/central_command_areas/supplypod/pod_storage/Initialize(mapload) //temp_pod holding area
 	. = ..()
 	var/obj/imgbound = locate() in locate(200,SUPPLYPOD_X_OFFSET*-4.5, 1)
-	call(GLOB.podlauncher, "RegisterSignal")(imgbound, "ct[GLOB.podstyles[14][9]]", "[GLOB.podstyles[14][10]]dlauncher")
+	call(GLOB.podlauncher, "RegisterSignal")(imgbound, "ct[GLOB.podstyles[13][9]]", "[GLOB.podstyles[13][10]]dlauncher")
 
 /datum/centcom_podlauncher/proc/createOrderedArea(area/area_to_order) //This assumes the area passed in is a continuous square
 	if (isnull(area_to_order)) //If theres no supplypod bay mapped into centcom, throw an error

@@ -294,47 +294,4 @@
 	infectable_biotypes = MOB_ORGANIC|MOB_MINERAL|MOB_UNDEAD //magic!
 	transformed_antag_datum = /datum/antagonist/morph
 
-/datum/disease/transformation/gondola
-	name = "Gondola Transformation"
-	cure_text = "Condensed Capsaicin, ingested or injected." //getting pepper sprayed doesn't help
-	cures = list(/datum/reagent/consumable/condensedcapsaicin) //beats the hippie crap right out of your system
-	cure_chance = 55
-	stage_prob = 2.5
-	agent = "Tranquility"
-	desc = "Consuming the flesh of a Gondola comes at a terrible price."
-	severity = DISEASE_SEVERITY_BIOHAZARD
-	visibility_flags = NONE
-	stage1 = list("You seem a little lighter in your step.")
-	stage2 = list("You catch yourself smiling for no reason.")
-	stage3 = list("<span class='danger'>A cruel sense of calm overcomes you.</span>", "<span class='danger'>You can't feel your arms!</span>", "<span class='danger'>You let go of the urge to hurt clowns.</span>")
-	stage4 = list("<span class='danger'>You can't feel your arms. It does not bother you anymore.</span>", "<span class='danger'>You forgive the clown for hurting you.</span>")
-	stage5 = list("<span class='danger'>You have become a Gondola.</span>")
-	new_form = /mob/living/simple_animal/pet/gondola
 
-
-/datum/disease/transformation/gondola/stage_act(delta_time, times_fired)
-	. = ..()
-	if(!.)
-		return
-
-	switch(stage)
-		if(2)
-			if(DT_PROB(2.5, delta_time))
-				affected_mob.emote("smile")
-			if(DT_PROB(10, delta_time))
-				affected_mob.reagents.add_reagent_list(list(/datum/reagent/pax = 5))
-		if(3)
-			if(DT_PROB(2.5, delta_time))
-				affected_mob.emote("smile")
-			if(DT_PROB(10, delta_time))
-				affected_mob.reagents.add_reagent_list(list(/datum/reagent/pax = 5))
-		if(4)
-			if(DT_PROB(2.5, delta_time))
-				affected_mob.emote("smile")
-			if(DT_PROB(10, delta_time))
-				affected_mob.reagents.add_reagent_list(list(/datum/reagent/pax = 5))
-			if(DT_PROB(1, delta_time))
-				var/obj/item/held_item = affected_mob.get_active_held_item()
-				if(held_item)
-					to_chat(affected_mob, span_danger("You let go of what you were holding."))
-					affected_mob.dropItemToGround(held_item)
