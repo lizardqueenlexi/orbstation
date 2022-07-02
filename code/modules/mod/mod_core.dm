@@ -38,9 +38,6 @@
 /obj/item/mod/core/proc/subtract_charge(amount)
 	return FALSE
 
-/obj/item/mod/core/proc/check_charge(amount)
-	return FALSE
-
 /obj/item/mod/core/proc/update_charge_alert()
 	mod.wearer.clear_alert(ALERT_MODSUIT_CHARGE)
 
@@ -63,9 +60,6 @@
 	return TRUE
 
 /obj/item/mod/core/infinite/subtract_charge(amount)
-	return TRUE
-
-/obj/item/mod/core/infinite/check_charge(amount)
 	return TRUE
 
 /obj/item/mod/core/standard
@@ -125,9 +119,6 @@
 	if(!charge_source)
 		return FALSE
 	return charge_source.use(amount, TRUE)
-
-/obj/item/mod/core/standard/check_charge(amount)
-	return charge_amount() >= amount
 
 /obj/item/mod/core/standard/update_charge_alert()
 	var/obj/item/stock_parts/cell/charge_source = charge_source()
@@ -243,37 +234,34 @@
 	var/charge_modifier = 0.1
 
 /obj/item/mod/core/ethereal/charge_source()
-	var/obj/item/organ/internal/stomach/ethereal/ethereal_stomach = mod.wearer.getorganslot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/stomach/ethereal/ethereal_stomach = mod.wearer.getorganslot(ORGAN_SLOT_STOMACH)
 	if(!istype(ethereal_stomach))
 		return
 	return ethereal_stomach
 
 /obj/item/mod/core/ethereal/charge_amount()
-	var/obj/item/organ/internal/stomach/ethereal/charge_source = charge_source()
+	var/obj/item/organ/stomach/ethereal/charge_source = charge_source()
 	return charge_source?.crystal_charge || ETHEREAL_CHARGE_NONE
 
 /obj/item/mod/core/ethereal/max_charge_amount()
 	return ETHEREAL_CHARGE_FULL
 
 /obj/item/mod/core/ethereal/add_charge(amount)
-	var/obj/item/organ/internal/stomach/ethereal/charge_source = charge_source()
+	var/obj/item/organ/stomach/ethereal/charge_source = charge_source()
 	if(!charge_source)
 		return FALSE
 	charge_source.adjust_charge(amount*charge_modifier)
 	return TRUE
 
 /obj/item/mod/core/ethereal/subtract_charge(amount)
-	var/obj/item/organ/internal/stomach/ethereal/charge_source = charge_source()
+	var/obj/item/organ/stomach/ethereal/charge_source = charge_source()
 	if(!charge_source)
 		return FALSE
 	charge_source.adjust_charge(-amount*charge_modifier)
 	return TRUE
 
-/obj/item/mod/core/ethereal/check_charge(amount)
-	return charge_amount() >= amount*charge_modifier
-
 /obj/item/mod/core/ethereal/update_charge_alert()
-	var/obj/item/organ/internal/stomach/ethereal/charge_source = charge_source()
+	var/obj/item/organ/stomach/ethereal/charge_source = charge_source()
 	if(charge_source)
 		mod.wearer.clear_alert(ALERT_MODSUIT_CHARGE)
 		return
@@ -321,9 +309,6 @@
 	charge = max(0, charge - amount)
 	return TRUE
 
-/obj/item/mod/core/plasma/check_charge(amount)
-	return charge_amount() >= amount
-
 /obj/item/mod/core/plasma/update_charge_alert()
 	var/remaining_plasma = charge_amount() / max_charge_amount()
 	switch(remaining_plasma)
@@ -345,12 +330,11 @@
 		return COMPONENT_NO_AFTERATTACK
 	return NONE
 
-/obj/item/mod/core/plasma/proc/charge_plasma(obj/item/stack/ore/plasma/plasma, mob/user)
-	if(!istype(plasma))
+/obj/item/mod/core/plasma/proc/charge_plasma(obj/item/attacking_item, mob/user)
+	if(!istype(attacking_item, /obj/item/stack/ore/plasma))
 		return FALSE
-	var/uses_needed = min(plasma.amount, round((max_charge_amount() - charge_amount()) / charge_given))
-	if(!plasma.use(uses_needed))
+	if(!attacking_item.use(1))
 		return FALSE
-	add_charge(uses_needed*charge_given)
+	add_charge(charge_given)
 	balloon_alert(user, "core refueled")
 	return TRUE

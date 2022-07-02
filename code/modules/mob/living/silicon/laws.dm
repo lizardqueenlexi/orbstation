@@ -69,9 +69,9 @@
 	hackedcheck += law
 	post_lawchange(announce)
 
-/mob/living/silicon/proc/replace_random_law(law, remove_law_groups, insert_law_group, announce = TRUE)
+/mob/living/silicon/proc/replace_random_law(law, groups, announce = TRUE)
 	laws_sanity_check()
-	. = laws.replace_random_law(law, remove_law_groups, insert_law_group)
+	. = laws.replace_random_law(law,groups)
 	post_lawchange(announce)
 
 /mob/living/silicon/proc/shuffle_laws(list/groups, announce = TRUE)

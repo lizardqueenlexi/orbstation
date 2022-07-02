@@ -300,8 +300,6 @@ SUBSYSTEM_DEF(ticker)
 		else
 			stack_trace("[S] [S.type] found in start landmarks list, which isn't a start landmark!")
 
-	var/special_role_count = 0
-
 	// handle persistence stuff that requires ckeys, in this case hardcore mode and temporal scarring
 	for(var/i in GLOB.player_list)
 		if(!ishuman(i))
@@ -311,17 +309,12 @@ SUBSYSTEM_DEF(ticker)
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
 
-		if(iter_human.mind?.special_role)
-			special_role_count++
-
 		if(!iter_human.hardcore_survival_score)
 			continue
 		if(iter_human.mind?.special_role)
 			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score) * 2] hardcore random points if you greentext this round!"))
 		else
 			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score)] hardcore random points if you survive this round!"))
-
-	message_admins(span_alert("Game started with [special_role_count] antagonist(s) out of [GLOB.alive_player_list.len] players."))
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
@@ -605,7 +598,7 @@ SUBSYSTEM_DEF(ticker)
 		if(GANG_DESTROYED)
 			news_message = "The crew of [decoded_station_name] would like to thank the Spinward Stellar Coalition Police Department for quickly resolving a minor terror threat to the station."
 		if(SUPERMATTER_CASCADE)
-			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in the sector surrounding [decoded_station_name]."
+			news_message = "Recovery of the surviving crew of [decoded_station_name] is underway following a major supermatter cascade."
 
 	if(news_message)
 		send2otherserver(news_source, news_message,"News_Report")

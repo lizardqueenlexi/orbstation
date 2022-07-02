@@ -18,7 +18,6 @@
 	throw_range = 4
 	w_class = WEIGHT_CLASS_BULKY
 	wound_bonus = 20
-	demolition_mod = 1.25
 	grind_results = list(/datum/reagent/lead = 20)
 
 //A good battery early in the shift. Source of lead & sulfuric acid reagents.

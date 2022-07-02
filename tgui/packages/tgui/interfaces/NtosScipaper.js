@@ -1,5 +1,20 @@
 import { useBackend } from '../backend';
-import { BlockQuote, Button, Collapsible, Dropdown, Input, LabeledList, Section, Stack, Tabs, Box, Table, NoticeBox, Tooltip, Icon } from '../components';
+import {
+  BlockQuote,
+  Button,
+  Collapsible,
+  Dropdown,
+  Input,
+  LabeledList,
+  Section,
+  Stack,
+  Tabs,
+  Box,
+  Table,
+  NoticeBox,
+  Tooltip,
+  Icon,
+} from '../components';
 import { TableCell, TableRow } from '../components/Table';
 import { NtosWindow } from '../layouts';
 
@@ -43,8 +58,7 @@ const PaperPublishing = (props, context) => {
               onChange={(e, value) =>
                 act('rewrite', {
                   title: value,
-                })
-              }
+                })}
             />
           </LabeledList.Item>
           <LabeledList.Item label="Principal Author">
@@ -54,8 +68,7 @@ const PaperPublishing = (props, context) => {
               onChange={(e, value) =>
                 act('rewrite', {
                   author: value,
-                })
-              }
+                })}
             />
             <Button selected={etAlia} onClick={() => act('et_alia')}>
               {'Multiple Authors'}
@@ -68,8 +81,7 @@ const PaperPublishing = (props, context) => {
               onChange={(e, value) =>
                 act('rewrite', {
                   abstract: value,
-                })
-              }
+                })}
             />
           </LabeledList.Item>
           <LabeledList.Item label="Selected File">
@@ -82,8 +94,7 @@ const PaperPublishing = (props, context) => {
                   onSelected={(ordfile_name) =>
                     act('select_file', {
                       selected_uid: fileList[ordfile_name],
-                    })
-                  }
+                    })}
                 />
               </Stack.Item>
               <Stack.Item align="center">
@@ -105,8 +116,7 @@ const PaperPublishing = (props, context) => {
                   onSelected={(experiment_name) =>
                     act('select_experiment', {
                       selected_expath: expList[experiment_name],
-                    })
-                  }
+                    })}
                 />
               </Stack.Item>
               <Stack.Item align="center">
@@ -128,8 +138,7 @@ const PaperPublishing = (props, context) => {
                   onSelected={(new_tier) =>
                     act('select_tier', {
                       selected_tier: Number(new_tier),
-                    })
-                  }
+                    })}
                 />
               </Stack.Item>
               <Stack.Item align="center">
@@ -151,8 +160,7 @@ const PaperPublishing = (props, context) => {
                   onSelected={(new_partner) =>
                     act('select_partner', {
                       selected_partner: allowedPartners[new_partner],
-                    })
-                  }
+                    })}
                 />
               </Stack.Item>
               <Stack.Item align="center">
@@ -252,10 +260,7 @@ const ExperimentBrowser = (props, context) => {
           <LabeledList.Item
             key={tier}
             label={
-              'Optimal ' +
-              experiment.prefix +
-              ' Amount - Tier ' +
-              String(Number(tier) + 1)
+              'Optimal '+ experiment.prefix + ' Amount - Tier ' + String(Number(tier) + 1)
             }>
             {experiment.target[tier] + ' ' + experiment.suffix}
           </LabeledList.Item>
@@ -319,8 +324,7 @@ const PartnersBrowser = (props, context) => {
                         act('purchase_boost', {
                           purchased_boost: node.id,
                           boost_seller: partner.path,
-                        })
-                      }
+                        })}
                     />
                   </TableCell>
                 </TableRow>
@@ -344,8 +348,7 @@ export const NtosScipaperContent = (props, context) => {
           onClick={() =>
             act('change_tab', {
               new_tab: 1,
-            })
-          }>
+            })}>
           {'Publish Papers'}
         </Tabs.Tab>
         <Tabs.Tab
@@ -353,8 +356,7 @@ export const NtosScipaperContent = (props, context) => {
           onClick={() =>
             act('change_tab', {
               new_tab: 2,
-            })
-          }>
+            })}>
           {'View Previous Publications'}
         </Tabs.Tab>
         <Tabs.Tab
@@ -362,8 +364,7 @@ export const NtosScipaperContent = (props, context) => {
           onClick={() =>
             act('change_tab', {
               new_tab: 3,
-            })
-          }>
+            })}>
           {'View Available Experiments'}
         </Tabs.Tab>
         <Tabs.Tab
@@ -371,8 +372,7 @@ export const NtosScipaperContent = (props, context) => {
           onClick={() =>
             act('change_tab', {
               new_tab: 4,
-            })
-          }>
+            })}>
           {'View Scientific Partners'}
         </Tabs.Tab>
       </Tabs>

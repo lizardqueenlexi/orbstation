@@ -25,8 +25,10 @@
 	add_fingerprint(user)
 	//no scanning if its a husk or DNA-less Species
 	if (!HAS_TRAIT(target, TRAIT_GENELESS) && !HAS_TRAIT(target, TRAIT_BADDNA))
-		user.visible_message(span_notice("[user] analyzes [target]'s genetic sequence."))
-		balloon_alert(user, "sequence analyzed")
+		user.visible_message(
+			span_notice("[user] analyzes [target]'s genetic sequence."),
+			span_notice("You analyze [target]'s genetic sequence.")
+			)
 		gene_scan(target, user)
 	else
 		user.visible_message(span_notice("[user] fails to analyze [target]'s genetic sequence."), span_warning("[target] has no readable genetic sequence!"))

@@ -1,16 +1,15 @@
 import { useBackend } from '../backend';
 import { GasmixParser } from './common/GasmixParser';
 import type { Gasmix } from './common/GasmixParser';
-import { AtmosHandbookContent, atmosHandbookHooks } from './common/AtmosHandbook';
+import {
+  AtmosHandbookContent,
+  atmosHandbookHooks,
+} from './common/AtmosHandbook';
 import { Window } from '../layouts';
 import { Section } from '../components';
 
-export type GasAnalyzerData = {
-  gasmixes: Gasmix[];
-};
-
 export const GasAnalyzerContent = (props, context) => {
-  const { act, data } = useBackend<GasAnalyzerData>(context);
+  const { act, data } = useBackend<{ gasmixes: Gasmix[] }>(context);
   const { gasmixes } = data;
   const [setActiveGasId, setActiveReactionId] = atmosHandbookHooks(context);
   return (
@@ -38,3 +37,4 @@ export const GasAnalyzer = (props, context) => {
     </Window>
   );
 };
+  

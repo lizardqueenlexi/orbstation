@@ -109,8 +109,6 @@
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/pepper_shoulders,
-		/obj/item/mod/module/criminalcapture,
-		/obj/item/mod/module/dispenser/mirage,
 	)
 
 /obj/item/mod/control/pre_equipped/safeguard
@@ -121,8 +119,6 @@
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/jetpack,
-		/obj/item/mod/module/megaphone,
-		/obj/item/mod/module/projectile_dampener,
 		/obj/item/mod/module/pepper_shoulders,
 	)
 
@@ -212,19 +208,6 @@
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/energy_shield/wizard,
 		/obj/item/mod/module/emp_shield/advanced,
-	)
-
-/obj/item/mod/control/pre_equipped/ninja
-	theme = /datum/mod_theme/ninja
-	applied_cell = /obj/item/stock_parts/cell/ninja
-	initial_modules = list(
-		/obj/item/mod/module/storage,
-		/obj/item/mod/module/noslip,
-		/obj/item/mod/module/status_readout,
-		/obj/item/mod/module/stealth/ninja,
-		/obj/item/mod/module/dispenser/ninja,
-		/obj/item/mod/module/dna_lock/reinforced,
-		/obj/item/mod/module/emp_shield/pulse,
 	)
 
 /obj/item/mod/control/pre_equipped/prototype
@@ -378,18 +361,13 @@
 	)
 
 //these exist for the prefs menu
-/obj/item/mod/control/pre_equipped/empty
-
-/obj/item/mod/control/pre_equipped/empty/syndicate
+/obj/item/mod/control/pre_equipped/syndicate_empty
 	theme = /datum/mod_theme/syndicate
 
-/obj/item/mod/control/pre_equipped/empty/syndicate/honkerative
+/obj/item/mod/control/pre_equipped/syndicate_empty/honkerative
 	applied_skin = "honkerative"
 
-/obj/item/mod/control/pre_equipped/empty/elite
+/obj/item/mod/control/pre_equipped/syndicate_empty/elite
 	theme = /datum/mod_theme/elite
 
-/obj/item/mod/control/pre_equipped/empty/ninja
-	theme = /datum/mod_theme/ninja
-
-INITIALIZE_IMMEDIATE(/obj/item/mod/control/pre_equipped/empty)
+INITIALIZE_IMMEDIATE(/obj/item/mod/control/pre_equipped/syndicate_empty)

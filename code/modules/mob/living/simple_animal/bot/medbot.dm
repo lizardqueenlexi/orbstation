@@ -578,7 +578,7 @@
 	drop_part(healthanalyzer, Tsec)
 
 	if(bot_cover_flags & BOT_COVER_EMAGGED && prob(25))
-		playsound(src, 'sound/voice/medbot/fuck_you.ogg', 50)
+		playsound(src, 'sound/voice/medbot/insult.ogg', 50)
 	return ..()
 
 /mob/living/simple_animal/bot/medbot/proc/declare(crit_patient)

@@ -371,7 +371,7 @@
 /obj/structure/window/get_dumping_location()
 	return null
 
-/obj/structure/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller, no_id = FALSE)
+/obj/structure/window/CanAStarPass(obj/item/card/id/ID, to_dir, atom/movable/caller)
 	if(!density)
 		return TRUE
 	if(fulltile || (dir == to_dir))
@@ -417,13 +417,14 @@
 	switch(state)
 		if(RWINDOW_SECURE)
 			if(tool.tool_behaviour == TOOL_WELDER)
-				if(tool.tool_start_check(user))
+				var/obj/item/weldingtool/welder = tool
+				if(welder.isOn())
 					user.visible_message(span_notice("[user] holds \the [tool] to the security screws on \the [src]..."),
 						span_notice("You begin heating the security screws on \the [src]..."))
-					if(tool.use_tool(src, user, 15 SECONDS, volume = 100))
-						to_chat(user, span_notice("The security screws are glowing white hot and look ready to be removed."))
-						state = RWINDOW_BOLTS_HEATED
-						addtimer(CALLBACK(src, .proc/cool_bolts), 30 SECONDS)
+				if(tool.use_tool(src, user, 150, volume = 100))
+					to_chat(user, span_notice("The security screws are glowing white hot and look ready to be removed."))
+					state = RWINDOW_BOLTS_HEATED
+					addtimer(CALLBACK(src, .proc/cool_bolts), 300)
 			else if (tool.tool_behaviour)
 				to_chat(user, span_warning("The security screws need to be heated first!"))
 

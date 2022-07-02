@@ -60,6 +60,7 @@
 	. = ..()
 	if(!.)
 		return
+
 	if (isnull(ninja))
 		return
 	var/datum/antagonist/ninja/ninja_antag = ninja.mind.has_antag_datum(/datum/antagonist/ninja)

@@ -5,17 +5,13 @@
 	inhand_icon_state = null //so the human update icon uses the icon_state instead.
 	worn_icon_state = null
 	shaded_charge = TRUE
+	can_flashlight = TRUE
 	w_class = WEIGHT_CLASS_HUGE
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BACK
 	ammo_type = list(/obj/item/ammo_casing/energy/ion)
-
-/obj/item/gun/energy/ionrifle/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, \
-		light_overlay_icon = 'icons/obj/guns/flashlights.dmi', \
-		light_overlay = "flight", \
-		overlay_x = 17, \
-		overlay_y = 9)
+	flight_x_offset = 17
+	flight_y_offset = 9
 
 /obj/item/gun/energy/ionrifle/emp_act(severity)
 	return
@@ -26,11 +22,8 @@
 	icon_state = "ioncarbine"
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BELT
-
-/obj/item/gun/energy/ionrifle/carbine/add_seclight_point()
-	. = ..()
-	// We use the same overlay as the parent, so we can just let the component inherit the correct offsets here
-	AddComponent(/datum/component/seclite_attachable, overlay_x = 18, overlay_y = 11)
+	flight_x_offset = 18
+	flight_y_offset = 11
 
 /obj/item/gun/energy/decloner
 	name = "biological demolecularisor"
@@ -167,11 +160,8 @@
 	return (!QDELETED(cell) && cell.use(amount ? amount * charge_weld : charge_weld))
 
 /obj/item/gun/energy/plasmacutter/use_tool(atom/target, mob/living/user, delay, amount=1, volume=0, datum/callback/extra_checks)
-
 	if(amount)
-		target.add_overlay(GLOB.welding_sparks)
 		. = ..()
-		target.cut_overlay(GLOB.welding_sparks)
 	else
 		. = ..(amount=1)
 

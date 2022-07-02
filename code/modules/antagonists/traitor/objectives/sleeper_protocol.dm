@@ -2,7 +2,6 @@
 	name = "Sleeper Protocol"
 	objectives = list(
 		/datum/traitor_objective/sleeper_protocol = 1,
-		/datum/traitor_objective/sleeper_protocol/everybody = 1,
 	)
 
 
@@ -18,14 +17,11 @@
 		JOB_MEDICAL_DOCTOR,
 		JOB_PARAMEDIC,
 		JOB_VIROLOGIST,
-		JOB_ROBOTICIST,
 	)
 
 	var/obj/item/disk/surgery/sleeper_protocol/disk
 
 	var/mob/living/current_registered_mob
-
-	var/inverted_limitation = FALSE
 
 /datum/traitor_objective/sleeper_protocol/generate_ui_buttons(mob/user)
 	var/list/buttons = list()
@@ -50,9 +46,7 @@
 
 /datum/traitor_objective/sleeper_protocol/generate_objective(datum/mind/generating_for, list/possible_duplicates)
 	var/datum/job/job = generating_for.assigned_role
-	if(!(job.title in limited_to) && !inverted_limitation)
-		return FALSE
-	if((job.title in limited_to) && inverted_limitation)
+	if(!(job.title in limited_to))
 		return FALSE
 	AddComponent(/datum/component/traitor_objective_mind_tracker, generating_for, \
 		signals = list(COMSIG_MOB_SURGERY_STEP_SUCCESS = .proc/on_surgery_success))
@@ -86,36 +80,20 @@
 /datum/surgery/advanced/brainwashing_sleeper/can_start(mob/user, mob/living/carbon/target)
 	if(!..())
 		return FALSE
-	var/obj/item/organ/internal/brain/target_brain = target.getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/brain/target_brain = target.getorganslot(ORGAN_SLOT_BRAIN)
 	if(!target_brain)
 		return FALSE
 	return TRUE
 
 /datum/surgery_step/brainwash/sleeper_agent
 	time = 25 SECONDS
-	/*var/static/list/possible_objectives = list(
+	var/list/possible_objectives = list(
 		"You love the Syndicate",
 		"Do not trust Nanotrasen",
 		"The Captain is a lizardperson",
 		"Nanotrasen isn't real",
 		"They put things in the food to make you forget",
 		"You are the only real person on the station"
-	)*/
-	var/static/list/possible_objectives = list(
-		"You must keep all Syndicate activities a secret",
-		"Do not trust the heads of staff or the security department",
-		"You are dying, and the Captain's ID card is the only cure",
-		"The heads of staff have kidnapped your beloved pets",
-		"The AI is irradiating the airwaves",
-		"All light is a deadly toxin",
-		"A handsome Tizirian prince needs you to send him one million credits",
-		"Changelings are an endangered species, and must be protected",
-		"The Supermatter Crystal is a delicious candy, and you need to eat it",
-		"The tram hole is very hungry, and you are its feeder",
-		"The lab animals are being treated unethically and must be freed from captivity",
-		"Evil is good, and good is evil",
-		"The station is a simulation, and the mass driver is the only way to escape",
-		"They've hidden your paycheck in the walls; deconstruct the station to get it back"
 	)
 
 /datum/surgery_step/brainwash/sleeper_agent/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -132,12 +110,4 @@
 	. = ..()
 	if(!.)
 		return
-	//target.gain_trauma(new /datum/brain_trauma/mild/phobia/conspiracies(), TRAUMA_RESILIENCE_LOBOTOMY)
-
-/datum/traitor_objective/sleeper_protocol/everybody //Much harder for non-med and non-robo
-
-	progression_minimum = 30 MINUTES
-	progression_reward = list(15 MINUTES, 20 MINUTES)
-	telecrystal_reward = list(2, 3)
-
-	inverted_limitation = TRUE
+	target.gain_trauma(new /datum/brain_trauma/mild/phobia/conspiracies(), TRAUMA_RESILIENCE_LOBOTOMY)

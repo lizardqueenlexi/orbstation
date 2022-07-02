@@ -5,7 +5,7 @@
 import DOMPurify from 'dompurify';
 
 // Default values
-const defTag = [
+let defTag = [
   'b',
   'br',
   'center',
@@ -43,8 +43,7 @@ const defTag = [
   'u',
   'ul',
 ];
-
-const defAttr = ['class', 'style'];
+let defAttr = ['class', 'style'];
 
 /**
  * Feed it a string and it should spit out a sanitized version.

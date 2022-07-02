@@ -205,7 +205,7 @@
 	if(!attempt_pre_unwrap_contents(user))
 		return
 	unwrap_contents()
-	post_unwrap_contents()
+	post_unwrap_contents(user)
 
 /**
  * # Wrapped up items small enough to carry.

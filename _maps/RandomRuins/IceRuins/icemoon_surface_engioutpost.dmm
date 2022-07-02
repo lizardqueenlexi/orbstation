@@ -231,9 +231,9 @@
 /area/ruin/planetengi)
 "bq" = (
 /obj/machinery/door/airlock/engineering/glass{
-	name = "Production Room"
+	name = "Production Room";
+	req_access = list("away_engineering")
 	},
-/obj/effect/mapping_helpers/airlock/access/all/away/engineering,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/planetengi)
@@ -522,9 +522,9 @@
 /area/ruin/planetengi)
 "cF" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering Access"
+	name = "Engineering Access";
+	req_access = list("away_engineering")
 	},
-/obj/effect/mapping_helpers/airlock/access/all/away/engineering,
 /turf/open/floor/iron,
 /area/ruin/planetengi)
 "cG" = (
@@ -548,8 +548,14 @@
 /obj/item/mod/control/pre_equipped/engineering,
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/cable,
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/iron,
+/turf/open/floor/iron{
+	icon_state = "damaged3"
+	},
+/area/ruin/planetengi)
+"cM" = (
+/turf/open/floor/iron{
+	icon_state = "damaged2"
+	},
 /area/ruin/planetengi)
 "cN" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
@@ -603,8 +609,9 @@
 /turf/open/floor/iron,
 /area/ruin/planetengi)
 "cW" = (
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/iron,
+/turf/open/floor/iron{
+	icon_state = "damaged1"
+	},
 /area/ruin/planetengi)
 "cX" = (
 /obj/structure/cable,
@@ -616,8 +623,9 @@
 "cY" = (
 /obj/item/stack/sheet/plasmarglass,
 /obj/item/card/id/advanced/engioutpost,
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/iron,
+/turf/open/floor/iron{
+	icon_state = "damaged4"
+	},
 /area/ruin/planetengi)
 "cZ" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
@@ -669,8 +677,9 @@
 /area/ruin/planetengi)
 "dk" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line,
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/iron,
+/turf/open/floor/iron{
+	icon_state = "damaged5"
+	},
 /area/ruin/planetengi)
 "dl" = (
 /obj/effect/mob_spawn/corpse/human/engineer/mod,
@@ -1140,7 +1149,7 @@ bH
 bZ
 cj
 bB
-cW
+cM
 cY
 dj
 cG

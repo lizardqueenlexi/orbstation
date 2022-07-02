@@ -69,7 +69,9 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 5
 	},
-/obj/structure/sign/warning/no_smoking/directional/north,
+/obj/structure/sign/warning/no_smoking{
+	pixel_y = 32
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/escape)
 "cZ" = (
@@ -96,12 +98,22 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating,
 /area/shuttle/escape)
+"dT" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/shuttle/escape)
 "eq" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
 /area/shuttle/escape)
 "ev" = (
 /obj/effect/turf_decal/trimline/green/filled/corner,
@@ -359,8 +371,9 @@
 	dir = 8
 	},
 /obj/structure/grille/broken,
-/obj/effect/mapping_helpers/burnt_floor,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
 /area/shuttle/escape)
 "lS" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -400,7 +413,9 @@
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 9
 	},
-/obj/structure/sign/warning/no_smoking/directional/north,
+/obj/structure/sign/warning/no_smoking{
+	pixel_y = 32
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/escape)
 "mq" = (
@@ -680,7 +695,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Brig"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape/brig)
 "Ai" = (
@@ -859,16 +874,18 @@
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/burnt_floor,
-/turf/open/floor/iron,
+/turf/open/floor/iron{
+	icon_state = "floorscorched1"
+	},
 /area/shuttle/escape)
 "Hi" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
 /area/shuttle/escape)
 "Hq" = (
 /obj/structure/flora/rock/pile/style_random,
@@ -1062,8 +1079,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/burnt_floor,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
 /area/shuttle/escape)
 "QO" = (
 /obj/effect/turf_decal/weather/dirt{
@@ -1580,7 +1598,7 @@ HV
 Kx
 Yu
 dP
-Hi
+dT
 Jw
 gu
 WE

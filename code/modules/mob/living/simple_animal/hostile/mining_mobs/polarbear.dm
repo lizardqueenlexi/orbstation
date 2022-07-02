@@ -50,6 +50,7 @@
 	. = ..()
 	if(!. || target)
 		return
+	adjustHealth(-0.0125 * maxHealth * delta_time)
 	aggressive_message_said = FALSE
 
 /mob/living/simple_animal/hostile/asteroid/polarbear/death(gibbed)

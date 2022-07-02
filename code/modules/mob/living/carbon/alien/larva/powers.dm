@@ -54,9 +54,6 @@
 	if(user.incapacitated()) //something happened to us while we were choosing.
 		return
 
-	if(alien_caste == null)
-		return
-
 	var/mob/living/carbon/alien/humanoid/new_xeno
 	switch(alien_caste)
 		if("Hunter")

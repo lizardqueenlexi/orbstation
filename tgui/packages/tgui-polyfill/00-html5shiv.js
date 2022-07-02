@@ -5,7 +5,6 @@
  */
 
 /* eslint-disable */
-// prettier-ignore
 (function(window, document) {
 /*jshint evil:true */
   /** version */

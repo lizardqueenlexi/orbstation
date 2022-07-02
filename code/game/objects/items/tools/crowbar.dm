@@ -10,7 +10,6 @@
 	slot_flags = ITEM_SLOT_BELT
 	force = 5
 	throwforce = 7
-	demolition_mod = 1.25
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron=50)
 	drop_sound = 'sound/items/handling/crowbar_drop.ogg'
@@ -44,7 +43,7 @@
 
 
 /obj/item/crowbar/large
-	name = "large crowbar"
+	name = "crowbar"
 	desc = "It's a big crowbar. It doesn't fit in your pockets, because it's big."
 	force = 12
 	w_class = WEIGHT_CLASS_NORMAL
@@ -55,11 +54,6 @@
 	inhand_icon_state = "crowbar"
 	worn_icon_state = "crowbar"
 	toolspeed = 0.7
-
-/obj/item/crowbar/large/emergency
-	name = "emergency crowbar"
-	desc = "It's a bulky crowbar. It almost seems deliberately designed to not be able to fit inside of a backpack."
-	w_class = WEIGHT_CLASS_BULKY
 
 /obj/item/crowbar/large/heavy //from space ruin
 	name = "heavy crowbar"

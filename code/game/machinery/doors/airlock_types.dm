@@ -377,6 +377,7 @@
 
 /// Access free external airlock
 /obj/machinery/door/airlock/external/ruin
+	req_access = null
 
 /obj/machinery/door/airlock/external/glass
 	opacity = FALSE
@@ -384,6 +385,7 @@
 
 /// Access free external glass airlock
 /obj/machinery/door/airlock/external/glass/ruin
+	req_access = null
 
 //////////////////////////////////
 /*

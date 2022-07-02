@@ -216,7 +216,7 @@
 
 /datum/antagonist/ert/bounty_hook
 	role = "Hookgun Bounty Hunter"
-	outfit = /datum/outfit/bountyhook/ert
+	outfit = /datum/outfit/bountyarmor/ert
 
 /datum/antagonist/ert/bounty_synth
 	role = "Synthetic Bounty Hunter"

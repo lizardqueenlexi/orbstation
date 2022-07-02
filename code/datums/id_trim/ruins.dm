@@ -17,7 +17,7 @@
 
 /// Trim for the oldstation ruin/Charlie station
 /datum/id_trim/away/old/sci
-	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_SCIENCE)
+	access = list(ACCESS_AWAY_GENERAL)
 	assignment = "Charlie Station Scientist"
 
 /// Trim for the oldstation ruin/Charlie station
@@ -25,14 +25,9 @@
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_ENGINEERING)
 	assignment = "Charlie Station Engineer"
 
-/// Trim for the oldstation ruin/Charlie station to access APCs and other equipment
+/// Trim for the oldstation ruin/Charlie station
 /datum/id_trim/away/old/apc
-	access = list(ACCESS_ENGINEERING, ACCESS_ENGINE_EQUIP)
-	assignment = "Engineering Equipment Access"
-
-/// Trim for the oldstation ruin/Charlie station to access robots, and downloading of paper publishing software for experiments
-/datum/id_trim/away/old/robo
-	access = list(ACCESS_AWAY_GENERAL, ACCESS_ROBOTICS, ACCESS_ORDNANCE)
+	access = list(ACCESS_ENGINE_EQUIP)
 
 /// Trim for the cat surgeon ruin.
 /datum/id_trim/away/cat_surgeon

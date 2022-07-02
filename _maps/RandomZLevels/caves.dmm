@@ -1,10 +1,10 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/closed/indestructible/rock,
-/area/space/nearstation)
+/area/misc/space/nearstation)
 "ab" = (
 /turf/open/space,
-/area/space)
+/area/misc/space)
 "ac" = (
 /turf/closed/mineral/volcanic,
 /area/awaymission/caves/bmp_asteroid/level_three)
@@ -56,7 +56,7 @@
 	},
 /obj/item/veilrender/honkrender,
 /obj/item/clothing/mask/gas/clown_hat,
-/obj/item/organ/internal/heart/demon,
+/obj/item/organ/heart/demon,
 /turf/open/floor/engine/cult{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},
@@ -496,8 +496,9 @@
 	},
 /area/awaymission/caves/research)
 "cE" = (
-/obj/structure/sign/warning/vacuum/directional/east{
-	name = "\improper LOW AIR AREA"
+/obj/structure/sign/warning/vacuum{
+	name = "\improper LOW AIR AREA";
+	pixel_x = 32
 	},
 /obj/item/stack/rods,
 /turf/open/floor/iron{
@@ -600,8 +601,9 @@
 	},
 /area/awaymission/caves/research)
 "cZ" = (
-/obj/structure/sign/warning/vacuum/directional/east{
-	name = "\improper LOW AIR AREA"
+/obj/structure/sign/warning/vacuum{
+	name = "\improper LOW AIR AREA";
+	pixel_x = 32
 	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
@@ -1118,7 +1120,9 @@
 /turf/open/floor/iron,
 /area/awaymission/caves/bmp_asteroid)
 "fL" = (
-/obj/structure/sign/departments/exam_room/directional/north,
+/obj/structure/sign/departments/exam_room{
+	pixel_y = 32
+	},
 /turf/open/floor/iron,
 /area/awaymission/caves/bmp_asteroid)
 "fN" = (
@@ -1410,7 +1414,7 @@
 	icon_state = "crateopen"
 	},
 /obj/item/paper/fluff/awaymissions/caves/shipment_receipt,
-/obj/item/organ/internal/eyes/robotic/thermals,
+/obj/item/organ/eyes/robotic/thermals,
 /obj/item/gun/energy/laser/captain/scattershot,
 /obj/item/slimepotion/fireproof,
 /turf/open/misc/asteroid/basalt{
@@ -1418,7 +1422,9 @@
 	},
 /area/awaymission/caves/bmp_asteroid/level_two)
 "kw" = (
-/obj/structure/sign/warning/xeno_mining/directional/south,
+/obj/structure/sign/warning/xeno_mining{
+	pixel_y = -32
+	},
 /turf/open/misc/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},
@@ -1770,9 +1776,10 @@
 	},
 /area/awaymission/caves/bmp_asteroid/level_two)
 "DO" = (
-/obj/structure/sign/warning/pods/directional/west{
+/obj/structure/sign/warning/pods{
 	desc = "A warning sign which warns of potential mech traffic to and from different levels of the mine.";
-	name = "\improper MECH TUNNEL PASSAGE A1 TO A2"
+	name = "\improper MECH TUNNEL PASSAGE A1 TO A2";
+	pixel_x = -32
 	},
 /obj/machinery/light/small/directional/west,
 /turf/open/misc/asteroid/basalt{
@@ -1846,9 +1853,10 @@
 /area/awaymission/caves/bmp_asteroid/level_three)
 "Jp" = (
 /obj/machinery/light/small/built/directional/east,
-/obj/structure/sign/warning/pods/directional/east{
+/obj/structure/sign/warning/pods{
 	desc = "A warning sign which warns of potential mech traffic to and from different levels of the mine.";
-	name = "\improper MECH TUNNEL PASSAGE B1 TO A2"
+	name = "\improper MECH TUNNEL PASSAGE B1 TO A2";
+	pixel_x = 32
 	},
 /turf/open/misc/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
@@ -1874,7 +1882,9 @@
 	},
 /area/awaymission/caves/bmp_asteroid/level_two)
 "Ls" = (
-/obj/structure/sign/departments/medbay/directional/west,
+/obj/structure/sign/departments/medbay{
+	pixel_x = -32
+	},
 /turf/open/misc/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},
@@ -1979,7 +1989,7 @@
 	icon_state = "black";
 	name = "the other side"
 	},
-/area/space/nearstation)
+/area/misc/space/nearstation)
 "PS" = (
 /obj/machinery/light/small/built/directional/south,
 /obj/machinery/suit_storage_unit/mining{
@@ -1995,9 +2005,10 @@
 	},
 /area/awaymission/caves/bmp_asteroid/level_four)
 "Rp" = (
-/obj/structure/sign/warning/pods/directional/east{
+/obj/structure/sign/warning/pods{
 	desc = "A warning sign which warns of potential mech traffic to and from different levels of the mine.";
-	name = "\improper MECH TUNNEL PASSAGE A2 TO B1"
+	name = "\improper MECH TUNNEL PASSAGE A2 TO B1";
+	pixel_x = 32
 	},
 /obj/machinery/light/small/built/directional/east,
 /turf/open/misc/asteroid/basalt{
@@ -2069,9 +2080,10 @@
 /area/awaymission/caves/bmp_asteroid)
 "WL" = (
 /obj/machinery/light/small/directional/west,
-/obj/structure/sign/warning/pods/directional/west{
+/obj/structure/sign/warning/pods{
 	desc = "A warning sign which warns of potential mech traffic to and from different levels of the mine.";
-	name = "\improper MECH TUNNEL PASSAGE A2 TO A1"
+	name = "\improper MECH TUNNEL PASSAGE A2 TO A1";
+	pixel_x = -32
 	},
 /turf/open/misc/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
@@ -2106,7 +2118,7 @@
 	},
 /area/awaymission/caves/bmp_asteroid/level_three)
 "YG" = (
-/obj/item/organ/internal/brain/alien,
+/obj/item/organ/brain/alien,
 /turf/open/misc/asteroid/basalt{
 	initial_gas_mix = "n2=23;o2=14;TEMP=2.7"
 	},

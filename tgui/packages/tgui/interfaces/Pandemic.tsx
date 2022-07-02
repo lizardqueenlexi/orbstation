@@ -228,8 +228,7 @@ const AntibodyInfoDisplay = (_, context) => {
                 onClick={() =>
                   act('create_vaccine_bottle', {
                     index: resistance.id,
-                  })
-                }>
+                  })}>
                 {`${resistance.name}`}
               </Button>
             );
@@ -272,8 +271,7 @@ const SpecimenDisplay = (_, context) => {
               onClick={() =>
                 act('create_culture_bottle', {
                   index: virus.index,
-                })
-              }
+                })}
             />
           </Stack.Item>
         </Stack>
@@ -283,7 +281,8 @@ const SpecimenDisplay = (_, context) => {
           <VirusDisplay virus={virus} />
         </Stack.Item>
         <Stack.Item>
-          {virus?.symptoms && <SymptomDisplay symptoms={virus.symptoms} />}
+          {virus?.symptoms
+          && <SymptomDisplay symptoms={virus.symptoms} />}
         </Stack.Item>
       </Stack>
     </Section>
@@ -353,8 +352,7 @@ const VirusTextInfo = (props: VirusInfoProps, context) => {
               act('rename_disease', {
                 index: virus.index,
                 name: value,
-              })
-            }
+              })}
           />
         ) : (
           <Box color="bad">{virus.name}</Box>

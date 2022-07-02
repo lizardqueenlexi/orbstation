@@ -225,7 +225,9 @@
 
 /// Checks if there is enough power in the suit
 /obj/item/mod/module/proc/check_power(amount)
-	return mod.check_charge(amount)
+	if(mod.get_charge() < amount)
+		return FALSE
+	return TRUE
 
 /// Adds additional things to the MODsuit ui_data()
 /obj/item/mod/module/proc/add_ui_data()

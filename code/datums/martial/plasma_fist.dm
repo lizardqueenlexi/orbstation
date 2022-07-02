@@ -16,17 +16,17 @@
 	if(findtext(streak,TORNADO_COMBO))
 		if(A == D)//helps using apotheosis
 			return FALSE
-		reset_streak(A)
+		streak = ""
 		Tornado(A,D)
 		return TRUE
 	if(findtext(streak,THROWBACK_COMBO))
 		if(A == D)//helps using apotheosis
 			return FALSE
-		reset_streak(A)
+		streak = ""
 		Throwback(A,D)
 		return TRUE
 	if(findtext(streak,PLASMA_COMBO))
-		reset_streak(A)
+		streak = ""
 		if(A == D && !nobomb)
 			Apotheosis(A,D)
 		else

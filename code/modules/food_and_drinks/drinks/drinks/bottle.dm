@@ -15,7 +15,6 @@
 	volume = 100
 	force = 15 //Smashing bottles over someone's head hurts.
 	throwforce = 15
-	demolition_mod = 0.25
 	inhand_icon_state = "beer" //Generic held-item sprite until unique ones are made.
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
@@ -120,7 +119,6 @@
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 5
-	demolition_mod = 0.25
 	w_class = WEIGHT_CLASS_TINY
 	inhand_icon_state = "broken_beer"
 	lefthand_file = 'icons/mob/inhands/misc/food_lefthand.dmi'
@@ -647,16 +645,16 @@
 			isGlass = FALSE
 	return
 
-/obj/item/reagent_containers/food/drinks/bottle/molotov/smash(atom/target, mob/thrower, ranged = FALSE)
+/obj/item/reagent_containers/food/drinks/bottle/molotov/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	var/firestarter = 0
-	for(var/datum/reagent/contained_reagent in reagents.reagent_list)
-		for(var/accelerant_type in accelerants)
-			if(istype(contained_reagent, accelerant_type))
+	for(var/datum/reagent/R in reagents.reagent_list)
+		for(var/A in accelerants)
+			if(istype(R,A))
 				firestarter = 1
 				break
 	if(firestarter && active)
-		target.fire_act()
-		new /obj/effect/hotspot(get_turf(target))
+		hit_atom.fire_act()
+		new /obj/effect/hotspot(get_turf(hit_atom))
 	..()
 
 /obj/item/reagent_containers/food/drinks/bottle/molotov/attackby(obj/item/I, mob/user, params)

@@ -41,7 +41,8 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/traitor_objective/hack_comm_console/proc/begin_hack(mob/user, obj/machinery/computer/communications/target)
-	if(!target.try_hack_console(user))
+	target.AI_notify_hack()
+	if(!do_after(user, 30 SECONDS, target))
 		return
-
 	succeed_objective()
+	target.hack_console(user)

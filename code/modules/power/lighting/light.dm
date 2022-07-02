@@ -18,6 +18,8 @@
 	var/base_state = "tube"
 	///Is the light on?
 	var/on = FALSE
+	///compared to the var/on for static calculations
+	var/on_gs = FALSE
 	///Amount of power used
 	var/static_power_used = 0
 	///Luminosity when on, also used in power calculation
@@ -52,26 +54,18 @@
 	var/nightshift_light_power = 0.45
 	///Basecolor of the nightshift light
 	var/nightshift_light_color = "#FFDDCC"
-	///If true, the light is in low power mode
-	var/low_power_mode = FALSE
-	///If true, this light cannot ever be in low power mode
-	var/no_low_power = FALSE
-	///If true, overrides lights to use emergency lighting
-	var/major_emergency = FALSE
-	///Multiplier for this light's base brightness during a cascade
-	var/bulb_major_emergency_brightness_mul = 0.75
-	///Colour of the light when major emergency mode is on
-	var/bulb_emergency_colour = "#ff4e4e"
-	///Multiplier for this light's base brightness in low power power mode
-	var/bulb_low_power_brightness_mul = 0.25
-	///Determines the colour of the light while it's in low power mode
-	var/bulb_low_power_colour = "#FF3232"
-	///The multiplier for determining the light's power in low power mode
-	var/bulb_low_power_pow_mul = 0.75
-	///The minimum value for the light's power in low power mode
-	var/bulb_low_power_pow_min = 0.5
-	///Power usage - W per unit of luminosity
-	var/power_consumption_rate = 20
+	///If true, the light is in emergency mode
+	var/emergency_mode = FALSE
+	///If true, this light cannot ever have an emergency mode
+	var/no_emergency = FALSE
+	///Multiplier for this light's base brightness in emergency power mode
+	var/bulb_emergency_brightness_mul = 0.25
+	///Determines the colour of the light while it's in emergency mode
+	var/bulb_emergency_colour = "#FF3232"
+	///The multiplier for determining the light's power in emergency mode
+	var/bulb_emergency_pow_mul = 0.75
+	///The minimum value for the light's power in emergency mode
+	var/bulb_emergency_pow_min = 0.5
 
 /obj/machinery/light/Move()
 	if(status != LIGHT_BROKEN)
@@ -87,7 +81,7 @@
 		var/obj/machinery/power/apc/temp_apc = our_area.apc
 		nightshift_enabled = temp_apc?.nightshift_lights
 
-	if(start_with_cell && !no_low_power)
+	if(start_with_cell && !no_emergency)
 		cell = new/obj/item/stock_parts/cell/emergency_light(src)
 
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, .proc/on_light_eater)
@@ -116,7 +110,7 @@
 	switch(status) // set icon_states
 		if(LIGHT_OK)
 			var/area/local_area = get_area(src)
-			if(low_power_mode || major_emergency || (local_area?.fire))
+			if(emergency_mode || (local_area?.fire))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
@@ -134,7 +128,7 @@
 		return
 
 	var/area/local_area = get_area(src)
-	if(low_power_mode || major_emergency || (local_area?.fire))
+	if(emergency_mode || (local_area?.fire))
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
@@ -169,7 +163,7 @@
 	switch(status)
 		if(LIGHT_BROKEN,LIGHT_BURNED,LIGHT_EMPTY)
 			on = FALSE
-	low_power_mode = FALSE
+	emergency_mode = FALSE
 	if(on)
 		var/brightness_set = brightness
 		var/power_set = bulb_power
@@ -178,15 +172,12 @@
 			color_set = color
 		var/area/local_area = get_area(src)
 		if (local_area?.fire)
-			color_set = bulb_low_power_colour
+			color_set = bulb_emergency_colour
 		else if (nightshift_enabled)
 			brightness_set = nightshift_brightness
 			power_set = nightshift_light_power
 			if(!color)
 				color_set = nightshift_light_color
-		else if (major_emergency)
-			color_set = bulb_low_power_colour
-			brightness_set = brightness * bulb_major_emergency_brightness_mul
 		var/matching = light && brightness_set == light.light_range && power_set == light.light_power && color_set == light.light_color
 		if(!matching)
 			switchcount++
@@ -205,30 +196,22 @@
 					)
 	else if(has_emergency_power(LIGHT_EMERGENCY_POWER_USE) && !turned_off())
 		use_power = IDLE_POWER_USE
-		low_power_mode = TRUE
+		emergency_mode = TRUE
 		START_PROCESSING(SSmachines, src)
 	else
 		use_power = IDLE_POWER_USE
 		set_light(l_range = 0)
 	update_appearance()
-	update_current_power_usage()
-	broken_sparks(start_only=TRUE)
 
-/obj/machinery/light/update_current_power_usage()
-	if(!on && static_power_used > 0) //Light is off but still powered
-		removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
-		static_power_used = 0
-	else if(on) //Light is on, just recalculate usage
-		var/static_power_used_new = 0
-		var/area/local_area = get_area(src)
-		if (nightshift_enabled && !local_area?.fire)
-			static_power_used_new = nightshift_brightness * nightshift_light_power * power_consumption_rate
-		else
-			static_power_used_new = brightness * bulb_power * power_consumption_rate
-		if(static_power_used != static_power_used_new) //Consumption changed - update
-			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
-			static_power_used = static_power_used_new
+	if(on != on_gs)
+		on_gs = on
+		if(on)
+			static_power_used = brightness * 20 //20W per unit luminosity
 			addStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
+		else
+			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
+
+	broken_sparks(start_only=TRUE)
 
 /obj/machinery/light/update_atom_colour()
 	..()
@@ -248,7 +231,7 @@
 		if (cell.charge == cell.maxcharge)
 			return PROCESS_KILL
 		cell.charge = min(cell.maxcharge, cell.charge + LIGHT_EMERGENCY_POWER_USE) //Recharge emergency power automatically while not using it
-	if(low_power_mode && !use_emergency_power(LIGHT_EMERGENCY_POWER_USE))
+	if(emergency_mode && !use_emergency_power(LIGHT_EMERGENCY_POWER_USE))
 		update(FALSE) //Disables emergency mode and sets the color to normal
 
 /obj/machinery/light/proc/burn_out()
@@ -416,7 +399,7 @@
 // returns whether this light has emergency power
 // can also return if it has access to a certain amount of that power
 /obj/machinery/light/proc/has_emergency_power(power_usage_amount)
-	if(no_low_power || !cell)
+	if(no_emergency || !cell)
 		return FALSE
 	if(power_usage_amount ? cell.charge >= power_usage_amount : cell.charge)
 		return status == LIGHT_OK
@@ -431,9 +414,9 @@
 		return FALSE
 	cell.use(power_usage_amount)
 	set_light(
-		l_range = brightness * bulb_low_power_brightness_mul,
-		l_power = max(bulb_low_power_pow_min, bulb_low_power_pow_mul * (cell.charge / cell.maxcharge)),
-		l_color = bulb_low_power_colour
+		l_range = brightness * bulb_emergency_brightness_mul,
+		l_power = max(bulb_emergency_pow_min, bulb_emergency_pow_mul * (cell.charge / cell.maxcharge)),
+		l_color = bulb_emergency_colour
 		)
 	return TRUE
 
@@ -458,8 +441,8 @@
 // ai attack - make lights flicker, because why not
 
 /obj/machinery/light/attack_ai(mob/user)
-	no_low_power = !no_low_power
-	to_chat(user, span_notice("Emergency lights for this fixture have been [no_low_power ? "disabled" : "enabled"]."))
+	no_emergency = !no_emergency
+	to_chat(user, span_notice("Emergency lights for this fixture have been [no_emergency ? "disabled" : "enabled"]."))
 	update(FALSE)
 	return
 
@@ -487,9 +470,9 @@
 	var/mob/living/carbon/human/electrician = user
 
 	if(istype(electrician))
-		var/obj/item/organ/internal/stomach/maybe_stomach = electrician.getorganslot(ORGAN_SLOT_STOMACH)
-		if(istype(maybe_stomach, /obj/item/organ/internal/stomach/ethereal))
-			var/obj/item/organ/internal/stomach/ethereal/stomach = maybe_stomach
+		var/obj/item/organ/stomach/maybe_stomach = electrician.getorganslot(ORGAN_SLOT_STOMACH)
+		if(istype(maybe_stomach, /obj/item/organ/stomach/ethereal))
+			var/obj/item/organ/stomach/ethereal/stomach = maybe_stomach
 			if(stomach.drain_time > world.time)
 				return
 			to_chat(electrician, span_notice("You start channeling some power through the [fitting] into your body."))
@@ -531,14 +514,6 @@
 			return
 	// create a light tube/bulb item and put it in the user's hand
 	drop_light_tube(user)
-
-/obj/machinery/light/proc/set_major_emergency_light()
-	major_emergency = TRUE
-	update()
-
-/obj/machinery/light/proc/unset_major_emergency_light()
-	major_emergency = FALSE
-	update()
 
 /obj/machinery/light/proc/drop_light_tube(mob/user)
 	var/obj/item/light/light_object = new light_type()

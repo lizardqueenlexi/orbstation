@@ -18,7 +18,9 @@
 /turf/closed/indestructible/fakeglass,
 /area/shuttle/escape/simulation)
 "aS" = (
-/obj/structure/sign/warning/vacuum/external/directional/west,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_x = -32
+	},
 /obj/structure/closet/emcloset,
 /turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
@@ -1082,7 +1084,7 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Brig"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape/brig)
 "RV" = (
@@ -1274,7 +1276,9 @@
 	},
 /obj/item/crowbar,
 /obj/item/storage/medkit/fire,
-/obj/structure/sign/warning/vacuum/external/directional/north,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = 32
+	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
@@ -1291,7 +1295,9 @@
 "YB" = (
 /obj/structure/table,
 /obj/machinery/recharger,
-/obj/structure/sign/warning/vacuum/external/directional/south,
+/obj/structure/sign/warning/vacuum/external{
+	pixel_y = -32
+	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)

@@ -1,6 +1,6 @@
 // Areas that don't fit any of the other files, or only serve one purpose.
 
-/area/space
+/area/misc/space
 	icon_state = "space"
 	requires_power = TRUE
 	always_unpowered = TRUE
@@ -16,7 +16,7 @@
 	flags_1 = CAN_BE_DIRTY_1
 	sound_environment = SOUND_AREA_SPACE
 
-/area/space/nearstation
+/area/misc/space/nearstation
 	icon_state = "space_near"
 	area_flags = UNIQUE_AREA | NO_ALERTS | AREA_USES_STARLIGHT
 

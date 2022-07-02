@@ -436,9 +436,6 @@
 /datum/action/item_action/toggle_helmet
 	name = "Toggle Helmet"
 
-/datum/action/item_action/toggle_seclight
-	name = "Toggle Seclight"
-
 /datum/action/item_action/toggle_jetpack
 	name = "Toggle Jetpack"
 
@@ -555,8 +552,8 @@
 		return FALSE
 	if(istype(owner.loc, /obj/structure/closet/cardboard/agent))
 		var/obj/structure/closet/cardboard/agent/box = owner.loc
-		if(box.open())
-			owner.playsound_local(box, 'sound/misc/box_deploy.ogg', 50, TRUE)
+		owner.playsound_local(box, 'sound/misc/box_deploy.ogg', 50, TRUE)
+		box.open()
 		return
 	//Box closing from here on out.
 	if(!isturf(owner.loc)) //Don't let the player use this to escape mechs/welded closets.

@@ -9,7 +9,7 @@ import { Component, createRef, InfernoNode, RefObject } from 'inferno';
 import { addScrollableNode, removeScrollableNode } from '../events';
 import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
 
-type SectionProps = BoxProps & {
+interface SectionProps extends BoxProps {
   className?: string;
   title?: InfernoNode;
   buttons?: InfernoNode;
@@ -20,7 +20,7 @@ type SectionProps = BoxProps & {
   level?: boolean;
   /** @deprecated Please use `scrollable` property */
   overflowY?: any;
-};
+}
 
 export class Section extends Component<SectionProps> {
   scrollableRef: RefObject<HTMLDivElement>;
@@ -70,8 +70,12 @@ export class Section extends Component<SectionProps> {
         {...computeBoxProps(rest)}>
         {hasTitle && (
           <div className="Section__title">
-            <span className="Section__titleText">{title}</span>
-            <div className="Section__buttons">{buttons}</div>
+            <span className="Section__titleText">
+              {title}
+            </span>
+            <div className="Section__buttons">
+              {buttons}
+            </div>
           </div>
         )}
         <div className="Section__rest">

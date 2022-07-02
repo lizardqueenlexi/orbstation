@@ -3,7 +3,14 @@ import { useBackend } from '../../backend';
 import { Box, Button, Collapsible, Stack, LabeledList, Section, Tabs } from '../../components';
 import { GeneticMakeupInfo } from './GeneticMakeupInfo';
 import { MutationInfo } from './MutationInfo';
-import { STORAGE_CONS_SUBMODE_CHROMOSOMES, STORAGE_CONS_SUBMODE_MUTATIONS, STORAGE_DISK_SUBMODE_ENZYMES, STORAGE_DISK_SUBMODE_MUTATIONS, STORAGE_MODE_ADVINJ, STORAGE_MODE_CONSOLE, STORAGE_MODE_DISK } from './constants';
+import {
+  STORAGE_CONS_SUBMODE_CHROMOSOMES,
+  STORAGE_CONS_SUBMODE_MUTATIONS,
+  STORAGE_DISK_SUBMODE_ENZYMES,
+  STORAGE_DISK_SUBMODE_MUTATIONS,
+  STORAGE_MODE_ADVINJ,
+  STORAGE_MODE_CONSOLE,
+  STORAGE_MODE_DISK } from './constants';
 
 export const DnaConsoleStorage = (props, context) => {
   const { data, act } = useBackend(context);
@@ -13,31 +20,31 @@ export const DnaConsoleStorage = (props, context) => {
 
   return (
     <Section fill title="Storage" buttons={<StorageButtons />}>
-      {storageMode === STORAGE_MODE_CONSOLE &&
-        storageConsSubMode === STORAGE_CONS_SUBMODE_MUTATIONS && (
-          <StorageMutations mutations={mutations} />
-        )}
-      {storageMode === STORAGE_MODE_CONSOLE &&
-        storageConsSubMode === STORAGE_CONS_SUBMODE_CHROMOSOMES && (
-          <StorageChromosomes />
-        )}
-      {storageMode === STORAGE_MODE_DISK &&
-        storageDiskSubMode === STORAGE_DISK_SUBMODE_MUTATIONS && (
-          <StorageMutations mutations={mutations} />
-        )}
-      {storageMode === STORAGE_MODE_DISK &&
-        storageDiskSubMode === STORAGE_DISK_SUBMODE_ENZYMES && (
-          <>
-            <GeneticMakeupInfo makeup={diskMakeupBuffer} />
-            <Button
-              icon="times"
-              color="red"
-              disabled={!diskHasMakeup}
-              content={'Delete'}
-              onClick={() => act('del_makeup_disk')}
-            />
-          </>
-        )}
+      {storageMode === STORAGE_MODE_CONSOLE
+        && storageConsSubMode === STORAGE_CONS_SUBMODE_MUTATIONS && (
+        <StorageMutations mutations={mutations} />
+      )}
+      {storageMode === STORAGE_MODE_CONSOLE
+        && storageConsSubMode === STORAGE_CONS_SUBMODE_CHROMOSOMES && (
+        <StorageChromosomes />
+      )}
+      {storageMode === STORAGE_MODE_DISK
+        && storageDiskSubMode === STORAGE_DISK_SUBMODE_MUTATIONS && (
+        <StorageMutations mutations={mutations} />
+      )}
+      {storageMode === STORAGE_MODE_DISK
+        && storageDiskSubMode === STORAGE_DISK_SUBMODE_ENZYMES && (
+        <>
+          <GeneticMakeupInfo makeup={diskMakeupBuffer} />
+          <Button
+            icon="times"
+            color="red"
+            disabled={!diskHasMakeup}
+            content={'Delete'}
+            onClick={() => act('del_makeup_disk')}
+          />
+        </>
+      )}
       {storageMode === STORAGE_MODE_ADVINJ && <DnaConsoleAdvancedInjectors />}
     </Section>
   );
@@ -63,8 +70,7 @@ const DnaConsoleAdvancedInjectors = (props, context) => {
                 onClick={() =>
                   act('print_adv_inj', {
                     name: injector.name,
-                  })
-                }
+                  })}
               />
               <Button
                 ml={1}
@@ -73,8 +79,7 @@ const DnaConsoleAdvancedInjectors = (props, context) => {
                 onClick={() =>
                   act('del_adv_inj', {
                     name: injector.name,
-                  })
-                }
+                  })}
               />
             </>
           }>
@@ -94,8 +99,7 @@ const DnaConsoleAdvancedInjectors = (props, context) => {
           onCommit={(e, value) =>
             act('new_adv_inj', {
               name: value,
-            })
-          }
+            })}
         />
       </Box>
     </Section>
@@ -117,8 +121,7 @@ const StorageButtons = (props, context) => {
             onClick={() =>
               act('set_view', {
                 storageConsSubMode: STORAGE_CONS_SUBMODE_MUTATIONS,
-              })
-            }
+              })}
           />
           <Button
             selected={storageConsSubMode === STORAGE_CONS_SUBMODE_CHROMOSOMES}
@@ -126,8 +129,7 @@ const StorageButtons = (props, context) => {
             onClick={() =>
               act('set_view', {
                 storageConsSubMode: STORAGE_CONS_SUBMODE_CHROMOSOMES,
-              })
-            }
+              })}
           />
         </>
       )}
@@ -139,8 +141,7 @@ const StorageButtons = (props, context) => {
             onClick={() =>
               act('set_view', {
                 storageDiskSubMode: STORAGE_CONS_SUBMODE_MUTATIONS,
-              })
-            }
+              })}
           />
           <Button
             selected={storageDiskSubMode === STORAGE_DISK_SUBMODE_ENZYMES}
@@ -148,8 +149,7 @@ const StorageButtons = (props, context) => {
             onClick={() =>
               act('set_view', {
                 storageDiskSubMode: STORAGE_DISK_SUBMODE_ENZYMES,
-              })
-            }
+              })}
           />
         </>
       )}
@@ -162,8 +162,7 @@ const StorageButtons = (props, context) => {
             storageMode: STORAGE_MODE_CONSOLE,
             storageConsSubMode:
               STORAGE_CONS_SUBMODE_MUTATIONS ?? storageConsSubMode,
-          })
-        }
+          })}
       />
       <Button
         content="Disk"
@@ -174,8 +173,7 @@ const StorageButtons = (props, context) => {
             storageMode: STORAGE_MODE_DISK,
             storageDiskSubMode:
               STORAGE_DISK_SUBMODE_MUTATIONS ?? storageDiskSubMode,
-          })
-        }
+          })}
       />
       <Button
         content="Adv. Injector"
@@ -183,8 +181,7 @@ const StorageButtons = (props, context) => {
         onClick={() =>
           act('set_view', {
             storageMode: STORAGE_MODE_ADVINJ,
-          })
-        }
+          })}
       />
     </>
   );
@@ -210,8 +207,7 @@ const StorageChromosomes = (_, context) => {
                 onClick={() =>
                   act('set_view', {
                     storageChromoName: chromo.Name,
-                  })
-                }>
+                  })}>
                 {chromo.Name}
               </Tabs.Tab>
             ))}
@@ -241,8 +237,7 @@ const StorageChromosomes = (_, context) => {
                 onClick={() =>
                   act('eject_chromo', {
                     chromo: chromo.Name,
-                  })
-                }
+                  })}
               />
             </>
           )}
@@ -281,8 +276,7 @@ const StorageMutations = (props, context) => {
                 onClick={() =>
                   act('set_view', {
                     [`storage${mode}MutationRef`]: mutation.ByondRef,
-                  })
-                }>
+                  })}>
                 {mutation.Name}
               </Tabs.Tab>
             ))}

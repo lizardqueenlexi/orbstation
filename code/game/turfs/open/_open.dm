@@ -1,7 +1,6 @@
 /turf/open
 	plane = FLOOR_PLANE
-	///negative for faster, positive for slower
-	var/slowdown = 0
+	var/slowdown = 0 //negative for faster, positive for slower
 
 	var/footstep = null
 	var/barefootstep = null
@@ -188,9 +187,10 @@
 
 /turf/open/proc/freeze_turf()
 	for(var/obj/I in contents)
-		if(!HAS_TRAIT(I, TRAIT_FROZEN) && !(I.obj_flags & FREEZE_PROOF))
-			I.AddElement(/datum/element/frozen)
-
+		if(I.resistance_flags & FREEZE_PROOF)
+			continue
+		if(!(I.obj_flags & FROZEN))
+			I.make_frozen_visual()
 	for(var/mob/living/L in contents)
 		if(L.bodytemperature <= 50)
 			L.apply_status_effect(/datum/status_effect/freon)
@@ -204,14 +204,15 @@
 		M.apply_water()
 
 	wash(CLEAN_WASH)
-	for(var/atom/movable/movable_content as anything in src)
+	for(var/am in src)
+		var/atom/movable/movable_content = am
 		if(ismopable(movable_content)) // Will have already been washed by the wash call above at this point.
 			continue
 		movable_content.wash(CLEAN_WASH)
 	return TRUE
 
 /turf/open/handle_slip(mob/living/carbon/slipper, knockdown_amount, obj/O, lube, paralyze_amount, force_drop)
-	if(slipper.movement_type & (FLYING | FLOATING))
+	if(slipper.movement_type & FLYING)
 		return FALSE
 	if(has_gravity(src))
 		var/obj/buckled_obj

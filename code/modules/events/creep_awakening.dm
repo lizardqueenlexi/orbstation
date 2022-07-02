@@ -1,8 +1,8 @@
 /datum/round_event_control/obsessed
 	name = "Obsession Awakening"
 	typepath = /datum/round_event/obsessed
-	max_occurrences = 0
-	min_players = 200
+	max_occurrences = 1
+	min_players = 20
 
 /datum/round_event/obsessed
 	fakeable = FALSE
@@ -17,8 +17,8 @@
 			continue
 		if(H.mind.has_antag_datum(/datum/antagonist/obsessed))
 			continue
-		if(!H.getorgan(/obj/item/organ/internal/brain))
+		if(!H.getorgan(/obj/item/organ/brain))
 			continue
-		//H.gain_trauma(/datum/brain_trauma/special/obsessed)
-		//announce_to_ghosts(H)
+		H.gain_trauma(/datum/brain_trauma/special/obsessed)
+		announce_to_ghosts(H)
 		break

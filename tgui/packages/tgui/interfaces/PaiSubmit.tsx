@@ -139,8 +139,7 @@ const ButtonsDisplay = (props, context) => {
             onClick={() =>
               act('submit', {
                 candidate: input,
-              })
-            }>
+              })}>
             SUBMIT
           </Button>
         </Stack.Item>

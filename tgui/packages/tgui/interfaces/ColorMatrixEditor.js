@@ -15,7 +15,10 @@ export const ColorMatrixEditor = (props, context) => {
   ] = currentColor;
   const prefixes = ['r', 'g', 'b', 'a', 'c'];
   return (
-    <Window title="Color Matrix Editor" width={600} height={220}>
+    <Window
+      title="Color Matrix Editor"
+      width={600}
+      height={220}>
       <Window.Content>
         <Stack fill>
           <Stack.Item align="center">
@@ -28,22 +31,25 @@ export const ColorMatrixEditor = (props, context) => {
                       <Stack.Item key={key}>
                         <Stack vertical>
                           {[0, 1, 2, 3, 4].map((row, key) => (
-                            <Stack.Item key={key}>
-                              <Box inline textColor="label" width="2.1rem">
+                            <Stack.Item
+                              key={key}>
+                              <Box
+                                inline
+                                textColor="label"
+                                width="2.1rem">
                                 {`${prefixes[row]}${prefixes[col]}:`}
                               </Box>
                               <NumberInput
                                 inline
-                                value={currentColor[row * 4 + col]}
+                                value={currentColor[row*4+col]}
                                 step={0.01}
                                 width="50px"
-                                format={(value) => toFixed(value, 2)}
+                                format={value => toFixed(value, 2)}
                                 onDrag={(e, value) => {
                                   let retColor = currentColor;
-                                  retColor[row * 4 + col] = value;
-                                  act('transition_color', { color: retColor });
-                                }}
-                              />
+                                  retColor[row*4+col] = value;
+                                  act("transition_color", { color: retColor });
+                                }} />
                             </Stack.Item>
                           ))}
                         </Stack>
@@ -57,8 +63,7 @@ export const ColorMatrixEditor = (props, context) => {
                 <Button.Confirm
                   content="Confirm"
                   confirmContent="Confirm?"
-                  onClick={() => act('confirm')}
-                />
+                  onClick={() => act("confirm")} />
               </Stack.Item>
             </Stack>
           </Stack.Item>
@@ -68,8 +73,7 @@ export const ColorMatrixEditor = (props, context) => {
               params={{
                 id: mapRef,
                 type: 'map',
-              }}
-            />
+              }} />
           </Stack.Item>
         </Stack>
       </Window.Content>

@@ -145,12 +145,11 @@ const ProductDisplay = (_, context) => {
       scrollable
       title="Products"
       buttons={
-        !!onstation &&
-        user && (
+        !!onstation
+        && user && (
           <Box fontSize="16px" color="green">
             {(user && user.cash) || 0} cr <Icon name="coins" color="gold" />
-          </Box>
-        )
+          </Box>)
       }>
       <Table>
         {inventory.map((product) => (
@@ -174,16 +173,17 @@ const VendingRow = (props, context) => {
   const { data } = useBackend<VendingData>(context);
   const { custom, product, productStock } = props;
   const { access, department, jobDiscount, onstation, user } = data;
-  const free = !onstation || product.price === 0;
+  const free
+    = !onstation
+    || product.price === 0;
   const discount = !product.premium && department === user?.department;
   const remaining = custom ? product.amount : productStock.amount;
   const redPrice = Math.round(product.price * jobDiscount);
-  const disabled =
-    remaining === 0 ||
-    (onstation && !user) ||
-    (onstation &&
-      !access &&
-      (discount ? redPrice : product.price) > user?.cash);
+  const disabled
+    = remaining === 0
+    || (onstation && !user)
+    || (onstation && !access
+    && (discount ? redPrice : product.price) > user?.cash);
 
   return (
     <Table.Row>
@@ -199,7 +199,11 @@ const VendingRow = (props, context) => {
         )}
       </Table.Cell>
       <Table.Cell collapsing textAlign="right">
-        <ProductStock custom={custom} product={product} remaining={remaining} />
+        <ProductStock
+          custom={custom}
+          product={product}
+          remaining={remaining}
+        />
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         <ProductButton
@@ -262,9 +266,9 @@ const ProductStock = (props) => {
   return (
     <Box
       color={
-        (remaining <= 0 && 'bad') ||
-        (!custom && remaining <= product.max_amount / 2 && 'average') ||
-        'good'
+        (remaining <= 0 && 'bad')
+        || (!custom && remaining <= product.max_amount / 2 && 'average')
+        || 'good'
       }>
       {remaining} left
     </Box>
@@ -279,7 +283,7 @@ const ProductButton = (props, context) => {
   const customPrice = access ? 'FREE' : product.price + ' cr';
   let standardPrice = product.price + ' cr';
   if (free) {
-    standardPrice = 'FREE';
+    standardPrice = "FREE";
   } else if (discount) {
     standardPrice = redPrice + ' cr';
   }
@@ -290,8 +294,7 @@ const ProductButton = (props, context) => {
       onClick={() =>
         act('dispense', {
           'item': product.name,
-        })
-      }>
+        })}>
       {customPrice}
     </Button>
   ) : (
@@ -301,8 +304,7 @@ const ProductButton = (props, context) => {
       onClick={() =>
         act('vend', {
           'ref': product.ref,
-        })
-      }>
+        })}>
       {standardPrice}
     </Button>
   );

@@ -8,7 +8,9 @@ export const Terminal = (_, context) => {
   return (
     <Window theme={data.tguitheme} title="Terminal" width={480} height={520}>
       <Window.Content scrollable>
-        <NoticeBox textAlign="left">{uppertext}</NoticeBox>
+        <NoticeBox textAlign="left">
+          {uppertext}
+        </NoticeBox>
         <Messages messages={messages} />
       </Window.Content>
     </Window>
@@ -18,7 +20,11 @@ export const Terminal = (_, context) => {
 const Messages = (props, context) => {
   const { messages } = props;
   const { act } = useBackend(context);
-  return messages.map((message) => {
-    return <Section key={message.key}>{message}</Section>;
+  return messages.map(message => {
+    return (
+      <Section key={message.key}>
+        {message}
+      </Section>
+    );
   });
 };

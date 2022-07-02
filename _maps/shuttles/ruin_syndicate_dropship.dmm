@@ -44,7 +44,8 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "caravansyndicate3_bolt_port";
 	name = "External Airlock";
-	normalspeed = 0
+	normalspeed = 0;
+	req_access = list("syndicate")
 	},
 /obj/docking_port/mobile{
 	dir = 2;
@@ -57,7 +58,6 @@
 	width = 15
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/shuttle/caravan/syndicate3)
 "ha" = (
@@ -254,13 +254,13 @@
 /area/shuttle/caravan/syndicate3)
 "Da" = (
 /obj/machinery/door/airlock/hatch{
-	name = "Ready Room"
+	name = "Ready Room";
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "Dt" = (
@@ -311,7 +311,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/sign/warning/vacuum/directional/south,
+/obj/structure/sign/warning/vacuum{
+	pixel_y = -32
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/syndicate{
 	anchored = 1
@@ -351,6 +353,7 @@
 	lethal = 1;
 	name = "Shuttle turret control";
 	pixel_y = 34;
+	req_access = null;
 	req_access = list("syndicate")
 	},
 /obj/structure/chair/comfy/shuttle{
@@ -368,12 +371,12 @@
 /obj/machinery/door/airlock/hatch{
 	id_tag = "caravansyndicate3_bolt_starboard";
 	name = "External Airlock";
-	normalspeed = 0
+	normalspeed = 0;
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/shuttle/caravan/syndicate3)
 "Lq" = (
@@ -383,7 +386,9 @@
 /obj/structure/closet/syndicate{
 	anchored = 1
 	},
-/obj/structure/sign/warning/vacuum/directional/north,
+/obj/structure/sign/warning/vacuum{
+	pixel_y = 32
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/shoes/sneakers/black,
 /turf/open/floor/mineral/plastitanium,
@@ -392,13 +397,13 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/hatch{
 	id_tag = "caravansyndicate3_bolt_bridge";
-	name = "Bridge"
+	name = "Bridge";
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "NH" = (

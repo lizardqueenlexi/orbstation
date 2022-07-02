@@ -5,7 +5,6 @@
  */
 
 /* eslint-disable */
-// prettier-ignore
 (function(window){
   /*! (C) WebReflection Mit Style License */
   if (document.createEvent) return;

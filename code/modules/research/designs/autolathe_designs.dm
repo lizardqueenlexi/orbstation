@@ -11,15 +11,6 @@
 	category = list("initial","Tools","Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-/datum/design/watering_can
-	name = "Watering Can"
-	id = "watering_can"
-	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 200)
-	build_path = /obj/item/reagent_containers/glass/watering_can
-	category = list("initial","Tools","Tool Designs")
-	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
-
 /datum/design/mop
 	name = "Mop"
 	id = "mop"
@@ -324,16 +315,7 @@
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = MINERAL_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/iron
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/rods
-	name = "Iron Rod"
-	id = "rods"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/stack/rods
-	category = list("initial","Material")
+	category = list("initial","Construction")
 	maxstack = 50
 
 /datum/design/glass
@@ -342,7 +324,7 @@
 	build_type = AUTOLATHE
 	materials = list(/datum/material/glass = MINERAL_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/glass
-	category = list("initial","Material")
+	category = list("initial","Construction")
 	maxstack = 50
 
 /datum/design/rglass
@@ -351,79 +333,16 @@
 	build_type = AUTOLATHE | SMELTER | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = MINERAL_MATERIAL_AMOUNT)
 	build_path = /obj/item/stack/sheet/rglass
-	category = list("initial","Material","Stock Parts")
+	category = list("initial","Construction","Stock Parts")
 	maxstack = 50
 
-/datum/design/silver
-	name = "Silver"
-	id = "silver"
+/datum/design/rods
+	name = "Iron Rod"
+	id = "rods"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/silver = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/mineral/silver
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/gold
-	name = "Gold"
-	id = "gold"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/gold = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/mineral/gold
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/diamond
-	name = "Diamond"
-	id = "diamond"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/diamond = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/mineral/diamond
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/plasma
-	name = "Plasma"
-	id = "plasma"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/plasma = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/mineral/plasma
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/uranium
-	name = "Uranium"
-	id = "uranium"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/uranium = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/mineral/uranium
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/bananium
-	name = "Bananium"
-	id = "bananium"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/bananium = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/mineral/bananium
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/titanium
-	name = "Titanium"
-	id = "titanium"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/titanium = MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/mineral/titanium
-	category = list("initial","Material")
-	maxstack = 50
-
-/datum/design/plastic
-	name = "Plastic"
-	id = "plastic"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/plastic= MINERAL_MATERIAL_AMOUNT)
-	build_path = /obj/item/stack/sheet/plastic
-	category = list("initial","Material")
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/stack/rods
+	category = list("initial","Construction")
 	maxstack = 50
 
 /datum/design/rcd_ammo
@@ -616,7 +535,7 @@
 	name = "Scalpel"
 	id = "scalpel"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 4000, /datum/material/glass = 1000)
+	materials = list(/datum/material/iron = 4000, /datum/material/glass = 1000, /datum/material/silver = 2000)
 	build_path = /obj/item/scalpel
 	category = list("initial", "Medical", "Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
@@ -625,7 +544,7 @@
 	name = "Circular Saw"
 	id = "circular_saw"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 10000, /datum/material/glass = 6000)
+	materials = list(/datum/material/iron = 10000, /datum/material/glass = 6000, /datum/material/silver = 5000)
 	build_path = /obj/item/circular_saw
 	category = list("initial", "Medical", "Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
@@ -634,7 +553,7 @@
 	name = "Bonesetter"
 	id = "bonesetter"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 5000,  /datum/material/glass = 2500)
+	materials = list(/datum/material/iron = 5000,  /datum/material/glass = 2500, /datum/material/silver = 2500)
 	build_path = /obj/item/bonesetter
 	category = list("initial", "Medical", "Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
@@ -643,7 +562,7 @@
 	name = "Surgical Drill"
 	id = "surgicaldrill"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 10000, /datum/material/glass = 6000)
+	materials = list(/datum/material/iron = 10000, /datum/material/glass = 6000, /datum/material/silver = 5000)
 	build_path = /obj/item/surgicaldrill
 	category = list("initial", "Medical", "Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
@@ -652,7 +571,7 @@
 	name = "Retractor"
 	id = "retractor"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 6000, /datum/material/glass = 3000)
+	materials = list(/datum/material/iron = 6000, /datum/material/glass = 3000, /datum/material/silver = 3000)
 	build_path = /obj/item/retractor
 	category = list("initial", "Medical", "Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
@@ -661,7 +580,7 @@
 	name = "Cautery"
 	id = "cautery"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2500, /datum/material/glass = 750)
+	materials = list(/datum/material/iron = 2500, /datum/material/glass = 750, /datum/material/silver = 1250)
 	build_path = /obj/item/cautery
 	category = list("initial", "Medical", "Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
@@ -670,7 +589,7 @@
 	name = "Hemostat"
 	id = "hemostat"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500)
+	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500, /datum/material/silver = 2500)
 	build_path = /obj/item/hemostat
 	category = list("initial", "Medical", "Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
@@ -1346,27 +1265,3 @@
 	build_path = /obj/item/toner/large
 	category = list("initial", "Misc", "Equipment")
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SERVICE
-
-/datum/design/solar
-	name = "Solar Panel Frame"
-	id = "solar_panel"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 3500, /datum/material/glass = 1000)
-	build_path = /obj/item/solar_assembly
-	category = list("initial", "Construction")
-
-/datum/design/tracker_electronics
-	name = "Solar Tracking Electronics"
-	id = "solar_tracker"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 100, /datum/material/glass = 500)
-	build_path = /obj/item/electronics/tracker
-	category = list("initial", "Electronics", "Construction")
-
-/datum/design/fishing_rod_basic
-	name = "Fishing Rod"
-	id = "fishing_rod"
-	build_type = AUTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 200, /datum/material/glass = 200)
-	build_path = /obj/item/fishing_rod
-	category = list("initial", "Misc", "Equipment")
