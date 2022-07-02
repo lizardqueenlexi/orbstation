@@ -183,7 +183,7 @@
 	contraband = list(
 		/obj/item/clothing/suit/hooded/techpriest = 2,
 		/obj/item/clothing/under/costume/mech_suit = 2,
-		/obj/item/organ/tongue/robot = 2,
+		/obj/item/organ/internal/tongue/robot = 2,
 		)
 	refill_canister = /obj/item/vending_refill/wardrobe/robo_wardrobe
 	extra_price = PAYCHECK_COMMAND * 1.2
@@ -388,6 +388,7 @@
 		/obj/item/clothing/suit/toggle/lawyer/purple = 1,
 		/obj/item/clothing/under/suit/black = 1,
 		/obj/item/clothing/under/suit/black/skirt = 1,
+		/obj/item/clothing/neck/tie = 3,
 		/obj/item/clothing/suit/toggle/lawyer/black = 1,
 		/obj/item/clothing/under/rank/civilian/lawyer/beige = 1,
 		/obj/item/clothing/under/rank/civilian/lawyer/beige/skirt = 1,
@@ -408,11 +409,11 @@
 	machine_name = "LawDrobe"
 
 /obj/machinery/vending/wardrobe/chap_wardrobe
-	name = "DeusVend"
-	desc = "God wills your purchase."
+	name = "ChapDrobe"
+	desc = "A vending machine for only the holiest of clothing. Refunds not offered if clothes literally full of holes."
 	icon_state = "chapdrobe"
 	product_ads = "Are you being bothered by cultists or pesky revenants? Then come and dress like the holy man!;Clothes for men of the cloth!"
-	vend_reply = "Thank you for using the DeusVend!"
+	vend_reply = "Thank you for using the ChapDrobe!"
 	products = list(
 		/obj/item/choice_beacon/holy = 1,
 		/obj/item/storage/backpack/cultpack = 1,
@@ -446,7 +447,7 @@
 	refill_canister = /obj/item/vending_refill/wardrobe/chap_wardrobe
 	payment_department = ACCOUNT_SRV
 /obj/item/vending_refill/wardrobe/chap_wardrobe
-	machine_name = "DeusVend"
+	machine_name = "ChapDrobe"
 
 /obj/machinery/vending/wardrobe/chem_wardrobe
 	name = "ChemDrobe"

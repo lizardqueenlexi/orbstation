@@ -60,7 +60,7 @@
 	maxHealth = 65
 	health = 65
 	sight = SEE_MOBS|SEE_OBJS|SEE_TURFS
-	loot = list(/obj/effect/gibspawner/human, /obj/item/bodypart/l_arm, /obj/item/organ/eyes)
+	loot = list(/obj/effect/gibspawner/human, /obj/item/bodypart/l_arm, /obj/item/organ/internal/eyes)
 	spells_to_add = list(
 		/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift/ash/long,
 		/obj/effect/proc_holder/spell/targeted/telepathy/eldritch,
@@ -187,7 +187,9 @@
 	if(!spawn_bodyparts)
 		return
 
-	AddElement(/datum/element/blood_walk, /obj/effect/decal/cleanable/blood/tracks, target_dir_change = TRUE)
+	AddComponent(/datum/component/blood_walk, \
+		blood_type = /obj/effect/decal/cleanable/blood/tracks, \
+		target_dir_change = TRUE)
 
 	allow_pulling = TRUE
 	// Sets the hp of the head to be exactly the (length * hp), so the head is de facto the hardest to destroy.

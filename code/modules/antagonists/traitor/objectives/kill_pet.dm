@@ -11,9 +11,9 @@
 /datum/traitor_objective/kill_pet
 	name = "Kill the %DEPARTMENT HEAD%'s beloved %PET%"
 	description = "The %DEPARTMENT HEAD% has particularly annoyed us by sending us spam emails and we want their %PET% dead to show them what happens when they cross us. "
-	telecrystal_reward = list(1, 2)
+	telecrystal_reward = 1
 
-	progression_reward = list(3 MINUTES, 6 MINUTES)
+	progression_reward = list(3 MINUTES, 4 MINUTES)
 
 	/// Possible heads mapped to their pet type. Can be a list of possible pets
 	var/list/possible_heads = list(
@@ -24,6 +24,11 @@
 		JOB_CAPTAIN = /mob/living/simple_animal/pet/fox/renault,
 		JOB_CHIEF_MEDICAL_OFFICER = /mob/living/simple_animal/pet/cat/runtime,
 		JOB_CHIEF_ENGINEER = /mob/living/simple_animal/parrot/poly,
+		JOB_QUARTERMASTER = list(
+			/mob/living/simple_animal/sloth/citrus,
+			/mob/living/simple_animal/sloth/paperwork,
+			/mob/living/simple_animal/hostile/gorilla/cargo_domestic,
+		)
 	)
 	/// The head that we are targetting
 	var/datum/job/target
@@ -34,13 +39,14 @@
 
 /datum/traitor_objective/kill_pet/medium_risk
 	progression_minimum = 10 MINUTES
-	progression_reward = list(5 MINUTES, 8 MINUTES)
+	progression_reward = list(5 MINUTES, 6 MINUTES)
 	limited_to_department_head = FALSE
+	telecrystal_reward = 2
 
 /datum/traitor_objective/kill_pet/high_risk
 	progression_minimum = 25 MINUTES
-	progression_reward = list(14 MINUTES, 18 MINUTES)
-	telecrystal_reward = list(2, 3)
+	progression_reward = list(7 MINUTES, 8 MINUTES)
+	telecrystal_reward = 3
 
 	limited_to_department_head = FALSE
 	possible_heads = list(

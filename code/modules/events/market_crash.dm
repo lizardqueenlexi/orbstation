@@ -20,8 +20,7 @@
 	var/list/poss_reasons = list("the alignment of the moon and the sun",\
 		"some risky housing market outcomes",\
 		"The B.E.P.I.S. team's untimely downfall",\
-		"speculative Terragov grants backfiring",\
-		"greatly exaggerated reports of Nanotrasen accountancy personnel committing mass suicide")
+		"speculative Terragov grants backfiring")
 	var/reason = pick(poss_reasons)
 	priority_announce("Due to [reason], prices for on-station vendors will be increased for a short period.", "Nanotrasen Accounting Division")
 

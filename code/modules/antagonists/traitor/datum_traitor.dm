@@ -149,7 +149,7 @@
 
 /datum/objective/traitor_progression
 	name = "traitor progression"
-	explanation_text = "Become a living legend by getting a total of %REPUTATION% reputation points"
+	explanation_text = "Become a living legend by getting a total of %REPUTATION% reputation points."
 
 	var/possible_range = list(40 MINUTES, 90 MINUTES)
 	var/required_total_progression_points
@@ -173,7 +173,7 @@
 
 /datum/objective/traitor_objectives
 	name = "traitor objective"
-	explanation_text = "Complete objectives colletively worth more than %REPUTATION% reputation points"
+	explanation_text = "Complete objectives collectively worth more than %REPUTATION% reputation points."
 
 	var/possible_range = list(20 MINUTES, 30 MINUTES)
 	var/required_progression_in_objectives
@@ -212,6 +212,16 @@
 	objective_completion.owner = owner
 	objectives += objective_completion
 
+	var/datum/objective/objective_escape
+	var/random_escape = pick_weight(list(
+		/datum/objective/escape = 85,
+		/datum/objective/hijack = 10,
+		/datum/objective/survive = 4,
+		/datum/objective/martyr = 1
+	))
+	objective_escape = new random_escape()
+	objective_escape.owner = owner
+	objectives += objective_escape
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -289,14 +299,27 @@
 			uplink_text += "<BIG>[icon2html(badass, world)]</BIG>"
 		result += uplink_text
 
+	result += "<br>[owner.name] earned <B>[DISPLAY_PROGRESSION(uplink_handler.progression_points)]</B> reputation points.<br>"
+
 	result += objectives_text
+
+	var/total_earned_prog = 0
+	var/total_earned_tc = 0
+	var/total_completed = 0
 
 	if(uplink_handler)
 		var/completed_objectives_text = "Completed Uplink Objectives: "
 		for(var/datum/traitor_objective/objective as anything in uplink_handler.completed_objectives)
 			if(objective.objective_state == OBJECTIVE_STATE_COMPLETED)
-				completed_objectives_text += "<br><B>[objective.name]</B> - ([objective.telecrystal_reward] TC, [DISPLAY_PROGRESSION(objective.progression_reward)] Reputation)"
+				total_earned_prog += objective.progression_reward
+				total_earned_tc += objective.telecrystal_reward
+				total_completed++
+				completed_objectives_text += "<br><B>[objective.name]</B> - ([DISPLAY_PROGRESSION(objective.progression_reward)] reputation, [objective.telecrystal_reward] TC)"
+		if(!total_completed)
+			completed_objectives_text += "<br><B>None</B>"
 		result += completed_objectives_text
+
+	result += "<br><B>Total:</B> [total_completed] objectives, [DISPLAY_PROGRESSION(total_earned_prog)] reputation, [total_earned_tc] TC"
 
 	var/special_role_text = lowertext(name)
 

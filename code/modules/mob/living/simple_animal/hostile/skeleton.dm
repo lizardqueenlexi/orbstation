@@ -37,12 +37,12 @@
 
 	footstep_type = FOOTSTEP_MOB_SHOE
 
-/mob/living/simple_animal/hostile/skeleton/eskimo
-	name = "undead eskimo"
-	desc = "The reanimated remains of some poor traveler."
-	icon_state = "eskimo"
-	icon_living = "eskimo"
-	icon_dead = "eskimo_dead"
+/mob/living/simple_animal/hostile/skeleton/survivor
+	name = "undead survivor"
+	desc = "The reanimated remains of some stranded traveler, wielding an improvised spear. Seems they didn't survive long."
+	icon_state = "survivor"
+	icon_living = "survivor"
+	icon_dead = "survivor_dead"
 	maxHealth = 55
 	health = 55
 	weather_immunities = list(TRAIT_SNOWSTORM_IMMUNE)
@@ -65,8 +65,6 @@
 	health = 150
 	weather_immunities = list(TRAIT_SNOWSTORM_IMMUNE)
 	speed = 2
-	speak_chance = 1
-	speak = list("THE GODS WILL IT!","DEUS VULT!","REMOVE KABAB!")
 	force_threshold = 10 //trying to simulate actually having armor
 	obj_damage = 50
 	melee_damage_lower = 25
