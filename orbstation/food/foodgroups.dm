@@ -1,156 +1,199 @@
-/obj/item/food/bait/worm
-	foodtypes = CARRION | MEAT | BUGS
+/obj/item/food/bait/worm/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/burger/human
-	foodtypes = MEAT | GRAIN | CARRION
+/obj/item/food/burger/human/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/burger/corgi
-	foodtypes =  GRAIN | MEAT | CARRION
+/obj/item/food/burger/corgi/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/burger/appendix
-	foodtypes =  GRAIN | MEAT | CARRION
+/obj/item/food/burger/appendix/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/burger/brain
-	foodtypes =  GRAIN | MEAT | CARRION
+/obj/item/food/burger/brain/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/burger/rat
-	foodtypes =  GRAIN | MEAT | CARRION
+/obj/item/food/burger/rat/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/cake/brain
-	foodtypes = GRAIN | DAIRY | MEAT | CARRION | SUGAR
+/obj/item/food/cake/brain/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/cakeslice/brain
-	foodtypes = GRAIN | DAIRY | MEAT | CARRION | SUGAR
+/obj/item/food/cakeslice/brain/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/donut/meat
-	foodtypes = JUNKFOOD | MEAT | CARRION | FRIED | BREAKFAST
+/obj/item/food/donut/meat/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/raw_headcheese
-	foodtypes = MEAT | CARRION
+/obj/item/food/raw_headcheese/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/headcheese
-	foodtypes = MEAT | CARRION
+/obj/item/food/headcheese/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/headcheese_slice
-	foodtypes = MEAT | CARRION
+/obj/item/food/headcheese_slice/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/shredded_lungs
-	foodtypes = MEAT | CARRION
+/obj/item/food/shredded_lungs/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/tsatsikh
-	foodtypes = MEAT | CARRION
+/obj/item/food/tsatsikh/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/brain_pate
-	foodtypes = MEAT | VEGETABLES | CARRION
+/obj/item/food/brain_pate/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/crispy_headcheese
-	foodtypes = MEAT | VEGETABLES | NUTS | CARRION
+/obj/item/food/crispy_headcheese/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/nectar_larvae
-	foodtypes = MEAT | BUGS| CARRION
+/obj/item/food/nectar_larvae/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/pizza/imperial_flatbread
-	foodtypes = VEGETABLES | MEAT | NUTS | CARRION
+/obj/item/food/pizza/imperial_flatbread/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/emperor_roll
-	foodtypes = VEGETABLES | NUTS | MEAT | CARRION | SEAFOOD
+/obj/item/food/emperor_roll/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/soup/black_broth
-	foodtypes = MEAT | VEGETABLES | CARRION
+/obj/item/food/soup/black_broth/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/soup/jellyfish
-	foodtypes = MEAT | VEGETABLES | CARRION
+/obj/item/food/soup/jellyfish/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/black_eggs
-	foodtypes = MEAT | BREAKFAST | CARRION
+/obj/item/food/black_eggs/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/kebab/candied_mushrooms
-	foodtypes = SUGAR | VEGETABLES
+/obj/item/food/kebab/candied_mushrooms/Initialize(mapload)
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/canned_jellyfish
-	foodtypes = SEAFOOD | CARRION
+/obj/item/food/canned_jellyfish/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/larvae
-	foodtypes = MEAT | GROSS | BUGS
+/obj/item/food/larvae/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/kebab/human
-	foodtypes = MEAT | CARRION
+/obj/item/food/kebab/human/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/kebab/rat
-	foodtypes = MEAT | CARRION
+/obj/item/food/kebab/rat/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human
-	foodtypes = MEAT | RAW | CARRION
+/obj/item/food/meat/slab/human/Initialize(mapload)
+	modify_foodtype()
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human/mutant/slime
-	foodtypes = MEAT | RAW | TOXIC | CARRION
+/obj/item/food/meat/slab/human/proc/modify_foodtype()
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
 
-/obj/item/food/meat/slab/human/mutant/golem
-	foodtypes = MEAT | RAW | CARRION
+/obj/item/food/meat/slab/human/mutant/fly/modify_foodtype()
+	foodtypes |= CARRION
 
-/obj/item/food/meat/slab/human/mutant/golem/adamantine
-	foodtypes = MEAT | RAW | CARRION
+/obj/item/food/meat/slab/human/mutant/skeleton/modify_foodtype()
+	foodtypes |= CARRION
 
-/obj/item/food/meat/slab/human/mutant/lizard
-	foodtypes = MEAT | RAW | CARRION
+/obj/item/food/meat/slab/human/mutant/zombie/modify_foodtype()
+	foodtypes |= CARRION
+	foodtypes |= GROSS
 
-/obj/item/food/meat/slab/human/mutant/plant
-	foodtypes = VEGETABLES | CARRION
+/obj/item/food/meat/steak/plain/human/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human/mutant/shadow
-	foodtypes = MEAT | RAW | CARRION
+/obj/item/food/meat/rawcutlet/plain/human/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human/mutant/fly
-	foodtypes = MEAT | RAW | CARRION | BUGS
+/obj/item/food/meat/cutlet/plain/human/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human/mutant/moth
-	foodtypes = MEAT | RAW | CARRION | BUGS
+/obj/item/food/candy/bronx/Initialize(mapload)
+	foodtypes |= BUGS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human/mutant/skeleton
-	foodtypes = GROSS | CARRION | RAW
+/obj/item/food/soup/blood/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human/mutant/zombie
-	foodtypes = RAW | MEAT | TOXIC | CARRION
+/obj/item/food/soup/tomato/eyeball/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/human/mutant/ethereal
-	foodtypes = RAW | MEAT | TOXIC | CARRION
+/obj/item/food/grown/tomato/blood/Initialize(mapload)
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
+	return ..(mapload)
 
-/obj/item/food/meat/slab/mouse
-	foodtypes = RAW | MEAT | CARRION
+/obj/item/food/deadmouse/Initialize(mapload)
+	modify_foodtype()
+	return ..(mapload)
 
-/obj/item/food/meat/slab/corgi
-	foodtypes = RAW | MEAT | CARRION
-
-/obj/item/food/meat/slab/pug
-	foodtypes = RAW | MEAT | CARRION
-
-/obj/item/food/meat/steak/plain/human
-	foodtypes = MEAT | CARRION
-
-/obj/item/food/meat/steak/plain/human/lizard
-	foodtypes = MEAT | CARRION
-
-/obj/item/food/meat/rawcutlet/plain/human
-	foodtypes = MEAT | RAW | CARRION
-
-/obj/item/food/meat/cutlet/plain/human
-	foodtypes = MEAT | CARRION
-
-/obj/item/food/candy/bronx
-	foodtypes = JUNKFOOD | RAW | BUGS
-
-/obj/item/food/soup/blood
-	foodtypes =  CARRION
-
-/obj/item/food/soup/tomato/eyeball
-	foodtypes = MEAT | CARRION
-
-/obj/item/food/grown/tomato/blood
-	foodtypes = FRUIT | CARRION
-
-/obj/item/food/deadmouse
-	foodtypes = CARRION | MEAT | RAW
+/obj/item/food/deadmouse/proc/modify_foodtype()
+	foodtypes |= CARRION
+	foodtypes &= ~GROSS
 
 /obj/item/food/deadmouse/moldy
 	desc = "A dead rodent, consumed by mold and rot. Most people would hesitate to eat this."
-	foodtypes = CARRION | MEAT | RAW | GROSS
+
+/obj/item/food/deadmouse/moldy/modify_foodtype()
+	foodtypes |= CARRION
