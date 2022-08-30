@@ -173,12 +173,11 @@
 	//ensure we detach once we no longer need to be attached
 	addtimer(CALLBACK(src, .proc/detach), MAX_IMPREGNATION_TIME)
 
-	if (HAS_TRAIT(M, TRAIT_XCARD_XENO_IMMUNE))
-		VenomousBite(M)
-		PostBite(M)
-		return
-
 	if(!sterile)
+		if (HAS_TRAIT(M, TRAIT_XCARD_XENO_IMMUNE))
+			VenomousBite(M)
+			PostBite(M)
+			return
 		M.take_bodypart_damage(strength,0) //done here so that humans in helmets take damage
 		M.Unconscious(MAX_IMPREGNATION_TIME/0.3) //something like 25 ticks = 20 seconds with the default settings
 
