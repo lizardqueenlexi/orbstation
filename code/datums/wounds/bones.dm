@@ -95,7 +95,7 @@
 		remove_wound()
 
 /// If we're a human who's punching something with a broken arm, we might hurt ourselves doing so
-/datum/wound/blunt/attack_with_hurt_hand(mob/M, atom/target, proximity)
+/datum/wound/blunt/proc/attack_with_hurt_hand(mob/M, atom/target, proximity)
 	SIGNAL_HANDLER
 
 	if(victim.get_active_hand() != limb || !victim.combat_mode || !ismob(target) || severity <= WOUND_SEVERITY_MODERATE)
