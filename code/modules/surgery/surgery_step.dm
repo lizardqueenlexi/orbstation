@@ -225,7 +225,7 @@
  * * pain_message - The message to be displayed
  * * mechanical_surgery - Boolean flag that represents if a surgery step is done on a mechanical limb (therefore does not force scream)
  */
-/datum/surgery_step/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
+/datum/surgery_step/proc/display_pain(mob/living/target, pain_message, mechanical_surgery = FALSE)
 	if(target.stat < UNCONSCIOUS)
 		if(!HAS_TRAIT(target, TRAIT_NO_PAIN))
 			to_chat(target, span_userdanger(pain_message))

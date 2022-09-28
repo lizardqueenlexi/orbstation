@@ -259,7 +259,7 @@
 		return TRUE
 
 /// If someone is snapping our dislocated joint back into place by hand with an aggro grab and help intent
-/datum/wound/blunt/moderate/chiropractice(mob/living/carbon/human/user)
+/datum/wound/blunt/moderate/proc/chiropractice(mob/living/carbon/human/user)
 	var/time = base_treat_time
 
 	if(!do_after(user, time, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
@@ -283,7 +283,7 @@
 		chiropractice(user)
 
 /// If someone is snapping our dislocated joint into a fracture by hand with an aggro grab and harm or disarm intent
-/datum/wound/blunt/moderate/malpractice(mob/living/carbon/human/user)
+/datum/wound/blunt/moderate/proc/malpractice(mob/living/carbon/human/user)
 	var/time = base_treat_time
 
 	if(!do_after(user, time, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
