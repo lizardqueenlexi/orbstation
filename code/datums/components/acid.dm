@@ -217,5 +217,8 @@
 	var/acid_used = min(acid_volume * 0.05, 20)
 	if(crosser.acid_act(acid_power, acid_used, FEET))
 		playsound(crosser, 'sound/weapons/sear.ogg', 50, TRUE)
-		to_chat(crosser, span_userdanger("The acid on the [parent] burns you!"))
+		if(!HAS_TRAIT(crosser, TRAIT_NO_PAIN))
+			to_chat(crosser, span_userdanger("The acid on the [parent] burns you!"))
+		else
+			to_chat(crosser, span_warning("You hear something sizzling as you cross the [parent]..."))
 		set_volume(max(acid_volume - acid_used, 10))

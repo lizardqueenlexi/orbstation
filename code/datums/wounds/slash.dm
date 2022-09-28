@@ -221,7 +221,8 @@
 	lasgun.chambered.loaded_projectile.damage *= self_penalty_mult
 	if(!lasgun.process_fire(victim, victim, TRUE, null, limb.body_zone))
 		return
-	victim.emote("scream")
+	if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+		victim.emote("scream")
 	adjust_blood_flow(-1 * (damage / (5 * self_penalty_mult))) // 20 / 5 = 4 bloodflow removed, p good
 	victim.visible_message(span_warning("The cuts on [victim]'s [limb.plaintext_zone] scar over!"))
 
@@ -236,7 +237,7 @@
 
 	user.visible_message(span_green("[user] cauterizes some of the bleeding on [victim]."), span_green("You cauterize some of the bleeding on [victim]."))
 	limb.receive_damage(burn = 2 + severity, wound_bonus = CANT_WOUND)
-	if(prob(30))
+	if(prob(30) && !HAS_TRAIT(victim, TRAIT_NO_PAIN))
 		victim.emote("scream")
 	var/blood_cauterized = (0.6 / (self_penalty_mult * improv_penalty_mult))
 	adjust_blood_flow(-blood_cauterized)

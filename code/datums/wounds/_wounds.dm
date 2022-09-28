@@ -154,7 +154,10 @@
 			msg = "<b>[msg]</b>"
 			vis_dist = DEFAULT_MESSAGE_RANGE
 
-		victim.visible_message(msg, span_userdanger("Your [limb.plaintext_zone] [occur_text]!"), vision_distance = vis_dist)
+		if(!HAS_TRAIT(L.owner, TRAIT_NO_PAIN))
+			victim.visible_message(msg, span_userdanger("Your [limb.plaintext_zone] [occur_text]!"), vision_distance = vis_dist)
+		else
+			victim.visible_message(msg, span_warning("Your [limb.plaintext_zone] [occur_text]!"), vision_distance = vis_dist)
 		if(sound_effect)
 			playsound(L.owner, sound_effect, 70 + 20 * severity, TRUE)
 

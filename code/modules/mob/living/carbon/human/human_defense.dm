@@ -649,7 +649,8 @@
 		if(affecting.name == BODY_ZONE_HEAD)
 			if(prob(min(acidpwr*acid_volume/10, 90))) //Applies disfigurement
 				affecting.receive_damage(acidity, 2*acidity)
-				emote("scream")
+				if(!HAS_TRAIT(src, TRAIT_NO_PAIN))
+					emote("scream")
 				facial_hairstyle = "Shaved"
 				hairstyle = "Bald"
 				update_body_parts()
@@ -814,6 +815,9 @@
 		combined_msg += span_notice("You have these quirks: [get_quirk_string(FALSE, CAT_QUIRK_ALL)].")
 
 	to_chat(src, examine_block(combined_msg.Join("\n")))
+
+	if(HAS_TRAIT(src, TRAIT_NO_PAIN))
+		manual_update_health_doll()
 
 /mob/living/carbon/human/damage_clothes(damage_amount, damage_type = BRUTE, damage_flag = 0, def_zone)
 	if(damage_type != BRUTE && damage_type != BURN)

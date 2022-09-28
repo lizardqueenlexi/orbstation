@@ -233,7 +233,8 @@
 		applyOrganDamage(20 * severity)
 		to_chat(owner, span_warning("Your eyes start to fizzle in their sockets!"))
 		do_sparks(2, TRUE, owner)
-		owner.emote("scream")
+		if(!HAS_TRAIT(owner, TRAIT_NO_PAIN))
+			owner.emote("scream")
 
 /obj/item/organ/internal/eyes/robotic/xray
 	name = "\improper X-ray eyes"

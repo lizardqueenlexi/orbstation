@@ -723,6 +723,14 @@
 	if(!hud_used.healthdoll)
 		return
 
+	if(HAS_TRAIT(src, TRAIT_NO_PAIN)) //ORBSTATION: health doll does *not* update automatically - you have to examine yourself!
+		if(stat == DEAD)
+			hud_used.healthdoll.cut_overlays()
+			hud_used.healthdoll.icon_state = "healthdoll_DEAD"
+		else if(hud_used.healthdoll.icon_state == "healthdoll_DEAD" || !hud_used.healthdoll.icon_state) //we have to manually set the healthdoll back to default when you stop being dead
+			hud_used.healthdoll.icon_state = "healthdoll_OVERLAY"
+		return
+
 	hud_used.healthdoll.cut_overlays()
 	if(stat == DEAD)
 		hud_used.healthdoll.icon_state = "healthdoll_DEAD"

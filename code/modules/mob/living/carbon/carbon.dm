@@ -714,7 +714,7 @@
 
 	//Fire and Brute damage overlay (BSSR)
 	var/hurtdamage = getBruteLoss() + getFireLoss() + damageoverlaytemp
-	if(hurtdamage)
+	if(hurtdamage && !HAS_TRAIT(src, TRAIT_NO_PAIN))
 		var/severity = 0
 		switch(hurtdamage)
 			if(5 to 15)

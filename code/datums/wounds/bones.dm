@@ -305,8 +305,8 @@
 		limb.receive_damage(brute=10, wound_bonus=CANT_WOUND)
 		user.visible_message(span_danger("[user] finishes resetting [victim]'s [limb.plaintext_zone]!"), span_nicegreen("You finish resetting [victim]'s [limb.plaintext_zone]!"), ignored_mobs=victim)
 		to_chat(victim, span_userdanger("[user] resets your [limb.plaintext_zone]!"))
-
-	victim.emote("scream")
+	if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+		victim.emote("scream")
 	qdel(src)
 
 /*
@@ -384,10 +384,14 @@
 		return
 
 	I.use(1)
-	victim.emote("scream")
+	if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+		victim.emote("scream")
 	if(user != victim)
 		user.visible_message(span_notice("[user] finishes applying [I] to [victim]'s [limb.plaintext_zone], emitting a fizzing noise!"), span_notice("You finish applying [I] to [victim]'s [limb.plaintext_zone]!"), ignored_mobs=victim)
-		to_chat(victim, span_userdanger("[user] finishes applying [I] to your [limb.plaintext_zone], and you can feel the bones exploding with pain as they begin melting and reforming!"))
+		if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+			to_chat(victim, span_userdanger("[user] finishes applying [I] to your [limb.plaintext_zone], and you can feel the bones exploding with pain as they begin melting and reforming!"))
+		else
+			to_chat(victim, span_warning("[user] finishes applying [I] to your [limb.plaintext_zone], and you can feel the bones begin melting and reforming."))
 	else
 		var/painkiller_bonus = 0
 		if(victim.get_drunk_amount() > 10)
@@ -401,11 +405,14 @@
 		if(victim.reagents.has_reagent(/datum/reagent/medicine/mine_salve))
 			painkiller_bonus += 20
 
-		if(prob(25 + (20 * (severity - 2)) - painkiller_bonus)) // 25%/45% chance to fail self-applying with severe and critical wounds, modded by painkillers
-			victim.visible_message(span_danger("[victim] fails to finish applying [I] to [victim.p_their()] [limb.plaintext_zone], passing out from the pain!"), span_notice("You pass out from the pain of applying [I] to your [limb.plaintext_zone] before you can finish!"))
-			victim.AdjustUnconscious(5 SECONDS)
-			return
-		victim.visible_message(span_notice("[victim] finishes applying [I] to [victim.p_their()] [limb.plaintext_zone], grimacing from the pain!"), span_notice("You finish applying [I] to your [limb.plaintext_zone], and your bones explode in pain!"))
+		if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+			if(prob(25 + (20 * (severity - 2)) - painkiller_bonus)) // 25%/45% chance to fail self-applying with severe and critical wounds, modded by painkillers
+				victim.visible_message(span_danger("[victim] fails to finish applying [I] to [victim.p_their()] [limb.plaintext_zone], passing out from the pain!"), span_notice("You pass out from the pain of applying [I] to your [limb.plaintext_zone] before you can finish!"))
+				victim.AdjustUnconscious(5 SECONDS)
+				return
+			victim.visible_message(span_notice("[victim] finishes applying [I] to [victim.p_their()] [limb.plaintext_zone], grimacing from the pain!"), span_notice("You finish applying [I] to your [limb.plaintext_zone], and your bones explode in pain!"))
+		else
+			victim.visible_message(span_notice("[victim] finishes applying [I] to [victim.p_their()] [limb.plaintext_zone]!"), span_notice("You finish applying [I] to your [limb.plaintext_zone], and your bones tingle a bit."))
 
 	limb.receive_damage(25, stamina=100, wound_bonus=CANT_WOUND)
 	gelled = TRUE

@@ -87,7 +87,10 @@
 	limb._embed_object(weapon) // on the inside... on the inside...
 	weapon.forceMove(victim)
 	RegisterSignal(weapon, list(COMSIG_MOVABLE_MOVED, COMSIG_PARENT_QDELETING), .proc/weaponDeleted)
-	victim.visible_message(span_danger("[weapon] [harmful ? "embeds" : "sticks"] itself [harmful ? "in" : "to"] [victim]'s [limb.plaintext_zone]!"), span_userdanger("[weapon] [harmful ? "embeds" : "sticks"] itself [harmful ? "in" : "to"] your [limb.plaintext_zone]!"))
+	if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+		victim.visible_message(span_danger("[weapon] [harmful ? "embeds" : "sticks"] itself [harmful ? "in" : "to"] [victim]'s [limb.plaintext_zone]!"), span_userdanger("[weapon] [harmful ? "embeds" : "sticks"] itself [harmful ? "in" : "to"] your [limb.plaintext_zone]!"))
+	else
+		victim.visible_message(span_danger("[weapon] [harmful ? "embeds" : "sticks"] itself [harmful ? "in" : "to"] [victim]'s [limb.plaintext_zone]!"), span_notice("You feel something poke your [limb.plaintext_zone]."))
 
 	var/damage = weapon.throwforce
 	if(harmful)
@@ -168,7 +171,10 @@
 	if(harmful && prob(chance))
 		var/damage = weapon.w_class * jostle_pain_mult
 		limb.receive_damage(brute=(1-pain_stam_pct) * damage, stamina=pain_stam_pct * damage, wound_bonus = CANT_WOUND)
-		to_chat(victim, span_userdanger("[weapon] embedded in your [limb.plaintext_zone] jostles and stings!"))
+		if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+			to_chat(victim, span_userdanger("[weapon] embedded in your [limb.plaintext_zone] jostles and stings!"))
+		else
+			to_chat(victim, span_warning("[weapon] embedded in your [limb.plaintext_zone] jostles around..."))
 
 
 /// Called when then item randomly falls out of a carbon. This handles the damage and descriptors, then calls safe_remove()
@@ -204,7 +210,8 @@
 	if(harmful)
 		var/damage = weapon.w_class * remove_pain_mult
 		limb.receive_damage(brute=(1-pain_stam_pct) * damage, stamina=pain_stam_pct * damage, sharpness=SHARP_EDGED) //It hurts to rip it out, get surgery you dingus. unlike the others, this CAN wound + increase slash bloodflow
-		victim.emote("scream")
+		if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+			victim.emote("scream")
 
 	victim.visible_message(span_notice("[victim] successfully rips [weapon] [harmful ? "out" : "off"] of [victim.p_their()] [limb.plaintext_zone]!"), span_notice("You successfully remove [weapon] from your [limb.plaintext_zone]."))
 	safeRemove(victim)

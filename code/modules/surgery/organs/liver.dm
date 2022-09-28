@@ -14,7 +14,7 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	//decay_factor = STANDARD_ORGAN_DECAY // smack in the middle of decay times
 	decay_factor = STANDARD_ORGAN_DECAY * 0.6 //25 minutes
-	
+
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/iron = 5)
 	grind_results = list(/datum/reagent/consumable/nutriment/peptides = 5)
 
@@ -119,25 +119,26 @@
 
 /obj/item/organ/internal/liver/organ_failure(delta_time)
 
-	switch(failure_time/LIVER_FAILURE_STAGE_SECONDS)
-		if(1)
-			to_chat(owner, span_userdanger("You feel stabbing pain in your abdomen!"))
-		if(2)
-			to_chat(owner, span_userdanger("You feel a burning sensation in your gut!"))
-			owner.vomit()
-		if(3)
-			to_chat(owner, span_userdanger("You feel painful acid in your throat!"))
-			owner.vomit(blood = TRUE)
-		if(4)
-			to_chat(owner, span_userdanger("Overwhelming pain knocks you out!"))
-			owner.vomit(blood = TRUE, distance = rand(1,2))
-			owner.emote("Scream")
-			owner.AdjustUnconscious(2.5 SECONDS)
-		if(5)
-			to_chat(owner, span_userdanger("You feel as if your guts are about to melt!"))
-			owner.vomit(blood = TRUE,distance = rand(1,3))
-			owner.emote("Scream")
-			owner.AdjustUnconscious(5 SECONDS)
+	if(!HAS_TRAIT(owner, TRAIT_NO_PAIN))
+		switch(failure_time/LIVER_FAILURE_STAGE_SECONDS)
+			if(1)
+				to_chat(owner, span_userdanger("You feel stabbing pain in your abdomen!"))
+			if(2)
+				to_chat(owner, span_userdanger("You feel a burning sensation in your gut!"))
+				owner.vomit()
+			if(3)
+				to_chat(owner, span_userdanger("You feel painful acid in your throat!"))
+				owner.vomit(blood = TRUE)
+			if(4)
+				to_chat(owner, span_userdanger("Overwhelming pain knocks you out!"))
+				owner.vomit(blood = TRUE, distance = rand(1,2))
+				owner.emote("Scream")
+				owner.AdjustUnconscious(2.5 SECONDS)
+			if(5)
+				to_chat(owner, span_userdanger("You feel as if your guts are about to melt!"))
+				owner.vomit(blood = TRUE,distance = rand(1,3))
+				owner.emote("Scream")
+				owner.AdjustUnconscious(5 SECONDS)
 
 	switch(failure_time)
 			//After 60 seconds we begin to feel the effects
