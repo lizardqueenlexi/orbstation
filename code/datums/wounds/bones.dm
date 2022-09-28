@@ -95,7 +95,7 @@
 		remove_wound()
 
 /// If we're a human who's punching something with a broken arm, we might hurt ourselves doing so
-/datum/wound/blunt/proc/attack_with_hurt_hand(mob/M, atom/target, proximity)
+/datum/wound/blunt/attack_with_hurt_hand(mob/M, atom/target, proximity)
 	SIGNAL_HANDLER
 
 	if(victim.get_active_hand() != limb || !victim.combat_mode || !ismob(target) || severity <= WOUND_SEVERITY_MODERATE)
@@ -105,13 +105,20 @@
 	if(prob((severity - 1) * 15))
 		// And you have a 70% or 50% chance to actually land the blow, respectively
 		if(prob(70 - 20 * (severity - 1)))
-			to_chat(victim, span_userdanger("The fracture in your [limb.plaintext_zone] shoots with pain as you strike [target]!"))
+			if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+				to_chat(victim, span_userdanger("The fracture in your [limb.plaintext_zone] shoots with pain as you strike [target]!"))
+			else
+				to_chat(victim, span_warning("You hear an odd <i>crack</i> from your [limb.plaintext_zone] as you strike [target]."))
 			limb.receive_damage(brute=rand(1,5))
 		else
-			victim.visible_message(span_danger("[victim] weakly strikes [target] with [victim.p_their()] broken [limb.plaintext_zone], recoiling from pain!"), \
-			span_userdanger("You fail to strike [target] as the fracture in your [limb.plaintext_zone] lights up in unbearable pain!"), vision_distance=COMBAT_MESSAGE_RANGE)
-			INVOKE_ASYNC(victim, /mob.proc/emote, "scream")
-			victim.Stun(0.5 SECONDS)
+			if(!HAS_TRAIT(victim, TRAIT_NO_PAIN))
+				victim.visible_message(span_danger("[victim] weakly strikes [target] with [victim.p_their()] broken [limb.plaintext_zone], recoiling from pain!"), \
+				span_userdanger("You fail to strike [target] as the fracture in your [limb.plaintext_zone] lights up in unbearable pain!"), vision_distance=COMBAT_MESSAGE_RANGE)
+				INVOKE_ASYNC(victim, /mob.proc/emote, "scream")
+				victim.Stun(0.5 SECONDS)
+			else
+				victim.visible_message(span_danger("[victim] weakly strikes [target] with [victim.p_their()] broken [limb.plaintext_zone], not even noticing the pain..."), \
+				span_warning("You fail to strike [target] as your [limb.plaintext_zone] goes limp with a loud <i>crack</i>. Hmm..."), vision_distance=COMBAT_MESSAGE_RANGE)
 			limb.receive_damage(brute=rand(3,7))
 			return COMPONENT_CANCEL_ATTACK_CHAIN
 
