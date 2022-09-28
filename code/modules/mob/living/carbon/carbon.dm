@@ -741,6 +741,10 @@
 		hud_used.healths.icon_state = "health7"
 		return
 
+	if(HAS_TRAIT(src, TRAIT_NO_PAIN))
+		hud_used.healths.icon_state = "health_no_pain"
+		return
+
 	if(SEND_SIGNAL(src, COMSIG_CARBON_UPDATING_HEALTH_HUD, shown_health_amount) & COMPONENT_OVERRIDE_HEALTH_HUD)
 		return
 

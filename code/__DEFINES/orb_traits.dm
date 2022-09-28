@@ -5,3 +5,6 @@
 // Multiplies the time it takes to craft items by FAST_CRAFTER_MOD
 #define TRAIT_FAST_CRAFTER "orb_fast_crafter"
 #define FAST_CRAFTER_MOD 0.5
+
+//quirk traits
+#define TRAIT_NO_PAIN "no_pain"
