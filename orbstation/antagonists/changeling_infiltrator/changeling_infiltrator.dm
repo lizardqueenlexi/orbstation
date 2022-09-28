@@ -4,10 +4,26 @@
 /datum/job/changeling_infiltrator
 	title = "Changeling Infiltrator"
 
+/datum/antagonist/changeling/infiltrator
+	name = "\improper Changeling Infiltrator"
+
+/// Override objectives with ones where you're very hungry
+/datum/antagonist/changeling/infiltrator/forge_objectives()
+	var/datum/objective/true_absorb/absorb_objective = new
+	absorb_objective.owner = owner
+	absorb_objective.gen_amount_goal()
+	objectives += absorb_objective
+
+	var/datum/objective/escape/escape_objective = new
+	escape_objective.owner = owner
+	objectives += escape_objective
+
 // Event that spawns the changeling and their ship. Does not alert the crew (obviously)
 
 /datum/round_event_control/changeling_infiltrator
 	name = "Changeling Infiltrator"
+	description = "A Changeling Infiltrator spawns in a pod, tasked to eat some of the crew."
+	category = EVENT_CATEGORY_INVASION
 	typepath = /datum/round_event/ghost_role/changeling_infiltrator
 	weight = 8 // slightly higher than aliens
 	min_players = 14
@@ -19,7 +35,7 @@
 	role_name = "changeling infiltrator"
 
 /datum/round_event/ghost_role/changeling_infiltrator/spawn_role()
-	var/list/candidates = get_candidates(ROLE_CHANGELING, ROLE_CHANGELING)
+	var/list/candidates = get_candidates(ROLE_CHANGELING, ROLE_CHANGELING_INFILTRATOR)
 	if(!candidates.len) // we only need one
 		return NOT_ENOUGH_PLAYERS
 
@@ -89,25 +105,10 @@
 ///Makes the player a changeling with a unique objective to fully absorb a certain amount of people, as well as an escape objective
 /obj/effect/mob_spawn/ghost_role/human/changeling_infiltrator/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
-	var/datum/antagonist/changeling/antag_datum = new
-	antag_datum.give_objectives = FALSE // we're giving them custom objectives
-
-	// add our new full absorb objective
-	var/datum/objective/true_absorb/absorb_objective = new
-	absorb_objective.owner = spawned_mob
-	absorb_objective.gen_amount_goal()
-	antag_datum.objectives += absorb_objective
-
-	// add escape objective
-	var/datum/objective/escape/escape_objective = new
-	escape_objective.owner = spawned_mob
-	antag_datum.objectives += escape_objective
 
 	to_chat(spawned_mob, span_alert("[flavour_text]"))
-
+	var/datum/antagonist/changeling/infiltrator/antag_datum = new
 	spawned_mob.mind.add_antag_datum(antag_datum)
-	spawned_mob.regenerate_icons() // have to do this or else the hair is invisible at first
-
 	to_chat(spawned_mob, span_alert("[important_text]"))
 
 // True absorb objective - this requires using the absorb ability, *NOT* DNA sting
@@ -161,6 +162,7 @@
 		if(!changeling || !changeling.stored_profiles)
 			continue
 		absorbed_count += changeling.true_absorbs
+
 	return absorbed_count >= target_amount
 
 // Outfit that the changeling spawns with

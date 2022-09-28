@@ -137,7 +137,7 @@
 		if(3)
 			if(DT_PROB(2, delta_time))
 				to_chat(affected_mob, span_danger("You feel a stabbing pain in your head."))
-				affected_mob.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
+				affected_mob.adjust_confusion(10 SECONDS)
 		if(4)
 			if(DT_PROB(1.5, delta_time))
 				affected_mob.say(pick("Eeek, ook ook!", "Eee-eeek!", "Eeee!", "Ungh, ungh."), forced = "jungle fever")
@@ -176,7 +176,7 @@
 				affected_mob.Unconscious(40)
 		if(4)
 			if (DT_PROB(10, delta_time))
-				affected_mob.say(pick("beep, beep!", "Boop bop boop beep.", "kkkiiiill mmme", "I wwwaaannntt tttoo dddiiieeee..."), forced = "robotic transformation")
+				affected_mob.say(pick("beep, beep!", "Boop bop boop beep.", "0110010110010100", "throw IndexOutOfRangeException"), forced = "robotic transformation")
 
 
 /datum/disease/transformation/xeno
@@ -210,7 +210,7 @@
 				affected_mob.Unconscious(40)
 		if(4)
 			if(DT_PROB(10, delta_time))
-				affected_mob.say(pick("You look delicious.", "Going to... devour you...", "Hsssshhhhh!"), forced = "xenomorph transformation")
+				affected_mob.say(pick("Hsssss...", "Hungry...", "Hsssshhhhh!"), forced = "xenomorph transformation")
 
 
 /datum/disease/transformation/slime

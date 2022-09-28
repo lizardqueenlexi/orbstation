@@ -11,5 +11,5 @@
 
 /datum/mood_event/shadow_realm_live_sad
 	description = "The hands! The horrible, horrific hands! I see them when I close my eyes!"
-	mood_change = -6
+	mood_change = -10
 	timeout = 10 MINUTES

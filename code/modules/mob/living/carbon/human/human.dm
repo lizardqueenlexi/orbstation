@@ -465,10 +465,6 @@
 	if(istype(head, /obj/item/clothing/head/wizard))
 		threatcount += 2
 
-	//Check for nonhuman scum
-	if(dna && dna.species.id && dna.species.id != SPECIES_HUMAN)
-		threatcount += 1
-
 	//mindshield implants imply trustworthyness
 	if(HAS_TRAIT(src, TRAIT_MINDSHIELD))
 		threatcount -= 1

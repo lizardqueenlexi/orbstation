@@ -6,7 +6,7 @@
 	icon_static =  'orbstation/icons/mob/augmentation/augments.dmi'
 	icon = 'orbstation/icons/mob/augmentation/augments.dmi'
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_DIGITIGRADE | BODYTYPE_ROBOTIC
-	limb_id = BODYPART_TYPE_DIGITIGRADE
+	limb_id = BODYPART_ID_DIGITIGRADE
 	icon_state = "digitigrade_r_leg"
 
 /obj/item/bodypart/r_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
@@ -25,10 +25,10 @@
 			shoes_compatible = TRUE
 
 		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && shoes_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
-			limb_id = BODYPART_TYPE_DIGITIGRADE
+			limb_id = BODYPART_ID_DIGITIGRADE
 
 		else
-			limb_id = BODYPART_TYPE_ROBOTIC
+			limb_id = BODYPART_ID_ROBOTIC
 
 /obj/item/bodypart/l_leg/robot/digitigrade
 	name = "digitigrade robotic left leg"
@@ -36,7 +36,7 @@
 	icon_static =  'orbstation/icons/mob/augmentation/augments.dmi'
 	icon = 'orbstation/icons/mob/augmentation/augments.dmi'
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_DIGITIGRADE | BODYTYPE_ROBOTIC
-	limb_id = BODYPART_TYPE_DIGITIGRADE
+	limb_id = BODYPART_ID_DIGITIGRADE
 	icon_state = "digitigrade_l_leg"
 
 /obj/item/bodypart/l_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
@@ -55,7 +55,7 @@
 			shoes_compatible = TRUE
 
 		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && shoes_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
-			limb_id = BODYPART_TYPE_DIGITIGRADE
+			limb_id = BODYPART_ID_DIGITIGRADE
 
 		else
-			limb_id = BODYPART_TYPE_ROBOTIC
+			limb_id = BODYPART_ID_ROBOTIC

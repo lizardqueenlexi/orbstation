@@ -7383,13 +7383,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"cin" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron/large,
-/area/station/hallway/primary/starboard)
 "ciG" = (
 /obj/machinery/door/airlock/external{
 	name = "Security Yard";
@@ -11249,6 +11242,17 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/security/lockers)
+"doq" = (
+/obj/machinery/flasher/directional/north{
+	id = "transferflash"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/obj/item/radio/intercom/prison/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/security/execution/transfer)
 "dos" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction{
 	dir = 4
@@ -16905,6 +16909,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/rd)
+"faL" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/meson,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/flashlight,
+/obj/machinery/light/directional/west,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/gps/mining,
+/turf/open/floor/iron,
+/area/station/commons/storage/mining)
 "faZ" = (
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 2;
@@ -17906,6 +17922,15 @@
 	dir = 8
 	},
 /area/station/medical/medbay/central)
+"frg" = (
+/mob/living/simple_animal/hostile/retaliate/goat{
+	atmos_requirements = list("min_oxy"=1,"max_oxy"=0,"min_plas"=0,"max_plas"=1,"min_co2"=0,"max_co2"=5,"min_n2"=0,"max_n2"=0);
+	desc = "Not known for their pleasant disposition. This one seems a bit more hardy to the cold.";
+	minbodytemp = 150;
+	name = "Snowy Pete"
+	},
+/turf/open/misc/asteroid/snow/coldroom,
+/area/station/service/kitchen/coldroom)
 "fro" = (
 /obj/structure/cable/multilayer/multiz,
 /obj/effect/turf_decal/stripes/line{
@@ -20571,17 +20596,6 @@
 	dir = 6
 	},
 /area/station/service/chapel)
-"giz" = (
-/obj/machinery/flasher/directional/north{
-	id = "transferflash"
-	},
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/machinery/light/small/directional/west,
-/obj/item/radio/intercom/prison/directional/west,
-/turf/open/floor/iron/dark/textured,
-/area/station/security/execution/transfer)
 "giD" = (
 /obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/siding/wideplating/dark{
@@ -32334,16 +32348,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/prison/mess)
-"jQI" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/meson,
-/obj/item/storage/bag/ore,
-/obj/item/pickaxe,
-/obj/item/mining_scanner,
-/obj/item/flashlight,
-/obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/iron,
-/area/station/commons/storage/mining)
 "jQS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
@@ -35155,6 +35159,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
+"kJo" = (
+/obj/structure/sign/poster/contraband/random,
+/turf/closed/wall,
+/area/station/maintenance/department/medical/central)
 "kJw" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden{
 	dir = 4
@@ -44526,17 +44534,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
-"nFR" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/meson,
-/obj/item/storage/bag/ore,
-/obj/item/pickaxe,
-/obj/item/mining_scanner,
-/obj/item/flashlight,
-/obj/machinery/light/directional/west,
-/obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/iron,
-/area/station/commons/storage/mining)
 "nFU" = (
 /obj/structure/chair/stool/directional/west,
 /obj/item/trash/energybar,
@@ -46135,15 +46132,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
-"ocF" = (
-/mob/living/simple_animal/hostile/retaliate/goat{
-	atmos_requirements = list("min_oxy" = 1, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0);
-	desc = "Not known for their pleasant disposition. This one seems a bit more hardy to the cold.";
-	minbodytemp = 150;
-	name = "Snowy Pete"
-	},
-/turf/open/misc/asteroid/snow/coldroom,
-/area/station/service/kitchen/coldroom)
 "ocT" = (
 /obj/item/toy/snowball{
 	pixel_x = -6
@@ -46307,6 +46295,16 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/mine/eva/lower)
+"ofB" = (
+/obj/structure/table,
+/obj/item/wrench,
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
+	dir = 8
+	},
+/obj/item/crowbar,
+/obj/item/radio,
+/turf/open/floor/iron/dark,
+/area/station/commons/storage/primary)
 "ofE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -46646,6 +46644,10 @@
 /obj/structure/bookcase/random/fiction,
 /turf/open/floor/iron/dark,
 /area/station/commons/lounge)
+"okv" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "okx" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/brigdoor{
@@ -58067,6 +58069,12 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/smooth,
 /area/station/security/execution/transfer)
+"rRI" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/large,
+/area/station/hallway/primary/starboard)
 "rRS" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
@@ -59426,16 +59434,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
-"sng" = (
-/obj/structure/table,
-/obj/item/wrench,
-/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
-	dir = 8
-	},
-/obj/item/crowbar,
-/obj/item/implant/radio,
-/turf/open/floor/iron/dark,
-/area/station/commons/storage/primary)
 "snj" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -60576,10 +60574,6 @@
 	},
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/plating,
-/area/station/maintenance/department/medical/central)
-"sEg" = (
-/obj/structure/sign/poster/contraband/random,
-/turf/closed/wall,
 /area/station/maintenance/department/medical/central)
 "sEi" = (
 /turf/open/floor/carpet,
@@ -66145,6 +66139,18 @@
 /obj/structure/tank_holder/extinguisher,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+"upU" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/meson,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/flashlight,
+/obj/machinery/light/directional/east,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/gps/mining,
+/turf/open/floor/iron,
+/area/station/commons/storage/mining)
 "uqg" = (
 /obj/machinery/conveyor_switch/oneway{
 	dir = 8;
@@ -67341,17 +67347,6 @@
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
-"uLo" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/meson,
-/obj/item/storage/bag/ore,
-/obj/item/pickaxe,
-/obj/item/mining_scanner,
-/obj/item/flashlight,
-/obj/machinery/light/directional/east,
-/obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/iron,
-/area/station/commons/storage/mining)
 "uLp" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -75320,6 +75315,17 @@
 /obj/machinery/atmospherics/pipe/smart/simple/green/visible,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"xfE" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/meson,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/flashlight,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/gps/mining,
+/turf/open/floor/iron,
+/area/station/commons/storage/mining)
 "xfK" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance{
@@ -172267,7 +172273,7 @@ bol
 rkT
 uME
 uME
-giz
+doq
 trA
 uME
 xge
@@ -182336,7 +182342,7 @@ dEB
 dMS
 jBB
 mQk
-ocF
+frg
 wMP
 fwB
 fwB
@@ -228065,7 +228071,7 @@ eUf
 qhO
 lJO
 waZ
-sng
+ofB
 iMT
 nQu
 gOx
@@ -238117,9 +238123,9 @@ qPP
 ghl
 nRu
 clE
-jQI
-nFR
-jQI
+xfE
+faL
+xfE
 kta
 bln
 pAZ
@@ -239659,9 +239665,9 @@ dEQ
 sGv
 rFf
 clE
-jQI
-uLo
-jQI
+xfE
+upU
+xfE
 kta
 bln
 pAZ
@@ -247137,7 +247143,7 @@ lvG
 cvS
 cvS
 lvG
-sEg
+kJo
 tYZ
 kRP
 wOn
@@ -257127,8 +257133,8 @@ bMY
 cxd
 cYE
 avb
-avb
-cin
+rRI
+okv
 eKl
 pxL
 lso

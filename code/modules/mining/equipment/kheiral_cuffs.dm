@@ -21,6 +21,10 @@
 	var/gps_enabled = FALSE
 	/// If we're off the station's Z-level
 	var/far_from_home = FALSE
+	/// Used to allow the cuffs to send alerts over the radio
+	var/obj/item/radio/headset/radio
+	/// List of radio channels to send the alert out on when the wearer dies off the station Z-level
+	var/list/alert_channels = list(RADIO_CHANNEL_MEDICAL, RADIO_CHANNEL_SUPPLY)
 
 /obj/item/kheiral_cuffs/Initialize(mapload)
 	. = ..()
@@ -28,6 +32,8 @@
 	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, .proc/check_z)
 
 	check_z(new_turf = loc)
+
+	radio = new /obj/item/radio/headset/silicon/ai(src)
 
 /obj/item/kheiral_cuffs/examine(mob/user)
 	. = ..()
@@ -66,6 +72,7 @@
 	balloon_alert(user, "GPS activated")
 	ADD_TRAIT(user, TRAIT_MULTIZ_SUIT_SENSORS, REF(src))
 	gps_enabled = TRUE
+	RegisterSignal(user, COMSIG_LIVING_DEATH, .proc/send_death_alert) // Orbstation
 
 /// Disables the GPS and removes the multiz trait
 /obj/item/kheiral_cuffs/proc/remove_kheiral_network(mob/user)
@@ -76,6 +83,7 @@
 	balloon_alert(user, "GPS de-activated")
 	REMOVE_TRAIT(user, TRAIT_MULTIZ_SUIT_SENSORS, REF(src))
 	gps_enabled = FALSE
+	UnregisterSignal(user, COMSIG_LIVING_DEATH) // Orbstation
 
 /// If we're off the Z-level, set far_from_home = TRUE. If being worn, trigger kheiral_network proc
 /obj/item/kheiral_cuffs/proc/check_z(datum/source, turf/old_turf, turf/new_turf)
@@ -92,6 +100,12 @@
 		far_from_home = TRUE
 		if(isliving(loc))
 			connect_kheiral_network(loc)
+
+/// Orbstation: Registered to the COMSIG_LIVING_DEATH signal. Sends out an alert over alert_channels when the wearer dies.
+/obj/item/kheiral_cuffs/proc/send_death_alert(mob/living/wearer, gibbed)
+	var/area/location = get_area(wearer)
+	for(var/radio_channel as anything in alert_channels)
+		radio.talk_into(src, "Mining alert! [wearer ? wearer : "Someone"] has [gibbed ? "had their body destroyed" : "died"] at [location ? location : "an unknown location"]!", radio_channel)
 
 /obj/item/kheiral_cuffs/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()

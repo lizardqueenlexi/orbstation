@@ -28,7 +28,9 @@
 /datum/dynamic_ruleset/midround/from_ghosts/changeling_infiltrator
 	name = "Changeling Infiltrator"
 	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
-	antag_flag = ROLE_CHANGELING
+	antag_flag = ROLE_CHANGELING_INFILTRATOR
+	antag_flag_override = ROLE_CHANGELING
+	antag_datum = /datum/antagonist/changeling/infiltrator
 	weight = 5
 	cost = 12
 	requirements = list(101,60,50,50,40,20,20,10,10,10)

@@ -98,6 +98,8 @@
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
 
+#define ROLE_CHANGELING_INFILTRATOR "Changeling Infiltrator"
+
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's
@@ -133,6 +135,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_SPACE_DRAGON = 0,
 	ROLE_SPIDER = 0,
 	ROLE_WIZARD_MIDROUND = 14,
+	ROLE_CHANGELING_INFILTRATOR = 0,
 	ROLE_HERETIC_MIDROUND = 0,
 
 	// Latejoin
