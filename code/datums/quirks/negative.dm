@@ -430,9 +430,10 @@
 	var/slot_string = "limb"
 	medical_record_text = "During physical examination, patient was found to have a prosthetic limb."
 	hardcore_value = 3
+	var/prosthetic_choice
 
 /datum/quirk/prosthetic_limb/add_unique()
-	var/limb_slot = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+	var/limb_slot = prosthetic_choice || quirk_holder.client?.prefs?.read_preference(/datum/preference/choiced/prosthetic)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/bodypart/prosthetic
 	switch(limb_slot)
