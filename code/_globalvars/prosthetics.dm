@@ -3,4 +3,5 @@ GLOBAL_LIST_INIT(prosthetics, sort_list(list(
 	"left leg",
 	"right arm",
 	"left arm",
+	"random"
 )))
