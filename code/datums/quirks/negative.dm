@@ -438,23 +438,7 @@
 	prosthetic_choice = prosthetic_choice || quirk_holder.client?.prefs?.read_preference(/datum/preference/choiced/prosthetic)
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	var/obj/item/bodypart/prosthetic
-	var/random_prosthetic
 	switch(prosthetic_choice)
-		if("random")
-			random_prosthetic = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
-			switch(random_prosthetic)
-				if(BODY_ZONE_L_ARM)
-					prosthetic = new /obj/item/bodypart/l_arm/robot/surplus
-					slot_string = "left arm"
-				if(BODY_ZONE_L_LEG)
-					prosthetic = new /obj/item/bodypart/l_leg/robot/surplus
-					slot_string = "left leg"
-				if(BODY_ZONE_R_ARM)
-					prosthetic = new /obj/item/bodypart/r_arm/robot/surplus
-					slot_string = "right arm"
-				if(BODY_ZONE_R_LEG)
-					prosthetic = new /obj/item/bodypart/r_leg/robot/surplus
-					slot_string = "right leg"
 		if("left arm")
 			prosthetic = new /obj/item/bodypart/l_arm/robot/surplus
 			slot_string = "left arm"
@@ -473,6 +457,30 @@
 	human_holder.del_and_replace_bodypart(prosthetic)
 
 /datum/quirk/prosthetic_limb/post_add()
+	//if your preference is set to random, joining at roundstart will cause you to spawn without a limb replacement
+	//for some reason, moving the preference check for that result down here instead of in add_unique prevents this from happening
+	//so if this is breaking anything, uh. sorry! lol!
+	prosthetic_choice = prosthetic_choice || quirk_holder.client?.prefs?.read_preference(/datum/preference/choiced/prosthetic)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	var/obj/item/bodypart/prosthetic
+	var/random_prosthetic
+	switch(prosthetic_choice)
+		if("random")
+			random_prosthetic = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+			switch(random_prosthetic)
+				if(BODY_ZONE_L_ARM)
+					prosthetic = new /obj/item/bodypart/l_arm/robot/surplus
+					slot_string = "left arm"
+				if(BODY_ZONE_L_LEG)
+					prosthetic = new /obj/item/bodypart/l_leg/robot/surplus
+					slot_string = "left leg"
+				if(BODY_ZONE_R_ARM)
+					prosthetic = new /obj/item/bodypart/r_arm/robot/surplus
+					slot_string = "right arm"
+				if(BODY_ZONE_R_LEG)
+					prosthetic = new /obj/item/bodypart/r_leg/robot/surplus
+					slot_string = "right leg"
+			human_holder.del_and_replace_bodypart(prosthetic)
 	to_chat(quirk_holder, span_boldannounce("Your [slot_string] has been replaced with a surplus prosthetic. It is fragile and will easily come apart under duress. Additionally, \
 	you need to use a welding tool and cables to repair it, instead of bruise packs and ointment."))
 
