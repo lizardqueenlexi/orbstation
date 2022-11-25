@@ -7,7 +7,8 @@
  * Bonus: Changes the voice of the affected mob. Causing confusion in communication.
 */
 
-/datum/symptom/voice_change
+//ORBSTATION: REMOVED WHOLE SYMPTOM
+/*/datum/symptom/voice_change
 	name = "Voice Change"
 	desc = "The virus alters the pitch and tone of the host's vocal cords, changing how their voice sounds."
 	stealth = -1
@@ -66,3 +67,4 @@
 	if(scramble_language)
 		A.affected_mob.remove_blocked_language(subtypesof(/datum/language), LANGUAGE_VOICECHANGE)
 		A.affected_mob.remove_all_languages(LANGUAGE_VOICECHANGE) // In case someone managed to get more than one anyway.
+*/

@@ -10,13 +10,13 @@ new /datum/disease_ability/action/sneeze,
 new /datum/disease_ability/action/infect,
 new /datum/disease_ability/symptom/mild/cough,
 new /datum/disease_ability/symptom/mild/sneeze,
-new /datum/disease_ability/symptom/medium/shedding,
-new /datum/disease_ability/symptom/medium/beard,
+//new /datum/disease_ability/symptom/medium/shedding,
+//new /datum/disease_ability/symptom/medium/beard,
 new /datum/disease_ability/symptom/medium/hallucigen,
 new /datum/disease_ability/symptom/medium/choking,
 new /datum/disease_ability/symptom/medium/confusion,
 new /datum/disease_ability/symptom/medium/vomit,
-new /datum/disease_ability/symptom/medium/voice_change,
+//new /datum/disease_ability/symptom/medium/voice_change,
 new /datum/disease_ability/symptom/medium/visionloss,
 new /datum/disease_ability/symptom/medium/deafness,
 new /datum/disease_ability/symptom/powerful/narcolepsy,
@@ -326,13 +326,15 @@ new /datum/disease_ability/symptom/powerful/youth
 
 /******MEDIUM******/
 
-/datum/disease_ability/symptom/medium/shedding
-	symptoms = list(/datum/symptom/shedding)
+//ORBSTATION REMOVAL
+/*/datum/disease_ability/symptom/medium/shedding
+	symptoms = list(/datum/symptom/shedding)*/
 
-/datum/disease_ability/symptom/medium/beard
+//ORBSTATION REMOVAL
+/*/datum/disease_ability/symptom/medium/beard
 	symptoms = list(/datum/symptom/beard)
 	short_desc = "Cause all victims to grow a luscious beard."
-	long_desc = "Cause all victims to grow a luscious beard. Ineffective against Santa Claus."
+	long_desc = "Cause all victims to grow a luscious beard. Ineffective against Santa Claus."*/
 
 /datum/disease_ability/symptom/medium/hallucigen
 	symptoms = list(/datum/symptom/hallucigen)
@@ -354,10 +356,11 @@ new /datum/disease_ability/symptom/powerful/youth
 	short_desc = "Cause victims to vomit."
 	long_desc = "Cause victims to vomit. Slightly increases transmissibility. Vomiting also also causes the victims to lose nutrition and removes some toxin damage."
 
-/datum/disease_ability/symptom/medium/voice_change
+//ORBSTATION REMOVAL
+/*/datum/disease_ability/symptom/medium/voice_change
 	symptoms = list(/datum/symptom/voice_change)
 	short_desc = "Change the voice of victims."
-	long_desc = "Change the voice of victims, causing confusion in communications."
+	long_desc = "Change the voice of victims, causing confusion in communications."*/
 
 /datum/disease_ability/symptom/medium/visionloss
 	symptoms = list(/datum/symptom/visionloss)

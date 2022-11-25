@@ -6,7 +6,9 @@
  * Near critcal level
  * Bonus: Makes the mob lose hair.
 */
-/datum/symptom/shedding
+
+//ORBSTATION: REMOVED WHOLE SYMPTOM
+/*/datum/symptom/shedding
 	name = "Alopecia"
 	desc = "The virus causes rapid shedding of head and body hair."
 	stealth = 0
@@ -45,4 +47,4 @@
 		H.hairstyle = "Bald"
 	else
 		H.hairstyle = "Balding Hair"
-	H.update_body_parts()
+	H.update_body_parts()*/
