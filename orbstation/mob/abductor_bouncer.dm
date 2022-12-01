@@ -7,13 +7,13 @@
 	. = ..()
 	fully_replace_character_name(name, "The Bouncer")
 
-	equipOutfit(/datum/outfit/abductor/bouncer)
+	equipOutfit(/datum/outfit/bouncer)
 
 	ADD_TRAIT(src, TRAIT_ABDUCTOR_TRAINING, INNATE_TRAIT)
 
 	AddComponent(/datum/component/sign_language)
 
-/datum/outfit/abductor/bouncer
+/datum/outfit/bouncer
 	name = "Abductor Bouncer"
 	uniform = /obj/item/clothing/under/pants/jeans
 	suit = /obj/item/clothing/suit/jacket/oversized
@@ -23,7 +23,7 @@
 	ears = /obj/item/radio/headset/abductor
 	r_hand = /obj/item/book/granter/martial/carp
 
-/datum/outfit/abductor/bouncer/post_equip(mob/living/carbon/human/bouncer, visualsOnly)
+/datum/outfit/bouncer/post_equip(mob/living/carbon/human/bouncer, visualsOnly)
 	. = ..()
 	var/obj/item/clothing/under/pants/jeans/bouncer_jeans = locate() in bouncer
 	bouncer_jeans.set_greyscale(list("#FFFFFF", "#000000", "#303030"))
