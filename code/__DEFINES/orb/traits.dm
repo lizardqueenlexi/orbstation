@@ -21,6 +21,8 @@
 #define TRAIT_POSTERBOY "poster_boy"
 // Makes you close doors behind you automatically
 #define TRAIT_DOOR_CLOSER "compulsive_door_closer"
+// Makes supplypods drop food relevant to your tastes
+#define TRAIT_NTGRUB_SUB "food_delivery_subscriber"
 //Trait sources
 // Special trait source for illiteracy granted by farsightedness
 #define FARSIGHT_TRAIT "farsighted_trait"

@@ -1,11 +1,9 @@
 #define ETHEREAL_RESPAWN_TRAIT "ethereal_respawn"
 
-#define ETHEREAL_PENALTY_NONE 0
-#define ETHEREAL_PENALTY_SLEEPY 1
-#define ETHEREAL_PENALTY_FRAIL 2
-#define ETHEREAL_PENALTY_FRAGILE 3
-#define ETHEREAL_PENALTY_CLUMSY 4
-#define ETHEREAL_PENALTY_PARAPLEGIA 5
+#define ETHEREAL_PENALTY_FRAIL 1
+#define ETHEREAL_PENALTY_FRAGILE 2
+#define ETHEREAL_PENALTY_CLUMSY 3
+#define ETHEREAL_PENALTY_PARAPLEGIA 4
 
 /datum/ethereal_penalty
 	var/trait
@@ -32,9 +30,8 @@
 	return TRUE
 
 #define ETHEREAL_RESPAWN_PENALTIES list( \
-	ETHEREAL_PENALTY_SLEEPY = new /datum/ethereal_penalty("You burst out of the crystal, slightly drained from the recovery process!", TRAIT_HEAVY_SLEEPER), \
 	ETHEREAL_PENALTY_FRAIL = new /datum/ethereal_penalty("You burst out of the crystal, feeling a phantom ache from your past wounds!", TRAIT_EASILY_WOUNDED), \
-	ETHEREAL_PENALTY_FRAGILE = new /datum/ethereal_penalty("You slip tentatively out of the crystal, your limbs feel like paper after all this regrowth!", TRAIT_EASYDISMEMBER), \
+	ETHEREAL_PENALTY_FRAGILE = new /datum/ethereal_penalty("You slip tentatively out of the crystal, your limbs feel like paper after their regrowth!", TRAIT_EASYDISMEMBER), \
 	ETHEREAL_PENALTY_CLUMSY = new /datum/ethereal_penalty("You fall face-first out of the crystal, but at least you are alive!", TRAIT_CLUMSY), \
 	ETHEREAL_PENALTY_PARAPLEGIA = new /datum/ethereal_penalty/paraplegia("You collapse forwards out of the crystal, you can't take much more of this!"),)
 
@@ -42,7 +39,13 @@
 	var/respawn_count = 0
 
 /obj/structure/ethereal_crystal/heal_ethereal()
-	ethereal_heart.owner.revive(TRUE, FALSE)
+	var/mob/living/ethereal = ethereal_heart.owner
+	if (!ethereal)
+		playsound(get_turf(src), 'sound/effects/ethereal_revive.ogg', 100)
+		qdel(src)
+		return
+	ethereal_heart.owner.revive(HEAL_ALL)
+	ethereal_heart = ethereal.getorganslot(ORGAN_SLOT_HEART)
 	if (!(prob(90) && apply_new_penalty()))
 		to_chat(ethereal_heart.owner, span_notice("[notify_player_consequences()]"))
 
@@ -79,8 +82,6 @@
 #undef ETHEREAL_RESPAWN_PENALTIES
 #undef ETHEREAL_RESPAWN_TRAIT
 
-#undef ETHEREAL_PENALTY_NONE
-#undef ETHEREAL_PENALTY_SLEEPY
 #undef ETHEREAL_PENALTY_FRAIL
 #undef ETHEREAL_PENALTY_FRAGILE
 #undef ETHEREAL_PENALTY_CLUMSY
