@@ -212,7 +212,7 @@ Difficulty: Hard
 	animate(pixel_z = 0, time = 1)
 	for(var/mob/living/dizzy_target in get_hearers_in_view(7, src) - src)
 		dizzy_target.set_dizzy_if_lower(12 SECONDS)
-		to_chat(dizzy_target, span_danger("The wendigo screams loudly!"))
+		to_chat(dizzy_target, span_danger("Bambi screams loudly!")) //ORBSTATION EDIT
 	SLEEP_CHECK_DEATH(1 SECONDS, src)
 	spiral_attack()
 	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 3 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 3 SECONDS))
@@ -270,7 +270,7 @@ Difficulty: Hard
 	if(health > 0)
 		return
 	var/obj/effect/portal/permanent/one_way/exit = new /obj/effect/portal/permanent/one_way(starting)
-	exit.id = "wendigo arena exit"
+	exit.id = "Bambi's arena exit" //ORBSTATION EDIT
 	exit.add_atom_colour(COLOR_RED_LIGHT, ADMIN_COLOUR_PRIORITY)
 	exit.set_light(20, 1, COLOR_SOFT_RED)
 	return ..()
