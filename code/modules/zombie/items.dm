@@ -34,9 +34,11 @@
 	. = ..()
 	if(!proximity_flag)
 		return
-	else if(isliving(target) && !ishuman(target))
-		// ORBSTATION: Zombie claws don't infect people, there's a bite action for that.
-		check_feast(target, user)
+	else if(isliving(target))
+		if(ishuman(target))
+			try_to_zombie_infect(target)
+		else
+			check_feast(target, user)
 
 /proc/try_to_zombie_infect(mob/living/carbon/human/target)
 	CHECK_DNA_AND_SPECIES(target)
@@ -50,6 +52,8 @@
 	if(istype(target) && target.reagents.has_reagent(/datum/reagent/medicine/spaceacillin) && prob(75))
 		return
 
+	if(prob(75)) /// Orbstation zombies have a 75% chance of infecting
+		return
 	var/obj/item/organ/internal/zombie_infection/infection
 	infection = target.getorganslot(ORGAN_SLOT_ZOMBIE)
 	if(!infection)
