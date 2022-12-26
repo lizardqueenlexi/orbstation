@@ -52,6 +52,9 @@
 				/obj/item/clothing/under/costume/deckers = 5,
 				/obj/item/clothing/under/costume/sailor = 1,
 				/obj/item/clothing/head/costume/delinquent = 1,
+				/obj/item/clothing/suit/costume/dracula = 1,
+				/obj/item/clothing/under/costume/draculass = 1,
+				/obj/item/clothing/suit/costume/gothcoat = 1,
 			),
 		),
 		list(
@@ -197,6 +200,8 @@
 		/obj/item/clothing/shoes/clown_shoes/ducky_shoes = 1,
 		/obj/item/clothing/shoes/clown_shoes/meown_shoes = 1,
 		/obj/item/clothing/suit/costume/judgerobe = 1,
+		/obj/item/clothing/head/costume/lobsterhat = 1,
+		/obj/item/clothing/under/costume/lobster = 1,
 		/obj/item/gun/magic/wand/nothing = 2,
 	)
 	premium = list(
@@ -217,6 +222,9 @@
 		/obj/item/clothing/head/costume/weddingveil = 1,
 		/obj/item/storage/belt/cummerbund = 1,
 		/obj/item/clothing/suit/hooded/wintercoat/cosmic = 1, //ORBSTATION
+		/obj/item/clothing/suit/costume/drfreeze_coat = 1,
+		/obj/item/clothing/under/costume/drfreeze = 1,
+		/obj/item/clothing/head/costume/drfreezehat = 1,
 	)
 	refill_canister = /obj/item/vending_refill/autodrobe
 	default_price = PAYCHECK_CREW * 0.8 //Default of 40.

@@ -9,8 +9,14 @@
 	exotic_blood = /datum/reagent/consumable/liquidelectricity //Liquid Electricity. fuck you think of something better gamer
 	siemens_coeff = 0.5 //They thrive on energy
 	brutemod = 1.25 //They're weak to punches
-	payday_modifier = 1
-	species_traits = list(DYNCOLORS, AGENDER, NO_UNDERWEAR, HAIR, FACEHAIR, HAS_FLESH, HAS_BONE) // i mean i guess they have blood so they can have wounds too
+	payday_modifier = 0.75
+	species_traits = list(
+		DYNCOLORS,
+		AGENDER,
+		NO_UNDERWEAR,
+		HAIR,
+		FACEHAIR,
+	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_cookie = /obj/item/food/energybar
 	species_language_holder = /datum/language_holder/ethereal
