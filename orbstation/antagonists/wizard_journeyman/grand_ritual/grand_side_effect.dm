@@ -363,7 +363,7 @@
 		/mob/living/simple_animal/hostile/killertomato,
 		/mob/living/simple_animal/hostile/ooze,
 		/mob/living/simple_animal/hostile/illusion,
-		/mob/living/simple_animal/hostile/carp, )
+		/mob/living/basic/carp,)
 
 /datum/grand_side_effect/spawn_delayed_mobs/trigger(potency, turf/ritual_location, mob/invoker)
 	var/count = LERP(1, 4, potency/GRAND_RITUAL_FINALE_COUNT)

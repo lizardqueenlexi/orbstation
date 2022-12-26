@@ -8,8 +8,8 @@
 	description = "Carp pour out of portals."
 
 /datum/round_event/portal_storm/carp
-	boss_types = list(/mob/living/simple_animal/hostile/carp/megacarp = 2)
-	hostile_types = list(/mob/living/simple_animal/hostile/carp = 10,)
+	boss_types = list(/mob/living/basic/carp/mega = 2)
+	hostile_types = list(/mob/living/basic/carp = 10,)
 
 /datum/round_event_control/portal_storm_clown
 	name = "Portal Storm: Clowns"

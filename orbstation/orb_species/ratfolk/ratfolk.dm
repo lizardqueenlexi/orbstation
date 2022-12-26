@@ -2,7 +2,12 @@
 	name = "\improper Ratfolk"
 	plural_form = "Ratfolk"
 	id = SPECIES_RATFOLK
-	species_traits = list(EYECOLOR, HAIR, HAS_BONE, HAS_FLESH, LIPS, MUTCOLORS)
+	species_traits = list(
+		EYECOLOR,
+		HAIR,
+		LIPS,
+		MUTCOLORS,
+	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,

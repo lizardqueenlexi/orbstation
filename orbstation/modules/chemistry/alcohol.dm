@@ -26,7 +26,7 @@
 
 /datum/reagent/consumable/ethanol/goblin_juice/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	M.adjust_dizzy(-10 SECONDS * REM * delta_time)
-	M.adjust_drowsyness(-3 * REM * delta_time)
+	M.adjust_drowsiness(-6 SECONDS * REM * delta_time)
 	M.AdjustSleeping(-40 * REM * delta_time)
 
 	if(DT_PROB(2.5, delta_time))

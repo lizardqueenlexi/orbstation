@@ -37,14 +37,6 @@
 	category = DIPLOMA_SPELL_OFFENSIVE
 	weight = DIPLOMA_SPELL_RARE
 
-/datum/diploma_spell/item/guardian/buy_spell(mob/living/carbon/human/user, obj/item/spellbook/book)
-	. = ..()
-	if(!.)
-		return
-
-	new /obj/item/paper/guides/antag/guardian/wizard(get_turf(user))
-	to_chat(user, span_notice("If you are not experienced in the ways of wizardly guardians, a guide has been summoned at your feet."))
-
 /datum/diploma_spell/fireball
 	name = "Fireball"
 	desc = "Fires an explosive fireball at a target. Considered a classic among all wizards."

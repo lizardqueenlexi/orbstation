@@ -3,7 +3,7 @@
 /obj/item/poster/quirk
 	name = "placeholder quirk poster"
 	desc = "Uh oh! You shouldn't have this!"
-	icon = 'icons/obj/contraband.dmi'
+	icon = 'icons/obj/poster.dmi'
 	icon_state = "rolled_poster_legit"
 	var/quirk_poster_department = NONE
 

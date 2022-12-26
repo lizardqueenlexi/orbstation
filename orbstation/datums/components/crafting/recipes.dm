@@ -14,6 +14,5 @@
 	parts = list(/obj/item/spear = 1,
 				/obj/item/grenade = 1)
 	time = 1.5 SECONDS
-	category = CAT_WEAPONRY
-	subcategory = CAT_WEAPON
+	category = CAT_WEAPON_MELEE
 

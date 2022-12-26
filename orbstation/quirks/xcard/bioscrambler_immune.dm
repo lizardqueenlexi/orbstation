@@ -25,7 +25,7 @@
 			to_chat(victim, span_userdanger("Your stomach churns as your body twists unnaturally!"))
 			victim.vomit()
 			victim.adjustToxLoss(30)
-			victim.blur_eyes(20)
+			victim.set_eye_blur_if_lower(40 SECONDS)
 			victim.set_timed_status_effect(10 SECONDS, /datum/status_effect/dizziness)
 
 //and the same thing again, for the bioscrambler armor. yes, the code is all copy-pasted there, too.
@@ -55,6 +55,6 @@
 			to_chat(victim, span_userdanger("Your stomach churns as your body twists unnaturally!"))
 			victim.vomit()
 			victim.adjustToxLoss(30)
-			victim.blur_eyes(20)
+			victim.set_eye_blur_if_lower(40 SECONDS)
 			victim.set_timed_status_effect(10 SECONDS, /datum/status_effect/dizziness)
 	return

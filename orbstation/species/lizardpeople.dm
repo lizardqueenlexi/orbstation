@@ -1,5 +1,10 @@
 /datum/species/lizard
-	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAS_FLESH, HAS_BONE, HAIR)
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+		LIPS,
+		HAIR
+	)
 
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
 	..()

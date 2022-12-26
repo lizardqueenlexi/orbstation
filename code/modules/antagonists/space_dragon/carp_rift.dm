@@ -228,7 +228,7 @@
 
 	var/mob/living/newcarp
 	if(!dragon)
-		newcarp = new /mob/living/simple_animal/hostile/carp(loc)
+		newcarp = new /mob/living/basic/carp(loc)
 	if (dragon)
 		newcarp = new dragon.minion_to_spawn(loc)
 		newcarp.faction = dragon.owner.current.faction
