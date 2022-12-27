@@ -1,5 +1,4 @@
 // Removes some disruptive spells from the chaos magicarp
-/mob/living/basic/carp/magic/chaos/spell_list()
 GLOBAL_LIST_INIT(orb_chaos_magicarp_spell_types, list(
 	/obj/projectile/magic/animate = "dancing",
 	/obj/projectile/magic/arcane_barrage = "arcane",
