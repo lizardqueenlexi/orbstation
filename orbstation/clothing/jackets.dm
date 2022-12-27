@@ -18,20 +18,31 @@
 	name = "engineering jacket"
 	desc = "A comfortable jacket in engineering yellow."
 	icon_state = "engi_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 30, ACID = 45, WOUND = 0)
+	armor_type = /datum/armor/toggle_jacket_engi
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/t_scanner, /obj/item/construction/rcd, /obj/item/pipe_dispenser, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
+
+/datum/armor/toggle_jacket_engi
+	fire = 30
+	acid = 45
 
 /obj/item/clothing/suit/toggle/jacket/sci
 	name = "science jacket"
 	desc = "A comfortable jacket in science purple."
 	icon_state = "sci_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 10, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
+	armor_type = /datum/armor/toggle_jacket_sci
+
+/datum/armor/toggle_jacket_sci
+	bomb = 10
 
 /obj/item/clothing/suit/toggle/jacket/med
 	name = "medbay jacket"
 	desc = "A comfortable jacket in medical blue."
 	icon_state = "med_dep_jacket"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 0, ACID = 45, WOUND = 0)
+	armor_type = /datum/armor/toggle_jacket_med
+
+/datum/armor/toggle_jacket_med
+	bio = 50
+	acid = 45
 
 /obj/item/clothing/suit/toggle/jacket/supply
 	name = "cargo jacket"
@@ -42,7 +53,15 @@
 	name = "security jacket"
 	desc = "A comfortable jacket in security red. Probably against uniform regulations."
 	icon_state = "sec_dep_jacket"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 10, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45, WOUND = 0)
+	armor_type = /datum/armor/toggle_jacket_sec
+
+/datum/armor/toggle_jacket_sec
+	melee = 25
+	bullet = 15
+	laser = 30
+	energy = 10
+	bomb = 25
+	acid = 45
 
 //Flannels
 /obj/item/clothing/suit/toggle/jacket/flannel

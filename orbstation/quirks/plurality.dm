@@ -32,7 +32,7 @@
 	icon = 'orbstation/icons/obj/misc.dmi'
 	icon_state = "plural_chip_1"
 	w_class = WEIGHT_CLASS_TINY
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 100)
+	armor_type = /datum/armor/plural_system_chip
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	req_access = list(ACCESS_HOP)
 
@@ -319,3 +319,7 @@
 	desc = "Contains a single plural system chip. The chip must be swiped by an ID card with Head of Personnel access to be unlocked and configured."
 	cost = PAYCHECK_CREW * 4
 	contains = list(/obj/item/plural_system_chip)
+
+/datum/armor/plural_system_chip
+	fire = 100
+	acid = 100

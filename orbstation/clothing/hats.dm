@@ -6,12 +6,22 @@
 	worn_icon = 'orbstation/icons/obj/helmet.dmi'
 	icon_state = "hamhelmeticon"
 	worn_icon_state = "hamhelmetworn"
-	armor = list(MELEE = 25, BULLET = 15, LASER = 35,ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
+	armor_type = list(MELEE = 25, BULLET = 15, LASER = 35,ENERGY = 35, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10)
 	flags_cover = NONE
 	flags_inv = HIDEHAIR
 	clothing_flags = SNUG_FIT | PLASMAMAN_HELMET_EXEMPT | PLASMAMAN_PREVENT_IGNITION
 
 	dog_fashion = /datum/dog_fashion/head/hamhelmet
+
+/datum/armor/ham_helmet
+	melee = 25
+	bullet = 15
+	laser = 15
+	energy = 35
+	bomb = 25
+	fire = 50
+	acid  = 50
+	wound = 10
 
 /obj/item/paper/guides/hamhelmet
 	name = "paper- 'Ham Helmet Warranty'"
