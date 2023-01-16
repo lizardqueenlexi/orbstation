@@ -19,3 +19,44 @@
 
 /datum/preference/text/short/deserialize(input, datum/preferences/preferences)
 	return STRIP_HTML_SIMPLE(input, MAX_SHORT_FLAVOR_LEN)
+
+
+/// Preferences for prosthetic limbs
+
+/datum/preference/choiced/limb
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+
+/datum/preference/choiced/limb/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+	return "Prosthetics" in preferences.all_quirks
+
+//this is a little messy... might be cleaner if i do arm/L arm/R leg/L leg/R instead and inherit from /arm and /leg?
+
+/datum/preference/choiced/limb/apply_to_human(mob/living/carbon/human/target, value)
+	return
+
+/datum/preference/choiced/limb/armL
+	savefile_key = "prosthetic_armL"
+
+/datum/preference/choiced/limb/armL/init_possible_values()
+	return GLOB.prosthetics_arm
+
+/datum/preference/choiced/limb/armR
+	savefile_key = "prosthetic_armR"
+
+/datum/preference/choiced/limb/armR/init_possible_values()
+	return GLOB.prosthetics_arm
+
+/datum/preference/choiced/limb/legL
+	savefile_key = "prosthetic_legL"
+
+/datum/preference/choiced/limb/legL/init_possible_values()
+	return GLOB.prosthetics_leg
+
+/datum/preference/choiced/limb/legR
+	savefile_key = "prosthetic_legR"
+
+/datum/preference/choiced/limb/legR/init_possible_values()
+	return GLOB.prosthetics_leg
