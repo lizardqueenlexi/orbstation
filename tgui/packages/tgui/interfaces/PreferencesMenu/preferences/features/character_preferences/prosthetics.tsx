@@ -1,21 +1,21 @@
 import { FeatureChoiced, FeatureDropdownInput } from '../base';
 
 export const prosthetic_armL: FeatureChoiced = {
-  name: 'Prosthetic: Left Arm',
+  name: 'Limb: Left Arm',
   component: FeatureDropdownInput,
 };
 
 export const prosthetic_armR: FeatureChoiced = {
-  name: 'Prosthetic: Right Arm',
+  name: 'Limb: Right Arm',
   component: FeatureDropdownInput,
 };
 
 export const prosthetic_legL: FeatureChoiced = {
-  name: 'Prosthetic: Left Leg',
+  name: 'Limb: Left Leg',
   component: FeatureDropdownInput,
 };
 
 export const prosthetic_legR: FeatureChoiced = {
-  name: 'Prosthetic: Right Leg',
+  name: 'Limb: Right Leg',
   component: FeatureDropdownInput,
 };
