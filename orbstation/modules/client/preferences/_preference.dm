@@ -21,7 +21,7 @@
 	return STRIP_HTML_SIMPLE(input, MAX_SHORT_FLAVOR_LEN)
 
 
-/// Preferences for prosthetic limbs
+/// Preferences for prosthetic limbs testing
 
 /datum/preference/choiced/limb
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -32,31 +32,32 @@
 		return FALSE
 	return "Prosthetics" in preferences.all_quirks
 
-//this is a little messy... might be cleaner if i do arm/L arm/R leg/L leg/R instead and inherit from /arm and /leg?
-
 /datum/preference/choiced/limb/apply_to_human(mob/living/carbon/human/target, value)
 	return
 
-/datum/preference/choiced/limb/armL
+/datum/preference/choiced/limb/arm/init_possible_values()
+	return list(
+		"normal",
+		"robotic",
+		"surplus"
+	)
+
+/datum/preference/choiced/limb/arm/L
 	savefile_key = "prosthetic_armL"
 
-/datum/preference/choiced/limb/armL/init_possible_values()
-	return GLOB.prosthetics_arm
-
-/datum/preference/choiced/limb/armR
+/datum/preference/choiced/limb/arm/R
 	savefile_key = "prosthetic_armR"
 
-/datum/preference/choiced/limb/armR/init_possible_values()
-	return GLOB.prosthetics_arm
+/datum/preference/choiced/limb/leg/init_possible_values()
+	return list(
+		"normal",
+		"robotic",
+		"surplus",
+		"digitigrade"
+	)
 
-/datum/preference/choiced/limb/legL
+/datum/preference/choiced/limb/leg/L
 	savefile_key = "prosthetic_legL"
 
-/datum/preference/choiced/limb/legL/init_possible_values()
-	return GLOB.prosthetics_leg
-
-/datum/preference/choiced/limb/legR
+/datum/preference/choiced/limb/leg/R
 	savefile_key = "prosthetic_legR"
-
-/datum/preference/choiced/limb/legR/init_possible_values()
-	return GLOB.prosthetics_leg
