@@ -19,3 +19,45 @@
 
 /datum/preference/text/short/deserialize(input, datum/preferences/preferences)
 	return STRIP_HTML_SIMPLE(input, MAX_SHORT_FLAVOR_LEN)
+
+
+/// Preferences for prosthetic limbs testing
+
+/datum/preference/choiced/limb
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+
+/datum/preference/choiced/limb/is_accessible(datum/preferences/preferences)
+	if (!..(preferences))
+		return FALSE
+	return "Prosthetics" in preferences.all_quirks
+
+/datum/preference/choiced/limb/apply_to_human(mob/living/carbon/human/target, value)
+	return
+
+/datum/preference/choiced/limb/arm/init_possible_values()
+	return list(
+		"normal",
+		"robotic",
+		"surplus"
+	)
+
+/datum/preference/choiced/limb/arm/L
+	savefile_key = "prosthetic_armL"
+
+/datum/preference/choiced/limb/arm/R
+	savefile_key = "prosthetic_armR"
+
+/datum/preference/choiced/limb/leg/init_possible_values()
+	return list(
+		"normal",
+		"robotic",
+		"surplus",
+		"digitigrade"
+	)
+
+/datum/preference/choiced/limb/leg/L
+	savefile_key = "prosthetic_legL"
+
+/datum/preference/choiced/limb/leg/R
+	savefile_key = "prosthetic_legR"
