@@ -528,6 +528,8 @@
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 30)
 	build_path = /obj/item/organ/external/wings/moth
 	category = list(SPECIES_MOTH)
+	research_icon = 'icons/mob/species/moth/moth_wings.dmi'
+	research_icon_state = "m_moth_wings_monarch_BEHIND"
 
 /// Disks
 
