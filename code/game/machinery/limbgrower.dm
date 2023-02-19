@@ -21,7 +21,7 @@
 	/// Our internal techweb for limbgrower designs.
 	var/datum/techweb/autounlocking/stored_research
 	/// All the categories of organs we can print.
-	var/list/categories = list(SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_OTHER, RND_CATEGORY_LIMBS_DIGITIGRADE)
+	var/list/categories = list(SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, SPECIES_RATFOLK, SPECIES_JELLYPERSON, SPECIES_PODPERSON, RND_CATEGORY_LIMBS_OTHER, RND_CATEGORY_LIMBS_DIGITIGRADE) //ORBSTATION EDIT
 	///Designs imported from technology disks that we can print.
 	var/list/imported_designs = list()
 
@@ -234,6 +234,10 @@
 	limb.name = "\improper synthetic [selected_category] [limb.plaintext_zone]"
 	limb.limb_id = selected_category
 	limb.species_color = "#62A262"
+	//BEGIN ORBSTATION ADDITION
+	if(istype(limb, /obj/item/bodypart/head/lizard) || istype(limb, /obj/item/bodypart/head/ratfolk))
+		attach_snout(limb)
+	//END ORBSTATION ADDITION
 	limb.update_icon_dropped()
 
 ///Returns a valid limb typepath based on the selected option
