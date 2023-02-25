@@ -2326,14 +2326,14 @@
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "aSa" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Power Access Hatch"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Maintenance Hatch"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore/greater)
 "aSh" = (
@@ -6429,9 +6429,9 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Ordnance Lab Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/science/ordnance_storage,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science)
 "cCx" = (
@@ -9994,10 +9994,10 @@
 /turf/open/floor/stone,
 /area/station/security/execution/education)
 "dYf" = (
-/obj/machinery/computer/records/medical{
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/machinery/computer/records/security{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/medical)
 "dYj" = (
@@ -21156,6 +21156,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/aft)
 "iHV" = (
@@ -24273,8 +24274,8 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Genetics Lab Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
 /obj/machinery/duct,
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science)
 "jZy" = (
@@ -32621,12 +32622,12 @@
 /obj/machinery/door/airlock/medical{
 	name = "Psychology"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/medical/psychology,
 /turf/open/floor/wood/parquet,
 /area/station/medical/psychology)
 "noO" = (
@@ -38520,13 +38521,13 @@
 /turf/open/floor/carpet/cyan,
 /area/station/commons/storage/emergency)
 "pLa" = (
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Maintenance Hatch"
 	},
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/central)
 "pLb" = (
