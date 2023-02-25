@@ -107,13 +107,6 @@
 	dir = 1
 	},
 /area/station/commons/storage/art)
-"acK" = (
-/obj/machinery/power/terminal{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/plating/reinforced,
-/area/station/ai_monitored/turret_protected/aisat_interior)
 "acP" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -5670,6 +5663,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/station/hallway/primary/central/fore)
+"cpC" = (
+/obj/effect/turf_decal/tile/yellow/opposingcorners,
+/obj/structure/cable,
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/engineering/gravity_generator)
 "cpN" = (
 /obj/structure/flora/grass/jungle/a/style_random,
 /turf/open/misc/beach/coastline_b,
@@ -9249,15 +9250,6 @@
 /obj/structure/holosign/barrier/atmos/tram,
 /turf/open/water/jungle/biodome,
 /area/station/biodome)
-"dIL" = (
-/obj/structure/cable,
-/obj/machinery/light/directional/south,
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow/opposingcorners,
-/turf/open/floor/iron,
-/area/station/engineering/gravity_generator)
 "dIN" = (
 /turf/open/misc/asteroid,
 /area/station/maintenance/port/central)
@@ -14447,6 +14439,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore/greater)
+"fPC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/yellow/opposingcorners,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/gravity_generator)
 "fPM" = (
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
@@ -21447,7 +21446,7 @@
 /obj/structure/window/reinforced/spawner/north,
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/cable,
-/turf/open/floor/iron/dark,
+/turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "iPI" = (
 /turf/closed/wall/r_wall/fakewood{
@@ -24906,7 +24905,8 @@
 	},
 /obj/structure/window/reinforced/spawner/north,
 /obj/structure/window/reinforced/spawner/west,
-/turf/open/floor/iron/dark,
+/obj/structure/cable/multilayer/multiz,
+/turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "klJ" = (
 /obj/machinery/door/airlock/hatch{
@@ -26074,6 +26074,14 @@
 "kIN" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos/pumproom)
+"kIR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow/opposingcorners,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/gravity_generator)
 "kIT" = (
 /obj/item/binoculars,
 /turf/open/floor/plating,
@@ -29778,7 +29786,7 @@
 	id = "AI";
 	pixel_x = 20
 	},
-/obj/structure/cable/multilayer/multiz,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "mdD" = (
@@ -31058,7 +31066,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
-/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -33671,6 +33678,14 @@
 	},
 /turf/open/floor/plating/airless,
 /area/station/asteroid)
+"nKg" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "aicore";
+	name = "AI Core Solar Array"
+	},
+/turf/open/floor/iron/solarpanel/airless,
+/area/space/nearstation)
 "nKl" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box{
@@ -34840,7 +34855,6 @@
 /area/station/commons/toilet/auxiliary)
 "ogp" = (
 /obj/machinery/power/port_gen/pacman,
-/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -40143,8 +40157,8 @@
 	},
 /area/station/ai_monitored/command/nuke_storage)
 "qtq" = (
-/obj/structure/cable,
 /obj/item/kirbyplants/photosynthetic,
+/obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating/reinforced,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "qtw" = (
@@ -42742,11 +42756,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/small,
 /area/station/service/hydroponics)
-"rsD" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/yellow/opposingcorners,
-/turf/open/floor/iron,
-/area/station/engineering/gravity_generator)
 "rsP" = (
 /obj/structure/chair/stool/directional/east,
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
@@ -46293,7 +46302,7 @@
 /turf/open/floor/wood,
 /area/station/command/bridge)
 "sSm" = (
-/obj/structure/cable/multilayer/multiz,
+/obj/structure/cable,
 /turf/open/floor/plating/reinforced,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "sSo" = (
@@ -51622,7 +51631,6 @@
 /turf/open/floor/wood,
 /area/station/security/brig)
 "vjl" = (
-/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /turf/open/floor/iron,
@@ -55530,6 +55538,12 @@
 /obj/effect/spawner/random/structure/girder,
 /turf/open/floor/plating,
 /area/station/maintenance/central/greater)
+"wLQ" = (
+/obj/machinery/porta_turret/ai{
+	dir = 4
+	},
+/turf/open/floor/glass/reinforced,
+/area/station/ai_monitored/turret_protected/aisat_interior)
 "wLS" = (
 /turf/closed/wall,
 /area/station/security/detectives_office)
@@ -58119,6 +58133,11 @@
 	},
 /turf/open/floor/plating,
 /area/station/biodome/aft)
+"xMJ" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/turf/open/floor/plating/reinforced,
+/area/station/ai_monitored/turret_protected/aisat_interior)
 "xMM" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 5
@@ -94780,7 +94799,7 @@ qmt
 vaW
 ljW
 mGW
-rVG
+fPC
 vjl
 jZC
 fhc
@@ -95036,9 +95055,9 @@ osi
 vUj
 yiJ
 lXp
-roy
+kIR
+cpC
 qXA
-rsD
 jZC
 rQm
 lEp
@@ -95295,7 +95314,7 @@ uGG
 lXp
 ogp
 mAi
-dIL
+iWM
 jZC
 dTP
 dTP
@@ -144525,7 +144544,7 @@ hHc
 hHc
 xuo
 xuo
-jWY
+wLQ
 jWY
 jWY
 cWi
@@ -144533,7 +144552,7 @@ cWi
 wof
 jWY
 jWY
-jWY
+wLQ
 xuo
 xuo
 wfW
@@ -145300,7 +145319,7 @@ bsp
 gdV
 jCg
 qtq
-acK
+kIy
 hFj
 xKr
 cWi
@@ -145557,16 +145576,16 @@ lHJ
 kIy
 kIy
 sSm
+xMJ
 lWa
-kIy
 xKr
 cWi
 cWi
 xuo
 xuo
 naC
-jcM
 kiH
+nKg
 jcM
 kiH
 rQD
@@ -146581,7 +146600,7 @@ hHc
 hHc
 xuo
 xuo
-jWY
+wLQ
 jWY
 jWY
 cWi
@@ -146589,7 +146608,7 @@ cWi
 sQx
 jWY
 jWY
-jWY
+wLQ
 xuo
 xuo
 wfW
@@ -174170,7 +174189,7 @@ bPb
 bkh
 inr
 huc
-eZB
+jWb
 eTE
 ptu
 xdw
