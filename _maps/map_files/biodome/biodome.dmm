@@ -1708,7 +1708,6 @@
 	pixel_y = 5
 	},
 /obj/effect/spawner/random/bureaucracy/briefcase,
-/obj/item/radio/intercom/directional/north,
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "aFY" = (
@@ -4920,7 +4919,6 @@
 /area/station/security/prison/visit)
 "bXq" = (
 /obj/machinery/photocopier,
-/obj/machinery/firealarm/directional/east,
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "bXu" = (
@@ -5368,6 +5366,7 @@
 	dir = 1
 	},
 /obj/machinery/newscaster/directional/east,
+/obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "chf" = (
@@ -13035,7 +13034,7 @@
 /turf/open/floor/iron/dark/smooth_half,
 /area/station/security/office)
 "fhB" = (
-/obj/machinery/light/directional/south,
+/obj/machinery/light/directional/north,
 /turf/open/floor/stone,
 /area/station/hallway/primary/starboard)
 "fhG" = (
@@ -16478,6 +16477,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"gAn" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "lawshutter";
+	name = "Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/station/service/lawoffice)
 "gAv" = (
 /obj/effect/spawner/random/trash/caution_sign,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -23572,7 +23579,7 @@
 	dir = 1
 	},
 /obj/machinery/button/door/directional/south{
-	id = "kanyewest";
+	id = "detectiveshutter";
 	name = "Privacy Shutters";
 	pixel_x = 6
 	},
@@ -33174,7 +33181,7 @@
 "npY" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "kanyewest";
+	id = "detectiveshutter";
 	name = "Privacy Shutters"
 	},
 /turf/open/floor/plating,
@@ -46675,6 +46682,7 @@
 	dir = 1
 	},
 /obj/machinery/newscaster/directional/west,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "sNN" = (
@@ -54746,7 +54754,6 @@
 /area/station/hallway/primary/central/aft)
 "wiX" = (
 /obj/machinery/vending/wardrobe/law_wardrobe,
-/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "wjb" = (
@@ -57711,6 +57718,11 @@
 	c_tag = "Civilian - Law Office"
 	},
 /obj/item/radio/intercom/directional/south,
+/obj/machinery/button/door/directional/south{
+	id = "lawshutter";
+	name = "Privacy Shutters";
+	pixel_y = -36
+	},
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "xoW" = (
@@ -106891,7 +106903,7 @@ gXL
 gXL
 brl
 gXA
-kbW
+gAn
 wiX
 rdu
 oCW
@@ -107405,7 +107417,7 @@ wlS
 lwc
 kPb
 fhB
-kbW
+gAn
 aFS
 oUB
 fGx
