@@ -5226,6 +5226,11 @@
 /area/station/hallway/secondary/entry)
 "ceH" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "qmprivacy";
+	name = "Privacy Shutters";
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/qm)
 "ceK" = (
@@ -50287,6 +50292,12 @@
 /area/station/service/bar)
 "ulB" = (
 /obj/machinery/pdapainter/supply,
+/obj/machinery/button/door/directional/west{
+	id = "qmprivacy";
+	name = "Privacy Shutters Control";
+	req_access = list("qm");
+	pixel_y = 5
+	},
 /turf/open/floor/bamboo,
 /area/station/command/heads_quarters/qm)
 "ulI" = (
@@ -50962,6 +50973,15 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/station/biodome/fore)
+"uAt" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "qmprivacy";
+	name = "Privacy Shutters";
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/station/command/heads_quarters/qm)
 "uAA" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -171289,7 +171309,7 @@ oBY
 tYY
 cMq
 mBS
-ceH
+uAt
 mJF
 pux
 vJC
@@ -171803,7 +171823,7 @@ caG
 lOb
 lOb
 jMV
-ceH
+uAt
 gZC
 iLw
 bEO
