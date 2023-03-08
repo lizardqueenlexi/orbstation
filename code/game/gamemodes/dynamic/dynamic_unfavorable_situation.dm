@@ -66,6 +66,7 @@
 		/datum/round_event_control/immovable_rod,
 		/datum/round_event_control/meteor_wave,
 		/datum/round_event_control/portal_storm_syndicate,
+		/datum/round_event_control/operative, //ORBSTATION ADDITION
 	)
 	var/list/picked_events = list()
 	for(var/type in unfavorable_random_events)
