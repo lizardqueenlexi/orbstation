@@ -48,13 +48,13 @@
 	var/list/seen_atoms = view(7, owner)
 	if(LAZYLEN(trigger_objs))
 		for(var/obj/O in seen_atoms)
-			if(is_type_in_typecache(O, trigger_objs) || (phobia_type == "blood" && GET_ATOM_BLOOD_DNA_LENGTH(O)))
+			if(valid_atom(O)) // ORBSTATION: filter out some items based on state
 				freak_out(O)
 				return
 		for(var/mob/living/carbon/human/HU in seen_atoms) //check equipment for trigger items
 			for(var/X in HU.get_all_worn_items() | HU.held_items)
 				var/obj/I = X
-				if(!QDELETED(I) && (is_type_in_typecache(I, trigger_objs) || (phobia_type == "blood" && GET_ATOM_BLOOD_DNA_LENGTH(I))))
+				if(!QDELETED(I) && valid_atom(I)) // ORBSTATION: filter out some items based on state
 					freak_out(I)
 					return
 
@@ -76,6 +76,10 @@
 				if(LAZYLEN(trigger_species) && H.dna && H.dna.species && is_type_in_typecache(H.dna.species, trigger_species))
 					freak_out(H)
 					return
+
+/// ORBSTATION: returns true if an object triggers a phobia
+/datum/brain_trauma/mild/phobia/proc/valid_atom(atom/checked)
+	return is_type_in_typecache(checked, trigger_objs) || (phobia_type == "blood" && GET_ATOM_BLOOD_DNA_LENGTH(checked))
 
 /datum/brain_trauma/mild/phobia/handle_hearing(datum/source, list/hearing_args)
 	if(!owner.can_hear() || owner == hearing_args[HEARING_SPEAKER] || !owner.has_language(hearing_args[HEARING_LANGUAGE])) 	//words can't trigger you if you can't hear them *taps head*
