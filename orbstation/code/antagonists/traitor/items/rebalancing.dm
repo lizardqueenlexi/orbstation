@@ -29,16 +29,3 @@
 /datum/uplink_item/role_restricted/modified_syringe_gun
 	purchasable_from = NONE
 
-/datum/uplink_item/stealthy_tools/randomize
-	name = "Trigger Unfortunate Occurence"
-	desc = "When purchased, syndicate probabilty matrixes will cause a random event to occur on the station."
-	item = /obj/effect/gibspawner/generic
-	surplus = 0
-	cost = 1
-	progression_minimum = 10 MINUTES
-	restricted = TRUE
-	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
-
-/datum/uplink_item/stealthy_tools/randomize/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
-	SSevents.spawnEvent()
-	return source //For log icon
