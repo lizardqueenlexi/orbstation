@@ -22,3 +22,6 @@
 	icon_state = "brassa357"
 	caliber = CALIBER_357
 	projectile_type = null
+
+/obj/projectile/bullet/a357
+    damage = 45
