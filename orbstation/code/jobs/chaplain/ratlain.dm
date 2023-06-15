@@ -155,25 +155,30 @@
 
 /datum/religion_rites/ratclog/invoke_effect(mob/living/user, atom/movable/religious_tool)
 	..()
-	var/datum/round_event_control/scrubber_clog/rats/event = locate(/datum/round_event_control/scrubber_clog/rats) in SSevents.control
+	var/datum/round_event_control/vent_clog/rats/event = locate(/datum/round_event_control/vent_clog/rats) in SSevents.control
 	if(event.run_event())
 		to_chat(user, span_notice("You hear a distant scratching and scuttling."))
 		return TRUE
 	to_chat(user, span_notice("It appears that no more rats are forthcoming."))
 	return FALSE
 
-/datum/round_event_control/scrubber_clog/rats
+/datum/round_event_control/vent_clog/rats
 	name = "Rat Clog"
-	typepath = /datum/round_event/scrubber_clog/rats
+	typepath = /datum/round_event/vent_clog/rats
 	weight = 0
 	max_occurrences = 0
 
-/datum/round_event/scrubber_clog/rats/setup()
+/datum/round_event/vent_clog/rats/setup()
 	. = ..()
-	maximum_spawns = rand(2,4)
+	maximum_spawns = rand(3,5)
 	spawn_delay = rand(15,20)
+	filth_spawn_types = list(
+		/obj/effect/decal/cleanable/fuel_pool,
+		/obj/effect/decal/cleanable/vomit,
+		/obj/item/food/cheese/wedge, //it's not a decal but it IS funny
+	)
 
-/datum/round_event/scrubber_clog/rats/get_mob()
+/datum/round_event/vent_clog/rats/get_mob()
 	var/static/list/mob_list = list(
 		/mob/living/basic/mouse,
 		/mob/living/basic/mouse,
@@ -182,8 +187,8 @@
 	)
 	return pick(mob_list)
 
-/datum/round_event/scrubber_clog/rats/announce()
-	priority_announce("Rodent population explosion detected in the ventilation network. Blockage is believed to be in the [get_area_name(scrubber)] area.", "Infestation Alert")
+/datum/round_event/vent_clog/rats/announce()
+	priority_announce("Rodent population explosion detected in the ventilation network. Blockage is believed to be in the [get_area_name(vent)] area.", "Infestation Alert")
 
 /// A rite which befriends a rat or mouse, if it doesn't already have an owner
 /datum/religion_rites/pied_piper
