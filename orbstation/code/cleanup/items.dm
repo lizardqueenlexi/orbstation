@@ -127,3 +127,9 @@
 /obj/item/clothing/shoes/discoshoes
 	name = "green snakeskin shoes"
 	desc = "They may have lost some of their lustre over the years, but these green snakeskin shoes fit you perfectly."
+
+//wow pepe the frog jokes blow
+/obj/item/clothing/mask/animal/frog
+	desc = "An ancient mask carved in the shape of a frog."
+	animal_sounds = list("Ribbit!!", "Croak!!","R-ribbit!!","Kero-Kero!!")
+	animal_sounds_alt = list("Hello my baby, hello my honey, hello my rag-time gal.")
