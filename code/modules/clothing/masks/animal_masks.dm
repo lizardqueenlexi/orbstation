@@ -117,15 +117,15 @@ GLOBAL_LIST_INIT(cursed_animal_masks, list(
 /obj/item/clothing/mask/animal/pig/cursed
 	cursed = TRUE
 
-///frog mask - ORB CHANGE
+///frog mask - reeee!!
 /obj/item/clothing/mask/animal/frog
 	name = "frog mask"
-	desc = "An ancient mask carved in the shape of a frog."
+	desc = "An ancient mask carved in the shape of a frog.<br> Sanity is like gravity, all it needs is a push."
 	icon_state = "frog"
 	inhand_icon_state = null
-	animal_sounds = list("Ribbit!!", "Croak!!","R-ribbit!!","Kero-Kero!!")
+	animal_sounds = list("Ree!!", "Reee!!","REEE!!","REEEEE!!")
 	animal_sounds_alt_probability = 5
-	animal_sounds_alt = list("Hello my baby, hello my honey, hello my rag-time gal.")
+	animal_sounds_alt = list("HUUUUU!!","SMOOOOOKIN'!!","Hello my baby, hello my honey, hello my rag-time gal.", "Feels bad, man.", "GIT DIS GUY OFF ME!!" ,"SOMEBODY STOP ME!!", "NORMIES, GET OUT!!")
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 
 /obj/item/clothing/mask/animal/frog/cursed

@@ -25,7 +25,7 @@
 	response_harm_simple = "splat"
 	density = FALSE
 	faction = list(FACTION_HOSTILE, FACTION_MAINT_CREATURES)
-	attack_sound = 'sound/creatures/ribbit.ogg'//ORB CHANGE
+	attack_sound = 'sound/effects/reee.ogg'
 	butcher_results = list(/obj/item/food/nugget = 1)
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
@@ -39,7 +39,7 @@
 
 	ai_controller = /datum/ai_controller/basic_controller/frog
 
-	var/stepped_sound = 'sound/creatures/ribbit.ogg'//ORB CHANGE
+	var/stepped_sound = 'sound/effects/huuu.ogg'
 	///How much of a reagent the mob injects on attack
 	var/poison_per_bite = 3
 	///What reagent the mob injects targets with
