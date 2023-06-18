@@ -207,7 +207,8 @@
 	// We've either added or removed TRAIT_NIGHT_VISION before calling this proc. Just refresh the eyes.
 	eyes.refresh()
 
-/datum/quirk/bilingual
+//ORBSTATION REMOVAL - redunant with Linguistic quirk
+/* /datum/quirk/bilingual
 	name = "Bilingual"
 	desc = "Over the years you've picked up an extra language!"
 	icon = FA_ICON_GLOBE
@@ -245,7 +246,8 @@
 
 /datum/quirk/bilingual/remove()
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	human_holder.remove_language(extra_language)
+	human_holder.remove_language(extra_language) */
+//ORBSTATION REMOVAL END
 
 /datum/quirk/item_quirk/poster_boy
 	name = "Poster Boy"
