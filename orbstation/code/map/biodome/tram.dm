@@ -7,6 +7,9 @@
 	specific_lift_id = TRAM_BOAT
 
 /obj/machinery/computer/tram_controls/boat
+	name = "Please Boat Controls"
+	icon = 'orbstation/icons/obj/computer.dmi'
+	icon_screen = "tram_Aft Boat Dock_idle"
 	specific_lift_id = TRAM_BOAT
 
 /obj/effect/landmark/tram/boat/fore
