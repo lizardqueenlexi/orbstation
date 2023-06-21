@@ -5,3 +5,7 @@
 
 /mob/living/simple_animal/hostile/skeleton/templar
 	speak_chance = 0 //they spout some fascist shit. now they don't.
+
+/mob/living/basic/frog
+	attack_sound = 'sound/creatures/ribbit.ogg'
+	stepped_sound = 'sound/creatures/ribbit.ogg'
