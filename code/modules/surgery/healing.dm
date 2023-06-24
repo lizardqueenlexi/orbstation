@@ -84,6 +84,8 @@
 	var/target_msg = "[user] fixes some of [target]'s wounds" //see above
 	var/brute_healed = brutehealing
 	var/burn_healed = burnhealing
+	var/dead_patient = (target.stat == DEAD)
+
 	//ORBSTATION REMOVAL: death no longer affects healing speed
 	//Instead, damage amounts higher than 200 are healed as if they were 200
 	brute_healed += round((min(target.getBruteLoss(), 200) * brute_multiplier),0.1)
@@ -96,6 +98,10 @@
 	target.heal_bodypart_damage(brute_healed,burn_healed)
 
 	user_msg += get_progress(user, target, brute_healed, burn_healed)
+
+	if(HAS_TRAIT(user, TRAIT_MORBID) && ishuman(user) && !dead_patient) //Morbid folk don't care about tending the dead as much as tending the living
+		var/mob/living/carbon/human/morbid_weirdo = user
+		morbid_weirdo.add_mood_event("morbid_tend_wounds", /datum/mood_event/morbid_tend_wounds)
 
 	display_results(
 		user,

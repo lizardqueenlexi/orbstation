@@ -5,7 +5,6 @@
 	id = SPECIES_PODPERSON
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
 		POD_BLOOD,
 	)
 	inherent_traits = list(
@@ -17,7 +16,6 @@
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
 	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)
 
-	burnmod = 1.25
 	heatmod = 1.5
 	payday_modifier = 0.75
 	meat = /obj/item/food/meat/slab/human/mutant/plant
