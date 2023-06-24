@@ -787,16 +787,16 @@ GLOBAL_LIST_EMPTY(features_by_species)
 							inner_accessory_overlay.color = fixed_mut_color
 						else
 							inner_accessory_overlay.color = source.dna.features["mcolor"]
-					if(HAIR)
+					if(HEAD_HAIR)
 						if(hair_color == "mutcolor")
 							inner_accessory_overlay.color = source.dna.features["mcolor"]
 						else if(hair_color == "fixedmutcolor")
 							inner_accessory_overlay.color = fixed_mut_color
 						else
 							inner_accessory_overlay.color = source.hair_color
-					if(FACEHAIR)
+					if(HEAD_FACIAL_HAIR)
 						inner_accessory_overlay.color = source.facial_hair_color
-					if(EYECOLOR)
+					if(HEAD_EYECOLOR)
 						inner_accessory_overlay.color = source.eye_color_left
 
 				if(accessory.center)

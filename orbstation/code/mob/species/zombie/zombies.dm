@@ -1,10 +1,31 @@
 /datum/species/zombie/infectious
-	armor = 0 // let's not give zombies more armor for no reason
-	brutemod = 1.25 // zombies are weak to brute-force attacks
+	damage_modifier = 0 // upstream this is 20, which means you need 120 damage to KO a zombie, which kills it, we decreased it to 0
 
-/datum/species/zombie/infectious/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	if(HAIR in old_species.species_traits)
-		species_traits |= HAIR
-	if(FACEHAIR in old_species.species_traits)
-		species_traits |= FACEHAIR
-	return ..()
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/zombie/infectious,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/zombie/infectious,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/zombie/infectious,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/zombie/infectious,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/zombie/infectious,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/zombie/infectious
+	)
+
+	var/old_hair_head_flags = NONE
+
+/obj/item/bodypart/head/zombie/infectious
+	brute_modifier = 1.25 // romerol zombies are weak to brute-force attacks
+
+/obj/item/bodypart/chest/zombie/infectious
+	brute_modifier = 1.25 // romerol zombies are weak to brute-force attacks
+
+/obj/item/bodypart/arm/left/zombie/infectious
+	brute_modifier = 1.25 // romerol zombies are weak to brute-force attacks
+
+/obj/item/bodypart/arm/right/zombie/infectious
+	brute_modifier = 1.25 // romerol zombies are weak to brute-force attacks
+
+/obj/item/bodypart/leg/left/zombie/infectious
+	brute_modifier = 1.25 // romerol zombies are weak to brute-force attacks
+
+/obj/item/bodypart/leg/right/zombie/infectious
+	brute_modifier = 1.25 // romerol zombies are weak to brute-force attacks

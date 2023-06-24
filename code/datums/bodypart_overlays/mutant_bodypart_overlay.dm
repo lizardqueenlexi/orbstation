@@ -106,7 +106,7 @@
 			draw_color = override_color(ownerlimb.draw_color)
 		if(ORGAN_COLOR_INHERIT)
 			//BEGIN ORBSTATION EDIT
-			if(sprite_datum.color_src == FACEHAIR) //Re-enabling colored snouts, mostly
+			if(sprite_datum.color_src == HEAD_FACIAL_HAIR) //Re-enabling colored snouts, mostly
 				if(!ishuman(ownerlimb.owner))
 					return
 				var/mob/living/carbon/human/human_owner = ownerlimb.owner
