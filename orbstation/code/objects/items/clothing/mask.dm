@@ -6,6 +6,7 @@
 // Make the toy mouse wearable
 /obj/item/toy/cattoy
 	worn_icon = 'orbstation/icons/obj/items/clothing/masks_worn.dmi'
+	worn_icon_state = "toy_mouse"
 	desc = "A colorful toy mouse! Cats and felinids love them! Maybe they're on to something."
 	slot_flags = ITEM_SLOT_MASK
 
