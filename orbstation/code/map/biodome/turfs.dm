@@ -4,6 +4,7 @@
 
 /turf/open/water/jungle/biodome
 	name="Biodome Lake"
+	baseturfs = /turf/open/misc/asteroid
 
 /turf/open/water/jungle/biodome/Initialize(mapload)
 	. = ..()
@@ -52,3 +53,35 @@
 
 /turf/open/floor/wood/stairs/right
 	icon_state = "woodstairs_right"
+
+
+/turf/open/misc/dirt/jungle/dark/biodome
+	baseturfs = /turf/open/misc/asteroid
+
+/turf/open/misc/dirt/jungle/wasteland/biodome
+	baseturfs = /turf/open/misc/asteroid
+
+/turf/open/floor/fake_dirt
+	desc = "Upon closer examination, it's still astrodirt."
+	icon_state = "dirt"
+	base_icon_state = "dirt"
+	footstep = FOOTSTEP_SAND
+	barefootstep = FOOTSTEP_SAND
+	clawfootstep = FOOTSTEP_SAND
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+/turf/open/floor/fake_dirt/dark
+	icon_state = "greenerdirt"
+	base_icon_state = "greenerdirt"
+
+/turf/open/floor/fake_dirt/wasteland
+	name = "cracked earth"
+	desc = "Looks a bit dry. And fake."
+	icon_state = "wasteland"
+	base_icon_state = "wasteland"
+	var/floor_variance = 15
+
+/turf/open/misc/dirt/jungle/wasteland/Initialize(mapload)
+	.=..()
+	if(prob(floor_variance))
+		icon_state = "[initial(icon_state)][rand(0,12)]"
