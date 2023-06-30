@@ -1,10 +1,6 @@
-/datum/species/lizard
-	species_traits = list(
-		MUTCOLORS,
-		EYECOLOR,
-		LIPS,
-		HAIR
-	)
+///override to give hair to our lizards
+/obj/item/bodypart/head/lizard
+	head_flags = HEAD_HAIR|HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
 
 /datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
 	..()

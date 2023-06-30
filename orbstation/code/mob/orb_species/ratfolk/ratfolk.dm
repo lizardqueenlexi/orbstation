@@ -3,9 +3,6 @@
 	plural_form = "Ratfolk"
 	id = SPECIES_RATFOLK
 	species_traits = list(
-		EYECOLOR,
-		HAIR,
-		LIPS,
 		MUTCOLORS,
 	)
 	inherent_traits = list(
@@ -27,7 +24,6 @@
 	disliked_food = CLOTH | BUGS
 
 	siemens_coeff = 0.75 // slightly resistant to shocks, but not as much as Ethereals
-	brutemod = 1.3 // more vulnerable to brute damage than humans
 
 	external_organs = list(
 		/obj/item/organ/external/snout_rat = "Round",

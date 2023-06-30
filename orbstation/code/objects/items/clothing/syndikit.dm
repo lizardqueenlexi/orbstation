@@ -31,7 +31,7 @@
 	desc = "A non-descript and slightly suspicious pair of tactical overalls , this particular pair seems to be reinforced to protect against intense flames"
 	icon_state = "syndicate_overalls"
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/under_syndicate
+	armor_type = /datum/armor/clothing_under/under_syndicate
 	resistance_flags = FIRE_PROOF
 	alt_covers_chest = TRUE
 	icon = 'orbstation/icons/obj/items/clothing/orb_syndicate.dmi'

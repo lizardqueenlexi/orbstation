@@ -5,7 +5,6 @@
 	id = SPECIES_PODPERSON
 	species_traits = list(
 		MUTCOLORS,
-		EYECOLOR,
 		POD_BLOOD,
 	)
 	inherent_traits = list(
@@ -16,8 +15,8 @@
 	)
 	inherent_biotypes = MOB_ORGANIC | MOB_HUMANOID | MOB_PLANT
 	inherent_factions = list(FACTION_PLANTS, FACTION_VINES)
+	var/heal_in_light = FALSE // ORBSTATION EDIT: the new sprout subtype heals light
 
-	burnmod = 1.25
 	heatmod = 1.5
 	payday_modifier = 0.75
 	meat = /obj/item/food/meat/slab/human/mutant/plant
@@ -50,6 +49,7 @@
 	return ..()
 
 /datum/species/pod/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
 	if(H.stat == DEAD)
 		return
 
@@ -58,25 +58,23 @@
 		var/turf/T = H.loc
 		light_amount = min(1, T.get_lumcount()) - 0.5
 		H.adjust_nutrition(5 * light_amount * seconds_per_tick)
-		if(light_amount > 0.2) //if there's enough light, call the healing proc
-			handle_light_healing(H, seconds_per_tick) ///ORBSTATION: new proc, created to differentiate between ancient and sprout podpeople
+		if(heal_in_light && light_amount > 0.2) //if there's enough light, call the healing proc ORBSTATION edit: also have to be ancient pod person
+			H.heal_overall_damage(brute = 0.5 * seconds_per_tick, burn = 0.5 * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC)
+			H.adjustToxLoss(-0.5 * seconds_per_tick)
+			H.adjustOxyLoss(-0.5 * seconds_per_tick)
 
 	if(H.nutrition > NUTRITION_LEVEL_ALMOST_FULL) //don't make podpeople fat because they stood in the sun for too long
 		H.set_nutrition(NUTRITION_LEVEL_ALMOST_FULL)
 
 	if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
 		H.take_overall_damage(brute = 1 * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC)
-	..()
 
-/datum/species/pod/proc/handle_light_healing(mob/living/carbon/human/H, seconds_per_tick)
-	return //regular podpeople don't heal from light
-
-/datum/species/pod/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
+/datum/species/pod/handle_chemical(datum/reagent/chem, mob/living/carbon/human/affected, seconds_per_tick, times_fired)
+	. = ..()
+	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
+		return
 	if(chem.type == /datum/reagent/toxin/plantbgone)
-		H.adjustToxLoss(3 * REM * seconds_per_tick)
-		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * seconds_per_tick)
-		return TRUE
-	return ..()
+		affected.adjustToxLoss(3 * REM * seconds_per_tick)
 
 /datum/species/pod/create_pref_unique_perks()
 	var/list/to_add = list()

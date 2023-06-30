@@ -30,11 +30,6 @@
 	platform_code = TRAM_BOAT_AFT
 	tgui_icons = list("Command" = "bullhorn")
 
-/obj/structure/sign/collision_counter/boat
-	name = "boating incident counter"
-	desc = "A display that indicates how many boat related incidents have occured today."
-	sign_change_name = "Indicator board- Boating incidents"
-
 /obj/machinery/button/tram/boat/fore
 	id = TRAM_BOAT_FORE
 	lift_id = TRAM_BOAT
