@@ -91,4 +91,13 @@
 /datum/movespeed_modifier/cheese_rush
 	multiplicative_slowdown = -0.3
 
+// TONGUE
+
+/obj/item/organ/internal/tongue/ratfolk
+	name = "ratfolk tongue"
+	desc = "If you look closely, you can see a fine layer of cheese dust. Or is that... brass?"
+	say_mod = "squeaks"
+	liked_foodtypes = FRUIT | NUTS | DAIRY
+	disliked_foodtypes = CLOTH | BUGS
+
 #undef CHEESE_RUSH_HUNGER_MODIFIER

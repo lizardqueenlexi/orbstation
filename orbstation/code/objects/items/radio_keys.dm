@@ -50,6 +50,8 @@
 
 // Goodie packs for each key
 
+// CURRENTLY DISABLED. I may add these back in later.
+/*
 /datum/supply_pack/goody/felinid_encryption_key
 	desc = "A hi-tech radio encryption key that allows the wearer to understand felimimetic when the radio is worn."
 	cost = PAYCHECK_CREW * 12
@@ -114,3 +116,4 @@
 		var/randomize_key = pick_weight(rng_key_list)
 		rng_key_list -= randomize_key
 		new randomize_key(new_crate)
+*/

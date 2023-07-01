@@ -3,7 +3,7 @@
 	desc = "A non-descript and slightly suspicious pair of tactical overalls, it comes in an aesthetically pleasing bloodred."
 	icon_state = "syndicate_overalls"
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/clothing_under/under_syndicate
+	armor_type = /datum/armor/clothing_under/syndicate
 	alt_covers_chest = TRUE
 	icon = 'orbstation/icons/obj/items/clothing/orb_syndicate.dmi'
 	worn_icon = 'orbstation/icons/obj/items/clothing/orb_syndicate_worn.dmi'
@@ -13,7 +13,7 @@
 	desc = "A non-descript and slightly suspicious pair of tactical overalls, it comes in an aesthetically pleasing bloodred."
 	icon_state = "syndicate_overallskirt"
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/clothing_under/under_syndicate
+	armor_type = /datum/armor/clothing_under/syndicate
 	alt_covers_chest = TRUE
 	icon = 'orbstation/icons/obj/items/clothing/orb_syndicate.dmi'
 	worn_icon = 'orbstation/icons/obj/items/clothing/orb_syndicate_worn.dmi'
@@ -23,7 +23,7 @@
 	desc = "A maid uniform designed for syndicate cleaners, the tag boasts that bloodstains will always come out."
 	icon_state = "syndimaid"
 	has_sensor = NO_SENSORS
-	armor_type = /datum/armor/clothing_under/under_syndicate
+	armor_type = /datum/armor/clothing_under/syndicate
 	alt_covers_chest = TRUE
 	icon = 'orbstation/icons/obj/items/clothing/orb_syndicate.dmi'
 	worn_icon = 'orbstation/icons/obj/items/clothing/orb_syndicate_worn.dmi'
