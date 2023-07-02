@@ -46,7 +46,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	main_feature_name = "Bloodtype"
-	relevant_species_trait = POD_BLOOD
+	relevant_inherent_trait = TRAIT_POD_BLOOD
 
 /datum/preference/choiced/pod_blood/create_default_value()
 	return "Juices" // The juices are a fun and unique thing we have! lets make them a character default

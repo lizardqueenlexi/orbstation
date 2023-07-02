@@ -1,6 +1,9 @@
-/datum/species/human/felinid
-	disliked_food = GROSS | CLOTH | CUCUMBER
-	liked_food = SEAFOOD | ORANGES | BUGS | GORE
+// Food taste overrides
+/obj/item/organ/internal/tongue/cat
+	disliked_foodtypes = GROSS | CLOTH | CUCUMBER
+
+/obj/item/organ/internal/tongue/moth
+	disliked_foodtypes = GROSS | BUGS | GORE
 
 // Implements cucumber food group
 /obj/item/food/grown/cucumber
@@ -26,6 +29,3 @@
 
 /obj/item/food/danish_hotdog
 	foodtypes = GRAIN | MEAT | VEGETABLES | CUCUMBER
-
-/datum/species/moth
-	disliked_food = GROSS | BUGS | GORE

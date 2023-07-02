@@ -1,5 +1,7 @@
 // A set of extra encryption keys for orbstation
 
+// CURRENTLY DISABLED. I may add these back in later.
+/*
 /obj/item/encryptionkey/felinid
 	name = "\improper Felimimetic translation key"
 	desc = "An encryption key that automatically encodes felimimetic heard through the radio into common. The signal's rather scratchy."
@@ -114,3 +116,4 @@
 		var/randomize_key = pick_weight(rng_key_list)
 		rng_key_list -= randomize_key
 		new randomize_key(new_crate)
+*/

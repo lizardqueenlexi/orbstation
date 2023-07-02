@@ -104,15 +104,15 @@
 	var/list/deliverable_food = list()
 	for (var/obj/item/food/foodpath as anything in ntgrub_foodlist)
 		var/food_types = initial(foodpath.foodtypes)
-		if(food_types & quirk_owner.dna.species.toxic_food)
+		if(food_types & quirk_owner.get_toxic_foodtypes())
 			continue
-		if(food_types & quirk_owner.dna.species.disliked_food)
+		if(food_types & quirk_owner.get_disliked_foodtypes())
 			continue
 		deliverable_food += foodpath
 	var/list/favorite_food = list()
 	for (var/obj/item/food/likedpath as anything in deliverable_food)
 		var/food_types = initial(likedpath.foodtypes)
-		if(food_types & quirk_owner.dna.species.liked_food)
+		if(food_types & quirk_owner.get_liked_foodtypes())
 			favorite_food += likedpath
 	if(length(favorite_food))
 		return favorite_food
