@@ -1,5 +1,7 @@
 // A set of extra encryption keys for orbstation
 
+// CURRENTLY DISABLED. I may add these back in later.
+/*
 /obj/item/encryptionkey/felinid
 	name = "\improper Felimimetic translation key"
 	desc = "An encryption key that automatically encodes felimimetic heard through the radio into common. The signal's rather scratchy."
@@ -50,8 +52,6 @@
 
 // Goodie packs for each key
 
-// CURRENTLY DISABLED. I may add these back in later.
-/*
 /datum/supply_pack/goody/felinid_encryption_key
 	desc = "A hi-tech radio encryption key that allows the wearer to understand felimimetic when the radio is worn."
 	cost = PAYCHECK_CREW * 12
