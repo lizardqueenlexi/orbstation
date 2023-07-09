@@ -2,12 +2,12 @@
 /proc/setup_language_list()
 	if(GLOB.all_languages.len)
 		return
-	for(var/datum/language/language_type as anything in subtypesof(/datum/language))
-		if(!initial(language_type.key))
+	for(var/datum/language/language as anything in subtypesof(/datum/language))
+		if(!initial(language.key))
 			continue
 
-		GLOB.all_languages += language_type
+		GLOB.all_languages += language
+		GLOB.language_types_by_name[initial(language.name)] = language
 
-		var/datum/language/instance = new language_type
-
-		GLOB.language_datum_instances[language_type] = instance
+		var/datum/language/instance = new language
+		GLOB.language_datum_instances[language] = instance
