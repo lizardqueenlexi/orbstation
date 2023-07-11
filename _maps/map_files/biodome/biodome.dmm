@@ -4852,6 +4852,9 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_medbay_lift"
+	},
 /turf/open/floor/plating,
 /area/station/medical/medbay/central)
 "bRA" = (
@@ -11661,6 +11664,9 @@
 	linked_elevator_id = "biodome_science_lift";
 	preset_destination_names = list("2"="Lower Research","3"="Upper Research")
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_science_lift"
+	},
 /turf/open/floor/plating,
 /area/station/science/research)
 "eyj" = (
@@ -16082,6 +16088,17 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
+"gfM" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_linked_id = "biodome_medbay_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
 "gfQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -19226,6 +19243,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
+"huR" = (
+/obj/machinery/door/window/elevator/left/directional/south,
+/turf/open/floor/plating/airless,
+/area/station/asteroid)
 "huZ" = (
 /obj/structure/closet/toolcloset,
 /obj/effect/turf_decal/siding/yellow{
@@ -19302,6 +19323,9 @@
 	preset_destination_names = list("2"="Warehouse Access","3"="Warehouse Upper Access")
 	},
 /obj/effect/spawner/random/structure/table,
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_warehouse_lift"
+	},
 /turf/open/openspace,
 /area/station/hallway/primary/central/fore)
 "hwS" = (
@@ -26723,6 +26747,9 @@
 	name = "Engineering's Lifts Control Panel";
 	preset_destination_names = list("2"="Engineering Access","3"="Storage Zone")
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_engie_lift"
+	},
 /turf/open/floor/iron/terracotta,
 /area/station/hallway/secondary/construction/engineering)
 "kvz" = (
@@ -27445,7 +27472,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/south{
 	elevator_linked_id = "biodome_medbay_lift";
 	elevator_mode = 1
 	},
@@ -38402,6 +38429,9 @@
 	name = "Captain's Lifts Control Panel";
 	preset_destination_names = list("2"="Quarters","3"="Bridge")
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_captain_lift"
+	},
 /turf/open/openspace,
 /area/station/command/heads_quarters/captain)
 "oPs" = (
@@ -47398,6 +47428,9 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_brig_lift"
+	},
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
 "soo" = (
@@ -49969,10 +50002,9 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/west{
 	elevator_linked_id = "biodome_brig_lift";
-	elevator_mode = 1;
-	dir = 8
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/dark/smooth_half,
 /area/station/security/brig)
@@ -51730,6 +51762,17 @@
 /obj/item/clothing/gloves/cargo_gauntlet,
 /turf/open/floor/wood/parquet,
 /area/station/cargo/storage)
+"tZn" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_linked_id = "biodome_medbay_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/plating,
+/area/station/medical/medbay/central)
 "tZv" = (
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/iron/dark/small,
@@ -55737,6 +55780,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/engine_smes)
+"vHu" = (
+/obj/effect/turf_decal/loading_area/red{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/west{
+	elevator_linked_id = "biodome_brig_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/security/brig)
 "vHx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
@@ -61429,10 +61483,9 @@
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /obj/effect/turf_decal/loading_area/red,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/right/directional/north{
 	elevator_linked_id = "biodome_brig_lift";
-	elevator_mode = 1;
-	dir = 1
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
@@ -62376,10 +62429,9 @@
 	},
 /obj/effect/turf_decal/loading_area/red,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/north{
 	elevator_linked_id = "biodome_brig_lift";
-	elevator_mode = 1;
-	dir = 1
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
@@ -62428,7 +62480,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/south{
 	elevator_linked_id = "biodome_medbay_lift";
 	elevator_mode = 1
 	},
@@ -86326,7 +86378,7 @@ tSJ
 wSI
 wSI
 tlP
-yfd
+tZn
 bRw
 agt
 oAe
@@ -105881,7 +105933,7 @@ mSo
 sxr
 kHf
 kHf
-tng
+vHu
 tng
 kHf
 jBl
@@ -151862,7 +151914,7 @@ oqe
 eQf
 kBw
 ebY
-kJA
+gfM
 bwV
 bwV
 jHc
@@ -174259,7 +174311,7 @@ eol
 eol
 eol
 eol
-kcg
+huR
 kcg
 kcg
 kcg
