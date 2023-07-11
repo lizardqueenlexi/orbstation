@@ -4,7 +4,7 @@
 	name = "Artificial Voice Box"
 	desc = "Your tongue and throat were damaged beyond repair in some past incident, and now you have a robotic voice box to replace them. \
 	Note that your robotic voice box cannot be removed."
-	icon = FA_ICON_ROBOT
+	icon = FA_ICON_WALKIE_TALKIE
 	value = 0 //the robot tongue is capable of speaking every language but does not actually grant them to you - so it doesn't do much
 
 /datum/quirk/robot_voice/add_unique()
