@@ -6,7 +6,7 @@
 
 /// Initializes GLOB.alcohol_containers, only containers that actually have reagents are added to the list.
 /proc/init_alcohol_containers()
-	var/list/containers = subtypesof(/obj/item/reagent_containers/cup/glass/bottle)
+	var/list/containers = subtypesof(/obj/item/reagent_containers/cup/glass/bottle) - /obj/item/reagent_containers/cup/glass/bottle/lizardwine  //ORBSTATION EDIT: don't spawn the lizard bottle
 	for(var/typepath in containers)
 		containers -= typepath
 		var/obj/item/reagent_containers/cup/glass/bottle/instance = new typepath
