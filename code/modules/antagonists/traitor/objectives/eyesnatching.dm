@@ -174,7 +174,7 @@
 		return ..()
 
 	var/eye_snatch_enthusiasm = 5 SECONDS
-	if(user.mind && HAS_TRAIT(user.mind, TRAIT_MORBID))
+	if(HAS_MIND_TRAIT(user, TRAIT_MORBID))
 		eye_snatch_enthusiasm *= 0.7
 	user.do_attack_animation(target, used_item = src)
 	target.visible_message(

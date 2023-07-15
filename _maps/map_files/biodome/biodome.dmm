@@ -4046,18 +4046,10 @@
 /area/station/command/heads_quarters/rd)
 "bAd" = (
 /obj/structure/rack,
-/obj/item/gun/energy/laser{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/effect/turf_decal/tile/red/half{
 	dir = 4
 	},
+/obj/effect/spawner/random/armory/laser_gun,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "bAp" = (
@@ -4859,6 +4851,9 @@
 /obj/effect/landmark/start/medical_doctor,
 /obj/structure/railing{
 	dir = 4
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_medbay_lift"
 	},
 /turf/open/floor/plating,
 /area/station/medical/medbay/central)
@@ -8070,12 +8065,10 @@
 /obj/machinery/camera/autoname/directional/west{
 	c_tag = "Command - Head of Personnel Office"
 	},
-/obj/item/storage/box/ids,
-/obj/item/storage/box/pdas{
-	pixel_x = 4;
-	pixel_y = 4
-	},
 /obj/structure/table/wood,
+/obj/item/storage/wallet/random{
+	pixel_x = 9
+	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
 "dbu" = (
@@ -11671,6 +11664,9 @@
 	linked_elevator_id = "biodome_science_lift";
 	preset_destination_names = list("2"="Lower Research","3"="Upper Research")
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_science_lift"
+	},
 /turf/open/floor/plating,
 /area/station/science/research)
 "eyj" = (
@@ -12784,34 +12780,10 @@
 /area/station/solars/starboard/fore)
 "eRm" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/riot,
-/obj/item/clothing/suit/armor/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/helmet/toggleable/riot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet/toggleable/riot,
-/obj/item/clothing/head/helmet/toggleable/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/shield/riot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/shield/riot,
-/obj/item/shield/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/effect/turf_decal/tile/red/half,
+/obj/effect/spawner/random/armory/riot_armor,
+/obj/effect/spawner/random/armory/riot_helmet,
+/obj/effect/spawner/random/armory/riot_shield,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "eRr" = (
@@ -15437,9 +15409,10 @@
 /turf/open/floor/iron/dark/textured,
 /area/station/engineering/atmos/mix)
 "fSC" = (
-/obj/machinery/light/directional/north,
-/obj/machinery/telecomms/relay/preset/station,
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/structure/frame/machine,
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/radio,
+/turf/open/floor/plating/reinforced,
 /area/station/tcommsat/server)
 "fSR" = (
 /obj/effect/landmark/start/assistant,
@@ -16115,6 +16088,17 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
+"gfM" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_linked_id = "biodome_medbay_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
 "gfQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -19259,6 +19243,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
+"huR" = (
+/obj/machinery/door/window/elevator/left/directional/south,
+/turf/open/floor/plating/airless,
+/area/station/asteroid)
 "huZ" = (
 /obj/structure/closet/toolcloset,
 /obj/effect/turf_decal/siding/yellow{
@@ -19335,6 +19323,9 @@
 	preset_destination_names = list("2"="Warehouse Access","3"="Warehouse Upper Access")
 	},
 /obj/effect/spawner/random/structure/table,
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_warehouse_lift"
+	},
 /turf/open/openspace,
 /area/station/hallway/primary/central/fore)
 "hwS" = (
@@ -22214,29 +22205,9 @@
 /area/station/commons/fitness)
 "iGd" = (
 /obj/structure/rack,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/suit/armor/bulletproof,
-/obj/item/clothing/suit/armor/bulletproof{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001
-	},
-/obj/item/clothing/head/helmet/alt{
-	layer = 3.00001;
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/effect/turf_decal/tile/red/half,
+/obj/effect/spawner/random/armory/bulletproof_armor,
+/obj/effect/spawner/random/armory/bulletproof_helmet,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "iGe" = (
@@ -25870,21 +25841,13 @@
 /area/station/engineering/atmos)
 "kga" = (
 /obj/structure/rack,
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/ballistic/shotgun/riot,
-/obj/item/gun/ballistic/shotgun/riot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/window/reinforced/spawner/directional/north{
 	layer = 2.9
 	},
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 4
 	},
+/obj/effect/spawner/random/armory/shotgun,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "kgl" = (
@@ -26784,6 +26747,9 @@
 	name = "Engineering's Lifts Control Panel";
 	preset_destination_names = list("2"="Engineering Access","3"="Storage Zone")
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_engie_lift"
+	},
 /turf/open/floor/iron/terracotta,
 /area/station/hallway/secondary/construction/engineering)
 "kvz" = (
@@ -27506,7 +27472,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/south{
 	elevator_linked_id = "biodome_medbay_lift";
 	elevator_mode = 1
 	},
@@ -30689,7 +30655,8 @@
 	c_tag = "Engineering - Telecomms Upper Relay";
 	network = list("tcomms")
 	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/machinery/light/very_dim,
+/turf/open/floor/plating/reinforced,
 /area/station/tcommsat/server)
 "lRV" = (
 /turf/open/floor/glass/reinforced,
@@ -38462,6 +38429,9 @@
 	name = "Captain's Lifts Control Panel";
 	preset_destination_names = list("2"="Quarters","3"="Bridge")
 	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_captain_lift"
+	},
 /turf/open/openspace,
 /area/station/command/heads_quarters/captain)
 "oPs" = (
@@ -41006,15 +40976,6 @@
 /area/station/security/processing)
 "pQQ" = (
 /obj/structure/rack,
-/obj/item/gun/energy/disabler{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/disabler,
-/obj/item/gun/energy/disabler{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/railing{
 	dir = 1
 	},
@@ -41024,6 +40985,7 @@
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 8
 	},
+/obj/effect/spawner/random/armory/disablers,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "pQX" = (
@@ -46498,9 +46460,8 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage/gas)
 "rUN" = (
-/obj/structure/ladder,
 /obj/structure/sign/departments/telecomms/directional/east,
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/plating/reinforced,
 /area/station/tcommsat/server)
 "rUW" = (
 /obj/structure/table/glass,
@@ -47466,6 +47427,9 @@
 	},
 /obj/structure/railing{
 	dir = 1
+	},
+/obj/effect/abstract/elevator_music_zone{
+	linked_elevator_id = "biodome_brig_lift"
 	},
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
@@ -50038,10 +50002,9 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/west{
 	elevator_linked_id = "biodome_brig_lift";
-	elevator_mode = 1;
-	dir = 8
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/dark/smooth_half,
 /area/station/security/brig)
@@ -50484,17 +50447,9 @@
 /area/station/biodome/aft)
 "txM" = (
 /obj/structure/rack,
-/obj/item/gun/energy/e_gun{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/gun/energy/e_gun,
-/obj/item/gun/energy/e_gun{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tile/red/half,
+/obj/effect/spawner/random/armory/e_gun,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "txY" = (
@@ -51807,6 +51762,17 @@
 /obj/item/clothing/gloves/cargo_gauntlet,
 /turf/open/floor/wood/parquet,
 /area/station/cargo/storage)
+"tZn" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 1
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/south{
+	elevator_linked_id = "biodome_medbay_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/plating,
+/area/station/medical/medbay/central)
 "tZv" = (
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/iron/dark/small,
@@ -55814,6 +55780,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/engine_smes)
+"vHu" = (
+/obj/effect/turf_decal/loading_area/red{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/elevator/right/directional/west{
+	elevator_linked_id = "biodome_brig_lift";
+	elevator_mode = 1
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/security/brig)
 "vHx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
@@ -57612,21 +57589,13 @@
 /area/station/ai_monitored/turret_protected/ai)
 "woh" = (
 /obj/structure/rack,
-/obj/item/storage/box/rubbershot{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/storage/box/rubbershot,
-/obj/item/storage/box/rubbershot{
-	pixel_x = 3;
-	pixel_y = -3
-	},
 /obj/structure/window/reinforced/spawner/directional/north{
 	layer = 2.9
 	},
 /obj/effect/turf_decal/tile/red/half{
 	dir = 8
 	},
+/obj/effect/spawner/random/armory/rubbershot,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "wom" = (
@@ -61514,10 +61483,9 @@
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /obj/effect/turf_decal/loading_area/red,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/right/directional/north{
 	elevator_linked_id = "biodome_brig_lift";
-	elevator_mode = 1;
-	dir = 1
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
@@ -62461,10 +62429,9 @@
 	},
 /obj/effect/turf_decal/loading_area/red,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/north{
 	elevator_linked_id = "biodome_brig_lift";
-	elevator_mode = 1;
-	dir = 1
+	elevator_mode = 1
 	},
 /turf/open/floor/iron/smooth_half,
 /area/station/security/brig)
@@ -62513,7 +62480,7 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/window/elevator{
+/obj/machinery/door/window/elevator/left/directional/south{
 	elevator_linked_id = "biodome_medbay_lift";
 	elevator_mode = 1
 	},
@@ -86411,7 +86378,7 @@ tSJ
 wSI
 wSI
 tlP
-yfd
+tZn
 bRw
 agt
 oAe
@@ -105966,7 +105933,7 @@ mSo
 sxr
 kHf
 kHf
-tng
+vHu
 tng
 kHf
 jBl
@@ -151947,7 +151914,7 @@ oqe
 eQf
 kBw
 ebY
-kJA
+gfM
 bwV
 bwV
 jHc
@@ -174344,7 +174311,7 @@ eol
 eol
 eol
 eol
-kcg
+huR
 kcg
 kcg
 kcg
