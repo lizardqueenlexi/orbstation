@@ -1,7 +1,7 @@
 // Don't eat off the floor or hold parent object with dirty hands, you'll get sick
 
 /// Time needed for bacteria to infect the parent object
-#define GERM_EXPOSURE_DELAY (INFINITY) // ORBSTATION EDIT: germs are not real
+#define GERM_EXPOSURE_DELAY (5 SECONDS) // Five-second rule
 
 /// Possible diseases
 GLOBAL_LIST_INIT(floor_diseases, list(
@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(floor_diseases, list(
 			return
 
 	// Exposed to bacteria, start countdown until becoming infected
-	timer_id = addtimer(CALLBACK(src, PROC_REF(expose_to_germs)), GERM_EXPOSURE_DELAY, TIMER_STOPPABLE | TIMER_UNIQUE)
+	//timer_id = addtimer(CALLBACK(src, PROC_REF(expose_to_germs)), GERM_EXPOSURE_DELAY, TIMER_STOPPABLE | TIMER_UNIQUE) //ORBSTATION REMOVAL
 
 /datum/component/germ_sensitive/proc/picked_up()
 	SIGNAL_HANDLER
