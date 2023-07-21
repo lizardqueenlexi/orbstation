@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(floor_diseases, list(
 			return
 
 	// Exposed to bacteria, start countdown until becoming infected
-	timer_id = addtimer(CALLBACK(src, PROC_REF(expose_to_germs)), GERM_EXPOSURE_DELAY, TIMER_STOPPABLE | TIMER_UNIQUE)
+	//timer_id = addtimer(CALLBACK(src, PROC_REF(expose_to_germs)), GERM_EXPOSURE_DELAY, TIMER_STOPPABLE | TIMER_UNIQUE) //ORBSTATION REMOVAL
 
 /datum/component/germ_sensitive/proc/picked_up()
 	SIGNAL_HANDLER
