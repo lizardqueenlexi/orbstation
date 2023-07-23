@@ -103,7 +103,7 @@
 /obj/item/storage/belt/medical/abductor
 	name = "\improper Zetan medical belt"
 	desc = "A belt used by extremely strong doctors."
-	icon = 'icons/obj/abductor.dmi'
+	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "belt"
 	inhand_icon_state = "security"
 	worn_icon_state = "security"
