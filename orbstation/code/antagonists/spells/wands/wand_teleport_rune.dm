@@ -43,7 +43,7 @@ GLOBAL_LIST_INIT(connected_wards, list())
 /obj/effect/connective_ward
 	name = "Connective Ward"
 	desc = "This point is connected to another point. Which one? Why not find out?"
-	icon = 'icons/obj/hand_of_god_structures.dmi'
+	icon = 'icons/obj/service/hand_of_god_structures.dmi'
 	icon_state = "ward"
 	density = FALSE
 	anchored = TRUE
