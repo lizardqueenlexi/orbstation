@@ -14,10 +14,10 @@
 	return ..()
 
 // Adds a trait to armbands
-/obj/item/clothing/accessory/armband/on_uniform_equip(obj/item/clothing/under/U, mob/living/user)
+/obj/item/clothing/accessory/armband/accessory_equipped(obj/item/clothing/under/U, mob/living/user)
 	ADD_TRAIT(user, TRAIT_DEPUTISED, REF(src))
 
-/obj/item/clothing/accessory/armband/on_uniform_dropped(obj/item/clothing/under/U, mob/living/user)
+/obj/item/clothing/accessory/armband/accessory_dropped(obj/item/clothing/under/U, mob/living/user)
 	REMOVE_TRAIT(user, TRAIT_DEPUTISED, REF(src))
 
 // Departmental sec belt doesn't have a baton or grenade in it
