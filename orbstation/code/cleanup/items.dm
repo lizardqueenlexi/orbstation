@@ -17,9 +17,8 @@
 /obj/item/weaponcrafting/gunkit/temperature
 	desc = "A suitcase containing the necessary gun parts to tranform a standard energy gun into a temperature gun. Fantastic at birthday parties and for mowing down snowmen."
 
-// Replaced tohou joke which wasn't very funny
-/obj/item/clothing/head/rabbitears
-	name = "rabbit ears"
+// Replaced touhou joke which wasn't very funny
+/obj/item/clothing/head/costume/rabbitears
 	desc = "bnuuy"
 
 // Let's not call it that
