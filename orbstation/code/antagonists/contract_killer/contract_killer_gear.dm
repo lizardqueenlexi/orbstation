@@ -94,7 +94,7 @@
 	name = "A Random Assortment of Knives and Other Sharp Objects"
 	description = "Like stabbing things? Want your target to look like a pincushion? This kit contains 15 knives, tossed together \
 		more or less at random. Guaranteed to always contain a couple of really nice ones."
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/weapons/stabby.dmi'
 	icon_state = "buckknife"
 	kit_path = /obj/item/storage/secure/briefcase/contract_killer/knives
 
@@ -208,7 +208,7 @@
 	name = "Power Fist Starter Kit"
 	description = "Why be subtle when you can punch your target across the room? Contains a power fist, three oxygen tanks, and a power \
 		drill for making adjustments."
-	icon = 'icons/obj/device_syndie.dmi'
+	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "powerfist"
 	kit_path = /obj/item/storage/secure/briefcase/contract_killer/powerfist
 	weight = CONTRACT_KILLER_KIT_UNCOMMON
