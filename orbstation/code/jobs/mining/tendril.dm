@@ -10,5 +10,5 @@
 		if (get_dist(near_turf, src) <= 1)
 			near_turf.TerraformTurf(/turf/open/chasm/lavaland, /turf/open/chasm/lavaland, flags = CHANGETURF_INHERIT_AIR)
 		else
-			new /obj/effect/temp_visual/goliath_tentacle/magic(near_turf)
+			new /obj/effect/goliath_tentacle/magic(near_turf)
 	qdel(src)

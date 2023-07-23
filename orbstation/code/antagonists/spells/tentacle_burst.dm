@@ -39,7 +39,7 @@
 
 /datum/status_effect/tentacle_mastery
 	id = "tentacle_mastery"
-	duration = 5 SECONDS
+	duration = 4 SECONDS
 	alert_type = null
 	status_type = STATUS_EFFECT_REFRESH
 
