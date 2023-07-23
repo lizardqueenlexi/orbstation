@@ -63,18 +63,13 @@ Key procs
 
 	owner = new_owner
 
-	if(owner && istype(owner, /datum/mind))
-		var/datum/mind/our_mind = owner
-		if(our_mind.current)
-			//ORBSTATION EDIT START
-			var/mob/living/carbon/human/current_human = our_mind.current
-			if(istype(current_human)) //if this is a human, they don't need this vestigial understood Common
-				remove_language(/datum/language/common, TRUE, FALSE)
-			//ORBSTATION EDIT END
-			update_atom_languages(our_mind.current)
-
 	// If we have an owner, we'll set a default selected language
 	if(owner)
+		//ORBSTATION EDIT START
+		if(ishuman(owner)) //if this is a human, they don't need this vestigial understood Common
+			remove_language(/datum/language/common, source=LANGUAGE_ALL)
+		//ORBSTATION EDIT END
+
 		get_selected_language()
 
 /datum/language_holder/Destroy()
