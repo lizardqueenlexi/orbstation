@@ -225,6 +225,7 @@
 	update_label()
 	playsound(src, 'sound/machines/pda_button2.ogg', 50, TRUE)
 
+/*
 /obj/item/card/id/update_label() // this is copypasta but there's no real way around it
 	var/name_string = registered_name ? "[registered_name]'s ID Card" : initial(name)
 	var/assignment_string
@@ -296,7 +297,7 @@
 /mob/living/carbon/human/get_alt_name()
 	if(name != GetVoice())
 		return " (as [get_id_name("Unknown", check_plurality = TRUE, append_system_name = TRUE)])"
-
+*/
 // Adds a box of plural system chips to the HoP's locker.
 
 /obj/item/storage/box/plural_system_chips
