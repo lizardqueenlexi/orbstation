@@ -775,6 +775,11 @@
 	var/name_string = registered_name ? "[registered_name]'s ID Card" : initial(name)
 	var/assignment_string
 
+	//ORBSTATION EDIT: registered plural name
+	if(registered_name && plural_system) // if there's a plural system chip installed, display the current fronter's name in place of the ID's registered name
+		name_string = return_visible_plural_label()
+	///ORBSTATION EDIT end
+
 	if(is_intern)
 		if(assignment)
 			assignment_string = trim?.intern_alt_name || "Intern [assignment]"

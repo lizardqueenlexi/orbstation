@@ -98,9 +98,9 @@
 	if(istype(wallet))
 		id = wallet.front_id
 	if(istype(id))
-		. = id.registered_name
+		. = id.plural_system ? id.return_visible_plural_name() : id.registered_name ///ORBSTATION EDIT: plural chip
 	else if(istype(pda) && pda.computer_id_slot)
-		. = pda.computer_id_slot.registered_name
+		. = pda.computer_id_slot.plural_system ? pda.computer_id_slot.return_visible_plural_name() : pda.computer_id_slot.registered_name ///ORBSTATION EDIT: plural chip
 	if(!.)
 		. = if_no_id //to prevent null-names making the mob unclickable
 	return
