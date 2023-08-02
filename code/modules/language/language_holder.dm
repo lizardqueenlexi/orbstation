@@ -65,11 +65,6 @@ Key procs
 
 	// If we have an owner, we'll set a default selected language
 	if(owner)
-		//ORBSTATION EDIT START
-		if(ishuman(owner)) //if this is a human, they don't need this vestigial understood Common
-			remove_language(/datum/language/common, source=LANGUAGE_ALL)
-		//ORBSTATION EDIT END
-
 		get_selected_language()
 
 /datum/language_holder/Destroy()
