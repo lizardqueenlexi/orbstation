@@ -17,7 +17,7 @@
 	var/list/values = list()
 
 	var/icon/rat = icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head", EAST)
-	var/icon/eyes = icon('icons/mob/species/human/human_face.dmi', "eyes", EAST)
+	var/icon/eyes = icon('icons/mob/human/human_face.dmi', "eyes", EAST)
 	eyes.Blend(COLOR_GRAY, ICON_MULTIPLY)
 	rat.Blend(eyes, ICON_OVERLAY)
 
@@ -73,7 +73,7 @@
 	var/list/values = list()
 
 	var/icon/rat_head = icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head")
-	rat_head.Blend(icon('icons/mob/species/human/human_face.dmi', "eyes"), ICON_OVERLAY)
+	rat_head.Blend(icon('icons/mob/human/human_face.dmi', "eyes"), ICON_OVERLAY)
 
 	for (var/ears_name in GLOB.rat_ears_list)
 		var/datum/sprite_accessory/rat_ears = GLOB.rat_ears_list[ears_name]

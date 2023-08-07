@@ -188,6 +188,7 @@
 	replace_in_name("%TARGET%", target_mind.name)
 	replace_in_name("%JOB TITLE%", target_mind.assigned_role.title)
 	replace_in_name("%AREA%", initial(dropoff_area.name))
+	replace_in_name("%TC%", alive_bonus)
 	return TRUE
 
 /datum/traitor_objective/target_player/kidnapping/ungenerate_objective()

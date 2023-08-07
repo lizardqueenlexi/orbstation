@@ -193,6 +193,10 @@ GLOBAL_LIST_INIT(skin_tones, sort_list(list(
 	"asian2",
 	"arab",
 	"indian",
+	"mixed1",
+	"mixed2",
+	"mixed3",
+	"mixed4",
 	"african1",
 	"african2",
 	// Orb additions go here
@@ -218,6 +222,10 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 	"indian" = "Brown",
 	"latino" = "Light beige",
 	"mediterranean" = "Olive",
+	"mixed1" = "Chestnut",
+	"mixed2" = "Walnut",
+	"mixed3" = "Coffee",
+	"mixed4" = "Macadamia",
 	// Orb additions go here
 	"amberbrown" = "Amber Brown",
 	"sable" = "Sable",

@@ -16,7 +16,7 @@
 	var/heal_in_light = FALSE // ORBSTATION EDIT: the new sprout subtype heals light
 
 	heatmod = 1.5
-	payday_modifier = 0.75
+	payday_modifier = 1.0
 	meat = /obj/item/food/meat/slab/human/mutant/plant
 
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
