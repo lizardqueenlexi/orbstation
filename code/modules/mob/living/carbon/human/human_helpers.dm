@@ -58,12 +58,14 @@
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
 /mob/living/carbon/human/get_visible_name()
-	var/face_name = get_face_name("")
-	var/id_name = get_id_name("")
 	if(HAS_TRAIT(src, TRAIT_UNKNOWN))
 		return "Unknown"
-	if(name_override)
-		return name_override
+	var/list/identity = list(null, null)
+	SEND_SIGNAL(src, COMSIG_HUMAN_GET_VISIBLE_NAME, identity)
+	var/signal_face = LAZYACCESS(identity, VISIBLE_NAME_FACE)
+	var/signal_id = LAZYACCESS(identity, VISIBLE_NAME_ID)
+	var/face_name = !isnull(signal_face) ? signal_face : get_face_name("")
+	var/id_name = !isnull(signal_id) ? signal_id : get_id_name("")
 	if(face_name)
 		if(id_name && (id_name != face_name))
 			return "[face_name] (as [id_name])"
@@ -96,9 +98,9 @@
 	if(istype(wallet))
 		id = wallet.front_id
 	if(istype(id))
-		. = id.registered_name
+		. = id.plural_system ? id.return_visible_plural_name() : id.registered_name ///ORBSTATION EDIT: plural chip
 	else if(istype(pda) && pda.computer_id_slot)
-		. = pda.computer_id_slot.registered_name
+		. = pda.computer_id_slot.plural_system ? pda.computer_id_slot.return_visible_plural_name() : pda.computer_id_slot.registered_name ///ORBSTATION EDIT: plural chip
 	if(!.)
 		. = if_no_id //to prevent null-names making the mob unclickable
 	return
@@ -226,7 +228,7 @@
 ///Returns death message for mob examine text
 /mob/living/carbon/human/proc/generate_death_examine_text()
 	var/mob/dead/observer/ghost = get_ghost(TRUE, TRUE)
-	var/t_He = p_they(TRUE)
+	var/t_He = p_They()
 	var/t_his = p_their()
 	var/t_is = p_are()
 	//This checks to see if the body is revivable

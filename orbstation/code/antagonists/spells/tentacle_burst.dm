@@ -6,11 +6,17 @@
 	desc = "Conjure a wave of tentacles from the ground to grapple your foes."
 	background_icon_state = "bg_demon"
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
-	button_icon_state = "goliath"
+	button_icon_state = "goliath_tentacle_spawn"
 	sound = 'sound/magic/demon_attack1.ogg'
 	aoe_radius = 5
 	cooldown_time = 30 SECONDS
 	cooldown_reduction_per_rank = 5 SECONDS
+
+/datum/action/cooldown/spell/aoe_staggered/tentacle_burst/cast(atom/cast_on)
+	if(isliving(owner))
+		var/mob/living/living_owner = owner
+		living_owner.apply_status_effect(/datum/status_effect/tentacle_mastery)
+	. = ..()
 
 /datum/action/cooldown/spell/aoe_staggered/tentacle_burst/get_things_to_cast_on(atom/center)
 	var/list/things = list()
@@ -23,29 +29,26 @@
 	return things
 
 /datum/action/cooldown/spell/aoe_staggered/tentacle_burst/cast_on_thing_in_aoe(turf/target_loc, atom/caster, range)
-	new /obj/effect/temp_visual/goliath_tentacle/magic(target_loc, caster)
+	new /obj/effect/goliath_tentacle/magic(target_loc)
 
 /// Extended goliath tentacle for spell modification
-/obj/effect/temp_visual/goliath_tentacle/magic
+/obj/effect/goliath_tentacle/magic
 	name = "conjured tentacle"
 	/// Time to grab the target for
 	var/disable_time = 6 SECONDS
 
-// Override targetting to not grab caster
-/obj/effect/temp_visual/goliath_tentacle/magic/trip()
-	var/latched = FALSE
-	for(var/mob/living/target in loc)
-		if((!QDELETED(spawner) && target == spawner) || target.stat == DEAD)
-			continue
-		visible_message(span_danger("[src] grabs hold of [target]!"))
-		target.Knockdown(disable_time)
-		target.Stun(disable_time)
-		target.adjustBruteLoss(rand(10,15))
-		buckle_mob(target, TRUE)
-		latched = TRUE
+/datum/status_effect/tentacle_mastery
+	id = "tentacle_mastery"
+	duration = 4 SECONDS
+	alert_type = null
+	status_type = STATUS_EFFECT_REFRESH
 
-	if(!latched)
-		retract()
-	else
-		deltimer(timerid)
-		timerid = addtimer(CALLBACK(src, PROC_REF(retract)), disable_time, TIMER_STOPPABLE)
+/datum/status_effect/tentacle_mastery/on_apply()
+	. = ..()
+	owner.add_traits(list(TRAIT_TENTACLE_IMMUNE), TRAIT_STATUS_EFFECT(id))
+	to_chat(owner, span_notice("The tentacles dance at your whim!"))
+
+/datum/status_effect/tentacle_mastery/on_remove()
+	. = ..()
+	owner.remove_traits(list(TRAIT_TENTACLE_IMMUNE), TRAIT_STATUS_EFFECT(id))
+	to_chat(owner, span_notice("Tentacles no longer care about you."))

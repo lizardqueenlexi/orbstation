@@ -209,7 +209,7 @@
 	name = "Syndicate Bounty Pad"
 	desc = "A console used to complete illegal bounties for the Syndicate."
 	alpha = 150
-	icon = 'icons/obj/telescience.dmi'
+	icon = 'icons/obj/machines/telepad.dmi'
 	icon_state = "lpad-idle"
 	///The item that it will accept and mark as complete
 	var/list/brother_bounty

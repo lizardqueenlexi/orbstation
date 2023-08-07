@@ -164,6 +164,40 @@
 	/// Whether a plural system chip can be added to the ID.
 	var/plural_system_compatible = TRUE
 
+/obj/item/card/id/Destroy()
+	QDEL_NULL(plural_system)
+	return ..()
+
+/obj/item/card/id/equipped(mob/user, slot, initial = FALSE)
+	. = ..()
+	if(plural_system && slot == ITEM_SLOT_ID)
+		RegisterSignal(user, COMSIG_MOVABLE_MESSAGE_GET_NAME_PART, PROC_REF(return_plural_message_name_part))
+
+/obj/item/card/id/dropped(mob/user, silent = FALSE)
+	. = ..()
+	if(plural_system)
+		UnregisterSignal(user, list(COMSIG_HUMAN_GET_VISIBLE_NAME, COMSIG_MOVABLE_MESSAGE_GET_NAME_PART))
+
+/obj/item/card/id/proc/return_visible_plural_label()
+		var/name_string = plural_system.fronter_name ? plural_system.fronter_name : registered_name
+		return "[name_string]'s ID Card {[plural_system.system_name]}"
+
+/obj/item/card/id/proc/return_visible_plural_name()
+		var/name_string = plural_system.fronter_name ? plural_system.fronter_name : registered_name
+		return "[name_string] {[plural_system.system_name]}"
+
+/obj/item/card/id/proc/return_plural_message_name_part(mob/living/carbon/human/source, list/stored_name, visible_name)
+	SIGNAL_HANDLER
+	if(visible_name)
+		return
+	var/voice_name = source.GetVoice()
+	if(source.name != voice_name)
+		voice_name += " (as {[plural_system.system_name]})"
+	stored_name[NAME_PART_INDEX] = voice_name
+
+/obj/item/card/id/advanced/chameleon
+	plural_system_compatible = FALSE
+
 /obj/item/card/id/attack_self(mob/user)
 	if(user.incapacitated())
 		return
@@ -218,84 +252,13 @@
 	if(!plural_system)
 		to_chat(user, span_warning("There's no plural system chip installed."))
 		return
+	UnregisterSignal(user, list(COMSIG_HUMAN_GET_VISIBLE_NAME, COMSIG_MOVABLE_MESSAGE_GET_NAME_PART))
 	user.put_in_hands(plural_system)
 	to_chat(user, span_notice("You remove [plural_system] from [src]."))
 	plural_system.fronter_name = null
 	plural_system = null
 	update_label()
 	playsound(src, 'sound/machines/pda_button2.ogg', 50, TRUE)
-
-/obj/item/card/id/update_label() // this is copypasta but there's no real way around it
-	var/name_string = registered_name ? "[registered_name]'s ID Card" : initial(name)
-	var/assignment_string
-
-	if(registered_name && plural_system) // if there's a plural system chip installed, display the current fronter's name in place of the ID's registered name
-		name_string = plural_system.fronter_name ? plural_system.fronter_name : registered_name
-		name_string = "[name_string]'s ID Card {[plural_system.system_name]}"
-
-	if(is_intern)
-		if(assignment)
-			assignment_string = trim?.intern_alt_name || "Intern [assignment]"
-		else
-			assignment_string = "Intern"
-	else
-		assignment_string = assignment
-
-	name = "[name_string] ([assignment_string])"
-
-/obj/item/card/id/advanced/chameleon
-	plural_system_compatible = FALSE
-
-// Modified helper procs that handle your mob's displayed name when viewed or speaking.
-
-// Copypasta, but with code that will check if the ID has a plural system chip and use the fronter's name if check_plurality is set to TRUE.
-// If append_system_name is set to TRUE, it will append the plural system name after the ID name in {braces} if applicable.
-// If the wearer's face name matches the name of their system (which is the case for characters with the plurality quirk) the system name won't be displayed
-// as it would be redundant. This means that if their face is covered (such as by a gas mask) the system name on the chip will be visible.
-/mob/living/carbon/human/get_id_name(if_no_id = "Unknown", check_plurality = FALSE, append_system_name = FALSE)
-	var/obj/item/storage/wallet/wallet = wear_id
-	var/obj/item/modular_computer/pda/pda = wear_id
-	var/obj/item/card/id/id = wear_id
-	var/name_to_return = if_no_id
-	if(istype(wallet))
-		id = wallet.front_id
-	if(istype(id))
-		if(check_plurality && id.plural_system?.fronter_name)
-			name_to_return = id.plural_system.fronter_name
-			if(append_system_name && id.plural_system.system_name != get_face_name(""))
-				name_to_return = "[name_to_return] {[id.plural_system.system_name]}"
-		else
-			name_to_return = id.registered_name
-	else if(istype(pda))
-		var/obj/item/card/id/stored_card = pda.computer_id_slot?.GetID()
-		if(stored_card)
-			if(check_plurality && stored_card.plural_system?.fronter_name)
-				name_to_return = stored_card.plural_system.fronter_name
-				if(append_system_name && stored_card.plural_system.system_name != get_face_name(""))
-					name_to_return = "[name_to_return] {[stored_card.plural_system.system_name]}"
-			else
-				name_to_return = stored_card.registered_name
-	return name_to_return
-
-// Copypasta, but with check_plurality set to TRUE on get_id_name(), for use with the above code.
-// Even when wearing a face-covering mask, the system name will still be displayed in {braces}.
-/mob/living/carbon/human/get_visible_name()
-	var/face_name = get_face_name("")
-	var/id_name = get_id_name("", check_plurality = TRUE, append_system_name = TRUE)
-	if(name_override)
-		return name_override
-	if(face_name)
-		if(id_name && (id_name != face_name))
-			return "[face_name] (as [id_name])"
-		return face_name
-	if(id_name)
-		return id_name
-	return "Unknown"
-
-// Ditto. This proc is used when you're speaking locally.
-/mob/living/carbon/human/get_alt_name()
-	if(name != GetVoice())
-		return " (as [get_id_name("Unknown", check_plurality = TRUE, append_system_name = TRUE)])"
 
 // Adds a box of plural system chips to the HoP's locker.
 

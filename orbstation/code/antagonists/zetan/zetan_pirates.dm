@@ -130,7 +130,7 @@
 /obj/machinery/zetan_pirate_experimentor
 	name = "rapid experimentation machine"
 	desc = "A tubular machine of some kind, from the smell you can tell that it only fits cows and humanoids inside. You can see a money printing machine taped to it."
-	icon = 'icons/obj/abductor.dmi'
+	icon = 'icons/obj/antags/abductor.dmi'
 	icon_state = "experiment-open"
 	density = FALSE
 	state_open = TRUE

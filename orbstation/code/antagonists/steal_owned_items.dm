@@ -88,10 +88,10 @@
 
 /datum/objective_item/steal/pet/renault
 	name = "Renault, without a pet carrier"
-	pet_type = list(/mob/living/simple_animal/pet/fox/renault)
+	pet_type = list(/mob/living/basic/pet/fox/renault)
 	excludefromjob = list(JOB_CAPTAIN)
 	item_owner = list(JOB_CAPTAIN)
-	altitems = list(/mob/living/simple_animal/pet/fox/renault)
+	altitems = list(/mob/living/basic/pet/fox/renault)
 
 /datum/objective_item/steal/pet/runtime
 	name = "Runtime, without a pet carrier"

@@ -6,7 +6,7 @@
 	name = "Demonology for Dummies"
 	desc = "This book describes the secrets of the veil between worlds. \
 		Use it to create a summoning circle, after which it will burn to ash."
-	icon = 'icons/obj/eldritch.dmi'
+	icon = 'icons/obj/antags/eldritch.dmi'
 	base_icon_state = "book"
 	icon_state = "book"
 	worn_icon_state = "book"

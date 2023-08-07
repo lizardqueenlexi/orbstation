@@ -101,7 +101,7 @@
 	name = "curse rune"
 	desc = "An odd collection of symbols drawn in what seems to be blood."
 	anchored = TRUE
-	icon = 'icons/obj/rune.dmi'
+	icon = 'icons/obj/antags/cult/rune.dmi'
 	icon_state = "1"
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
@@ -172,7 +172,7 @@
 	name = "depleted rune"
 	desc = "The leftovers of some unwholesome occult ritual."
 	anchored = TRUE
-	icon = 'icons/obj/rune.dmi'
+	icon = 'icons/obj/antags/cult/rune.dmi'
 	icon_state = "1"
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	layer = SIGIL_LAYER

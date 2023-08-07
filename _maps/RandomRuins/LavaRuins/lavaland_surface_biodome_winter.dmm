@@ -26,14 +26,6 @@
 "af" = (
 /turf/open/floor/plating,
 /area/ruin/powered/snow_biodome)
-"ag" = (
-/obj/structure/displaycase/freezeray,
-/turf/open/floor/iron/dark/textured,
-/area/ruin/powered/snow_biodome)
-"ah" = (
-/obj/machinery/light/cold/directional/west,
-/turf/open/floor/circuit,
-/area/ruin/powered/snow_biodome)
 "ai" = (
 /obj/structure/sink/directional/south,
 /obj/structure/mirror/directional/east,
@@ -147,6 +139,10 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/powered/snow_biodome)
+"aH" = (
+/mob/living/simple_animal/hostile/skeleton/eskimo,
+/turf/open/floor/wood,
+/area/ruin/powered/snow_biodome)
 "aI" = (
 /obj/structure/flora/bush/snow/style_random,
 /turf/open/misc/asteroid/snow,
@@ -236,15 +232,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/misc/ice,
 /area/ruin/powered/snow_biodome)
-"cn" = (
-/mob/living/simple_animal/hostile/skeleton/eskimo,
-/turf/open/floor/wood,
-/area/ruin/powered/snow_biodome)
-"cv" = (
-/obj/structure/chair/stool/directional/south,
-/mob/living/simple_animal/hostile/skeleton/eskimo,
-/turf/open/floor/pod/dark,
-/area/ruin/powered/snow_biodome)
 "dS" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/pod/dark,
@@ -261,18 +248,24 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
+"gz" = (
+/obj/structure/chair/stool/directional/south,
+/mob/living/simple_animal/hostile/skeleton/eskimo,
+/turf/open/floor/pod/dark,
+/area/ruin/powered/snow_biodome)
+"hr" = (
+/mob/living/simple_animal/hostile/skeleton/eskimo,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/powered/snow_biodome)
 "hA" = (
 /obj/machinery/light/built/directional/north,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/pod/dark{
 	initial_gas_mix = "LAVALAND_ATMOS"
 	},
-/area/ruin/powered/snow_biodome)
-"lH" = (
-/obj/machinery/computer/monitor{
-	dir = 1
-	},
-/turf/open/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
 "og" = (
 /turf/open/floor/iron/stairs{
@@ -292,6 +285,9 @@
 	dir = 8
 	},
 /turf/open/floor/pod/dark,
+/area/ruin/powered/snow_biodome)
+"ra" = (
+/turf/open/floor/circuit,
 /area/ruin/powered/snow_biodome)
 "sn" = (
 /obj/structure/bed{
@@ -325,10 +321,6 @@
 "vN" = (
 /turf/open/floor/plating/snowed/smoothed,
 /area/ruin/powered/snow_biodome)
-"wN" = (
-/obj/machinery/light/cold/directional/east,
-/turf/open/floor/circuit,
-/area/ruin/powered/snow_biodome)
 "xU" = (
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/pod/dark,
@@ -343,13 +335,6 @@
 /obj/item/pen,
 /obj/item/paper,
 /turf/open/floor/pod/dark,
-/area/ruin/powered/snow_biodome)
-"Be" = (
-/mob/living/simple_animal/hostile/skeleton/eskimo,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/turf/open/floor/wood,
 /area/ruin/powered/snow_biodome)
 "BM" = (
 /obj/effect/turf_decal/siding/wood/corner{
@@ -404,6 +389,11 @@
 /obj/item/clothing/mask/balaclava,
 /turf/open/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
+"MO" = (
+/obj/structure/displaycase/freezeray,
+/obj/machinery/light/cold/directional/north,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/powered/snow_biodome)
 "Oj" = (
 /obj/structure/table,
 /turf/open/floor/pod/dark,
@@ -452,6 +442,12 @@
 /area/ruin/powered/snow_biodome)
 "Ub" = (
 /obj/structure/filingcabinet,
+/turf/open/floor/pod/dark,
+/area/ruin/powered/snow_biodome)
+"UM" = (
+/obj/machinery/computer/monitor{
+	dir = 1
+	},
 /turf/open/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
 "VE" = (
@@ -551,8 +547,8 @@ HP
 HP
 tl
 PK
-cv
-lH
+gz
+UM
 Wg
 ak
 ak
@@ -894,7 +890,7 @@ aq
 aq
 aq
 aE
-cn
+aH
 at
 aq
 aq
@@ -920,10 +916,10 @@ tb
 "}
 (15,1,1) = {"
 Wg
-ah
+ra
 Wg
 Wg
-Be
+hr
 at
 at
 at
@@ -952,7 +948,7 @@ Qa
 "}
 (16,1,1) = {"
 Wg
-ag
+MO
 og
 as
 Zx
@@ -984,7 +980,7 @@ Qa
 "}
 (17,1,1) = {"
 Wg
-wN
+ra
 Wg
 Wg
 ax
@@ -1053,7 +1049,7 @@ aj
 ay
 at
 at
-cn
+aH
 bx
 aN
 aq
@@ -1380,7 +1376,7 @@ Wg
 Wg
 HR
 eb
-cv
+gz
 Oj
 JZ
 KS
