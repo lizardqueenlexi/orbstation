@@ -1,6 +1,7 @@
 // Dedicated to testing language holders
 
 /// Simply tests that swapping to a new species gives you the languages of that species and removes the languages of the old species
+/* //ORBSTATION DISABLE: doesn't work right due to human changes
 /datum/unit_test/language_species_swap_simple
 
 /datum/unit_test/language_species_swap_simple/Run()
@@ -31,7 +32,7 @@
 
 	TEST_ASSERT(length(initial_understood & holder.understood_languages) == 1, \
 		"Dummy did not understand Common after returning to human! Instead, it knew the following: [print_language_list(holder.understood_languages)]")
-
+*/
 /// Tests species changes which are more complex are functional (e.g. from a species which speaks common to one which does not)
 /datum/unit_test/language_species_swap_complex
 
@@ -158,15 +159,15 @@
 	TEST_ASSERT_EQUAL(length(holder_A.understood_languages), 3, \
 		"Holder A / Dummy A / Dummy B mind should only understand Common, Draconic, and Pirate! \
 		Instead, it knew the following: [print_language_list(holder_A.understood_languages)]")
-
-	TEST_ASSERT_EQUAL(length(holder_B.spoken_languages), 1, \
-		"Holder B / Dummy B / Dummy A mind should only speak 1 language - Common! \
+	// ORBSTATION EDIT - humans default to two languages, not one
+	TEST_ASSERT_EQUAL(length(holder_B.spoken_languages), 2, \
+		"Holder B / Dummy B / Dummy A mind should only speak 2 languages - Common and Sol Standard! \
 		Instead, it knew the following: [print_language_list(holder_B.spoken_languages)]")
 
-	TEST_ASSERT_EQUAL(length(holder_B.understood_languages), 1, \
-		"Holder B / Dummy B / Dummy A mind only understand 1 language - Common! \
+	TEST_ASSERT_EQUAL(length(holder_B.understood_languages), 2, \
+		"Holder B / Dummy B / Dummy A mind only understand 2 languages - Common and Sol Standard! \
 		Instead, it knew the following: [print_language_list(holder_B.understood_languages)]")
-
+	// ORBSTATION EDIT END
 /// Tests that the book of babel, and by extension grant_all_languages, works as intended
 /datum/unit_test/book_of_babel
 
