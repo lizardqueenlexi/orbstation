@@ -22,7 +22,7 @@
 	moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_l_arm"), ICON_OVERLAY)
 	moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_r_arm"), ICON_OVERLAY)
 
-	var/icon/eyes = icon('icons/mob/species/human/human_face.dmi', "motheyes")
+	var/icon/eyes = icon('icons/mob/human/human_face.dmi', "motheyes")
 	eyes.Blend(COLOR_BLACK, ICON_MULTIPLY)
 	moth_base.Blend(eyes, ICON_OVERLAY)
 

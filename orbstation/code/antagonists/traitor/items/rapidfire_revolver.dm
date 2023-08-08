@@ -5,7 +5,7 @@
 	icon_state = "rapidfire_revolver"
 	initial_caliber = CALIBER_38
 	spread = 23
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rapidfire_revolver
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rapidfire_revolver
 
 /obj/item/ammo_box/magazine/internal/cylinder/rapidfire_revolver //The magazine
 	name = "DonkCo. New Syndie cylinder"

@@ -44,10 +44,10 @@ ADD_IMPLANTER(/datum/action/cooldown/spell/pointed/projectile/lightningbolt,ligh
 // This is pretty gross but I don't want to edit the simplemob unit test
 /datum/action/cooldown/spell/conjure/bee/admin/post_summon(atom/summoned_object, atom/cast_on)
 	. = ..()
-	var/mob/living/simple_animal/hostile/bee/newbee = summoned_object
+	var/mob/living/basic/bee/newbee = summoned_object
 	if (!istype(newbee))
 		return
-	newbee.harm_intent_damage = 0
+	newbee.melee_damage_upper = 0
 	newbee.melee_damage_lower = 0
 	newbee.assign_reagent(GLOB.chemical_reagents_list[/datum/reagent/medicine/adminordrazine])
 
