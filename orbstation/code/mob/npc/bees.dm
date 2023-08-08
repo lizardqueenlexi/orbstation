@@ -14,7 +14,7 @@
 	. = ..()
 	if(succeeded)
 		var/mob/living/basic/bee = controller.pawn
-		bee.death(gibbed = FALSE)
+		bee.death()
 
 /datum/ai_planning_subtree/basic_melee_attack_subtree/die_immediately
 	melee_attack_behavior = /datum/ai_behavior/basic_melee_attack/die_immediately
