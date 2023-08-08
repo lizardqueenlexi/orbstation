@@ -4,10 +4,6 @@
 	desc = "Someone should probably turn that simulation off, huh?"
 	ai_controller = /datum/ai_controller/basic_controller/bee/holo
 
-/mob/living/basic/bee/toxin/holo/AttackingTarget()
-	..()
-	death(gibbed = FALSE)
-
 /obj/effect/holodeck_effect/mobspawner/bee
 	mobtype = /mob/living/basic/bee/toxin/holo
 
