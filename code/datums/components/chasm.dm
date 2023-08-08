@@ -238,8 +238,6 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(gone, COMSIG_LIVING_REVIVE)
 
-#define CHASM_TRAIT "chasm trait"
-
 ///Global list needed to let fishermen with a rescue hook fish fallen mobs from any place
 GLOBAL_LIST_EMPTY(chasm_fallen_mobs)
 

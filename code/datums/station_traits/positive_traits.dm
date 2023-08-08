@@ -314,6 +314,11 @@
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
 		/datum/job/virologist = /obj/item/organ/internal/lungs/cybernetic/tier2,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
+		// ORBSTATION JOBS
+		/datum/job/assistant/dept/eng = /obj/item/organ/internal/cyberimp/mouth/breathing_tube,
+		/datum/job/assistant/dept/med = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
+		/datum/job/assistant/dept/sci = /obj/item/organ/internal/cyberimp/chest/reviver, //perfect for test subjects
+		/datum/job/assistant/dept/srv = /obj/item/organ/internal/cyberimp/chest/nutriment,
 	)
 
 /datum/station_trait/cybernetic_revolution/New()
