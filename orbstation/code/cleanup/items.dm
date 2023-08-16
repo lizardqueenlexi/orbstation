@@ -97,6 +97,13 @@
 	new /obj/structure/sign/poster/contraband/random(loc)
 	return INITIALIZE_HINT_QDEL
 
+//Never spawn these posters randomly either
+/obj/structure/sign/poster/contraband/random
+	blacklisted_types = list(
+		/obj/structure/sign/poster/contraband/got_wood,
+		/obj/structure/sign/poster/contraband/free_tonto,
+	)
+
 //Removed the word "ghetto" from item descriptions
 /obj/item/flashlight/lamp/bananalamp
 	desc = "Only a clown would think to make a silly banana-shaped lamp. Even has a goofy pullstring."
