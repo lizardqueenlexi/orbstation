@@ -107,7 +107,7 @@
 
 /obj/item/gun/zetan_revolver/Initialize(mapload)
 	. = ..()
-	chambered = new /obj/item/ammo_casing/a7mm/bouncy(src)
+	chambered = new /obj/item/ammo_casing/m7mm/bouncy(src)
 
 	AddComponent(/datum/component/boomerang, throw_range+2, TRUE)
 
