@@ -85,7 +85,7 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // ORBSTATION ADDITION START
-#include "~orb/automapper.dm"
+#include "~orb_automapper.dm"
 // ORBSTATION ADDITION END
 // BEGIN_INCLUDE
 #include "abductor_baton_spell.dm"
