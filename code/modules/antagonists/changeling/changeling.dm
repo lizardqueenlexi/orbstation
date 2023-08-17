@@ -761,6 +761,7 @@
 	user.grad_color = LAZYLISTDUPLICATE(chosen_profile.grad_color)
 	user.voice = chosen_profile.voice
 	user.voice_filter = chosen_profile.voice_filter
+	user.voice_style = chosen_profile.voice_style
 
 	user.set_mob_height(chosen_profile.height) //ORBSTATION EDIT
 
@@ -915,6 +916,9 @@
 	var/voice
 	/// The TTS filter of the profile filter
 	var/voice_filter = ""
+	/// The TTS voice style.
+	/// Valid values are TTS_VOICE_STYLE_* in the tts.dm defines.
+	var/voice_style = TTS_VOICE_STYLE_SPEECH
 
 /datum/changeling_profile/Destroy()
 	qdel(dna)
@@ -955,6 +959,7 @@
 	new_profile.grad_color = LAZYLISTDUPLICATE(grad_color)
 	new_profile.voice = voice
 	new_profile.voice_filter = voice_filter
+	new_profile.voice_style = voice_style
 
 /datum/antagonist/changeling/roundend_report()
 	var/list/parts = list()

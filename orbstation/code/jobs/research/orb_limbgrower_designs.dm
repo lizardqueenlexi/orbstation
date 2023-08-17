@@ -101,4 +101,4 @@
 		"limbdesign_xeno",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
-	required_experiments = list(/datum/experiment/dissection/xenomorph)
+	required_experiments = list(/datum/experiment/autopsy/xenomorph)
