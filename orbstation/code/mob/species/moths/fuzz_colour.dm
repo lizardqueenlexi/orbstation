@@ -15,28 +15,29 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/moth_color/init_possible_values()
-	var/list/values = list()
+	return assoc_to_keys(GLOB.color_list_moth)
 
-	var/icon/moth_base = icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_head")
-	moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_chest_m"), ICON_OVERLAY)
-	moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_l_arm"), ICON_OVERLAY)
-	moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_r_arm"), ICON_OVERLAY)
 
-	var/icon/eyes = icon('icons/mob/human/human_face.dmi', "motheyes")
-	eyes.Blend(COLOR_BLACK, ICON_MULTIPLY)
-	moth_base.Blend(eyes, ICON_OVERLAY)
+/datum/preference/choiced/moth_color/icon_for(value)
+	var/static/icon/moth_base
 
-	moth_base.Scale(64, 64)
-	moth_base.Crop(15, 64, 15 + 31, 64 - 31)
+	if (isnull(moth_base))
+		moth_base = icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_head")
+		moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_chest_m"), ICON_OVERLAY)
+		moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_l_arm"), ICON_OVERLAY)
+		moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_r_arm"), ICON_OVERLAY)
 
-	for (var/name in GLOB.color_list_moth)
-		var/color = GLOB.color_list_moth[name]
+		var/icon/eyes = icon('icons/mob/human/human_face.dmi', "motheyes")
+		eyes.Blend(COLOR_BLACK, ICON_MULTIPLY)
+		moth_base.Blend(eyes, ICON_OVERLAY)
 
-		var/icon/icon = new(moth_base)
-		icon.Blend(color, ICON_MULTIPLY)
-		values[name] = icon
+		moth_base.Scale(64, 64)
+		moth_base.Crop(15, 64, 15 + 31, 64 - 31)
 
-	return values
+	var/icon/icon = new(moth_base)
+	icon.Blend(GLOB.color_list_moth[value], ICON_MULTIPLY)
+
+	return icon
 
 /datum/preference/choiced/moth_color/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["moth_color"] = GLOB.color_list_moth[value]
