@@ -1,6 +1,45 @@
 #define EXP_ASSIGN_WAYFINDER 1200
 #define RANDOM_QUIRK_BONUS 3
 #define MINIMUM_RANDOM_QUIRKS 3
+
+// Shifted to glob so they are generated at world start instead of risking players doing preference stuff before the subsystem inits
+GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
+	list(/datum/quirk/mute, /datum/quirk/robot_voice), //ORBSTATION
+	list(/datum/quirk/item_quirk/farsighted, /datum/quirk/illiterate), //ORBSTATION
+	list(/datum/quirk/item_quirk/blindness, /datum/quirk/door_closer), //ORBSTATION
+	list(/datum/quirk/damned, /datum/quirk/item_quirk/spiritual), //ORBSTATION
+	list(/datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/nearsighted, /datum/quirk/item_quirk/farsighted),//ORBSTATION: added "Farsighted" to this list
+	list(/datum/quirk/jolly, /datum/quirk/depression, /datum/quirk/apathetic, /datum/quirk/hypersensitive),
+	list(/datum/quirk/no_taste, /datum/quirk/vegetarian, /datum/quirk/deviant_tastes, /datum/quirk/gamer),
+	list(/datum/quirk/pineapple_liker, /datum/quirk/pineapple_hater, /datum/quirk/gamer),
+	list(/datum/quirk/alcohol_tolerance, /datum/quirk/light_drinker),
+	list(/datum/quirk/item_quirk/clown_enjoyer, /datum/quirk/item_quirk/mime_fan, /datum/quirk/item_quirk/pride_pin),
+	list(/datum/quirk/bad_touch, /datum/quirk/friendly),
+	list(/datum/quirk/extrovert, /datum/quirk/introvert),
+	list(/datum/quirk/prosthetic_limb, /datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/alien_prosthesis, /datum/quirk/bioscrambler_victim, /datum/quirk/body_purist), //ORBSTATION
+	list(/datum/quirk/prosthetic_organ, /datum/quirk/tin_man, /datum/quirk/body_purist),
+	list(/datum/quirk/quadruple_amputee, /datum/quirk/paraplegic, /datum/quirk/hemiplegic, /datum/quirk/augmented),//ORBSTATION
+	list(/datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/frail),//ORBSTATION
+	list(/datum/quirk/social_anxiety, /datum/quirk/mute),
+	list(/datum/quirk/mute, /datum/quirk/softspoken),
+	list(/datum/quirk/poor_aim, /datum/quirk/bighands),
+//	list(/datum/quirk/bilingual, /datum/quirk/foreigner),
+	list(/datum/quirk/spacer_born, /datum/quirk/paraplegic, /datum/quirk/item_quirk/settler),
+	list(/datum/quirk/photophobia, /datum/quirk/nyctophobia),
+	list(/datum/quirk/item_quirk/settler, /datum/quirk/freerunning),
+))
+
+GLOBAL_LIST_INIT(quirk_string_blacklist, generate_quirk_string_blacklist())
+
+/proc/generate_quirk_string_blacklist()
+	var/list/string_blacklist = list()
+	for(var/blacklist in GLOB.quirk_blacklist)
+		var/list/string_list = list()
+		for(var/datum/quirk/typepath as anything in blacklist)
+			string_list += initial(typepath.name)
+		string_blacklist += list(string_list)
+	return string_blacklist
+
 //Used to process and handle roundstart quirks
 // - Quirk strings are used for faster checking in code
 // - Quirk datums are stored and hold different effects, as well as being a vector for applying trait string
@@ -15,34 +54,6 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	var/list/quirk_points = list() //Assoc. list of quirk names and their "point cost"; positive numbers are good traits, and negative ones are bad
 	///An assoc list of quirks that can be obtained as a hardcore character, and their hardcore value.
 	var/list/hardcore_quirks = list()
-
-	/// A list of quirks that can not be used with each other. Format: list(quirk1,quirk2),list(quirk3,quirk4)
-	var/static/list/quirk_blacklist = list(
-		list("Tongue Tied", "Artificial Voice Box"), //ORBSTATION
-		list("Farsighted", "Illiterate"), //ORBSTATION
-		list("Prosthetic Limb", "Quadruple Amputee", "Alien Prosthesis", "Bioscrambler Victim"), //ORBSTATION
-		list("Blind", "Compulsive Door Closer"), //ORBSTATION
-		list("Blind", "Nearsighted", "Farsighted"), //ORBSTATION: added "Farsighted" to this list
-		list("Damned", "Spiritual"), // ORBSTATION
-		list("Jolly", "Depression", "Apathetic", "Hypersensitive"),
-		list("Ageusia", "Vegetarian", "Deviant Tastes", "Gamer"),
-		list("Ananas Affinity", "Ananas Aversion", "Gamer"),
-		list("Alcohol Tolerance", "Light Drinker"),
-		list("Clown Enjoyer", "Mime Fan", "Pride Pin"),
-		list("Bad Touch", "Friendly"),
-		list("Extrovert", "Introvert"),
-		list("Prosthetic Limb", "Quadruple Amputee", "Body Purist"),
-		list("Prosthetic Organ", "Tin Man", "Body Purist"),
-		list("Quadruple Amputee", "Paraplegic", "Hemiplegic"),
-		list("Quadruple Amputee", "Frail"),
-		list("Social Anxiety", "Mute"),
-		list("Mute", "Soft-Spoken"),
-		list("Stormtrooper Aim", "Big Hands"),
-		list("Bilingual", "Foreigner"),
-		list("Spacer", "Paraplegic", "Settler"),
-		list("Photophobia", "Nyctophobia"),
-		list("Settler", "Freerunning"),
-	)
 
 /datum/controller/subsystem/processing/quirks/Initialize()
 	get_quirks()
@@ -103,7 +114,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	//Create a random list of stuff to start with
 	while(bonus_quirks > added_quirk_count)
 		var/quirk = pick(possible_quirks) //quirk is a string
-		if(quirk in quirk_blacklist) //prevent blacklisted
+		if(quirk in GLOB.quirk_blacklist) //prevent blacklisted
 			possible_quirks -= quirk
 			continue
 		if(quirk_points[quirk] > 0)
@@ -118,7 +129,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		if(!length(possible_quirks))//Lets not get stuck
 			break
 		var/quirk = pick(quirks)
-		if(quirk in quirk_blacklist) //prevent blacklisted
+		if(quirk in GLOB.quirk_blacklist) //prevent blacklisted
 			possible_quirks -= quirk
 			continue
 		if(!quirk_points[quirk] < 0)//negative only
@@ -133,7 +144,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		if(!length(possible_quirks))//Lets not get stuck
 			break
 		var/quirk = pick(quirks)
-		if(quirk in quirk_blacklist) //prevent blacklisted
+		if(quirk in GLOB.quirk_blacklist) //prevent blacklisted
 			possible_quirks -= quirk
 			continue
 		if(!quirk_points[quirk] > 0) //positive only
@@ -173,7 +184,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 		var/blacklisted = FALSE
 
-		for (var/list/blacklist as anything in quirk_blacklist)
+		for (var/list/blacklist as anything in GLOB.quirk_blacklist)
 			if (!(quirk in blacklist))
 				continue
 

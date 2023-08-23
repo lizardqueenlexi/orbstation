@@ -1,11 +1,7 @@
-// A custom phobia for the heretic to give to people they sacrifice, permanently.
-// Very similar to the supernatural phobia, but more curated - because it's weird that sacrifices make you afraid of
-// wizards and skeletons.
+// Our changes to the heresy phobia that makes it spookier
 
-/datum/brain_trauma/mild/phobia/mansus
-	phobia_type = "the mansus"
-	random_gain = FALSE
-	var/list/garbage_text = list(
+/datum/brain_trauma/mild/phobia/heresy
+	var/static/list/garbage_text = list(
 		"bF7pTtzKE{xiiR6K?:#e>++",
 		"0X~o$^f?j&W/IFfaFZ]",
 		"HA4>S$t&mDSHANDb~=A#^DS",
@@ -17,9 +13,9 @@
 		"\[REDACTED BY ORDER OF NT DEPARTMENT 333]",
 	)
 
-/datum/brain_trauma/mild/phobia/mansus/New(new_phobia_type)
+/datum/brain_trauma/mild/phobia/heresy/New(new_phobia_type)
 	. = ..()
-	gain_text = "<span class='hypnophrase'>Your mind reels. The hands cloud your every thought... Fear grips you.</span>"
-	lose_text = "<span class='notice'>The hands are a distant memory now. You're not sure what you were afraid of...</span>"
+	gain_text = span_hypnophrase("Your mind reels. The hands cloud your every thought... Fear grips you.")
+	lose_text = span_notice("The hands are a distant memory now. You're not sure what you were afraid of...")
 	scan_desc = "phobia of "
 	scan_desc += pick(garbage_text)
