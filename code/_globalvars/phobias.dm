@@ -13,6 +13,7 @@ GLOBAL_LIST_INIT(phobia_types, sort_list(list(
 	"falling",
 	"greytide",
 	"guns",
+	"heresy",
 	"insects",
 	"robots",
 	"security",
@@ -36,6 +37,7 @@ GLOBAL_LIST_INIT(phobia_regexes, list(
 	"falling" = construct_phobia_regex("falling"),
 	"greytide" = construct_phobia_regex("greytide"),
 	"guns" = construct_phobia_regex("guns"),
+	"heresy" = construct_phobia_regex("heresy"),
 	"insects" = construct_phobia_regex("insects"),
 	"lizards" = construct_phobia_regex("lizards"),
 	"ocky icky" = construct_phobia_regex("ocky icky"),
@@ -47,8 +49,6 @@ GLOBAL_LIST_INIT(phobia_regexes, list(
 	"spiders" = construct_phobia_regex("spiders"),
 	"strangers" = construct_phobia_regex("strangers"),
 	"the supernatural" = construct_phobia_regex("the supernatural"),
-	//ORBSTATION ADDITIONS
-	"the mansus" = construct_phobia_regex("the mansus"),
 ))
 
 GLOBAL_LIST_INIT(phobia_mobs, list(
@@ -69,6 +69,10 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 		/mob/living/basic/pet/penguin,
 	)),
 	"doctors" = typecacheof(list(/mob/living/simple_animal/bot/medbot)),
+	"heresy" = typecacheof(list(
+		/mob/living/basic/heretic_summon,
+		/mob/living/simple_animal/hostile/heretic_summon,
+	)),
 	"insects" = typecacheof(list(
 		/mob/living/basic/cockroach,
 		/mob/living/basic/bee,
@@ -90,6 +94,7 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 		/mob/living/basic/demon,
 		/mob/living/basic/faithless,
 		/mob/living/basic/ghost,
+		/mob/living/basic/heretic_summon,
 		/mob/living/simple_animal/bot/mulebot/paranormal,
 		/mob/living/simple_animal/hostile/construct,
 		/mob/living/simple_animal/hostile/dark_wizard,
@@ -100,10 +105,6 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 		/mob/living/simple_animal/revenant,
 		/mob/living/simple_animal/shade,
 	)),
-	//ORBSTATION ADDITIONS
-	"the mansus" = typecacheof(list(
-		/mob/living/simple_animal/hostile/heretic_summon,
-	))
 ))
 
 GLOBAL_LIST_INIT(phobia_objs, list(
@@ -361,6 +362,31 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/machinery/porta_turret,
 		/obj/machinery/power/emitter,
 	)),
+	"heresy" = typecacheof(list(
+		/obj/effect/floating_blade,
+		/obj/effect/forcefield/cosmic_field,
+		/obj/effect/heretic_rune,
+		/obj/effect/heretic_influence,
+		/obj/effect/visible_heretic_influence,
+		/obj/item/ammo_box/strilka310/lionhunter,
+		/obj/item/ammo_casing/strilka310/lionhunter,
+		/obj/item/clothing/mask/madness_mask,
+		/obj/item/clothing/neck/eldritch_amulet,
+		/obj/item/clothing/neck/fake_heretic_amulet,
+		/obj/item/clothing/neck/heretic_focus,
+		/obj/item/clothing/suit/hooded/cultrobes/eldritch,
+		/obj/item/codex_cicatrix,
+		/obj/item/coin/eldritch,
+		/obj/item/gun/ballistic/rifle/lionhunter,
+		/obj/item/melee/rune_carver,
+		/obj/item/melee/sickly_blade,
+		/obj/item/melee/touch_attack/mansus_fist,
+		/obj/item/reagent_containers/cup/beaker/eldritch,
+		/obj/item/toy/eldritch_book,
+		/obj/item/toy/reality_pierce,
+		/obj/projectile/curse_hand,
+		/obj/structure/destructible/eldritch_crucible,
+	)),
 	"insects" = typecacheof(list(
 		/obj/item/clothing/mask/animal/small/bee,
 		/obj/item/clothing/suit/hooded/bee_costume,
@@ -458,29 +484,6 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/structure/destructible/cult,
 		/obj/structure/destructible/eldritch_crucible,
 		/obj/structure/spirit_board,
-	)),
-	//ORBSTATION ADDITIONS
-	"the mansus" = typecacheof(list(
-		/obj/effect/floating_blade,
-		/obj/effect/heretic_influence,
-		/obj/effect/heretic_rune,
-		/obj/effect/rune,
-		/obj/effect/visible_heretic_influence,
-		/obj/item/clothing/head/hooded/cult_hoodie,
-		/obj/item/clothing/mask/madness_mask,
-		/obj/item/clothing/neck/heretic_focus,
-		/obj/item/clothing/neck/eldritch_amulet,
-		/obj/item/clothing/suit/hooded/cultrobes,
-		/obj/item/codex_cicatrix,
-		/obj/item/cult_bastard,
-		/obj/item/melee/cultblade,
-		/obj/item/melee/rune_carver,
-		/obj/item/melee/sickly_blade,
-		/obj/item/toy/eldritch_book,
-		/obj/item/toy/reality_pierce,
-		/obj/item/reagent_containers/cup/beaker/eldritch,
-		/obj/item/gun/ballistic/rifle/lionhunter,
-		/obj/item/melee/touch_attack/mansus_fist,
 	)),
 ))
 

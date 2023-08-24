@@ -1,18 +1,18 @@
 // Adds rat fashion system
-/mob/living/simple_animal/hostile/regalrat
+/mob/living/basic/regal_rat
 	/// What kind of fashion are we rocking
 	var/datum/rat_fashion/current_look
 	/// Press this to change your rat outfit
 	var/datum/action/cooldown/rat_fashion/fashion_select
 
-/mob/living/simple_animal/hostile/regalrat/Initialize(mapload)
+/mob/living/basic/regal_rat/Initialize(mapload)
 	. = ..()
 	fashion_select = new(src)
 	fashion_select.Grant(src)
 	pick_random_look()
 
 /// Randomise how we look on init
-/mob/living/simple_animal/hostile/regalrat/proc/pick_random_look()
+/mob/living/basic/regal_rat/proc/pick_random_look()
 	var/list/valid_starting_styles = list()
 	for (var/datum/rat_fashion/style_path as anything in subtypesof(/datum/rat_fashion))
 		if (!initial(style_path.allow_random))
@@ -23,17 +23,17 @@
 	current_look = pick(valid_starting_styles)
 	current_look.apply(src)
 
-/mob/living/simple_animal/hostile/regalrat/death(gibbed)
+/mob/living/basic/regal_rat/death(gibbed)
 	current_look.on_death(src)
 	return ..()
 
-/mob/living/simple_animal/hostile/regalrat/revive(full_heal_flags, excess_healing, force_grab_ghost)
+/mob/living/basic/regal_rat/revive(full_heal_flags, excess_healing, force_grab_ghost)
 	. = ..()
 	if(!.)
 		return
 	current_look.apply(src)
 
-/mob/living/simple_animal/hostile/regalrat/Destroy()
+/mob/living/basic/regal_rat/Destroy()
 	. = ..()
 	QDEL_NULL(fashion_select)
 	QDEL_NULL(current_look)
@@ -51,7 +51,7 @@
 	overlay_icon_state = "bg_clock_border"
 
 /datum/action/cooldown/rat_fashion/Activate(atom/target)
-	var/mob/living/simple_animal/hostile/regalrat/rat_owner = owner
+	var/mob/living/basic/regal_rat/rat_owner = owner
 	if (!istype(rat_owner))
 		owner.balloon_alert(owner, "not a rat!")
 		qdel(src)
