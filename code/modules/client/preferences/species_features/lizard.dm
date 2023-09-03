@@ -57,13 +57,6 @@
 /datum/preference/choiced/lizard_body_markings/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["body_markings"] = value
 
-/datum/preference/choiced/lizard_body_markings/compile_constant_data()
-	var/list/data = ..()
-
-	data[SUPPLEMENTAL_FEATURE_KEY] = "facial_hair_color"
-
-	return data
-
 /datum/preference/choiced/lizard_frills
 	savefile_key = "feature_lizard_frills"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -123,13 +116,6 @@
 
 /datum/preference/choiced/lizard_snout/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["snout"] = value
-
-/datum/preference/choiced/lizard_snout/compile_constant_data()
-	var/list/data = ..()
-
-	data[SUPPLEMENTAL_FEATURE_KEY] = "facial_hair_color"
-
-	return data
 
 /datum/preference/choiced/lizard_spines
 	savefile_key = "feature_lizard_spines"
