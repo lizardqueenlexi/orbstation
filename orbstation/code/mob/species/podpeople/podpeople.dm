@@ -81,3 +81,10 @@
 
 /datum/bodypart_overlay/mutant/pod_hair/color_image(image/overlay, draw_layer)
 	overlay.color = sprite_datum.color_src ? draw_color : null
+
+/datum/preference/choiced/pod_hair/compile_constant_data()
+	var/list/data = ..()
+
+	data[SUPPLEMENTAL_FEATURE_KEY] = "hair_color"
+
+	return data

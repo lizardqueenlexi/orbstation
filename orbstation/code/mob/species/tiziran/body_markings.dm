@@ -15,3 +15,10 @@
 	icon_state = "lbelly"
 	gender_specific = 1
 	color_src = FACIAL_HAIR_COLOR
+
+/datum/preference/choiced/lizard_body_markings/compile_constant_data()
+	var/list/data = ..()
+
+	data[SUPPLEMENTAL_FEATURE_KEY] = "facial_hair_color"
+
+	return data
