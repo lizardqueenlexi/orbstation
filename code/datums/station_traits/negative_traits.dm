@@ -691,3 +691,4 @@
 
 	storm_type = /datum/weather/snow_storm/forever_storm
 
+#undef GLOW_NEBULA
