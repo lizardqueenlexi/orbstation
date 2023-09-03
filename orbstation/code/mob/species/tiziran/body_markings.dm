@@ -1,3 +1,6 @@
+/datum/preference/color/facial_hair_color
+	relevant_mutant_bodypart = "body_markings"
+
 /datum/sprite_accessory/body_markings/ltigercolor
 	name = "Light Tiger Body (Colored)"
 	icon_state = "ltiger"

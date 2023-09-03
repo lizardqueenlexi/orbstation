@@ -82,6 +82,9 @@
 /datum/bodypart_overlay/mutant/pod_hair/color_image(image/overlay, draw_layer)
 	overlay.color = sprite_datum.color_src ? draw_color : null
 
+/datum/preference/color/hair_color
+	relevant_external_organ = /obj/item/organ/external/pod_hair
+
 /datum/preference/choiced/pod_hair/compile_constant_data()
 	var/list/data = ..()
 
