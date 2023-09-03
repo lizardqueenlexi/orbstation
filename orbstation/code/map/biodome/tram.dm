@@ -6,6 +6,12 @@
 /obj/effect/landmark/lift_id/boat
 	specific_lift_id = TRAM_BOAT
 
+
+/obj/effect/landmark/tram/nav/boat/main
+	name = TRAM_BOAT
+	specific_lift_id = TRAM_NAV_BEACONS
+	dir = NORTH
+
 /obj/machinery/computer/tram_controls/boat
 	name = "Pleasure Boat Controls"
 	icon = 'orbstation/icons/obj/computer.dmi'
