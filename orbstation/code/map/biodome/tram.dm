@@ -6,25 +6,31 @@
 /obj/effect/landmark/lift_id/boat
 	specific_lift_id = TRAM_BOAT
 
+
+/obj/effect/landmark/tram/nav/boat/main
+	name = TRAM_BOAT
+	specific_lift_id = TRAM_NAV_BEACONS
+	dir = NORTH
+
 /obj/machinery/computer/tram_controls/boat
 	name = "Pleasure Boat Controls"
 	icon = 'orbstation/icons/obj/computer.dmi'
 	icon_screen = "tram_Aft Boat Dock_idle"
 	specific_lift_id = TRAM_BOAT
 
-/obj/effect/landmark/tram/boat/fore
+/obj/effect/landmark/tram/platform/boat/fore
 	name = "Fore Boat Dock"
 	specific_lift_id = TRAM_BOAT
 	platform_code = TRAM_BOAT_FORE
 	tgui_icons = list("Departures" = "plane-departure", "Science" = "flask")
 
-/obj/effect/landmark/tram/boat/middle
+/obj/effect/landmark/tram/platform/boat/middle
 	name = "Central Boat Dock"
 	specific_lift_id = TRAM_BOAT
 	platform_code = TRAM_BOAT_CENTRAL
 	tgui_icons = list("Cargo" = "box")
 
-/obj/effect/landmark/tram/boat/aft
+/obj/effect/landmark/tram/platform/boat/aft
 	name = "Aft Boat Dock"
 	specific_lift_id = TRAM_BOAT
 	platform_code = TRAM_BOAT_AFT

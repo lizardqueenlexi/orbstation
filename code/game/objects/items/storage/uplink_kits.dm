@@ -844,3 +844,6 @@
 #undef KIT_BEES
 #undef KIT_MR_FREEZE
 #undef KIT_TRAITOR_2006
+
+#undef KIT_PYRO
+#undef KIT_MAID

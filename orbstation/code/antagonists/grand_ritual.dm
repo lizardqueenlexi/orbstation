@@ -45,9 +45,6 @@
 		"Your very soul shall not escape my wrath!",
 	)
 
-/datum/grand_finale/armageddon/death_yell(mob/living/carbon/human/invoker)
-	priority_announce(pick(possible_last_words + orb_last_words), null, 'sound/magic/voidblink.ogg', sender_override = "[invoker.real_name]")
-
 // Don't summon people off the emergency shuttle
 /datum/grand_side_effect/summon_crewmate/is_valid_crewmate(mob/living/carbon/human/crewmate, area/our_area)
 	. = ..()
