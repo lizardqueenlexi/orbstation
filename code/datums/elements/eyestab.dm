@@ -94,7 +94,7 @@
 
 	if(HAS_TRAIT(target, TRAIT_XCARD_EYE_TRAUMA)) //ORBSTATION
 		if(prob(30)) //30% chance that a piercing wound happens
-			var/type_wound = pick(list(/datum/wound/pierce/severe, /datum/wound/pierce/moderate))
+			var/type_wound = pick(list(/datum/wound/pierce/bleed/severe, /datum/wound/pierce/bleed/moderate))
 			target_limb.force_wound_upwards(type_wound)
 		return
 

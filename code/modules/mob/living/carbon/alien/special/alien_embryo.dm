@@ -107,7 +107,7 @@
 
 	owner.apply_damage(50, BRUTE, BODY_ZONE_CHEST, forced = TRUE)
 	var/obj/item/bodypart/chest/chest_part = owner.get_bodypart(BODY_ZONE_CHEST)
-	chest_part.force_wound_upwards(/datum/wound/slash/critical)
+	chest_part.force_wound_upwards(/datum/wound/slash/flesh/critical)
 
 	var/mutable_appearance/overlay = mutable_appearance('icons/mob/nonhuman-player/alien.dmi', "burst_lie")
 	owner.add_overlay(overlay)

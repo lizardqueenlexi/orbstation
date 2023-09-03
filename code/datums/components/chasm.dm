@@ -209,7 +209,7 @@
 	if (istype(carbon_mob))
 		var/obj/item/bodypart/wound_part = pick(carbon_mob.bodyparts)
 		if (IS_ORGANIC_LIMB(wound_part))
-			wound_part.force_wound_upwards(/datum/wound/blunt/moderate)
+			wound_part.force_wound_upwards(/datum/wound/blunt/bone/moderate)
 	try_climb_out(fallen_mob)
 
 // ORBSTATION: start trying to climb out of this goddamn chasm

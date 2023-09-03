@@ -195,7 +195,7 @@
 						return ", object already present."
 			//If we're a mob we'll try a do_after; non mobs will instead instantly construct the item
 			//ORBSTATION EDIT: TRAIT_FAST_CRAFTER speeds up crafting
-			if(ismob(crafter) && !do_after(crafter,HAS_TRAIT(a, TRAIT_FAST_CRAFTER) ? (recipe.time * FAST_CRAFTER_MOD) : recipe.time, target = crafter))
+			if(ismob(crafter) && !do_after(crafter,HAS_TRAIT(crafter, TRAIT_FAST_CRAFTER) ? (recipe.time * FAST_CRAFTER_MOD) : recipe.time, target = crafter))
 				return "."
 			contents = get_surroundings(crafter, recipe.blacklist)
 			if(!check_contents(crafter, recipe, contents))

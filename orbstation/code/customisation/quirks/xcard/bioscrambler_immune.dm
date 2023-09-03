@@ -18,7 +18,7 @@
 			picked_part = get_bodypart(picked_zone)
 			if(picked_part)
 				to_chat(src, span_userdanger("Your [picked_part.plaintext_zone] begins resonating violently!"))
-				var/type_wound = pick(list(/datum/wound/blunt/critical, /datum/wound/blunt/severe, /datum/wound/blunt/moderate))
+				var/type_wound = pick(list(/datum/wound/blunt/bone/critical, /datum/wound/blunt/bone/severe, /datum/wound/blunt/bone/moderate))
 				picked_part.force_wound_upwards(type_wound)
 		if(3) //deal toxin damage and cause temporary sickness
 			to_chat(src, span_userdanger("Your stomach churns as your body twists unnaturally!"))
