@@ -20,7 +20,7 @@
 		if(!istype(reagent, /datum/reagent/consumable/ethanol))
 			to_chat(user, span_notice("You can only put booze in the booze grenade!"))
 			return
-	var/units = container.reagents.trans_to(src, container.amount_per_transfer_from_this, transfered_by = user)
+	var/units = container.reagents.trans_to(src, container.amount_per_transfer_from_this, transferred_by = user)
 	if(units)
 		to_chat(user, span_notice("You transfer [units] units of the solution to [src]."))
 		return
