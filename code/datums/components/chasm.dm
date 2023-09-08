@@ -157,7 +157,7 @@
 	dropped_thing.visible_message(span_boldwarning("[dropped_thing] falls into [parent]!"), span_userdanger("[oblivion_message]"))
 	if (isliving(dropped_thing))
 		var/mob/living/falling_mob = dropped_thing
-		falling_mob.notransform = TRUE
+		ADD_TRAIT(falling_mob, TRAIT_NO_TRANSFORM, REF(src))
 		falling_mob.Paralyze(20 SECONDS)
 
 	var/oldtransform = dropped_thing.transform
@@ -204,7 +204,7 @@
 // ORBSTATION: hurts you and then start climbing out
 /datum/component/chasm/proc/on_living_fallen(mob/living/fallen_mob)
 	fallen_mob.apply_damage(20)
-	fallen_mob.notransform = FALSE
+	REMOVE_TRAIT(fallen_mob, TRAIT_NO_TRANSFORM, REF(src))
 	var/mob/living/carbon/carbon_mob = fallen_mob
 	if (istype(carbon_mob))
 		var/obj/item/bodypart/wound_part = pick(carbon_mob.bodyparts)
