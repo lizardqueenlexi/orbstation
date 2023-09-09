@@ -101,3 +101,7 @@
 	return objectives_text
 
 #undef CUSTOM_OBJECTIVE_MAX_LENGTH
+
+// Remove the "change objective without losing secondary objectives" button if we renegotiated the other way
+/datum/antagonist/traitor/can_change_objectives()
+	return ..() && length(objectives) > 1
