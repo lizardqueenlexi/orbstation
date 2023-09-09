@@ -12,7 +12,7 @@
 /datum/uplink_item/contract/freeform
 	name = "Renegotiate Contract"
 	desc = "Opt out of conventional objectives and forge your own path forward in pursuit of a custom goal. \
-	Be warned that you will no longer be able to earn telecrystals. There is no turning back."
+		Be warned that you will no longer be able to earn telecrystals. There is no turning back."
 	item = /obj/effect/gibspawner/generic
 	surplus = 0
 	cost = 0
