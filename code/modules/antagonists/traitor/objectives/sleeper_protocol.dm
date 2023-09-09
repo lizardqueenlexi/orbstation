@@ -124,7 +124,9 @@
 		"You need to hide your department so the Syndicate can't find it",
 		"You have a supervillain alter ego. Don your costume and gloat over the do-gooders as you enact your evil scheme",
 		"You must amass a collection of as many hats as possible",
-		"Pun Pun is a member of the Space Monkey Mafia, and needs to pay for his crimes"
+		"Pun Pun is a member of the Space Monkey Mafia, and needs to pay for his crimes",
+		"Does your bag feel lighter? I bet those guys in Security stole something from it. Go get it back.",
+		"Command is incompetent, someone with some REAL authority should take over around here.",
 	)
 
 /datum/surgery_step/brainwash/sleeper_agent/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
