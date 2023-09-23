@@ -160,6 +160,7 @@
 
 	// into the hole they go
 	for(var/mob/mob_spawned in mobs_spawned)
+		mob_spawned.death() //ORBSTATION EDIT: prevents them from climbing out
 		the_hole.drop(mob_spawned)
 		sleep(0.2 SECONDS) // we have to WAIT because the drop() proc sleeps.
 
