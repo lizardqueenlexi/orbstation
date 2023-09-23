@@ -45,3 +45,11 @@
 /obj/item/clothing/under/plasmaman/syndicate
 	icon = 'icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'icons/mob/clothing/under/plasmaman.dmi'
+
+/obj/item/clothing/head/helmet/space/plasmaman/bitrunner
+	icon = 'icons/obj/clothing/head/plasmaman_hats.dmi'
+	worn_icon = 'icons/mob/clothing/head/plasmaman_head.dmi'
+
+/obj/item/clothing/under/plasmaman/bitrunner
+	icon = 'icons/obj/clothing/under/plasmaman.dmi'
+	worn_icon = 'icons/mob/clothing/under/plasmaman.dmi'
