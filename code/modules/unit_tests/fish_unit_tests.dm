@@ -159,7 +159,7 @@
 	var/turf/open/chasm/the_hole = run_loc_floor_bottom_left
 
 	// into the hole they go
-	for(var/mob/mob_spawned in mobs_spawned)
+	for(var/mob/living/mob_spawned in mobs_spawned) ///ORBSTATION EDIT: These are all living mobs, so I cast them so we can kill them
 		mob_spawned.death() //ORBSTATION EDIT: prevents them from climbing out
 		the_hole.drop(mob_spawned)
 		sleep(0.2 SECONDS) // we have to WAIT because the drop() proc sleeps.
