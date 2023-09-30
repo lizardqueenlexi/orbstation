@@ -1,11 +1,5 @@
 #define STASIS_SOURCE_EATEN "stasis_stomach"
 
-// Preserve you if a mining mob eats you, also fully heal you if a legion eats you because it's cute
-
-/mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion/infest(mob/living/carbon/human/victim)
-	. = ..()
-	victim.AddElement(/datum/element/safe_stomach, regenerative_stomach = TRUE)
-
 /**
  * Attached to a mob who has been eaten by another mob...
  * Prevents decay and optionally also heals them.

@@ -74,6 +74,7 @@
 
 	return features
 
-/datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["moth_color"] = GLOB.color_list_moth[pick(GLOB.color_list_moth)]
-	..()
+/datum/species/moth/randomize_features()
+	var/list/features = ..()
+	features["moth_color"] = GLOB.color_list_moth[pick(GLOB.color_list_moth)]
+	return features

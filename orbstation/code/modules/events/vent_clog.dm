@@ -23,7 +23,7 @@
 		/mob/living/simple_animal/hostile/skeleton,
 		/mob/living/basic/killer_tomato,
 		/mob/living/simple_animal/hostile/ooze,
-		/mob/living/simple_animal/hostile/asteroid/hivelordbrood/legion,
+		/mob/living/basic/legion_brood,
 	)
 	return pick(mob_list)
 

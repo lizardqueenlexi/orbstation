@@ -21,9 +21,9 @@
 	description = "Clowns pour out of portals."
 
 /datum/round_event/portal_storm/clown
-	boss_types = list(/mob/living/simple_animal/hostile/retaliate/clown/clownhulk/chlown = 1,
-		/mob/living/simple_animal/hostile/retaliate/clown/clownhulk/honcmunculus = 1)
-	hostile_types = list(/mob/living/simple_animal/hostile/retaliate/clown = 6,\
-						/mob/living/simple_animal/hostile/retaliate/clown/lube = 2, \
-						/mob/living/simple_animal/hostile/retaliate/clown/honkling = 1, \
-						/mob/living/simple_animal/hostile/retaliate/clown/longface = 1, )
+	boss_types = list(/mob/living/basic/clown/clownhulk/chlown = 1,
+		/mob/living/basic/clown/clownhulk/honkmunculus = 1)
+	hostile_types = list(/mob/living/basic/clown = 6,\
+						/mob/living/basic/clown/lube = 2, \
+						/mob/living/basic/clown/honkling = 1, \
+						/mob/living/basic/clown/longface = 1, )

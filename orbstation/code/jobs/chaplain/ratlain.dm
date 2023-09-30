@@ -8,7 +8,7 @@
 	rites_list = list(/datum/religion_rites/ratconvert, /datum/religion_rites/pied_piper, /datum/religion_rites/ratclog)
 	altar_icon_state = "convertaltar-maint"
 
-#define SOUND_SQUEAK 'sound/effects/mousesqueek.ogg'
+#define SOUND_SQUEAK 'sound/creatures/mousesqueek.ogg'
 
 /datum/religion_sect/rat/sect_bless(mob/living/target, mob/living/chap)
 	if (!ismouse(target) && !isregalrat(target))
