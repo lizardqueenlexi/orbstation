@@ -1,3 +1,3 @@
 //On orb, felinid brains are bulging with KNOWLEDGE, or useless trivia it depends
-/datum/species/human/felinid
-	brain_size = 1.1
+/obj/item/organ/internal/brain/felinid //A bit smaller than average
+	brain_size = 1.2

@@ -2,12 +2,6 @@
 /obj/item/bodypart/head/lizard
 	head_flags = HEAD_HAIR|HEAD_LIPS|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
 
-/datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
-	..()
-	if(istype(human_mob.dna.species, /datum/species/lizard))
-		human_mob.hairstyle = "Bald"
-		human_mob.facial_hair_color = "#F0E0C0" // for the colored snout option
-
 /datum/species/lizard/silverscale
 	/// Stored facial hair color for when the species is removed.
 	var/old_facehair_color
