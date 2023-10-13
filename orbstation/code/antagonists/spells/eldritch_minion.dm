@@ -206,25 +206,25 @@
 /datum/demonological_summon/prophet
 	desc = "A constructed of stitched-together limbs which tumbles end-over-end. It can see and travel through walls and \
 		link people together in a psychic web. A fragile scout."
-	mob_path = /mob/living/simple_animal/hostile/heretic_summon/raw_prophet
+	mob_path = /mob/living/basic/heretic_summon/raw_prophet
 
-/datum/demonological_summon/rust_spirit
+/datum/demonological_summon/rust_walker
 	desc = "A mechanical beast animated by a bound spirit. It spreads rust to destroy structures and machines, and can expel rust at its enemies \
 		to poison and disorient them. Heals while in rusted areas. A brawler, and not a creature of subtlety."
-	mob_path = /mob/living/simple_animal/hostile/heretic_summon/rust_spirit
+	mob_path = /mob/living/basic/heretic_summon/rust_walker
 
 /datum/demonological_summon/ash_spirit
 	desc = "A spirit bound in the corpses of flames. It can inflict horrible wounds and wreathe itself in flames. \
 		A brawler, and not a creature of subtlety."
-	mob_path = /mob/living/simple_animal/hostile/heretic_summon/ash_spirit
+	mob_path = /mob/living/basic/heretic_summon/ash_spirit
 
 /datum/demonological_summon/stalker
 	desc = "A constructed of stitched-together limbs which can reshape its flesh into a disguise. It can emit energy \
 		which destroys machines, and teleport a short distance. A durable ambusher. One of few summoned creatures \
 		which can accompany you unobtrusively, while it takes on another form."
-	mob_path = /mob/living/simple_animal/hostile/heretic_summon/stalker
+	mob_path = /mob/living/basic/heretic_summon/stalker
 
 /datum/demonological_summon/maid
 	desc = "A barely-tangible spirit which can see through walls and vanish into reflective surfaces. A durable scout. \
 		One of few summoned creatures which can accompany you unobtrusively, while it is invisible inside the mirror world."
-	mob_path = /mob/living/simple_animal/hostile/heretic_summon/maid_in_the_mirror
+	mob_path = /mob/living/basic/heretic_summon/maid_in_the_mirror

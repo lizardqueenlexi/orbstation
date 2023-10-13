@@ -21,9 +21,9 @@
 		/mob/living/simple_animal/hostile/construct/wraith/mystic,
 		/mob/living/simple_animal/hostile/construct/artificer/mystic,
 		/mob/living/simple_animal/hostile/construct/juggernaut/mystic,
-		/mob/living/simple_animal/hostile/heretic_summon/raw_prophet,
-		/mob/living/simple_animal/hostile/heretic_summon/rust_spirit,
-		/mob/living/simple_animal/hostile/heretic_summon/ash_spirit
+		/mob/living/basic/heretic_summon/raw_prophet,
+		/mob/living/basic/heretic_summon/rust_walker,
+		/mob/living/basic/heretic_summon/ash_spirit
 	)
 
 /datum/action/cooldown/spell/shapeshift/eldritch_monster/before_cast(atom/cast_on)
