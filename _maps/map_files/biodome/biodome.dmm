@@ -888,6 +888,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/medical/pharmacy,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "apy" = (
@@ -5062,13 +5063,10 @@
 /turf/open/floor/iron,
 /area/station/commons/locker)
 "bVk" = (
-/obj/effect/landmark/bitrunning/station_reward_spawn,
 /obj/effect/turf_decal/box/corners{
 	dir = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
+/obj/machinery/byteforge,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/bitrunning/den)
 "bVl" = (
@@ -5298,7 +5296,7 @@
 /area/station/maintenance/port/central)
 "bZG" = (
 /obj/effect/mapping_helpers/broken_floor,
-/mob/living/simple_animal/hostile/jungle/mook,
+/mob/living/basic/blob_minion/spore/minion/weak,
 /turf/open/floor/plating/reinforced,
 /area/station/maintenance/central/greater)
 "bZQ" = (
@@ -6393,7 +6391,7 @@
 /turf/open/floor/iron,
 /area/station/tcommsat/computer)
 "cvh" = (
-/mob/living/simple_animal/hostile/asteroid/ice_demon,
+/mob/living/basic/mining/ice_demon,
 /turf/open/misc/ice/icemoon/no_planet_atmos,
 /area/station/asteroid)
 "cvk" = (
@@ -10502,10 +10500,11 @@
 /turf/open/floor/iron/terracotta/small,
 /area/station/biodome/aft)
 "dVl" = (
-/obj/structure/bodycontainer/morgue,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 9
 	},
+/obj/structure/bed/medical/emergency,
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "dVr" = (
@@ -11295,6 +11294,7 @@
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot_red,
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "eoF" = (
@@ -15192,16 +15192,11 @@
 /turf/open/space/basic,
 /area/space)
 "fNp" = (
-/mob/living/simple_animal/hostile/retaliate/goat{
-	atmos_requirements = list("min_oxy"=1,"max_oxy"=0,"min_plas"=0,"max_plas"=1,"min_co2"=0,"max_co2"=5,"min_n2"=0,"max_n2"=0);
-	desc = "Not known for their pleasant disposition. This one seems a bit more hardy to the cold.";
-	minbodytemp = 150;
-	name = "Snowy Pete"
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
 	},
+/mob/living/basic/goat/pete,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/service/kitchen/coldroom)
 "fNt" = (
@@ -19253,6 +19248,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/landmark/event_spawn,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "hpQ" = (
@@ -22226,8 +22222,8 @@
 /obj/structure/table,
 /obj/machinery/recharger,
 /obj/item/gun/energy/laser/practice,
-/obj/item/gun/energy/laser/practice,
 /obj/machinery/airalarm/directional/south,
+/obj/item/gun/energy/laser/carbine/practice,
 /turf/open/floor/iron,
 /area/station/science/circuits)
 "iAH" = (
@@ -26337,9 +26333,9 @@
 /turf/open/floor/stone,
 /area/station/commons/lounge)
 "kjJ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/landmark/start/bitrunner,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/carpet/neon/simple/orange,
 /area/station/bitrunning/den)
 "kjS" = (
@@ -26927,15 +26923,13 @@
 /turf/open/floor/iron/terracotta/small,
 /area/station/service/hydroponics)
 "ktc" = (
-/obj/effect/landmark/bitrunning/station_reward_spawn,
-/obj/effect/turf_decal/box/corners,
 /obj/machinery/camera/directional/west{
 	c_tag = "Cargo - Bitrunning"
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
-/obj/machinery/firealarm/directional/south,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/bitrunning/den)
 "ktg" = (
@@ -28483,6 +28477,7 @@
 /area/station/hallway/secondary/exit/departure_lounge)
 "kUH" = (
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "kUP" = (
@@ -31375,6 +31370,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "lXR" = (
@@ -32342,11 +32338,15 @@
 /area/station/security/prison)
 "mpc" = (
 /obj/structure/table,
+/obj/machinery/airalarm/directional/south,
+/obj/item/storage/box/bandages{
+	pixel_x = -8;
+	pixel_y = 8
+	},
 /obj/item/storage/box/bodybags{
 	pixel_x = 3;
 	pixel_y = 2
 	},
-/obj/machinery/airalarm/directional/south,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
@@ -33656,6 +33656,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/event_spawn,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "mRe" = (
@@ -34095,7 +34096,7 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
 "nbb" = (
-/mob/living/simple_animal/sloth/paperwork,
+/mob/living/basic/sloth/paperwork,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
@@ -36618,10 +36619,10 @@
 /turf/open/water/jungle/biodome,
 /area/station/biodome/aft)
 "nXv" = (
-/obj/structure/bodycontainer/morgue,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
+/obj/structure/bed/medical/emergency,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "nXA" = (
@@ -39436,6 +39437,7 @@
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 4
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "paV" = (
@@ -41623,10 +41625,11 @@
 /area/station/commons/dorms)
 "pTm" = (
 /obj/structure/window/spawner/directional/south,
-/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
 	},
+/obj/structure/table,
+/obj/item/storage/box/bandages,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "pTn" = (
@@ -42167,10 +42170,10 @@
 /turf/open/misc/ashplanet/wateryrock/biodome,
 /area/station/biodome/aft)
 "qeP" = (
-/obj/effect/decal/cleanable/blood,
-/mob/living/simple_animal/hostile/jungle/mook,
-/turf/open/misc/dirt/jungle/wasteland/biodome,
-/area/station/maintenance/central/greater)
+/obj/machinery/netpod,
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/bitrunning/den)
 "qeS" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/toolbox/emergency,
@@ -42703,6 +42706,10 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/science/ordnance/office)
+"qnJ" = (
+/mob/living/basic/blob_minion/spore/minion/weak,
+/turf/open/misc/dirt/jungle/wasteland/biodome,
+/area/station/maintenance/central/greater)
 "qnV" = (
 /obj/effect/turf_decal/tile/yellow/diagonal_edge,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -43530,6 +43537,7 @@
 	name = "sorting disposal pipe (Pharmacy)"
 	},
 /obj/effect/mapping_helpers/mail_sorting/medbay/chemistry,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "qDV" = (
@@ -44978,6 +44986,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "rfe" = (
@@ -46101,6 +46110,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+/obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "rzp" = (
@@ -48138,6 +48148,14 @@
 /obj/item/paper/calling_card,
 /turf/open/misc/asteroid/airless,
 /area/station/asteroid)
+"spV" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment,
+/obj/machinery/duct,
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
 "sqo" = (
 /obj/effect/turf_decal/weather/dirt{
 	dir = 1
@@ -59425,6 +59443,7 @@
 /turf/open/misc/asteroid,
 /area/station/cargo/miningdock)
 "wHM" = (
+/obj/machinery/shower/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "wIa" = (
@@ -61917,6 +61936,11 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
+"xGX" = (
+/obj/structure/cable,
+/mob/living/basic/blob_minion/spore/minion/weak,
+/turf/open/floor/plating/reinforced,
+/area/station/maintenance/central/greater)
 "xHf" = (
 /obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -62837,6 +62861,11 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron/dark/small,
 /area/station/science/genetics)
+"xXh" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/duct,
+/turf/open/floor/iron/dark,
+/area/station/medical/treatment_center)
 "xXi" = (
 /obj/structure/table,
 /obj/machinery/coffeemaker,
@@ -102119,7 +102148,7 @@ xkI
 oAe
 oAe
 oAe
-qeP
+ead
 wPj
 nBH
 bSh
@@ -102372,11 +102401,11 @@ bSh
 gRe
 oIf
 haj
-dSY
+xGX
 dSY
 vDl
 rrp
-rrp
+qnJ
 bHm
 bHm
 bSh
@@ -102629,7 +102658,7 @@ wSk
 cam
 vny
 qBt
-bZG
+gRe
 gRe
 vDl
 rrp
@@ -103403,7 +103432,7 @@ qXx
 rGK
 wSk
 vGd
-rrp
+qnJ
 ead
 bSh
 hNy
@@ -152720,7 +152749,7 @@ sZX
 sZX
 cTX
 wYd
-jpo
+xXh
 kOb
 cTX
 sZX
@@ -153228,10 +153257,10 @@ hpP
 lXL
 apu
 reY
-hbg
-hbg
-hbg
-hbg
+spV
+spV
+spV
+spV
 qDO
 kUH
 eoE
@@ -176081,7 +176110,7 @@ rRv
 avR
 rJv
 rJv
-rJv
+qeP
 olR
 avR
 rfj

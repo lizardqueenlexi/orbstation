@@ -5,16 +5,8 @@
 	icon_state = "rld"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	matter = 200
-	max_matter = 200
-
-	wallcost = 0
-	floorcost = 0
-	launchcost = 0
-	deconcost = 0
-
-	condelay = 3
-	decondelay = 3
+	matter = 2000
+	max_matter = 2000
 
 /obj/item/holosign_creator/atmos/super
 	name = "super ATMOS holofan projector"
