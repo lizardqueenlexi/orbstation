@@ -156,11 +156,9 @@ GLOBAL_LIST_INIT(syndicate_employers, list(
 	//ORBSTATION EMPLOYERS
 	"Azik Interstellar",
 	"Chariraxa Agricultural Concern",
-	"Children of the 3rd Soviet Republic",
-	"Free Radicals",
-	"Ghosts of the 3rd Soviet Union",
 	"Ngaouhaki FPC",
 	"Suojaheimøstusek Resource & Logistics, plc",
+	"True Soldiers of the 3rd Soviet Union",
 ))
 ///employers that are from nanotrasen
 GLOBAL_LIST_INIT(nanotrasen_employers, list(
@@ -169,8 +167,6 @@ GLOBAL_LIST_INIT(nanotrasen_employers, list(
 	"Gone Postal",
 	"Internal Affairs Agent",
 	"Legal Trouble",
-	//ORBSTATION EMPLOYERS
-	"Flagbearers of the New Kronstadt",
 ))
 
 ///employers who hire agents to do the hijack
@@ -180,9 +176,6 @@ GLOBAL_LIST_INIT(hijack_employers, list(
 	"Gone Postal",
 	"Tiger Cooperative Fanatic",
 	"Waffle Corporation Terrorist",
-	//ORBSTATION EMPLOYERS
-	"Children of the 3rd Soviet Republic",
-	"Free Radicals",
 ))
 
 ///employers who hire agents to do a task and escape... or martyrdom. whatever
