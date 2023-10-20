@@ -18,7 +18,6 @@
 /obj/machinery/computer/tram_controls/boat
 	name = "Pleasure Boat Controls"
 	icon = 'orbstation/icons/obj/computer.dmi'
-	icon_screen = "tram_Aft Boat Dock_idle"
 	specific_transport_id = TRAM_BOAT
 
 /obj/effect/landmark/transport/nav_beacon/tram/platform/boat/fore
