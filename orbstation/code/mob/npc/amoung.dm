@@ -64,6 +64,7 @@
 	set_greyscale(new_config=/datum/greyscale_config/amoung)
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 	AddElement(/datum/element/footstep, FOOTSTEP_MOB_SHOE)
+	AddElement(/datum/element/dextrous)
 
 ///picks a random colour for our amoung
 /mob/living/basic/amoung/proc/random_colour()
