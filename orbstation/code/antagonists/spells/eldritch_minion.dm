@@ -200,7 +200,7 @@
 /datum/demonological_summon/wraith
 	desc = "A shell of mystic metal animated by a bound spirit. It can move quickly and travel through walls. \
 		A fragile assassin."
-	mob_path = /mob/living/simple_animal/hostile/construct/wraith/mystic
+	mob_path = /mob/living/basic/construct/wraith/mystic
 
 /// I suspect the most popular one
 /datum/demonological_summon/prophet

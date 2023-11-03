@@ -23,7 +23,7 @@
 	name = "bolt of levitation"
 	icon_state = "bluespace"
 
-/obj/projectile/magic/levitate/on_hit(atom/target)
+/obj/projectile/magic/levitate/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/mob/living/victim = target
 	if (!istype(victim))

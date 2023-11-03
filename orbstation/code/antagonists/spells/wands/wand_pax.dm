@@ -33,7 +33,7 @@
 	icon = 'icons/mob/simple/animal.dmi'
 	icon_state = "heart"
 
-/obj/projectile/magic/pax/on_hit(atom/target)
+/obj/projectile/magic/pax/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/mob/living/victim = target
 	if (!istype(victim))

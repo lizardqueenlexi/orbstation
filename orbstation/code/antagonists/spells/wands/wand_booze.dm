@@ -29,7 +29,7 @@
 	name = "bolt of inebriation"
 	icon_state = "energy"
 
-/obj/projectile/magic/booze/on_hit(atom/target)
+/obj/projectile/magic/booze/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/mob/living/carbon/victim = target
 	if (!istype(victim))

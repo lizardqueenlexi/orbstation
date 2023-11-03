@@ -32,7 +32,7 @@
 
 /datum/grand_finale/armageddon/trigger(mob/living/carbon/human/invoker)
 	//ORBSTATION EDIT: more yells!
-	priority_announce(pick(possible_last_words + orb_last_words), null, 'sound/magic/voidblink.ogg', sender_override = "[invoker.real_name]")
+	priority_announce(pick(possible_last_words + orb_last_words), null, 'sound/magic/voidblink.ogg', sender_override = "[invoker.real_name]", color_override = "purple")
 	var/turf/current_location = get_turf(invoker)
 	invoker.gib(DROP_ALL_REMAINS)
 

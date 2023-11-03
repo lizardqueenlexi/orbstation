@@ -24,7 +24,7 @@
 	name = "bolt of repulsion"
 	icon_state = "blastwave"
 
-/obj/projectile/magic/repulse/on_hit(atom/target)
+/obj/projectile/magic/repulse/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/atom/movable/victim = target
 	if (!istype(victim))

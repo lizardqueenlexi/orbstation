@@ -47,7 +47,7 @@
 	name = "bolt of chaos"
 	icon_state = "ice_1"
 
-/obj/projectile/magic/hallucination/on_hit(atom/target)
+/obj/projectile/magic/hallucination/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/mob/living/carbon/victim = target
 	if (!istype(victim))

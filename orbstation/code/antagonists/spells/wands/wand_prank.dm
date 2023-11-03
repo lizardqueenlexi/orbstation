@@ -28,7 +28,7 @@
 	/// Our internal pie
 	var/obj/item/food/pie/cream/pie/magical/pie = new()
 
-/obj/projectile/magic/prank/on_hit(atom/target)
+/obj/projectile/magic/prank/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	pie.splat(target)
 
