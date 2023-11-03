@@ -26,7 +26,7 @@
 	name = "bolt of babbling"
 	icon_state = "babel"
 
-/obj/projectile/magic/babel_minor/on_hit(mob/living/carbon/target)
+/obj/projectile/magic/babel_minor/on_hit(mob/living/carbon/target, blocked = 0, pierce_hit)
 	. = ..()
 	if (!isliving(target))
 		return

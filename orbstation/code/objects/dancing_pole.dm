@@ -40,7 +40,7 @@
 	if (!try_to_dance(user))
 		return ..()
 
-/obj/structure/dancing_pole/attack_drone(mob/living/simple_animal/drone/user, list/modifiers)
+/obj/structure/dancing_pole/attack_drone(mob/living/basic/drone/user, list/modifiers)
 	return try_to_dance(user)
 
 /obj/structure/dancing_pole/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)

@@ -28,7 +28,8 @@
 	name = "bolt of freezing"
 	icon_state = "ice_2"
 
-/obj/projectile/magic/freeze/on_hit(atom/target)
+/obj/projectile/magic/freeze/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
 	var/turf/hit_turf = get_turf(target)
 	if (isfloorturf(hit_turf) && !isspaceturf(hit_turf) && !isindestructiblefloor(hit_turf))
 		hit_turf.ChangeTurf(/turf/open/floor/fakeice/slippery, flags = CHANGETURF_INHERIT_AIR)

@@ -7,7 +7,7 @@
 /obj/projectile/neurotoxin/damaging
 	apply_debuff = FALSE
 
-/obj/projectile/neurotoxin/on_hit(mob/living/target, blocked = FALSE)
+/obj/projectile/neurotoxin/on_hit(mob/living/target, blocked = 0, pierce_hit)
 	if (isalien(target))
 		return ..()
 	if (apply_debuff && istype(target))

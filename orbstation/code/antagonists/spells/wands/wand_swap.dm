@@ -27,7 +27,8 @@
 	icon_state = "magicm"
 	projectile_phasing = PASSTABLE | PASSGLASS | PASSGRILLE
 
-/obj/projectile/magic/swap/on_hit(atom/target)
+/obj/projectile/magic/swap/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
 	var/atom/movable/hit_target = target
 	if (!istype(hit_target))
 		return

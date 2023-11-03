@@ -39,7 +39,8 @@
 		/datum/wound/burn/flesh/critical = 1, /datum/wound/burn/flesh/severe = 3,
 	)
 
-/obj/projectile/magic/wound/on_hit(atom/target)
+/obj/projectile/magic/wound/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
 	var/mob/living/carbon/victim = target
 	if (!istype(victim))
 		return

@@ -38,7 +38,8 @@
 	icon = 'icons/obj/food/pizza.dmi'
 	icon_state = "pizzamargherita"
 
-/obj/projectile/magic/pizza/on_hit(atom/target)
+/obj/projectile/magic/pizza/on_hit(atom/target, blocked = 0, pierce_hit)
+	. = ..()
 	var/turf/hit_turf = get_turf(target)
 	var/datum/dimension_theme/pizza/converter = new()
 	if(!converter.can_convert(hit_turf))

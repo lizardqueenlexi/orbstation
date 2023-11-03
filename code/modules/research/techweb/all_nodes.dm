@@ -48,6 +48,7 @@
 		"experimentor",
 		"extinguisher",
 		"fax",
+		"fish_case",
 		"fishing_rod",
 		"fishing_portal_generator",
 		"flashlight",
@@ -97,6 +98,7 @@
 		"sec_dart",
 		"sec_Islug",
 		"sec_rshot",
+		"sec_pen",
 		"servingtray",
 		"shaker",
 		"shot_glass",
@@ -127,6 +129,14 @@
 		"universal_scanner",
 		"voice_analyzer",
 		"watering_can",
+	)
+	experiments_to_unlock = list(
+		/datum/experiment/autopsy/nonhuman,
+		/datum/experiment/scanning/random/material/medium/one,
+		/datum/experiment/scanning/random/material/medium/three,
+		/datum/experiment/scanning/random/material/hard/one,
+		/datum/experiment/scanning/random/material/hard/two,
+		/datum/experiment/scanning/people/novel_organs,
 	)
 
 /datum/techweb_node/mmi
@@ -289,6 +299,7 @@
 		"plumbing_rcd_service",
 		"plumbing_rcd_sci",
 		"portable_chem_mixer",
+		"penlight",
 		"retractor",
 		"scalpel",
 		"stethoscope",
@@ -407,6 +418,7 @@
 		"medigel",
 		"medipen_refiller",
 		"pandemic",
+		"penlight_paramedic",
 		"soda_dispenser",
 		"self_actualization_device",
 	)
@@ -631,6 +643,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 12500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/easy = 7500)
+	experiments_to_unlock = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier2_microlaser)
 
 /datum/techweb_node/adv_engi
 	id = "adv_engi"
@@ -912,7 +925,7 @@
 	id = "adv_robotics"
 	display_name = "Advanced Robotics Research"
 	description = "Machines using actual neural networks to simulate human lives."
-	prereq_ids = list("neural_programming", "robotics")
+	prereq_ids = list("robotics")
 	design_ids = list(
 		"mmi_posi",
 	)
@@ -1591,6 +1604,7 @@
 	design_ids = list(
 		"pin_testing",
 		"tele_shield",
+		"lasershell",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 20000)
 	discount_experiments = list(/datum/experiment/ordnance/explosive/pressurebomb = 10000)

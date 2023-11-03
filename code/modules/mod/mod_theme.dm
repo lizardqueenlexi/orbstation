@@ -713,8 +713,6 @@
 	slowdown_inactive = 1
 	slowdown_active = 0.5
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
@@ -777,8 +775,6 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
@@ -845,8 +841,6 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
@@ -973,8 +967,6 @@
 	resistance_flags = FIRE_PROOF
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
@@ -1068,8 +1060,6 @@
 	ui_theme = "syndicate"
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
@@ -1138,8 +1128,6 @@
 	slot_flags = ITEM_SLOT_BELT
 	inbuilt_modules = list(/obj/item/mod/module/infiltrator, /obj/item/mod/module/storage/belt, /obj/item/mod/module/demoralizer)
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
@@ -1203,8 +1191,6 @@
 	slowdown_active = -0.5
 	inbuilt_modules = list(/obj/item/mod/module/quick_carry/advanced, /obj/item/mod/module/organ_thrower)
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/assembly/flash,
 		/obj/item/healthanalyzer,
 		/obj/item/melee/baton,
@@ -1348,8 +1334,6 @@
 	inbuilt_modules = list(/obj/item/mod/module/welding/camera_vision, /obj/item/mod/module/hacker, /obj/item/mod/module/weapon_recall, /obj/item/mod/module/adrenaline_boost, /obj/item/mod/module/energy_net)
 	allowed_suit_storage = list(
 		/obj/item/gun,
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/melee/baton,
 		/obj/item/restraints/handcuffs,
 	)
@@ -1475,8 +1459,6 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
@@ -1563,8 +1545,6 @@
 	siemens_coefficient = 0
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 10
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,
@@ -1628,8 +1608,6 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash,
 		/obj/item/melee/baton,

@@ -27,7 +27,7 @@
 	icon_state = "e_netting"
 	projectile_phasing =  PASSGLASS | PASSGRILLE
 
-/obj/projectile/magic/teleport_rune/on_hit(atom/target)
+/obj/projectile/magic/teleport_rune/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
 	var/turf/hit_loc = get_turf(target)
 	if (iswallturf(hit_loc))

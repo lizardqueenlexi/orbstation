@@ -18,9 +18,9 @@
 
 	possible_shapes = list(
 		/mob/living/simple_animal/shade, // You can move really fast and ventcrawl I guess, beware of the chaplain's soul shard!
-		/mob/living/simple_animal/hostile/construct/wraith/mystic,
-		/mob/living/simple_animal/hostile/construct/artificer/mystic,
-		/mob/living/simple_animal/hostile/construct/juggernaut/mystic,
+		/mob/living/basic/construct/wraith/mystic,
+		/mob/living/basic/construct/artificer/mystic,
+		/mob/living/basic/construct/juggernaut/mystic,
 		/mob/living/basic/heretic_summon/raw_prophet,
 		/mob/living/basic/heretic_summon/rust_walker,
 		/mob/living/basic/heretic_summon/ash_spirit
