@@ -253,7 +253,7 @@
 	if (rite_target.obj_damage == 0) // This is a mouse, not a rat
 		rite_target.ai_controller = new /datum/ai_controller/basic_controller/mouse_friend(rite_target)
 	else
-		command_list += /datum/pet_command/point_targetting/attack/mouse
+		command_list += /datum/pet_command/point_targeting/attack/mouse
 	rite_target.AddComponent(/datum/component/obeys_commands, command_list)
 	qdel(rite_target.GetComponent(/datum/component/tameable))
 	rite_target.befriend(user)

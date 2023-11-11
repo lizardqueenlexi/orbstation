@@ -156,7 +156,7 @@
 		/obj/item/dnainjector/lasereyesmut = 99, 	// but also, it's just sandbox, so
 		/obj/item/stack/sheet/hauntium/fifty = 99,
 		/obj/item/suspiciousphone = 99,
-		/obj/item/guardiancreator/tech/choose/traitor = 99,
+		/obj/item/guardian_creator/tech = 99,
 		/obj/item/uplink/sandbox = 99, // Yes, infinite traitor uplinks might destroy the station, but it's for sandbox.
 	)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF

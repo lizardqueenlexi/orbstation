@@ -17,7 +17,7 @@
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
 	possible_shapes = list(
-		/mob/living/simple_animal/shade, // You can move really fast and ventcrawl I guess, beware of the chaplain's soul shard!
+		/mob/living/basic/shade, // You can move really fast and ventcrawl I guess, beware of the chaplain's soul shard!
 		/mob/living/basic/construct/wraith/mystic,
 		/mob/living/basic/construct/artificer/mystic,
 		/mob/living/basic/construct/juggernaut/mystic,
