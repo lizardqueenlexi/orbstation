@@ -54,7 +54,7 @@
 		if(24)
 			new /obj/item/book_of_babel(loc)
 		if(25)
-			new /obj/item/guardiancreator/miner(loc)
+			new /obj/item/guardian_creator/miner(loc)
 		if(26)
 			new /obj/item/clothing/shoes/winterboots/ice_boots(loc)
 		if(27)

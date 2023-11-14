@@ -194,7 +194,7 @@
 /datum/demonological_summon/shade
 	desc = "A corporeal spirit which moves very quickly and can travel gaseously through vents. A fragile scout. \
 		Its fickle loyalty can be borrowed by anyone bearing a Soul Shard."
-	mob_path = /mob/living/simple_animal/shade
+	mob_path = /mob/living/basic/shade
 
 // I'm not including juggernaut or artificer frankly because they're just a bit boring
 /datum/demonological_summon/wraith

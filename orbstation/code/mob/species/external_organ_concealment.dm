@@ -55,7 +55,7 @@
 	if (!owner)
 		return
 	RegisterSignals(owner, list(COMSIG_MOB_EQUIPPED_ITEM, COMSIG_MOB_UNEQUIPPED_ITEM), PROC_REF(update_status_on_signal))
-	RegisterSignal(owner, COMSIG_SPECIES_GAIN, PROC_REF(update_display))
+	RegisterSignal(owner, COMSIG_CARBON_GAIN_ORGAN, PROC_REF(update_display))
 
 /datum/action/conceal_organ/Remove(mob/remove_from)
 	. = ..()

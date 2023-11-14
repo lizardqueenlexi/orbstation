@@ -158,7 +158,7 @@
 
 /datum/ai_controller/basic_controller/amoung/hostile
 	blackboard = list(
-		BB_TARGETTING_DATUM = new /datum/targetting_datum/basic()
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance
@@ -175,14 +175,14 @@
 /datum/ai_behavior/basic_melee_attack/amoung/surgeon
 	action_cooldown = 1.5 SECONDS
 
-/datum/ai_behavior/basic_melee_attack/amoung/surgeon/perform(delta_time, datum/ai_controller/controller, target_key, targetting_datum_key, hiding_location_key)
+/datum/ai_behavior/basic_melee_attack/amoung/surgeon/perform(delta_time, datum/ai_controller/controller, target_key, targeting_strategy_key, hiding_location_key)
 
 	var/mob/living/basic/surgeon = controller.pawn
 	var/datum/weakref/weak_target = controller.blackboard[target_key]
 	var/atom/target = weak_target?.resolve()
-	var/datum/targetting_datum/targetting_datum = controller.blackboard[targetting_datum_key]
+	var/datum/targeting_strategy/targeting_strategy = controller.blackboard[targeting_strategy_key]
 
-	if(!targetting_datum.can_attack(surgeon, target))
+	if(!targeting_strategy.can_attack(surgeon, target))
 		return
 	if (!prob(35))
 		return
