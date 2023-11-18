@@ -23,7 +23,6 @@
 #define ROLE_BLOB "Blob"
 #define ROLE_BLOB_INFECTION "Blob Infection"
 #define ROLE_CHANGELING_MIDROUND "Changeling (Midround)"
-#define ROLE_CYBER_POLICE "Cyber Police"
 #define ROLE_FUGITIVE "Fugitive"
 #define ROLE_LONE_OPERATIVE "Lone Operative"
 #define ROLE_MALF_MIDROUND "Malf AI (Midround)"
@@ -107,6 +106,11 @@
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
 #define ROLE_ZOMBIE "Zombie"
 
+// Virtual dom related
+#define ROLE_GLITCH "Glitch" // the parent type of all vdom roles
+#define ROLE_CYBER_POLICE "Cyber Police"
+#define ROLE_CYBER_TAC "Cyber Tac"
+#define ROLE_NETGUARDIAN "NetGuardian Prime"
 // Orb roles
 #define ROLE_CHANGELING_INFILTRATOR "Changeling Infiltrator"
 #define ROLE_SMUGGLED_AGENT "Smuggled Syndicate Agent"
@@ -138,7 +142,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_BLOB = 0,
 	ROLE_BLOB_INFECTION = 0,
 	ROLE_CHANGELING_MIDROUND = 0,
-	ROLE_CYBER_POLICE = 0,
 	ROLE_FUGITIVE = 0,
 	ROLE_LONE_OPERATIVE = 14,
 	ROLE_MALF_MIDROUND = 0,
@@ -168,6 +171,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_STOWAWAY_CHANGELING = 0,
 
 	// I'm not too sure why these are here, but they're not moving.
+	ROLE_GLITCH = 0,
 	ROLE_PAI = 0,
 	ROLE_SENTIENCE = 0,
 ))

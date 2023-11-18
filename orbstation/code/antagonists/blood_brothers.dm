@@ -254,7 +254,7 @@
 		if(uplink_item.progression_minimum)
 			continue
 		possible_items += uplink_item
-	var/obj/structure/closet/crate/syndicrate/surplus_crate = new
+	var/obj/structure/closet/crate/secure/syndicrate/surplus_crate = new
 	var/tc_budget = 25
 	while(tc_budget)
 		var/datum/uplink_item/uplink_item = pick_possible_item(possible_items, tc_budget)
