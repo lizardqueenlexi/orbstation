@@ -211,10 +211,16 @@ const QuirkList = (props: {
         );
 
         if (quirk.failTooltip) {
-          return <Tooltip content={quirk.failTooltip}>{child}</Tooltip>;
+          return (
+            <Tooltip key={quirkKey} content={quirk.failTooltip}>
+              {child}
+            </Tooltip>
+          );
         } else if (quirk.xcard) {
           return (
-            <Tooltip content="Please note that X-card quirks are intended only for those who find certain content uncomfortable. They are NOT intended for roleplay purposes, or to give mechanical advantages.">
+            <Tooltip
+              key={quirkKey}
+              content="Please note that X-card quirks are intended only for those who find certain content uncomfortable. They are NOT intended for roleplay purposes, or to give mechanical advantages.">
               {child}
             </Tooltip>
           );
