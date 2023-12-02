@@ -6,6 +6,7 @@
 	Note that your robotic voice box cannot be removed."
 	icon = FA_ICON_WALKIE_TALKIE
 	value = 0 //the robot tongue is capable of speaking every language but does not actually grant them to you - so it doesn't do much
+	medical_record_text = "Patient has a robotic voice box installed."
 
 /datum/quirk/robot_voice/add_unique()
 	var/mob/living/carbon/human/human_holder = quirk_holder
