@@ -33,6 +33,10 @@
 		if (initial(quirk_type.abstract_parent_type) == quirk_type)
 			continue
 
+		///ORBSTATION EDIT
+		if(istype(quirk, /datum/quirk/xcard))
+			continue
+
 		if(!isnull(quirk_type.medical_record_text))
 			continue
 
