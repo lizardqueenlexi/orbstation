@@ -146,7 +146,7 @@
 	new /obj/item/stack/sheet/cloth(loc)
 	new /obj/item/stock_parts/servo(loc)
 	new /obj/item/circular_saw(loc)
-	var/mob/living/simple_animal/pet/cat/kitten/surgeon = new(loc)
+	var/mob/living/basic/pet/cat/kitten/surgeon = new(loc)
 	surgeon.name = "suspicious kitten"
 	surgeon.desc = "You don't think this cat was... no... it couldn't be, could it?"
 	..(TRUE)

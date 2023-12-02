@@ -47,7 +47,7 @@ type Info = {
   ritual: GrandRitual;
 };
 
-export const AntagInfoWizardJourneyman = (props, context) => {
+export const AntagInfoWizardJourneyman = (props) => {
   return (
     <Window width={620} height={740} theme="wizard">
       <Window.Content>
@@ -143,8 +143,8 @@ export const AntagInfoWizardJourneyman = (props, context) => {
   );
 };
 
-const ObjectivePrintout = (props, context) => {
-  const { data } = useBackend<Info>(context);
+const ObjectivePrintout = (props) => {
+  const { data } = useBackend<Info>();
   const { objectives, ritual } = data;
   return (
     <Stack vertical>

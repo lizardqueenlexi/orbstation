@@ -15,7 +15,7 @@
 	var/alive_bonus = 0
 	/// All stripped targets belongings (weakrefs)
 	var/list/target_belongings = list()
-	/// ORB: more easily understandable list of areas
+	/// ORBSTATION EDIT: more easily understandable list of areas
 	var/static/list/whitelisted_areas = typecacheof(list(
 		/area/station/commons,
 		/area/station/maintenance/tram,

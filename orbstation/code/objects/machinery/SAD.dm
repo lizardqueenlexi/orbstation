@@ -1,52 +1,3 @@
-/**
- * Get the organ object from the mob matching the passed in typepath
- *
- * Arguments:
- * * typepath The typepath of the organ to get
- */
-/mob/proc/getorgan(typepath)
-	return
-
-/**
- * Get organ objects by zone
- *
- * This will return a list of all the organs that are relevant to the zone that is passedin
- *
- * Arguments:
- * * zone [a BODY_ZONE_X define](https://github.com/tgstation/tgstation/blob/master/code/__DEFINES/combat.dm#L187-L200)
- */
-/mob/proc/getorganszone(zone)
-	return
-/**
- * Returns a list of all organs in specified slot
- *
- * Arguments:
- * * slot Slot to get the organs from
- */
-/mob/proc/getorganslot(slot)
-	return
-
-/mob/living/carbon/getorgan(typepath)
-	return (locate(typepath) in organs + external_organs)
-
-/mob/living/carbon/getorganszone(zone, include_children = FALSE)
-	var/valid_organs = list()
-	for(var/obj/item/organ/organ as anything in organs + external_organs)
-		if(zone == organ.zone)
-			valid_organs += organ
-		else if(include_children && zone == deprecise_zone(organ.zone))
-			valid_organs += organ
-	return valid_organs
-
-/mob/living/carbon/getorganslot(slot)
-	. = organs_slot[slot]
-	if(!.)
-		return external_organs_slot[slot]
-
-
-
-
-
 /datum/design/board/self_actualization_device
 	name = "Self-Actualization Device"
 	desc = "The circuit board for a Self-Actualization Device by Interdyne Pharmaceuticals."
@@ -223,7 +174,7 @@
 	patient.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
 
 	//Re-Applies Trauma
-	var/obj/item/organ/internal/brain/patient_brain = patient.getorgan(/obj/item/organ/internal/brain)
+	var/obj/item/organ/internal/brain/patient_brain = patient.get_organ_by_type(/obj/item/organ/internal/brain)
 
 	if(length(trauma_list))
 		patient_brain.traumas = trauma_list
@@ -237,11 +188,11 @@
 
 /// Checks the damage on the inputed organ and stores it.
 /obj/machinery/self_actualization_device/proc/check_organ(mob/living/carbon/human/patient, obj/item/organ/organ_to_check)
-	var/obj/item/organ/organ_to_track = patient.getorgan(organ_to_check)
+	var/obj/item/organ/organ_to_track = patient.get_organ_by_type(organ_to_check)
 
 	// If the organ is missing, the organ damage is automatically set to 100.
 	if(!organ_to_track)
-		return 100 //If the organ is missing, return max damage.
+		return initial(organ_to_check.maxHealth) //If the organ is missing, return max damage.
 
 	return organ_to_track.damage
 

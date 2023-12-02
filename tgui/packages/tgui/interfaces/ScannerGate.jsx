@@ -13,8 +13,8 @@ const DISEASE_THEASHOLD_LIST = [
   'BIOHAZARD',
 ];
 
-export const ScannerGate = (props, context) => {
-  const { act, data } = useBackend(context);
+export const ScannerGate = (props) => {
+  const { act, data } = useBackend();
   return (
     <Window width={400} height={300}>
       <Window.Content scrollable>
@@ -54,8 +54,8 @@ const SCANNER_GATE_ROUTES = {
   },
 };
 
-const ScannerGateControl = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateControl = (props) => {
+  const { act, data } = useBackend();
   const { scan_mode } = data;
   const route = SCANNER_GATE_ROUTES[scan_mode] || SCANNER_GATE_ROUTES.off;
   const Component = route.component();
@@ -76,8 +76,8 @@ const ScannerGateControl = (props, context) => {
   );
 };
 
-const ScannerGateOff = (props, context) => {
-  const { act } = useBackend(context);
+const ScannerGateOff = (props) => {
+  const { act } = useBackend();
   return (
     <>
       <Box mb={2}>Select a scanning mode below.</Box>
@@ -107,8 +107,8 @@ const ScannerGateOff = (props, context) => {
   );
 };
 
-const ScannerGateWanted = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerGateWanted = (props) => {
+  const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
@@ -121,8 +121,8 @@ const ScannerGateWanted = (props, context) => {
   );
 };
 
-const ScannerGateGuns = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerGateGuns = (props) => {
+  const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
@@ -135,8 +135,8 @@ const ScannerGateGuns = (props, context) => {
   );
 };
 
-const ScannerGateMindshield = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerGateMindshield = (props) => {
+  const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
@@ -149,8 +149,8 @@ const ScannerGateMindshield = (props, context) => {
   );
 };
 
-const ScannerGateDisease = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateDisease = (props) => {
+  const { act, data } = useBackend();
   const { reverse, disease_threshold } = data;
   return (
     <>
@@ -177,8 +177,8 @@ const ScannerGateDisease = (props, context) => {
   );
 };
 
-const ScannerGateZombie = (props, context) => {
-  const { data } = useBackend(context);
+const ScannerGateZombie = (props) => {
+  const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
@@ -191,8 +191,8 @@ const ScannerGateZombie = (props, context) => {
   );
 };
 
-const ScannerGateMode = (props, context) => {
-  const { act, data } = useBackend(context);
+const ScannerGateMode = (props) => {
+  const { act, data } = useBackend();
   const { reverse } = data;
   return (
     <LabeledList>

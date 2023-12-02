@@ -3,7 +3,7 @@
 // Don't create more traitors if it exceeds the limit for the current population & threat level.
 /datum/dynamic_ruleset/midround/from_living/autotraitor/ready(forced = FALSE)
 	if(!forced)
-		if(!mode.calculate_traitor_limit())
+		if(!SSdynamic.calculate_traitor_limit())
 			message_admins("Midround ruleset [name] could not be executed due to the traitor limit.")
 			return FALSE
 	return ..()
