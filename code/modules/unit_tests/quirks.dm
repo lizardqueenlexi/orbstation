@@ -34,7 +34,7 @@
 			continue
 
 		///ORBSTATION EDIT
-		if(istype(quirk, /datum/quirk/xcard))
+		if(istype(quirk_type, /datum/quirk/xcard))
 			continue
 
 		if(!isnull(quirk_type.medical_record_text))
