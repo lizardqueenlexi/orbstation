@@ -15,12 +15,6 @@
 	var/list/obj/item/organ/organs = list()
 	///Same as [above][/mob/living/carbon/var/organs], but stores "slot ID" - "organ" pairs for easy access.
 	var/list/organs_slot = list()
-	///List of [/obj/item/organ/external] in the mob, similarly used as internal_organs.ORBSTATION CHANGE
-	var/list/obj/item/organ/external/external_organs = list()
-	///Same as [above][/mob/living/carbon/var/external_organs], but stores "ID" = "organ" pairs.ORBSTATION CHANGE
-	var/list/external_organs_slot = list()
-	///How many dream images we have left to send
-	var/dreaming = 0
 
 	///Whether or not the mob is handcuffed
 	var/obj/item/handcuffed = null

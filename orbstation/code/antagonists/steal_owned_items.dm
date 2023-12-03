@@ -95,10 +95,10 @@
 
 /datum/objective_item/steal/pet/runtime
 	name = "Runtime, without a pet carrier"
-	pet_type = list(/mob/living/simple_animal/pet/cat/runtime)
+	pet_type = list(/mob/living/basic/pet/cat/runtime)
 	excludefromjob = list(JOB_CHIEF_MEDICAL_OFFICER)
 	item_owner = list(JOB_CHIEF_MEDICAL_OFFICER)
-	altitems = list(/mob/living/simple_animal/pet/cat/runtime)
+	altitems = list(/mob/living/basic/pet/cat/runtime)
 
 /datum/objective_item/steal/lamarr
 	name = "the research director's pet facehugger"

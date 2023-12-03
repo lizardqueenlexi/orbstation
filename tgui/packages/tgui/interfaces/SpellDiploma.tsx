@@ -18,8 +18,8 @@ type Info = {
   spells: DiplomaSpell[];
 };
 
-export const SpellDiploma = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+export const SpellDiploma = (props) => {
+  const { act, data } = useBackend<Info>();
   return (
     <Window width={940} height={820} theme="wizard">
       <Window.Content>
@@ -69,8 +69,8 @@ export const SpellDiploma = (props, context) => {
 
 // I would love to do this inside a loop and not hard code it
 // but I don't know how I would insert the columns
-export const DiplomaSpellGrid = (props, context) => {
-  const { act, data } = useBackend<Info>(context);
+export const DiplomaSpellGrid = (props) => {
+  const { act, data } = useBackend<Info>();
   const { picks, owned_spells, spells } = data;
   return (
     <Flex direction="column" wrap="wrap" height={'540px'} mb={1}>

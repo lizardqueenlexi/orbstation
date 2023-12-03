@@ -95,7 +95,7 @@
 /datum/round_event/wizard/indoor_weather/animal/get_item()
 	var/static/list/possible_paths = list(
 		/mob/living/basic/pet/dog/corgi/puppy = 5,
-		/mob/living/simple_animal/pet/cat/kitten = 5,
+		/mob/living/basic/pet/cat/kitten = 5,
 		/mob/living/basic/frog = 5,
 		/mob/living/basic/axolotl = 1,
 		/mob/living/basic/pet/dog/corgi/puppy/void = 1,

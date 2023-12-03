@@ -3,7 +3,7 @@
 // Don't create more traitors if it exceeds the limit for the current population & threat level.
 /datum/dynamic_ruleset/latejoin/infiltrator/ready(forced = FALSE)
 	if(!forced)
-		if(!mode.calculate_traitor_limit())
+		if(!SSdynamic.calculate_traitor_limit())
 			return FALSE
 	return ..()
 

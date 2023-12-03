@@ -234,7 +234,7 @@
 			if(SFX_REVOLVER_SPIN)
 				soundin = pick('sound/weapons/gun/revolver/spin1.ogg', 'sound/weapons/gun/revolver/spin2.ogg', 'sound/weapons/gun/revolver/spin3.ogg')
 			if(SFX_LAW)
-				soundin = pick(list( // ORB: removed insult.ogg, remove again if it reappears
+				soundin = pick(list( // ORBSTATION EDIT: removed insult.ogg, remove again if it reappears
 					'sound/voice/beepsky/creep.ogg',
 					'sound/voice/beepsky/god.ogg',
 					'sound/voice/beepsky/iamthelaw.ogg',

@@ -6,3 +6,4 @@
 	gain_text = span_notice("You feel more equipped to handle different modes of conversation.")
 	lose_text = span_danger("You feel a little less multilingual.")
 	icon = FA_ICON_GLOBE
+	medical_record_text = "Patient is extremely capable of learning languages."

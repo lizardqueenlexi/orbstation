@@ -12,6 +12,7 @@
 	Examine the chip for more information."
 	icon = FA_ICON_USER_GROUP
 	value = 0
+	medical_record_text = "Patient is a plural person."
 
 /datum/quirk/item_quirk/plurality/add_unique()
 	var/obj/item/plural_system_chip/new_system_chip = new

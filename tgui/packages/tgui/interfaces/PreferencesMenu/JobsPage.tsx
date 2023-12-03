@@ -47,7 +47,6 @@ type CreateSetPriority = (priority: JobPriority | null) => () => void;
 const createSetPriorityCache: Record<string, CreateSetPriority> = {};
 
 const createCreateSetPriorityFromName = (
-  context,
   jobName: string
 ): CreateSetPriority => {
   if (createSetPriorityCache[jobName] !== undefined) {
@@ -63,7 +62,7 @@ const createCreateSetPriorityFromName = (
     }
 
     const setPriority = () => {
-      const { act } = useBackend<PreferencesMenuData>(context);
+      const { act } = useBackend<PreferencesMenuData>();
 
       act('set_job_preference', {
         job: jobName,
@@ -166,21 +165,14 @@ const PriorityButtons = (props: {
   );
 };
 
-const JobRow = (
-  props: {
-    className?: string;
-    job: Job;
-    name: string;
-  },
-  context
-) => {
-  const { data } = useBackend<PreferencesMenuData>(context);
+const JobRow = (props: { className?: string; job: Job; name: string }) => {
+  const { data } = useBackend<PreferencesMenuData>();
   const { className, job, name } = props;
 
   const isOverflow = data.overflow_role === name;
   const priority = data.job_preferences[name];
 
-  const createSetPriority = createCreateSetPriorityFromName(context, name);
+  const createSetPriority = createCreateSetPriorityFromName(name);
 
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];
@@ -314,8 +306,8 @@ const Gap = (props: { amount: number }) => {
   return <Box height={`calc(${props.amount}px + 0.2em)`} />;
 };
 
-const JoblessRoleDropdown = (props, context) => {
-  const { act, data } = useBackend<PreferencesMenuData>(context);
+const JoblessRoleDropdown = (props) => {
+  const { act, data } = useBackend<PreferencesMenuData>();
   const selected = data.character_preferences.misc.joblessrole;
 
   const options = [
@@ -350,10 +342,10 @@ const JoblessRoleDropdown = (props, context) => {
   );
 };
 
-const DepartmentPopTracker: SFC<{ department: string }> = (props, context) => {
+const DepartmentPopTracker: SFC<{ department: string }> = (props) => {
   const { department: name } = props;
 
-  const prefData = useBackend<PreferencesMenuData>(context);
+  const prefData = useBackend<PreferencesMenuData>();
   const hasSigned: boolean = !!prefData.data.department_counts[name];
   if (!hasSigned) {
     return;
@@ -377,8 +369,8 @@ const DepartmentPopTracker: SFC<{ department: string }> = (props, context) => {
   );
 };
 
-const DepartmentPopArea: SFC = (props, context) => {
-  const prefData = useBackend<PreferencesMenuData>(context);
+const DepartmentPopArea: SFC = (props) => {
+  const prefData = useBackend<PreferencesMenuData>();
   const hasDepartments: boolean =
     Object.keys(prefData.data.department_counts).length > 0;
   if (!hasDepartments) {
@@ -409,7 +401,7 @@ const HeadPopTracker: SFC<{
   name: string;
   colour: string;
   heads: string[];
-}> = (props, context) => {
+}> = (props) => {
   const { name, colour, heads } = props;
   if (heads.length === 0) {
     heads.push('None');
@@ -428,8 +420,8 @@ const HeadPopTracker: SFC<{
   );
 };
 
-const HeadPopArea: SFC = (props, context) => {
-  const prefData = useBackend<PreferencesMenuData>(context);
+const HeadPopArea: SFC = (props) => {
+  const prefData = useBackend<PreferencesMenuData>();
   const hasHeads: boolean = Object.keys(prefData.data.biggest_head).length > 0;
   if (!hasHeads) {
     return (

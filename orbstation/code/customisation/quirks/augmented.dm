@@ -3,7 +3,7 @@
 	desc = "You never asked for this. Or maybe you did. Either way, all your limbs are cybernetic. They are civilian grade, and provide no armour."
 	icon = FA_ICON_PLUG_CIRCLE_BOLT
 	value = 0
-	medical_record_text = "During physical examination, patient was found to have fully augmented limbs."
+	medical_record_text = "During physical examination, patient was found to have fully augmented, but unarmored, limbs."
 
 /datum/quirk/augmented/add_unique()
 	var/mob/living/carbon/human/human_holder = quirk_holder
