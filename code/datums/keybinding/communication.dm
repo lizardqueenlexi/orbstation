@@ -53,7 +53,7 @@
 	winset(user, null, "command=[user.tgui_say_create_open_command(ME_CHANNEL)]")
 	return TRUE
 
-/datum/keybinding/client/communication/looc //Orbstation
+/datum/keybinding/client/communication/looc //Orbstation addition
 	hotkey_keys = list("L")
 	name = LOOC_CHANNEL
 	full_name = "Local Out Of Character Say (LOOC)"
