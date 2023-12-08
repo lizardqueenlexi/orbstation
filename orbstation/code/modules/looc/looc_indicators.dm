@@ -1,10 +1,6 @@
 //Typing indicators when using LOOC chat.
 /datum/tgui_say/proc/start_looc_thinking()
-	if(!window_open)
+	if(!window_open || !client.typing_indicators)
 		return FALSE
-	client.mob.thinking_LOOC = TRUE
+	ADD_TRAIT(client.mob, TRAIT_THINKING_LOOC, CURRENTLY_TYPING_TRAIT)
 	client.mob.create_thinking_indicator()
-
-/mob
-	/// Used for LOOC typing indicators.
-	var/thinking_LOOC = FALSE
