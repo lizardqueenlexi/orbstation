@@ -13,8 +13,8 @@
 	var/obj/item/organ/external/tail/ratfolk/mouseytail = new()
 	var/obj/item/organ/internal/ears/ratfolk/mouseyear = new()
 
-	mouseytail.Insert(human, special = FALSE, drop_if_replaced = TRUE)
-	mouseyear.Insert(human, special = FALSE, drop_if_replaced = TRUE)
+	mouseytail.Insert(human, special = FALSE , movement_flags = DELETE_IF_REPLACED)
+	mouseyear.Insert(human, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 
 
 

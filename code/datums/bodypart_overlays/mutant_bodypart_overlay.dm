@@ -93,8 +93,8 @@
 	CRASH("External organ has no feature list, it will render invisible")
 
 ///Give the organ its color. Force will override the existing one.
-/datum/bodypart_overlay/mutant/proc/inherit_color(obj/item/bodypart/ownerlimb, force)
-	if(isnull(ownerlimb))
+/datum/bodypart_overlay/mutant/proc/inherit_color(obj/item/bodypart/bodypart_owner, force)
+	if(isnull(bodypart_owner))
 		draw_color = null
 		return TRUE
 
@@ -103,22 +103,22 @@
 
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)
-			draw_color = override_color(ownerlimb.draw_color)
+			draw_color = override_color(bodypart_owner.draw_color)
 		if(ORGAN_COLOR_INHERIT)
 			//BEGIN ORBSTATION EDIT
 			if(sprite_datum.color_src == FACIAL_HAIR_COLOR) //Re-enabling colored snouts, mostly
-				if(!ishuman(ownerlimb.owner))
+				if(!ishuman(bodypart_owner.owner))
 					return
-				var/mob/living/carbon/human/human_owner = ownerlimb.owner
+				var/mob/living/carbon/human/human_owner = bodypart_owner.owner
 				draw_color = human_owner.facial_hair_color
 			else
-				draw_color = ownerlimb.draw_color
+				draw_color = bodypart_owner.draw_color
 			//END ORBSTATION EDIT
 		if(ORGAN_COLOR_HAIR)
-			if(!ishuman(ownerlimb.owner))
+			if(!ishuman(bodypart_owner.owner))
 				return
-			var/mob/living/carbon/human/human_owner = ownerlimb.owner
-			var/obj/item/bodypart/head/my_head = human_owner.get_bodypart(BODY_ZONE_HEAD) //not always the same as ownerlimb
+			var/mob/living/carbon/human/human_owner = bodypart_owner.owner
+			var/obj/item/bodypart/head/my_head = human_owner.get_bodypart(BODY_ZONE_HEAD) //not always the same as bodypart_owner
 			//head hair color takes priority, owner hair color is a backup if we lack a head or something
 			if(my_head)
 				draw_color = my_head.hair_color

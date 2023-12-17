@@ -244,7 +244,7 @@
 	name = "Prop Hunter's Kit"
 	description = "Why disguise as a person at all? With this kit, you can disguise as any object you can scan. They'll never suspect that the \
 		potted plant was an assassin. Contains a chameleon projector. Also contains a rush gland autosurgeon, for quick getaways."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "shield0"
 	kit_path = /obj/item/storage/secure/briefcase/contract_killer/prophunt
 	weight = CONTRACT_KILLER_KIT_UNCOMMON

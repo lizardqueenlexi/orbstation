@@ -15,7 +15,7 @@
 	qdel(old_tongue)*/
 
 	var/obj/item/organ/internal/tongue/robot/new_tongue = new(get_turf(human_holder))
-	new_tongue.Insert(human_holder, drop_if_replaced = FALSE)
+	new_tongue.Insert(human_holder, movement_flags = DELETE_IF_REPLACED)
 	// Only tongues of people with this quirk can't be removed. Manually spawned or found tongues can be.
 	new_tongue.organ_flags |= ORGAN_UNREMOVABLE
 
@@ -33,5 +33,5 @@
 
 	var/obj/item/organ/internal/tongue/new_tongue = new new_tongue_type()
 	//quirk_tongue.Remove(quirk_holder, TRUE)
-	new_tongue.Insert(quirk_holder, TRUE, drop_if_replaced = TRUE)
+	new_tongue.Insert(quirk_holder, TRUE, movement_flags = DELETE_IF_REPLACED)
 	//qdel(quirk_tongue)

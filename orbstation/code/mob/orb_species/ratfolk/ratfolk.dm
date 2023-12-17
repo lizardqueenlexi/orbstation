@@ -34,13 +34,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ratfolk,
 	)
 
-/datum/species/ratfolk/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		var/obj/item/organ/internal/ears/ratfolk/ears = new
-		ears.Insert(H, drop_if_replaced = FALSE)
-	return ..()
-
 /datum/species/ratfolk/get_scream_sound(mob/living/carbon/human/ratfolk)
 	return 'orbstation/sound/voice/ratfolk/ratfolk_scream.ogg'
 

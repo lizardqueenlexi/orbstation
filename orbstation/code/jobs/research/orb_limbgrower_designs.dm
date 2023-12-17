@@ -56,7 +56,7 @@
 		snout_to_insert = new /obj/item/organ/external/snout(loc)
 	else
 		snout_to_insert = new /obj/item/organ/external/snout_rat(loc)
-	snout_to_insert.add_to_limb(limb)
+	snout_to_insert.bodypart_insert(limb)
 
 // Techweb nodes
 /datum/techweb_node/xenoorgan_biotech

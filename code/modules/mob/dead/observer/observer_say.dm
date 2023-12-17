@@ -45,10 +45,7 @@
 	if(message[1] == "*" && check_emote(message, forced))
 		return
 
-	if(usr.control_object)
-		. = usr.control_object.say(message, sanitize = FALSE)
-	else
-		. = say_dead(message)
+	. = say_dead(message)
 
 /mob/dead/observer/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, list/message_mods = list(), message_range)
 	. = ..()
