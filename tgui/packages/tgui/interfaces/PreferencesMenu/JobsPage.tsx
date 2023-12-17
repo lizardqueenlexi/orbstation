@@ -358,9 +358,7 @@ const DepartmentPopTracker = (props: { department: string }) => {
   const prefData = useBackend<PreferencesMenuData>();
   const hasSigned: boolean = !!prefData.data.department_counts[name];
   if (!hasSigned) {
-    return (
-      <Section backgroundColor="#6a6a6a" ml={'-2px'} mr={'-2px'}></Section>
-    );
+    return <Section backgroundColor="#6a6a6a" ml={'-2px'} mr={'-2px'} />;
   }
 
   const signedCount: number = prefData.data.department_counts[name];

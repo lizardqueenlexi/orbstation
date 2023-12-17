@@ -1,6 +1,6 @@
 import { exhaustiveCheck } from 'common/exhaustive';
 import { useBackend, useLocalState } from '../../backend';
-import { Stack, Dropdown, Flex } from '../../components';
+import { Stack, Dropdown } from '../../components';
 import { Window } from '../../layouts';
 import { PreferencesMenuData } from './data';
 import { PageButton } from './PageButton';

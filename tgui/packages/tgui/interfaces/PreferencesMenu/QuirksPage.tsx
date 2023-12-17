@@ -108,7 +108,7 @@ const QuirkList = (props: {
                   <Stack.Item
                     className={`${className}--${getValueClass(
                       quirk.value,
-                      quirk.xcard
+                      quirk.xcard,
                     )}`}
                     style={{
                       borderBottom: '1px solid black',
@@ -221,7 +221,8 @@ const QuirkList = (props: {
           return (
             <Tooltip
               key={quirkKey}
-              content="Please note that X-card quirks are intended only for those who find certain content uncomfortable. They are NOT intended for roleplay purposes, or to give mechanical advantages.">
+              content="Please note that X-card quirks are intended only for those who find certain content uncomfortable. They are NOT intended for roleplay purposes, or to give mechanical advantages."
+            >
               {child}
             </Tooltip>
           );

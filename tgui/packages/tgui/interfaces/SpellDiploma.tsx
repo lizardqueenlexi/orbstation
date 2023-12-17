@@ -100,7 +100,8 @@ export const DiplomaSpellGrid = (props) => {
                     }
                   />
                 )
-              }>
+              }
+            >
               <Flex>
                 <Flex.Item grow={1} />
                 <Flex.Item>
