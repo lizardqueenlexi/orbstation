@@ -352,13 +352,15 @@ const JoblessRoleDropdown = (props) => {
   );
 };
 
-const DepartmentPopTracker: SFC<{ department: string }> = (props) => {
+const DepartmentPopTracker = (props: { department: string }) => {
   const { department: name } = props;
 
   const prefData = useBackend<PreferencesMenuData>();
   const hasSigned: boolean = !!prefData.data.department_counts[name];
   if (!hasSigned) {
-    return;
+    return (
+      <Section backgroundColor="#6a6a6a" ml={'-2px'} mr={'-2px'}></Section>
+    );
   }
 
   const signedCount: number = prefData.data.department_counts[name];
@@ -379,7 +381,7 @@ const DepartmentPopTracker: SFC<{ department: string }> = (props) => {
   );
 };
 
-const DepartmentPopArea: SFC = (props) => {
+const DepartmentPopArea = (props) => {
   const prefData = useBackend<PreferencesMenuData>();
   const hasDepartments: boolean =
     Object.keys(prefData.data.department_counts).length > 0;
@@ -408,11 +410,11 @@ const DepartmentPopArea: SFC = (props) => {
   );
 };
 
-const HeadPopTracker: SFC<{
+const HeadPopTracker = (props: {
   name: string;
   colour: string;
   heads: string[];
-}> = (props) => {
+}) => {
   const { name, colour, heads } = props;
   if (heads.length === 0) {
     heads.push('None');
@@ -431,7 +433,7 @@ const HeadPopTracker: SFC<{
   );
 };
 
-const HeadPopArea: SFC = (props) => {
+const HeadPopArea = (props) => {
   const prefData = useBackend<PreferencesMenuData>();
   const hasHeads: boolean = Object.keys(prefData.data.biggest_head).length > 0;
   if (!hasHeads) {
