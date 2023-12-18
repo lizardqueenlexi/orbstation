@@ -75,7 +75,7 @@
 	return assoc_to_keys_features(GLOB.rat_ears_list)
 
 /datum/preference/choiced/rat_ears/icon_for(value)
-	return generate_ratfolk_side_shot(GLOB.rat_ears_list[value], "rat_ears")
+	return generate_ratfolk_side_shot(GLOB.rat_ears_list[value], "rat_ears", include_snout=FALSE)
 
 /datum/preference/choiced/rat_ears/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["rat_ears"] = value

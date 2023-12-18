@@ -2,7 +2,11 @@
  * ORBSTATION: CHARACTER HEADSHOT
  * COPIED FROM SKYRAT
  */
-import { Feature, FeatureTextInput, FeatureShortFlavorTextInput } from '../../base';
+import {
+  Feature,
+  FeatureTextInput,
+  FeatureShortFlavorTextInput,
+} from '../../base';
 
 export const flavor_text: Feature<string> = {
   name: 'Character Description',

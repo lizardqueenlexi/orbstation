@@ -10,9 +10,9 @@
 	damage_multiplier = 2
 	var/ears_pref = null
 
-/obj/item/organ/internal/ears/ratfolk/Insert(mob/living/carbon/human/ear_owner, special = 0, drop_if_replaced = TRUE)
-	..()
-	if(istype(ear_owner))
+/obj/item/organ/internal/ears/ratfolk/on_mob_insert(mob/living/carbon/human/ear_owner)
+	. = ..()
+	if(istype(ear_owner) && ear_owner.dna)
 		color = ear_owner.dna.features["mcolor"]
 		if(ears_pref) // copy the ear shape from the old owner of the ears if there was one
 			ear_owner.dna.features["rat_ears"] = ear_owner.dna.species.mutant_bodyparts["rat_ears"] = ears_pref
@@ -23,9 +23,9 @@
 		ear_owner.dna.update_uf_block(DNA_RAT_EARS_BLOCK)
 		ear_owner.update_body()
 
-/obj/item/organ/internal/ears/ratfolk/Remove(mob/living/carbon/human/ear_owner,  special = 0)
-	..()
-	if(istype(ear_owner))
+/obj/item/organ/internal/ears/ratfolk/on_mob_remove(mob/living/carbon/human/ear_owner)
+	. = ..()
+	if(istype(ear_owner) && ear_owner.dna)
 		color = ear_owner.dna.features["mcolor"]
 		ears_pref = ear_owner.dna.features["rat_ears"]
 		ear_owner.dna.species.mutant_bodyparts -= "rat_ears"
@@ -53,7 +53,7 @@
 		owner.remove_status_effect(/datum/status_effect/cheese_rush)
 	return ..()
 
-/obj/item/organ/internal/stomach/ratfolk/Remove(mob/living/carbon/carbon, special = 0)
+/obj/item/organ/internal/stomach/ratfolk/on_mob_remove(mob/living/carbon/carbon)
 	if(carbon.has_movespeed_modifier(/datum/movespeed_modifier/cheese_rush))
 		to_chat(carbon, span_warning("You feel the effects of your cheese rush wear off."))
 		carbon.remove_movespeed_modifier(/datum/movespeed_modifier/cheese_rush)

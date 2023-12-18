@@ -19,7 +19,7 @@
 /obj/structure/dancing_pole/Initialize(mapload)
 	. = ..()
 	register_context()
-	overlays += mutable_appearance(icon, "pole", layer, src, GAME_PLANE_UPPER)
+	overlays += mutable_appearance(icon, "pole", layer, src, ABOVE_GAME_PLANE)
 
 /obj/structure/dancing_pole/AltClick(mob/living/carbon/human/user)
 	. = ..()
@@ -151,7 +151,7 @@
 	if (dir == SOUTH)
 		dancer.plane = GAME_PLANE
 	else
-		dancer.plane = GAME_PLANE_UPPER
+		dancer.plane = ABOVE_GAME_PLANE
 
 	var/list/offsets_dir = DANCE_OFFSETS
 	var/offset = offsets_dir["[dir]"]

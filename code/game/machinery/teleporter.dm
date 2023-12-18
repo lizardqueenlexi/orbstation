@@ -92,7 +92,7 @@
 					if(new_organ)
 						new_organ = new new_organ()
 						to_chat(M, span_hear("You hear a buzzing in your ears."))
-						new_organ.Insert(M, special = TRUE, drop_if_replaced = FALSE)
+						new_organ.Insert(M, special = TRUE,  movement_flags = DELETE_IF_REPLACED)
 					//END ORBSTATION ADDITION
 					//ORBSTATION REMOVAL: Don't turn people into flies.
 					/*var/mob/living/carbon/human/human = M
