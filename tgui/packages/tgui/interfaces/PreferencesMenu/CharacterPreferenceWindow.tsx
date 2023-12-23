@@ -6,13 +6,13 @@ import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
+// ORBSTATION EDIT
+import { LanguagesPage } from './LanguagesMenu';
+// ORBSTATION EDIT END
 import { MainPage } from './MainPage';
 import { PageButton } from './PageButton';
 import { QuirksPage } from './QuirksPage';
 import { SpeciesPage } from './SpeciesPage';
-// ORBSTATION EDIT
-import { LanguagesPage } from './LanguagesMenu';
-// ORBSTATION EDIT END
 
 enum Page {
   Antags,

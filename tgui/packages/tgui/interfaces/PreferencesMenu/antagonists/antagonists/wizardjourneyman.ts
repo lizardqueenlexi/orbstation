@@ -1,5 +1,5 @@
-import { Antagonist, Category } from '../base';
 import { multiline } from 'common/string';
+import { Antagonist, Category } from '../base';
 
 const WizardJourneyman: Antagonist = {
   key: 'wizardjourneyman',

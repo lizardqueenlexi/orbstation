@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Section, Stack, Flex, Button } from '../components';
+import { Button, Flex, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type DiplomaSpell = {

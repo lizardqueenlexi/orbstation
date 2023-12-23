@@ -1,6 +1,6 @@
+import { multiline } from 'common/string';
 import { Antagonist, Category } from '../base';
 import { HERETIC_MECHANICAL_DESCRIPTION } from './heretic';
-import { multiline } from 'common/string';
 
 const WakingHeretic: Antagonist = {
   key: 'wakingheretic',
