@@ -4,8 +4,8 @@
  */
 import {
   Feature,
-  FeatureTextInput,
   FeatureShortFlavorTextInput,
+  FeatureTextInput,
 } from '../../base';
 
 export const flavor_text: Feature<string> = {

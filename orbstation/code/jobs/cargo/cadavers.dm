@@ -22,7 +22,8 @@
 	qdel(corpse)
 	var/mob/living/carbon/human/surprise_dracula = new /mob/living/carbon/human/species/vampire(.)
 	//offer control of the vampire to ghosts
-	var/list/mob/dead/observer/candidates = poll_candidates_for_mob("Do you want to play as a vampire fugitive?", ROLE_FUGITIVE, null, 10 SECONDS, surprise_dracula, null)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates_for_mob("Do you want to play as a vampire fugitive?", check_jobban = ROLE_FUGITIVE, role = ROLE_FUGITIVE, poll_time = 10 SECONDS, target_mob = surprise_dracula, pic_source = surprise_dracula)
+
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/chosen = pick(candidates)
 		surprise_dracula.key = chosen.key

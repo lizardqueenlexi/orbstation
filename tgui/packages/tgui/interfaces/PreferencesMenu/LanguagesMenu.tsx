@@ -1,5 +1,5 @@
-import { Stack, Section, Button, Box } from '../../components';
 import { useBackend } from '../../backend';
+import { Box, Button, Section, Stack } from '../../components';
 import { PreferencesMenuData } from './data';
 
 export const KnownLanguage = (props) => {
