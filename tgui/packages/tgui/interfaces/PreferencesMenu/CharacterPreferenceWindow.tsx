@@ -1,12 +1,12 @@
 import { exhaustiveCheck } from 'common/exhaustive';
 
 import { useBackend, useLocalState } from '../../backend';
-import { Stack, Dropdown } from '../../components';
+import { Dropdown, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
-import { LanguagesPage } from './LanguagesMenu'; //orbstation edit
+import { LanguagesPage } from './LanguagesMenu'; // orbstation edit
 import { MainPage } from './MainPage';
 import { PageButton } from './PageButton';
 import { QuirksPage } from './QuirksPage';
