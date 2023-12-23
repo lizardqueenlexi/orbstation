@@ -6,9 +6,7 @@ import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
-// ORBSTATION EDIT
-import { LanguagesPage } from './LanguagesMenu';
-// ORBSTATION EDIT END
+import { LanguagesPage } from './LanguagesMenu'; //orbstation edit
 import { MainPage } from './MainPage';
 import { PageButton } from './PageButton';
 import { QuirksPage } from './QuirksPage';

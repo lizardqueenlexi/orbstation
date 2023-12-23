@@ -1,4 +1,5 @@
 import { multiline } from 'common/string';
+
 import { Antagonist, Category } from '../base';
 
 export const AGENT_MECHANICAL_DESCRIPTION = multiline`
