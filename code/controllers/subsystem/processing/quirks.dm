@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/item_quirk/clown_enjoyer, /datum/quirk/item_quirk/mime_fan, /datum/quirk/item_quirk/pride_pin),
 	list(/datum/quirk/bad_touch, /datum/quirk/friendly),
 	list(/datum/quirk/extrovert, /datum/quirk/introvert),
-	list(/datum/quirk/prosthetic_limb, /datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/alien_prosthesis, /datum/quirk/bioscrambler_victim, /datum/quirk/body_purist), //ORBSTATION
+	list(/datum/quirk/prosthetic_limb, /datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/alien_prosthesis, /datum/quirk/bioscrambler_victim, /datum/quirk/transhumanist, /datum/quirk/body_purist), //ORBSTATION
 	list(/datum/quirk/prosthetic_organ, /datum/quirk/tin_man, /datum/quirk/body_purist),
 	list(/datum/quirk/quadruple_amputee, /datum/quirk/paraplegic, /datum/quirk/hemiplegic, /datum/quirk/augmented),//ORBSTATION
 	list(/datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/frail),//ORBSTATION
@@ -93,7 +93,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		var/datum/quirk/quirk_type = quirks[quirk_name]
 		if(ispath(quirk_type))
 			if(user.add_quirk(quirk_type, override_client = applied_client))
-				SSblackbox.record_feedback("nested tally", "quirks_taken", 1, list("[quirk_name]"))
+				SSblackbox.record_feedback("tally", "quirks_taken", 1, "[quirk_name]")
 		else
 			stack_trace("Invalid quirk \"[quirk_name]\" in client [applied_client.ckey] preferences")
 			applied_client.prefs.all_quirks -= quirk_name
