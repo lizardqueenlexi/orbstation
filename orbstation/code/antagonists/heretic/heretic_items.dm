@@ -12,19 +12,16 @@
 
 /obj/item/clothing/neck/heretic_focus
 	icon = 'orbstation/icons/obj/items/clothing/heretic_amulet.dmi'
-	icon_state = "eldritch_necklace"
-	worn_icon_state = "eldritch_necklace"
+	icon_state = "eldritch_necklace_0"
+	worn_icon_state = "eldritch_necklace_inactive"
 	worn_icon = 'orbstation/icons/obj/items/clothing/heretic_amulet_worn.dmi'
-
-
-/obj/item/clothing/neck/heretic_focus/Initialize(mapload)
-	. = ..()
-	icon_state = "[initial(icon_state)]_0"
-	worn_icon_state = "[initial(worn_icon_state)]_inactive"
+	///Name used to generate icon state
+	var/focus_icon_name = "eldritch_necklace"
 
 /obj/item/clothing/neck/heretic_focus/moon_amulette
 	icon = 'orbstation/icons/obj/items/clothing/heretic_amulet.dmi'
-	worn_icon_state = "moon_amulette"
+	icon_state = "moon_amulette_0"
+	worn_icon_state = "moon_amulette_inactive"
 
 /obj/item/clothing/neck/heretic_focus/equipped(mob/user, slot)
 	. = ..()
@@ -33,8 +30,8 @@
 		return
 
 	// Update the worn icon.
-	icon_state = "[initial(icon_state)]_1"
-	worn_icon_state = "[initial(worn_icon_state)]_active"
+	icon_state = "[focus_icon_name]_1"
+	worn_icon_state = "[focus_icon_name]_active"
 	user.update_worn_neck()
 
 	START_PROCESSING(SSfastprocess, src)
@@ -50,7 +47,7 @@
 /obj/item/clothing/neck/heretic_focus/process()
 	// if there's no influences left to track, no need to process! But we'll keep the eye open to obscure that there's no influences left.
 	if(!length(GLOB.reality_smash_track.smashes))
-		icon_state = "[initial(icon_state)]_1"
+		icon_state = "[focus_icon_name]_1"
 		return PROCESS_KILL
 
 	var/closest_influence = 255
@@ -67,13 +64,13 @@
 /obj/item/clothing/neck/heretic_focus/proc/set_proximity_icon(closest_influence)
 	switch(closest_influence)
 		if(0 to FOCUS_PROXIMITY_HOT)
-			return "[initial(icon_state)]_4" // eye stays open
+			return "[focus_icon_name]_4" // eye stays open
 		if(FOCUS_PROXIMITY_HOT to FOCUS_PROXIMITY_WARM)
-			return "[initial(icon_state)]_3" // eye blinks rapidly
+			return "[focus_icon_name]_3" // eye blinks rapidly
 		if(FOCUS_PROXIMITY_WARM to FOCUS_PROXIMITY_COOL)
-			return "[initial(icon_state)]_2" // eye blinks sometimes
+			return "[focus_icon_name]_2" // eye blinks sometimes
 
-	return  "[initial(icon_state)]_1" // eye blinks rarely
+	return  "[focus_icon_name]_1" // eye blinks rarely
 
 ///  Heretics can examine the focus for clarification on how close the nearest influence is.
 /obj/item/clothing/neck/heretic_focus/examine(mob/user)
@@ -81,27 +78,27 @@
 	if(!IS_HERETIC(user))
 		return
 
-	if(icon_state == "[initial(icon_state)]_1")
+	if(icon_state == "[focus_icon_name]_1")
 		. += span_red("There are no untapped influences nearby.")
 		return
 
-	if(icon_state == "[initial(icon_state)]_2")
+	if(icon_state == "[focus_icon_name]_2")
 		. += span_notice("There is an untapped influence somewhere around here...")
 		return
 
-	if(icon_state == "[initial(icon_state)]_3")
+	if(icon_state == "[focus_icon_name]_3")
 		. += span_boldnotice("There is an untapped influence nearby!")
 		return
 
-	if(icon_state == "[initial(icon_state)]_4")
+	if(icon_state == "[focus_icon_name]_4")
 		. += span_boldnicegreen("The untapped influence is just within reach!")
 		return
 
 /// Stops processing and closes the eye.
 /obj/item/clothing/neck/heretic_focus/proc/stop_tracking()
 	STOP_PROCESSING(SSfastprocess, src)
-	icon_state = "[initial(icon_state)]_0"
-	worn_icon_state = "[initial(worn_icon_state)]_inactive"
+	icon_state = "[focus_icon_name]_0"
+	worn_icon_state = "[focus_icon_name]_inactive"
 
 #undef FOCUS_PROXIMITY_HOT
 #undef FOCUS_PROXIMITY_WARM
