@@ -1,6 +1,7 @@
 import { exhaustiveCheck } from 'common/exhaustive';
+import { useState } from 'react';
 
-import { useBackend, useLocalState } from '../../backend';
+import { useBackend } from '../../backend';
 import { Dropdown, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
@@ -53,7 +54,7 @@ const CharacterProfiles = (props: {
 export const CharacterPreferenceWindow = (props) => {
   const { act, data } = useBackend<PreferencesMenuData>();
 
-  const [currentPage, setCurrentPage] = useLocalState('currentPage', Page.Main);
+  const [currentPage, setCurrentPage] = useState(Page.Main);
 
   let pageContents;
 

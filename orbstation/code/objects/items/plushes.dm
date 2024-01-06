@@ -71,7 +71,7 @@
 	icon_state = "ivonaplush"
 	attack_verb_continuous = list("growls", "chomps", "slashes")
 	attack_verb_simple = list("growl", "chomp", "slash")
-	squeak_override = list('sound/weapons/kenetic_accel.ogg' = 1)
+	squeak_override = list('sound/weapons/kinetic_accel.ogg' = 1)
 	gender = FEMALE
 
 /obj/item/toy/plush/crew/glupplushie

@@ -384,7 +384,7 @@ SUBSYSTEM_DEF(table_shuffle)
 /// log_decay: handles the return of obj/shuffle_decay(), called after item has moved to final location.  Returns the current object in case that has changed.
 /datum/controller/subsystem/table_shuffle/proc/log_decay(var/opt,var/obj/item/item, var/list/item_log)
 	// Check if irrelevant
-	if(!(opt & SHUFFLE_DECAY) || !prob(prob_eat))
+	if(!(opt & SHUFFLE_DECAY) || !istype(item) || !prob(prob_eat))
 		return item
 
 	var/result = item.shuffle_decay()
