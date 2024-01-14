@@ -56,6 +56,42 @@
 	lifetime = 6 SECONDS
 	color = COLOR_OFF_WHITE
 
+/// Admin-only Penny plushie. Not to be abused.
+/obj/item/toy/plush/crew/pennyplushie/premium
+	name = "\improper Legendary Lady Penelope Dreadful plushie"
+	desc = "A one-of-a-kind, highly collectible plushie of everyone's favorite catgirl, stuffed not only with asbestos fibers but \
+		solid gold as well. Extremely heavy."
+	hitsound = 'sound/weapons/blastcannon.ogg'
+	force = 50
+	throwforce = 50
+	resistance_flags = INDESTRUCTIBLE
+	item_flags = SLOWS_WHILE_IN_HAND
+	slowdown = 2
+	custom_price = 9999999
+	custom_premium_price = 9999999
+	throw_speed = 1
+	squeak_override = 'sound/effects/grillehit.ogg'
+
+/obj/item/toy/plush/crew/pennyplushie/premium/Initialize(mapload)
+	. = ..()
+	src.add_filter("rayorbs", 5, list("type" = "rays", "color" = "#e4c30b", "size" = 30, "density" = 20, "y" = -5))
+	animate(get_filter("rayorbs"), offset = 10, time = 3 SECONDS, loop = -1)
+
+/// If the plushie is cut open, a massive pile of gold comes out.
+/obj/item/toy/plush/crew/pennyplushie/premium/attackby(obj/item/I, mob/living/user, params)
+	var/was_stuffed = stuffed
+	. = ..()
+	if(!was_stuffed || stuffed)
+		return
+	user.visible_message(span_warning("A massive pile of gold spills out of the plushie!"))
+	for(var/i in 1 to 3)
+		var/obj/item/stack/sheet/mineral/gold/gold_stack = new /obj/item/stack/sheet/mineral/gold(drop_location())
+		gold_stack.amount = 50
+	force = 0
+	throwforce = 0
+	item_flags = NONE
+	hitsound = 'sound/items/toysqueak1.ogg'
+
 /obj/item/toy/plush/crew/fishplushie
 	name = "\improper Fish plushie"
 	desc = "A fuzzy toy of Research's most scrungled roboticist, Fish. Matching Chip plushie coming soon!"
