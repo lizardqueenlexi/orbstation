@@ -52,6 +52,9 @@
 				/obj/item/reagent_containers/hypospray/cmo = 999,
 				/obj/item/gun/magic/wand/resurrection/debug = 999,
 				/obj/item/extinguisher/debug = 999,
+				/obj/item/flashlight/lantern/syndicate = 999,
+				/obj/item/grenade/gas_crystal/healium_crystal = 999,
+				/obj/item/grenade/gas_crystal/proto_nitrate_crystal = 999,
 			),
 		),
 
@@ -77,6 +80,19 @@
 				/obj/item/assembly/signaler/anomaly/bioscrambler = 999,
 				/obj/item/assembly/signaler/anomaly/hallucination = 999,
 				/obj/item/assembly/signaler/anomaly/dimensional = 999,
+				/obj/item/storage/bag/trash/bluespace = 999,
+			),
+		),
+
+		list(
+			"name" = "Weapons",
+			"icon" = "gun",
+			"products" = list(
+				/obj/item/fireaxe = 999,
+				/obj/item/melee/energy/axe = 999,
+				/obj/item/hierophant_club = 999,
+				/obj/item/gun/energy/pulse = 999,
+				/obj/item/gun/energy/laser/instakill = 999,
 			),
 		),
 
@@ -97,6 +113,8 @@
 				/obj/item/organ/internal/cyberimp/arm/surgery = 999,
 				/obj/item/organ/internal/cyberimp/eyes/hud/medical = 999,
 				/obj/item/organ/internal/heart/gland/ventcrawling = 999,
+				/obj/item/skillchip/job/engineer/free = 999,
+				/obj/item/skillchip/job/roboticist/free = 999,
 			),
 		),
 
@@ -138,6 +156,7 @@
 				/obj/item/slimepotion/peacepotion = 999,
 				/obj/item/slimepotion/spaceproof = 999,
 				/obj/item/slimepotion/fireproof = 999,
+				/obj/item/dragons_blood = 999,
 			),
 		),
 	)
@@ -158,6 +177,11 @@
 		/obj/item/suspiciousphone = 99,
 		/obj/item/guardian_creator/tech = 99,
 		/obj/item/uplink/sandbox = 99, // Yes, infinite traitor uplinks might destroy the station, but it's for sandbox.
+		/obj/item/reagent_containers/condiment/ants = 99,
+	)
+
+	premium = list(
+		/obj/item/toy/plush/crew/pennyplushie/premium = 1,
 	)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	refill_canister = /obj/item/vending_refill/clothing // wont populate categories without this
@@ -171,4 +195,13 @@
 	custom_price = 0
 
 /obj/item/healthanalyzer/advanced/free //just in case it's actually sold anywhere real
+	custom_price = 0
+
+/obj/item/flashlight/lantern/syndicate
+	custom_price = 0
+
+/obj/item/skillchip/job/engineer/free
+	custom_price = 0
+
+/obj/item/skillchip/job/roboticist/free
 	custom_price = 0
