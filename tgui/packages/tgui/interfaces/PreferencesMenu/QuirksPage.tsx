@@ -362,14 +362,19 @@ export function QuirksPage(props) {
           if (selectedQuirk.value > 0) {
             positiveQuirks += 1;
           }
+
+          balance += selectedQuirk.value;
         }
 
         const getReasonToNotAdd = (quirkName: string) => {
           const quirk = quirkInfo[quirkName];
 
-          // Remove accounting for quirk value
-          if (quirk.value > 0 && positiveQuirks >= maxPositiveQuirks) {
-            return "You can't have any more positive quirks!";
+          if (quirk.value > 0) {
+            if (positiveQuirks >= maxPositiveQuirks) {
+              return "You can't have any more positive quirks!";
+            } else if (balance + quirk.value > 0) {
+              return 'You need a negative quirk to balance this out!';
+            }
           }
 
           const selectedQuirkNames = selectedQuirks.map((quirkKey) => {

@@ -210,8 +210,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		balance += value
 		new_quirks += quirk_name
 
-	//ORBSTATION: Do not check balance, it isn't real.
-	/*if (balance > 0)
+	if (balance > 0)
 		var/balance_left_to_remove = balance
 
 		for (var/positive_quirk in positive_quirks)
@@ -220,7 +219,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 			new_quirks -= positive_quirk
 
 			if (balance_left_to_remove <= 0)
-				break*/
+				break
 
 	// It is guaranteed that if no quirks are invalid, you can simply check through `==`
 	if (new_quirks.len == quirks.len)

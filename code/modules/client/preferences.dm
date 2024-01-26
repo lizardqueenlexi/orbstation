@@ -436,9 +436,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			.++
 
 /datum/preferences/proc/validate_quirks()
-	//if(GetQuirkBalance() < 0)
-		//all_quirks = list()
-	return //ORBSTATION: we do not want to check the quirk balance, actually
+	if(GetQuirkBalance() < 0)
+		all_quirks = list()
+	return
 
 /**
  * Safely read a given preference datum from a given client.
