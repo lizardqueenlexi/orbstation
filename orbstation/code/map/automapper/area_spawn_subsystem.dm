@@ -91,7 +91,7 @@ SUBSYSTEM_DEF(area_spawn)
 	turf_list = area_turf_info["[mode]"] = list()
 
 	// Get highest priority items
-	for(var/turf/iterating_turf as anything in area.get_contained_turfs())
+	for(var/turf/iterating_turf as anything in area.get_turfs_from_all_zlevels())
 		// Only retain turfs of the highest priority
 		var/priority = process_turf(iterating_turf, mode)
 		if(priority > 0)
@@ -333,7 +333,7 @@ SUBSYSTEM_DEF(area_spawn)
 		if(!found_area)
 			continue
 
-		for(var/turf/candidate_turf as anything in found_area.get_contained_turfs())
+		for(var/turf/candidate_turf as anything in found_area.get_turfs_from_all_zlevels())
 			// Don't spawn if there's already a desired_atom here.
 			if(is_type_on_turf(candidate_turf, desired_atom))
 				continue

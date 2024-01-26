@@ -234,6 +234,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_puzzgrids,
 	/client/proc/GeneratePipeSpritesheet,
 	/client/proc/view_runtimes,
+	/client/proc/stop_weather,
 
 // Automapper
 	/client/proc/test_area_spawner,

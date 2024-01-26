@@ -750,8 +750,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.body_markings_list[source.dna.features["body_markings"]]
 				if("legs")
 					accessory = GLOB.legs_list[source.dna.features["legs"]]
-				if("caps")
-					accessory = GLOB.caps_list[source.dna.features["caps"]]
 				if("rat_ears") // ORBSTATION
 					accessory = GLOB.rat_ears_list[source.dna.features["rat_ears"]]
 
