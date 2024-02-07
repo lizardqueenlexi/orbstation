@@ -896,6 +896,9 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/machinery/airalarm/directional/north,
 /obj/structure/cable,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "aoY" = (
@@ -3066,7 +3069,9 @@
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 8
 	},
-/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/regular{
+	pixel_y = 6
+	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "bcv" = (
@@ -4220,6 +4225,9 @@
 	},
 /obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /obj/machinery/light_switch/directional/south,
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "bzc" = (
@@ -8721,6 +8729,9 @@
 	dir = 8
 	},
 /obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "dey" = (
@@ -8772,6 +8783,9 @@
 	},
 /obj/item/pickaxe,
 /obj/structure/cable,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "dfj" = (
@@ -9289,7 +9303,6 @@
 /obj/effect/landmark/start/depsec/supply,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/brown/diagonal_edge,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "doi" = (
@@ -13097,7 +13110,6 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/blue/diagonal_edge,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/medical)
 "eKy" = (
@@ -17083,6 +17095,9 @@
 	},
 /obj/item/radio/off,
 /obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "gfH" = (
@@ -17718,6 +17733,10 @@
 /obj/structure/table,
 /obj/item/scalpel{
 	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/item/clothing/mask/surgical{
+	pixel_x = 1;
 	pixel_y = 6
 	},
 /turf/open/floor/engine,
@@ -19167,6 +19186,9 @@
 /area/station/engineering/supermatter/room)
 "gUx" = (
 /obj/machinery/vending/wardrobe/sec_wardrobe,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "gUy" = (
@@ -20512,9 +20534,6 @@
 "huZ" = (
 /obj/structure/closet/toolcloset,
 /obj/effect/turf_decal/siding/yellow{
-	dir = 4
-	},
-/obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
 /turf/open/floor/wood,
@@ -23214,6 +23233,9 @@
 	pixel_y = 9
 	},
 /obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "ivS" = (
@@ -23378,7 +23400,6 @@
 /obj/structure/cable,
 /obj/effect/landmark/start/depsec/supply,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/tile/brown/diagonal_edge,
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
@@ -26324,6 +26345,9 @@
 	c_tag = "Security - Cargo Outpost"
 	},
 /obj/machinery/newscaster/directional/north,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "jGM" = (
@@ -29961,6 +29985,7 @@
 	pixel_x = 2;
 	pixel_y = 4
 	},
+/obj/machinery/cell_charger,
 /turf/open/floor/iron/white/textured_large,
 /area/station/medical/pharmacy)
 "kTc" = (
@@ -32419,7 +32444,6 @@
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/structure/cable,
 /obj/effect/landmark/start/depsec/supply,
-/obj/effect/turf_decal/tile/brown/diagonal_edge,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
@@ -34536,8 +34560,13 @@
 /area/station/service/chapel/office)
 "mvU" = (
 /obj/structure/table/reinforced,
-/obj/item/aicard,
 /obj/structure/secure_safe/caps_spare/directional/west,
+/obj/item/aicard{
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/obj/item/stock_parts/cell/high,
+/obj/machinery/cell_charger,
 /obj/effect/turf_decal/tile/blue/half{
 	dir = 8
 	},
@@ -35574,6 +35603,9 @@
 /obj/structure/table,
 /obj/machinery/recharger{
 	pixel_y = 4
+	},
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
@@ -40070,6 +40102,9 @@
 /obj/machinery/camera/directional/north{
 	c_tag = "Security - Science Outpost"
 	},
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "owg" = (
@@ -42430,6 +42465,9 @@
 "pmA" = (
 /obj/machinery/vending/wardrobe/sec_wardrobe,
 /obj/machinery/light/directional/west,
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "pmD" = (
@@ -44490,7 +44528,8 @@
 /area/station/maintenance/port/central)
 "qby" = (
 /obj/structure/table,
-/obj/item/clothing/mask/surgical,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "qbz" = (
@@ -46276,7 +46315,6 @@
 /obj/structure/cable,
 /obj/effect/landmark/start/depsec/supply,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/effect/turf_decal/tile/brown/diagonal_edge,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "qGJ" = (
@@ -49093,7 +49131,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/tile/blue/diagonal_edge,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/medical)
 "rET" = (
@@ -52212,7 +52249,6 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
-/obj/effect/turf_decal/tile/blue/diagonal_edge,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/medical)
 "sOd" = (
@@ -52866,6 +52902,9 @@
 	dir = 8
 	},
 /obj/structure/reagent_dispensers/wall/peppertank/directional/east,
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "sZX" = (
@@ -54312,6 +54351,9 @@
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
+/obj/effect/turf_decal/tile/brown/half/contrasted{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/supply)
 "tAZ" = (
@@ -54496,6 +54538,9 @@
 	},
 /obj/item/pen,
 /obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "tDL" = (
@@ -58341,7 +58386,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/tile/blue/diagonal_edge,
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/checkpoint/medical)
@@ -59046,6 +59090,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/start/depsec/science,
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "vsC" = (
@@ -60318,6 +60365,9 @@
 "vQp" = (
 /obj/item/radio/intercom/directional/south,
 /obj/structure/filingcabinet,
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
 "vQt" = (
