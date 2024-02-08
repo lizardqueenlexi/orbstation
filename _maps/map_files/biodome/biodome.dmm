@@ -2239,8 +2239,6 @@
 	pixel_x = 7
 	},
 /obj/machinery/door/window/right/directional/south{
-	base_state = "left";
-	icon_state = "left";
 	name = "Robotics Desk";
 	req_access = list("robotics")
 	},
@@ -5414,8 +5412,7 @@
 	pixel_x = -5;
 	pixel_y = 3
 	},
-/obj/machinery/newscaster/directional/north,
-/obj/effect/turf_decal/tile/purple/half/contrasted{
+/obj/effect/turf_decal/tile/purple/anticorner/contrasted{
 	dir = 1
 	},
 /turf/open/floor/iron,
@@ -5914,6 +5911,14 @@
 /obj/machinery/newscaster/directional/south,
 /turf/open/floor/iron/grimy,
 /area/station/hallway/secondary/entry)
+"cfL" = (
+/obj/machinery/door/window/brigdoor/left/directional/west{
+	name = "Secondary AI Core Access";
+	req_access = list("ai_upload");
+	pixel_x = -4
+	},
+/turf/open/floor/circuit,
+/area/station/ai_monitored/turret_protected/ai)
 "cfT" = (
 /obj/machinery/door/airlock,
 /obj/effect/mapping_helpers/airlock/abandoned,
@@ -7081,9 +7086,7 @@
 /area/station/science/research)
 "czQ" = (
 /obj/structure/window/reinforced/spawner/directional/north,
-/obj/machinery/door/window/right/directional/west{
-	base_state = "left";
-	icon_state = "left";
+/obj/machinery/door/window/left/directional/west{
 	name = "Fitness Ring"
 	},
 /turf/open/floor/iron/dark/smooth_corner,
@@ -7562,15 +7565,6 @@
 	listening = 0;
 	name = "Private Channel";
 	pixel_x = 8
-	},
-/obj/machinery/door/window/left/directional/west{
-	atom_integrity = 300;
-	base_state = "leftsecure";
-	icon_state = "leftsecure";
-	layer = 4.1;
-	name = "Tertiary AI Core Access";
-	pixel_x = -3;
-	req_access = list("ai_upload")
 	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
@@ -8700,8 +8694,6 @@
 /area/station/hallway/primary/central/fore)
 "ddI" = (
 /obj/machinery/door/window/left/directional/west{
-	base_state = "right";
-	icon_state = "right";
 	name = "Containment Pen 8";
 	req_access = list("xenobiology")
 	},
@@ -10048,9 +10040,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/drone_bay)
-"dCg" = (
-/turf/open/floor/iron,
-/area/station/science/research)
 "dCm" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -11003,6 +10992,11 @@
 /obj/structure/marker_beacon/lime,
 /turf/open/space/basic,
 /area/space/nearstation)
+"dUh" = (
+/obj/effect/turf_decal/tile/purple/half/contrasted,
+/obj/structure/sign/poster/official/plasma_effects/directional/south,
+/turf/open/floor/iron,
+/area/station/science/research)
 "dUl" = (
 /obj/structure/stairs/east,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
@@ -13821,6 +13815,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "eXg" = (
@@ -18075,6 +18072,12 @@
 "gxJ" = (
 /turf/open/openspace,
 /area/station/engineering/atmos/mix)
+"gxK" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/science/research)
 "gxT" = (
 /obj/vehicle/sealed/mecha/ripley/cargo,
 /turf/open/floor/iron/recharge_floor,
@@ -22587,8 +22590,6 @@
 /area/station/tcommsat/server)
 "ijq" = (
 /obj/machinery/door/window/left/directional/west{
-	base_state = "right";
-	icon_state = "right";
 	name = "Containment Pen 6";
 	req_access = list("xenobiology")
 	},
@@ -22792,14 +22793,13 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/central)
 "iod" = (
-/obj/machinery/door/window/left/directional/north{
-	icon_state = "right";
-	name = "Incoming Mail";
-	req_access = list("shipping")
-	},
 /obj/machinery/firealarm/directional/east,
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/siding/wood,
+/obj/machinery/door/window/right/directional/north{
+	name = "Incoming Mail";
+	req_access = list("shipping")
+	},
 /turf/open/floor/wood/parquet,
 /area/station/cargo/sorting)
 "iof" = (
@@ -23465,6 +23465,14 @@
 "iAO" = (
 /turf/open/floor/iron/vaporwave,
 /area/station/science/lab)
+"iAT" = (
+/obj/machinery/door/window/brigdoor/right/directional/east{
+	name = "Tertiary AI Core Access";
+	req_access = list("ai_upload");
+	pixel_x = 4
+	},
+/turf/open/floor/circuit,
+/area/station/ai_monitored/turret_protected/ai)
 "iAV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -23678,6 +23686,13 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/engineering/atmos/project)
+"iFx" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/structure/sign/poster/ripped/directional/north,
+/turf/open/floor/iron,
+/area/station/science/research)
 "iFC" = (
 /obj/machinery/computer/records/medical{
 	dir = 4
@@ -24297,7 +24312,6 @@
 /obj/item/stock_parts/scanning_module,
 /obj/item/stock_parts/scanning_module,
 /obj/structure/table/glass,
-/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/vaporwave,
 /area/station/science/lab)
 "iTE" = (
@@ -24559,8 +24573,6 @@
 /area/station/maintenance/disposal)
 "iYV" = (
 /obj/machinery/door/window/left/directional/west{
-	base_state = "right";
-	icon_state = "right";
 	name = "Containment Pen 7";
 	req_access = list("xenobiology")
 	},
@@ -25605,6 +25617,11 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
+"jrU" = (
+/obj/effect/turf_decal/tile/purple/half/contrasted,
+/obj/structure/sign/poster/official/safety_eye_protection/directional/south,
+/turf/open/floor/iron,
+/area/station/science/research)
 "jsf" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -27365,6 +27382,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/project)
+"kai" = (
+/obj/effect/turf_decal/tile/purple/half/contrasted{
+	dir = 1
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/station/science/research)
 "kao" = (
 /obj/effect/turf_decal/siding/wideplating/terracotta{
 	dir = 1
@@ -28351,6 +28375,10 @@
 /obj/effect/turf_decal/tile/red/fourcorners,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/aft)
+"kqI" = (
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron/vaporwave,
+/area/station/science/lab)
 "kqP" = (
 /obj/structure/rack,
 /obj/item/crowbar/red,
@@ -31627,15 +31655,6 @@
 	name = "Private Channel";
 	pixel_x = -6
 	},
-/obj/machinery/door/window/left/directional/east{
-	atom_integrity = 300;
-	base_state = "rightsecure";
-	icon_state = "rightsecure";
-	layer = 4.1;
-	name = "Secondary AI Core Access";
-	pixel_x = 4;
-	req_access = list("ai_upload")
-	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
 "lxF" = (
@@ -33551,18 +33570,15 @@
 /turf/open/floor/iron/vaporwave,
 /area/station/science/lab)
 "mdC" = (
-/obj/machinery/door/window/left/directional/north{
-	atom_integrity = 300;
-	base_state = "rightsecure";
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	req_access = list("ai_upload")
-	},
 /obj/machinery/flasher/directional/south{
 	id = "AI";
 	pixel_x = 20
 	},
 /obj/structure/cable/multilayer/connected,
+/obj/machinery/door/window/brigdoor/right/directional/north{
+	name = "Primary AI Core Access";
+	req_access = list("ai_upload")
+	},
 /turf/open/floor/catwalk_floor/titanium,
 /area/station/ai_monitored/turret_protected/ai)
 "mdD" = (
@@ -41770,8 +41786,6 @@
 /area/station/medical/treatment_center)
 "paV" = (
 /obj/machinery/door/window/left/directional/west{
-	base_state = "right";
-	icon_state = "right";
 	name = "Containment Pen 5";
 	req_access = list("xenobiology")
 	},
@@ -44915,6 +44929,7 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 10
 	},
+/obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron/cafeteria,
 /area/station/science/research)
 "qin" = (
@@ -44999,12 +45014,10 @@
 /obj/structure/window/reinforced/spawner/directional/north{
 	pixel_y = 2
 	},
-/obj/machinery/door/window/right/directional/west{
-	base_state = "left";
-	icon_state = "left";
+/obj/effect/decal/cleanable/oil/slippery,
+/obj/machinery/door/window/left/directional/west{
 	name = "Botfight Ring"
 	},
-/obj/effect/decal/cleanable/oil/slippery,
 /turf/open/floor/plating,
 /area/station/maintenance/fore/greater)
 "qjW" = (
@@ -45553,13 +45566,11 @@
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "qtm" = (
-/obj/machinery/door/window/right/directional/north{
-	base_state = "left";
-	icon_state = "left";
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/window/left/directional/north{
 	name = "Library Desk Door";
 	req_access = list("library")
 	},
-/obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet/royalblack,
 /area/station/service/library)
 "qtp" = (
@@ -47992,6 +48003,11 @@
 /obj/structure/frame/machine,
 /turf/open/misc/asteroid,
 /area/station/maintenance/port/central)
+"rkU" = (
+/obj/effect/turf_decal/tile/purple/half/contrasted,
+/obj/machinery/status_display/evac/directional/south,
+/turf/open/floor/iron,
+/area/station/science/research)
 "rld" = (
 /obj/machinery/computer/security,
 /obj/machinery/newscaster/directional/north,
@@ -61480,14 +61496,12 @@
 "wkO" = (
 /obj/structure/table/wood/fancy/blue,
 /obj/structure/window/reinforced/spawner/directional/south,
-/obj/machinery/door/window/left/directional/west{
-	base_state = "right";
-	icon_state = "right";
+/obj/effect/spawner/random/aimodule/neutral,
+/obj/machinery/flasher/directional/east,
+/obj/machinery/door/window/right/directional/west{
 	name = "Core Modules";
 	req_access = list("captain")
 	},
-/obj/effect/spawner/random/aimodule/neutral,
-/obj/machinery/flasher/directional/east,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "wkW" = (
@@ -62365,16 +62379,14 @@
 /turf/open/floor/plating,
 /area/station/maintenance/central/greater)
 "wyv" = (
-/obj/machinery/door/window/left/directional/south{
-	base_state = "right";
-	icon_state = "right";
-	name = "Captain's Desk";
-	req_access = list("captain")
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/duct,
 /obj/machinery/status_display/evac/directional/east,
+/obj/machinery/door/window/right/directional/south{
+	name = "Captain's Desk";
+	req_access = list("captain")
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/captain)
 "wyx" = (
@@ -67183,8 +67195,6 @@
 "yjf" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/machinery/door/window/right/directional/west{
-	base_state = "left";
-	icon_state = "left";
 	name = "Fitness Ring"
 	},
 /turf/open/floor/iron/dark/smooth_corner{
@@ -86955,7 +86965,7 @@ pLt
 tbG
 pnT
 xWn
-xWn
+cfL
 lxZ
 pnT
 tbG
@@ -89011,7 +89021,7 @@ pLt
 uog
 jwN
 xWn
-xWn
+iAT
 typ
 jwN
 uog
@@ -169484,7 +169494,7 @@ kFW
 kFW
 dmn
 lQi
-kAO
+dUh
 qfx
 iTA
 uZq
@@ -169739,7 +169749,7 @@ xPc
 mPu
 yaL
 apS
-qCr
+gxK
 bTC
 kAO
 qfx
@@ -170003,7 +170013,7 @@ qfx
 jSB
 iAO
 xAY
-iAO
+kqI
 jWh
 jWh
 jWh
@@ -170253,9 +170263,9 @@ fhp
 jCB
 kod
 apS
-qCr
+iFx
 bTC
-kAO
+jrU
 qfx
 qfx
 ydH
@@ -170767,7 +170777,7 @@ nWa
 kgx
 mmv
 apS
-ijY
+kai
 bTC
 kAO
 nBc
@@ -171024,14 +171034,14 @@ uzo
 uzo
 caW
 apS
-dmn
+ijY
 bTC
 kAO
 amX
 fUB
 qCr
 pUc
-kAO
+rkU
 jWh
 jfl
 jWh
@@ -171281,7 +171291,7 @@ dJN
 dJN
 dJN
 owD
-jYF
+qCr
 bTC
 qZW
 nZW
@@ -171538,7 +171548,7 @@ aXw
 nGI
 dJN
 bWM
-dCg
+jYF
 eoN
 ckg
 ckg
