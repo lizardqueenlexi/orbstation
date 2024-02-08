@@ -10,7 +10,7 @@
 	)
 
 /datum/surgery/lipoplasty/can_start(mob/user, mob/living/carbon/target)
-    // ORBSTATION: Always return false because we removed this trait
+	// ORBSTATION: Always return false because we removed this trait
 	// We won't maintain the trait because we want to be alerted if anything upstream references it
 	//if(!HAS_TRAIT(target, TRAIT_FAT) || target.nutrition >= NUTRITION_LEVEL_WELL_FED)
 	//	return FALSE
