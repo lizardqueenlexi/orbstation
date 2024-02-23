@@ -1,7 +1,7 @@
 /datum/quirk/alien_prosthesis
 	name = "Alien Prosthesis"
 	desc = "Due to a life-saving medical procedure, one of your limbs has been replaced with the limb of another species. It might be weird, but it mostly just looks cool."
-	icon = FA_ICON_HAND
+	icon = FA_ICON_HAND_HOLDING_MEDICAL
 	value = 0
 	var/slot_string = "limb"
 	medical_record_text = "A lifesaving medical experiment in the patient's past has left them with an unusual alien limb."
