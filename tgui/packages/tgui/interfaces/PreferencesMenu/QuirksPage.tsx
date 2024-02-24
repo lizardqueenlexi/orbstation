@@ -8,12 +8,12 @@ import { getRandomization, PreferenceList } from './MainPage';
 import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 import { useRandomToggleState } from './useRandomToggleState';
 
-function getValueClass(value: number, xcard: boolean) {
+function getColorValueClass(quirk: Quirk, xcard: boolean) {
   if (xcard) {
     return 'xcard';
-  } else if (value > 0) {
+  } else if (quirk.value > 0) {
     return 'positive';
-  } else if (value < 0) {
+  } else if (quirk.value < 0) {
     return 'negative';
   } else {
     return 'neutral';
@@ -134,7 +134,7 @@ function QuirkDisplay(props: QuirkDisplayProps) {
         >
           <Stack vertical fill>
             <Stack.Item
-              className={`${className}--${getValueClass(value, xcard)}`}
+              className={`${className}--${getColorValueClass(quirk, xcard)}`}
               style={{
                 borderBottom: '1px solid black',
                 padding: '2px',
