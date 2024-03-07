@@ -7,7 +7,7 @@
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_SNOUT
 	preference = "feature_rat_snout"
-	external_bodytypes = BODYTYPE_SNOUTED
+	external_bodyshapes = BODYSHAPE_SNOUTED
 
 	dna_block = DNA_RAT_SNOUT_BLOCK
 
