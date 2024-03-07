@@ -167,7 +167,13 @@
 	animate(summoned, 10 SECONDS, alpha = 155)
 
 	message_admins("A [summoned.name] is being summoned by [ADMIN_LOOKUPFLW(user)] in [ADMIN_COORDJMP(summoned)].")
-	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates_for_mob("Do you want to play as [user.real_name]'s [summoned.real_name] minion?", check_jobban = ROLE_SENTIENCE, role = ROLE_SENTIENCE, poll_time = 10 SECONDS, target_mob = summoned, pic_source = summoned)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghosts_for_target(
+		question = "Do you want to play as [user.real_name]'s [summoned.real_name] minion?",
+		role = ROLE_SENTIENCE,
+		check_jobban = ROLE_SENTIENCE,
+		poll_time = 10 SECONDS,
+		checked_target  = summoned,
+		alert_pic  = summoned)
 	if(!LAZYLEN(candidates))
 		animate(summoned, 0.5 SECONDS, alpha = 0)
 		QDEL_IN(summoned, 0.6 SECONDS)

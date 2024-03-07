@@ -9,7 +9,7 @@
 	var/mob/living/carbon/human/human_holder = quirk_holder
 	human_holder.del_and_replace_bodypart(new /obj/item/bodypart/arm/left/robot/quirk)
 	human_holder.del_and_replace_bodypart(new /obj/item/bodypart/arm/right/robot/quirk)
-	if(human_holder.bodytype & BODYTYPE_DIGITIGRADE)
+	if(human_holder.bodytype & BODYSHAPE_DIGITIGRADE)
 		human_holder.del_and_replace_bodypart(new /obj/item/bodypart/leg/left/robot/digitigrade/quirk)
 		human_holder.del_and_replace_bodypart(new /obj/item/bodypart/leg/right/robot/digitigrade/quirk)
 	else

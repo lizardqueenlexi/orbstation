@@ -38,7 +38,7 @@
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case. This one is shaped like a digitigrade Tiziran leg."
 	icon_static =  'orbstation/icons/mob/augmentation/augments.dmi'
 	icon = 'orbstation/icons/mob/augmentation/augments.dmi'
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_DIGITIGRADE | BODYTYPE_ROBOTIC
+	bodyshape = BODYSHAPE_HUMANOID | BODYSHAPE_DIGITIGRADE
 	limb_id = BODYPART_ID_DIGITIGRADE
 	icon_state = "digitigrade_r_leg"
 
@@ -68,7 +68,7 @@
 	desc = "A skeletal limb wrapped in pseudomuscles, with a low-conductivity case. This one is shaped like a digitigrade Tiziran leg."
 	icon_static =  'orbstation/icons/mob/augmentation/augments.dmi'
 	icon = 'orbstation/icons/mob/augmentation/augments.dmi'
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_DIGITIGRADE | BODYTYPE_ROBOTIC
+	bodytype = BODYSHAPE_HUMANOID | BODYSHAPE_DIGITIGRADE | BODYTYPE_ROBOTIC
 	limb_id = BODYPART_ID_DIGITIGRADE
 	icon_state = "digitigrade_l_leg"
 

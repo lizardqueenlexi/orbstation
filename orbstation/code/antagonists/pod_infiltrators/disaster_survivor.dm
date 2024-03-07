@@ -17,7 +17,7 @@
 
 /datum/round_event/ghost_role/disaster_survivor/spawn_role()
 	//probably the closest role that makes sense?
-	var/list/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_FUGITIVE, role = ROLE_FUGITIVE, pic_source = /obj/machinery/sleeper, role_name_text = role_name)
+	var/list/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_FUGITIVE, role = ROLE_FUGITIVE, alert_pic = /obj/machinery/sleeper, role_name_text = role_name, amount_to_pick = 1)
 	if(!candidates.len) // we only need one
 		return NOT_ENOUGH_PLAYERS
 
