@@ -35,17 +35,18 @@ GLOBAL_LIST_INIT(orb_mysterious_brain_traumas, list(
 /// if someone wants to juice this up more than this thats fine but just moving all around is probably decent enough
 /datum/brain_trauma/severe/split_personality/on_gain()
 	. = ..()
+	if(isnull(owner))
+		return // Don't apply to a corpse
 	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_change))
-	if(owner.stat != DEAD)
-		owner.AddComponent(/datum/component/deadchat_control/cardinal_movement, ANARCHY_MODE, list(
-			"clap" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "clap"),
-			"cry" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "cry"),
-			"flip" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "flip"),
-			"laugh" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "laugh"),
-			"scream" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "scream"),
-			"spin" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "spin"),
-			"swear" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "swear"),
-			), 10 SECONDS)
+	owner.AddComponent(/datum/component/deadchat_control/cardinal_movement, ANARCHY_MODE, list(
+		"clap" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "clap"),
+		"cry" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "cry"),
+		"flip" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "flip"),
+		"laugh" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "laugh"),
+		"scream" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "scream"),
+		"spin" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "spin"),
+		"swear" = CALLBACK(owner, TYPE_PROC_REF(/mob, emote), "swear"),
+		), 10 SECONDS)
 
 /datum/brain_trauma/severe/split_personality/proc/on_stat_change(mob/living/owner, new_stat, old_stat)
 	SIGNAL_HANDLER
