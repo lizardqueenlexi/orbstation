@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(orb_mysterious_brain_traumas, list(
 
 /// if someone wants to juice this up more than this thats fine but just moving all around is probably decent enough
 /datum/brain_trauma/severe/split_personality/on_gain()
+	. = ..()
 	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(on_stat_change))
 	if(owner.stat != DEAD)
 		owner.AddComponent(/datum/component/deadchat_control/cardinal_movement, ANARCHY_MODE, list(
@@ -60,11 +61,20 @@ GLOBAL_LIST_INIT(orb_mysterious_brain_traumas, list(
 			), 7 SECONDS)
 
 /datum/brain_trauma/severe/split_personality/on_lose()
+	. = ..()
 	qdel(owner.GetComponent(/datum/component/deadchat_control/cardinal_movement))
 	UnregisterSignal(owner, COMSIG_MOB_STATCHANGE)
 
-/// have to override this bc split personality has its own on this
+/datum/brain_trauma/severe/split_personality/make_backseats()
+	return
+
+/datum/brain_trauma/severe/split_personality/get_ghost()
+	return
+
 /datum/brain_trauma/severe/split_personality/on_life(delta_time, times_fired)
+	return
+
+/datum/brain_trauma/severe/split_personality/switch_personalities(reset_to_owner)
 	return
 
 // Display something else on medical scan
