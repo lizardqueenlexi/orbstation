@@ -12,7 +12,7 @@
 	cooldown_reduction_per_rank = 3 SECONDS
 
 	invocation = "Someone does a weird gesture." // Overriden in before cast
-	invocation_self_message = span_cultbold("Your flesh unravels and reknits itself!")
+	invocation_self_message = span_cult_bold("Your flesh unravels and reknits itself!")
 	invocation_type = INVOCATION_EMOTE
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
@@ -28,7 +28,7 @@
 
 /datum/action/cooldown/spell/shapeshift/eldritch_monster/before_cast(atom/cast_on)
 	. = ..()
-	invocation = span_cultbold("<b>[cast_on]</b> writhes and shudders as [cast_on.p_their()] body twists unnaturally!")
+	invocation = span_cult_bold("<b>[cast_on]</b> writhes and shudders as [cast_on.p_their()] body twists unnaturally!")
 
 /// Make anyone who watches this happen very upset
 /datum/action/cooldown/spell/shapeshift/eldritch_monster/after_cast(atom/cast_on)

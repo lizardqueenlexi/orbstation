@@ -34,7 +34,7 @@
 /obj/item/reagent_containers/cup/glass/shuffle_decay()
 	if(reagents?.total_volume)
 		var/removal_pct = pick(0.25,0.5,0.5,0.5,0.75,1,1,1)
-		reagents.remove_any(removal_pct * reagents.total_volume)
+		reagents.remove_all(removal_pct * reagents.total_volume)
 		update_icon()
 		return 100 * removal_pct
 	return 0
@@ -57,7 +57,7 @@
 		// Soh-dah
 		reagents.flags |= OPENCONTAINER
 		spillable = TRUE
-		reagents.remove_any(removal_pct * reagents.total_volume)
+		reagents.remove_all(removal_pct * reagents.total_volume)
 		return 100 * removal_pct
 	return 0
 
@@ -70,6 +70,6 @@
 /obj/item/reagent_containers/condiment/shuffle_decay()
 	if(reagents?.total_volume && amount_per_transfer_from_this == 1) // should just be salt/pepper, not milk/flour etc
 		var/removal_pct = rand(1,20) / 100
-		reagents.remove_any(removal_pct * reagents.total_volume)
+		reagents.remove_all(removal_pct * reagents.total_volume)
 		return removal_pct * 100
 	return 0
