@@ -19,7 +19,7 @@
 
 /datum/round_event/vent_clog/fantastical/get_mob()
 	var/static/list/mob_list = list(
-		/mob/living/simple_animal/slime/random,
+		/mob/living/basic/slime/random,
 		/mob/living/basic/skeleton,
 		/mob/living/basic/killer_tomato,
 		/mob/living/simple_animal/hostile/ooze,

@@ -103,7 +103,7 @@
 		victim.gib()
 		return
 
-	use_power(active_power_usage) // Use a lot of power.
+	use_energy(active_power_usage) // Use a lot of power.
 	var/mob/living/silicon/robot/new_borg = victim.Robotize()
 	new_borg.cell = new /obj/item/stock_parts/cell/upgraded/plus(new_borg, robot_cell_charge)
 
