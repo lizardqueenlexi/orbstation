@@ -3,13 +3,6 @@
 /obj/machinery/vending/autodrobe
 	orb_product_categories = list(
 		list(
-			"name" = "Entertainers",
-			"products" = list(
-				/obj/item/clothing/under/rank/civilian/clown/jester/alt = 1,
-				/obj/item/clothing/head/costume/jester/alt = 1,
-			),
-		),
-		list(
 			"name" = "Other",
 			"products" = list(
 			/obj/item/clothing/neck/mantle =2,

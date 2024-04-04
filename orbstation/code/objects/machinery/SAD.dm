@@ -123,7 +123,7 @@
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
 
-	use_power(500)
+	use_energy(active_power_usage)
 
 /// Ejects the occupant as their preference character
 /obj/machinery/self_actualization_device/proc/eject_new_you()
