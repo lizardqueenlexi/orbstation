@@ -3,7 +3,8 @@
 	objectives = list(
 		/datum/traitor_objective/ultimate/battlecruiser = 1,
 		/datum/traitor_objective/ultimate/battle_royale = 1,
-		/datum/traitor_objective/ultimate/dark_matteor = 1,
+		/datum/traitor_objective/ultimate/dark_matteor = 1,		
+		/datum/traitor_objective/ultimate/infect_ai = 1,
 		/datum/traitor_objective/ultimate/malware_injection = 1, //ORBSTATION EDIT: replaces tg infect AI
 		/datum/traitor_objective/ultimate/romerol = 1,
 		/datum/traitor_objective/ultimate/supermatter_cascade = 1,
