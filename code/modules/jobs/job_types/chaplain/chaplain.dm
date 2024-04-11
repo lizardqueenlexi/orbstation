@@ -70,7 +70,7 @@
 
 	holy_bible.deity_name = new_deity
 
-	// auto bible/deity renaming removed -- if somebody wants to worship Gay Space Jesus via the book of The War of Cocks, they can enter that themself
+	//ORBSTATION EDIT: auto bible/deity renaming removed -- if somebody wants to worship Gay Space Jesus via the book of The War of Cocks, they can enter that themself
 
 	if(new_bible == DEFAULT_BIBLE)
 		new_bible = DEFAULT_BIBLE_REPLACE(new_bible)

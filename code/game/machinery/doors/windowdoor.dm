@@ -25,19 +25,10 @@
 	var/rods = 2
 	var/cable = 1
 	var/list/debris = list()
-	/// ORBSTATION: Time it takes to pry open the windoor with the jaws of life. Time to disassemble is this * 1.5.
+	/// ORBSTATION EDIT: Time it takes to pry open the windoor with the jaws of life. Time to disassemble is this * 1.5.
 	var/pry_time = 4 SECONDS
-	/// ORBSTATION: Percent chance for the windoor to break when pried open with the jaws of life.
+	/// ORBSTATION EDIT: Percent chance for the windoor to break when pried open with the jaws of life.
 	var/pry_break_chance = 30
-
-/datum/armor/door_window
-	melee = 20
-	bullet = 50
-	laser = 50
-	energy = 50
-	bomb = 10
-	fire = 70
-	acid = 100
 
 /datum/armor/door_window
 	melee = 20
@@ -360,7 +351,8 @@
 
 /obj/machinery/door/window/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(obj_flags & NO_DECONSTRUCTION)
+	///ORBSTATION EDIT: Removed "you need to open the door to open the panel"
+	if(operating)
 		return
 	add_fingerprint(user)
 	tool.play_tool_sound(src)
@@ -370,16 +362,14 @@
 
 /obj/machinery/door/window/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(obj_flags & NO_DECONSTRUCTION)
-		return
-	if(!panel_open)
+	if(!panel_open || operating)
 		return
 	add_fingerprint(user)
 	user.visible_message(span_notice("[user] starts to remove the electronics from \the [name]."), \
 	span_notice("You start to remove the electronics from \the [name]..."))
 	if(!tool.use_tool(src, user, pry_time * 1.5, volume=50))
 		return
-	if(!panel_open || !loc)
+	if(!panel_open || operating || !loc)
 		return
 	var/obj/structure/windoor_assembly/windoor_assembly = new /obj/structure/windoor_assembly(loc)
 	switch(base_state)
