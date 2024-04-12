@@ -246,7 +246,7 @@
 
 	result += objectives_text
 
-	//var/special_role_text = lowertext(name)
+	//var/special_role_text = LOWER_TEXT(name)
 
 	//if(malf_ai_won)  ORBSTATION: We don't want to report success or failure
 	//	result += span_greentext("The [special_role_text] was successful!")

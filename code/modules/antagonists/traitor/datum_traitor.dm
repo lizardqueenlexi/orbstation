@@ -383,7 +383,7 @@
 		result += "<br><B>Total:</B> [total_completed] objectives, [DISPLAY_PROGRESSION(total_earned_prog)] reputation, [total_earned_tc] TC"
 		result += "The traitor had a total of [DISPLAY_PROGRESSION(uplink_handler.progression_points)] Reputation and [uplink_handler.telecrystals] Unused Telecrystals."
 
-	//var/special_role_text = lowertext(name)
+	//var/special_role_text = LOWER_TEXT(name)
 
 	//if(traitor_won) ORBSTATION: Don't display success or failure
 	//	result += span_greentext("The [special_role_text] was successful!")
