@@ -32,8 +32,7 @@ GLOBAL_VAR_INIT(traitor_limit_antag_count, 0)
 	return ..()
 
 /datum/antagonist/traitor/on_removal()
-	if (GLOB.traitor_limit_antag_count > 0)
-		GLOB.traitor_limit_antag_count--
+	GLOB.traitor_limit_antag_count = max(0, GLOB.traitor_limit_antag_count - 1)
 	return ..()
 
 /datum/antagonist/brother/on_gain()
@@ -41,6 +40,14 @@ GLOBAL_VAR_INIT(traitor_limit_antag_count, 0)
 	return ..()
 
 /datum/antagonist/brother/on_removal()
-	if (GLOB.traitor_limit_antag_count > 0)
-		GLOB.traitor_limit_antag_count--
+	GLOB.traitor_limit_antag_count = max(0, GLOB.traitor_limit_antag_count - 1)
 	return ..()
+
+/datum/antagonist/spy/on_gain()
+	GLOB.traitor_limit_antag_count++
+	return ..()
+	
+/datum/antagonist/spy/on_removal()
+	GLOB.traitor_limit_antag_count = max(0, GLOB.traitor_limit_antag_count - 1)
+	return ..()
+	
