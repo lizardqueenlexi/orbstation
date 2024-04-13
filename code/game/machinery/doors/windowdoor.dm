@@ -8,7 +8,8 @@
 	resistance_flags = ACID_PROOF
 	obj_flags = CAN_BE_HIT | BLOCKS_CONSTRUCTION_DIR
 	var/base_state = "left"
-	max_integrity = 75 // ORBSTATION: it's a door made of GLASS. in practice takes about 7 hits from a circular saw or toolbox
+	///ORBSTATION EDIT: value decreased 
+	max_integrity = 75 //If you change this, consider changing ../door/window/brigdoor/ max_integrity at the bottom of this .dm file
 	integrity_failure = 0
 	armor_type = /datum/armor/door_window
 	visible = FALSE
@@ -25,10 +26,6 @@
 	var/rods = 2
 	var/cable = 1
 	var/list/debris = list()
-	/// ORBSTATION EDIT: Time it takes to pry open the windoor with the jaws of life. Time to disassemble is this * 1.5.
-	var/pry_time = 4 SECONDS
-	/// ORBSTATION EDIT: Percent chance for the windoor to break when pried open with the jaws of life.
-	var/pry_break_chance = 30
 
 /datum/armor/door_window
 	melee = 20
@@ -351,8 +348,8 @@
 
 /obj/machinery/door/window/screwdriver_act(mob/living/user, obj/item/tool)
 	. = ..()
-	///ORBSTATION EDIT: Removed "you need to open the door to open the panel"
-	if(operating)
+	if(density || operating)
+		to_chat(user, span_warning("You need to open the door to access the maintenance panel!"))
 		return
 	add_fingerprint(user)
 	tool.play_tool_sound(src)
@@ -362,14 +359,14 @@
 
 /obj/machinery/door/window/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(!panel_open || operating)
+	if(!panel_open || density || operating)
 		return
 	add_fingerprint(user)
-	user.visible_message(span_notice("[user] starts to remove the electronics from \the [name]."), \
-	span_notice("You start to remove the electronics from \the [name]..."))
-	if(!tool.use_tool(src, user, pry_time * 1.5, volume=50))
+	user.visible_message(span_notice("[user] removes the electronics from the [name]."), \
+	span_notice("You start to remove electronics from the [name]..."))
+	if(!tool.use_tool(src, user, 40, volume=50))
 		return
-	if(!panel_open || operating || !loc)
+	if(!panel_open || density || operating || !loc)
 		return
 	var/obj/structure/windoor_assembly/windoor_assembly = new /obj/structure/windoor_assembly(loc)
 	switch(base_state)
@@ -456,11 +453,10 @@
 	icon_state = "leftsecure"
 	base_state = "leftsecure"
 	var/id = null
-	max_integrity = 220 //Stronger doors for prison (regular window door health is 75)
+	///ORBSTATION EDIT: value decreased 
+	max_integrity = 220 //Stronger doors for prison (regular window door health is 200)
 	reinf = 1
 	explosion_block = 1
-	pry_time = 10 SECONDS
-	pry_break_chance = 60
 
 /obj/machinery/door/window/brigdoor/security/cell
 	name = "cell door"
