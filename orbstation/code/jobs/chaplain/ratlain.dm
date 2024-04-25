@@ -63,7 +63,7 @@
 
 	if (IS_EDIBLE(I))
 		var/obj/item/food/the_food = I
-		var/datum/reagent/N = I.reagents.has_reagent(/datum/reagent/consumable/nutriment)
+		var/datum/reagent/N = I.reagents.has_reagent(/datum/reagent/consumable/nutriment, check_subtypes = TRUE)
 		var/food_favour = (N.volume + 1) * PER_NUTRIMENT_FAVOUR
 		if (the_food.foodtypes & DAIRY)
 			food_favour *= DAIRY_BONUS_MULT
