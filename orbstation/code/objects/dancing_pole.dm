@@ -21,10 +21,10 @@
 	register_context()
 	overlays += mutable_appearance(icon, "pole", layer, src, ABOVE_GAME_PLANE)
 
-/obj/structure/dancing_pole/AltClick(mob/living/carbon/human/user)
-	. = ..()
+/obj/structure/dancing_pole/click_alt(mob/living/carbon/human/user)
 	set_anchored(!anchored)
 	to_chat(user, span_notice("You [anchored ? null : "un"]lock the dancing pole."))
+	return CLICK_ACTION_SUCCESS
 
 /obj/structure/dancing_pole/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()

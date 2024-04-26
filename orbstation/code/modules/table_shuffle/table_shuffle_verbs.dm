@@ -1,7 +1,5 @@
 
-/client/proc/display_shuffle_log()
-	set name = "Local Shuffle Log"
-	set category = "Debug"
+ADMIN_VERB(display_shuffle_log, R_DEBUG|R_SERVER, "Local Shuffle Log", "Shows the local shuffle log", ADMIN_CATEGORY_DEBUG)
 	var/area/area = get_area(usr)
 	if(length(area.shuffle_log) == 0)
 		if(config.Get(/datum/config_entry/flag/disable_table_shuffle))
@@ -10,9 +8,7 @@
 			area.shuffle_log = "No events.  This may be because the probabilities are turned down, because there is nothing to shuffle or valid places to shuffle to and from, or just sheer bad luck."
 	usr << browse("<u title='[area.type]'>[area]</u> Shuffle Log<br><div style='padding-left:3px;border-left:2px solid black;'>[area.shuffle_log]</div>","window=[area.type]_shuffle")
 
-/client/proc/manual_table_shuffle()
-	set name = "Shuffle Local Area"
-	set category = "Debug"
+ADMIN_VERB(manual_table_shuffle, R_DEBUG|R_SERVER, "Shuffle Local Area", "Shuffles the local tables", ADMIN_CATEGORY_DEBUG)
 	var/area/area = get_area(usr)
 	var/tv = SStable_shuffle.total_vends
 	var/tm = SStable_shuffle.total_moves
@@ -43,9 +39,7 @@
 
 // this overrides the shuffle_options bitfield
 // depending on your probability scaling it may still underwhelm
-/client/proc/extreme_table_shuffle()
-	set name = "Shuffle Local Area (Max)"
-	set category = "Debug"
+ADMIN_VERB(extreme_table_shuffle, R_DEBUG|R_SERVER, "Shuffle Local Area (Max)", "Overrides the shuffle option bitfield", ADMIN_CATEGORY_DEBUG)
 	var/area/area = get_area(usr)
 	var/tv = SStable_shuffle.total_vends
 	var/tm = SStable_shuffle.total_moves
@@ -74,9 +68,7 @@
 		td = ""
 	to_chat(usr,"Shuffled the local area. [high][tv][tm][td]")
 
-/client/proc/show_high_rollers()
-	set name = "Display table shuffle high rollers"
-	set category = "Debug"
+ADMIN_VERB(show_high_rollers, R_DEBUG|R_SERVER, "Shuffle show high rollers", "Display table shuffle high rollers", ADMIN_CATEGORY_DEBUG)
 	if(config.Get(/datum/config_entry/flag/disable_table_shuffle))
 		to_chat(usr,"Table shuffling subsystem is disabled.")
 		return
