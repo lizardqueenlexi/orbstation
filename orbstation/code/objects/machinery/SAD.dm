@@ -70,15 +70,15 @@
 	playsound(src, 'sound/machines/click.ogg', 50)
 	..()
 
-/obj/machinery/self_actualization_device/AltClick(mob/user)
-	. = ..()
+/obj/machinery/self_actualization_device/click_alt(mob/user)
 	if(!powered() || !occupant || state_open)
-		return FALSE
+		return CLICK_ACTION_BLOCKING
 
 	balloon_alert(user, "You power on [src].")
 	addtimer(CALLBACK(src, PROC_REF(eject_new_you)), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
 	processing = TRUE
 	update_appearance()
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/self_actualization_device/container_resist_act(mob/living/user)
 	if(state_open)

@@ -9,12 +9,7 @@
 	return "Juices" // The juices are a fun and unique thing we have! lets make them a character default
 
 /datum/preference/choiced/pod_blood/init_possible_values()
-	var/list/values = list()
-
-	values["Water"] = "Water"
-	values["Juices"] = "Juices"
-
-	return values
+	return list("Water", "Juices")
 
 /datum/preference/choiced/pod_blood/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["pod_blood"] = value
@@ -25,4 +20,4 @@
 		exotic_blood = /datum/reagent/water
 	else if (value == "Juices")
 		exotic_blood = pick(GLOB.pod_bloodtypes_juice)
-	. = ..()
+	return ..()
