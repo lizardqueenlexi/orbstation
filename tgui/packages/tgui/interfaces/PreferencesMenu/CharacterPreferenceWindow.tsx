@@ -2,12 +2,12 @@ import { exhaustiveCheck } from 'common/exhaustive';
 import { useState } from 'react';
 
 import { useBackend } from '../../backend';
-import { Dropdown, Stack } from '../../components';
+import { Button, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
-import { LanguagesPage } from './LanguagesMenu'; // orbstation edit
+import { LanguagesPage } from './LanguagesMenu';
 import { MainPage } from './MainPage';
 import { PageButton } from './PageButton';
 import { QuirksPage } from './QuirksPage';
@@ -17,36 +17,33 @@ enum Page {
   Antags,
   Main,
   Jobs,
-  // ORBSTATION EDIT
-  Languages,
-  // ORBSTATION EDIT END
+  Languages, // Orbstation addition
   Species,
   Quirks,
 }
 
 const CharacterProfiles = (props: {
-  activeSlot: number; // SKYRAT EDIT CHANGE
+  activeSlot: number;
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
-  const { profiles, activeSlot, onClick } = props;
-  // SKYRAT EDIT CHANGE
+  const { profiles } = props;
+
   return (
-    <Stack align="center" justify="center">
-      <Stack.Item width="25%">
-        <Dropdown
-          width="100%"
-          selected={activeSlot}
-          displayText={profiles[activeSlot]}
-          options={profiles.map((profile, slot) => ({
-            value: slot,
-            displayText: profile ?? 'New Character',
-          }))}
-          onSelected={(slot) => {
-            onClick(slot);
-          }}
-        />
-      </Stack.Item>
+    <Stack justify="center" wrap>
+      {profiles.map((profile, slot) => (
+        <Stack.Item key={slot}>
+          <Button
+            selected={slot === props.activeSlot}
+            onClick={() => {
+              props.onClick(slot);
+            }}
+            fluid
+          >
+            {profile ?? 'New Character'}
+          </Button>
+        </Stack.Item>
+      ))}
     </Stack>
   );
 };
@@ -65,11 +62,11 @@ export const CharacterPreferenceWindow = (props) => {
     case Page.Jobs:
       pageContents = <JobsPage />;
       break;
-    // ORBSTATION EDIT
+    // Orbstation addition
     case Page.Languages:
       pageContents = <LanguagesPage />;
       break;
-    // ORBSTATION EDIT END
+    // End Orbstation addition
     case Page.Main:
       pageContents = (
         <MainPage openSpecies={() => setCurrentPage(Page.Species)} />
@@ -139,9 +136,10 @@ export const CharacterPreferenceWindow = (props) => {
                   Occupations
                 </PageButton>
               </Stack.Item>
-              {
-                // ORBSTATION EDIT
-              }
+
+              {/*
+              Orbstation addition
+              */}
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}
@@ -151,9 +149,10 @@ export const CharacterPreferenceWindow = (props) => {
                   Languages
                 </PageButton>
               </Stack.Item>
-              {
-                // ORBSTATION EDIT end
-              }
+              {/*
+              Orbstation addition ends
+              */}
+
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}
