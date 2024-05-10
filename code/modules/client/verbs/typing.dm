@@ -1,4 +1,5 @@
 #define IC_VERBS list("say", "me", "whisper")
+#define VISIBLE_OOC_VERBS list("looc") //ORBSTATION ADDITION: LOOC is visible
 
 /client/var/commandbar_thinking = FALSE
 /client/var/commandbar_typing = FALSE
@@ -9,7 +10,8 @@
 /client/proc/handle_commandbar_typing(href_list)
 	if (!typing_indicators) //check pref
 		return
-	if (length(href_list["verb"]) < 1 || !(LOWER_TEXT(href_list["verb"]) in IC_VERBS) || text2num(href_list["argument_length"]) < 1)
+	//ORBSTATION ADDITION: LOOC is visible
+	if (length(href_list["verb"]) < 1 || !(LOWER_TEXT(href_list["verb"]) in IC_VERBS) || !(LOWER_TEXT(href_list["verb"]) in VISIBLE_OOC_VERBS)  || text2num(href_list["argument_length"]) < 1)
 		if (commandbar_typing)
 			commandbar_typing = FALSE
 			stop_typing()
@@ -49,7 +51,7 @@
 /client/proc/start_typing()
 	var/mob/client_mob = mob
 	client_mob.remove_thinking_indicator()
-	if(!typing_indicators || !HAS_TRAIT(client_mob, TRAIT_THINKING_IN_CHARACTER) || !HAS_TRAIT(client_mob, TRAIT_THINKING_LOOC))
+	if(!typing_indicators || !(HAS_TRAIT(client_mob, TRAIT_THINKING_IN_CHARACTER) || HAS_TRAIT(client_mob, TRAIT_THINKING_LOOC)))
 		return FALSE
 	client_mob.create_typing_indicator()
 	addtimer(CALLBACK(src, PROC_REF(stop_typing)), 5 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
@@ -63,8 +65,9 @@
 		return FALSE
 	var/mob/client_mob = mob
 	client_mob.remove_typing_indicator()
-	if(!typing_indicators || !HAS_TRAIT(client_mob, TRAIT_THINKING_IN_CHARACTER) || !HAS_TRAIT(client_mob, TRAIT_THINKING_LOOC))
+	if(!typing_indicators || !(HAS_TRAIT(client_mob, TRAIT_THINKING_IN_CHARACTER) || !HAS_TRAIT(client_mob, TRAIT_THINKING_LOOC)))
 		return FALSE
 	client_mob.create_thinking_indicator()
 
 #undef IC_VERBS
+#undef VISIBLE_OOC_VERBS
