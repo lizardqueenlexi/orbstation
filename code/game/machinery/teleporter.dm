@@ -73,40 +73,41 @@
 		com.target_ref = null
 		visible_message(span_alert("Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."))
 		return
-	if (ismovable(M))
-		if(do_teleport(M, target, channel = TELEPORT_CHANNEL_BLUESPACE))
-			use_energy(active_power_usage)
-			if(!calibrated && prob(30 - ((accuracy) * 10))) //oh dear a problem
-				if(ishuman(M))//don't remove people from the round randomly you jerks
-					//ORBSTATION ADDITION: Give people fly organs on a teleporter accident.
-					var/list/fly_organs = list(
-						/obj/item/organ/internal/eyes/fly,
-						/obj/item/organ/internal/tongue/fly,
-						/obj/item/organ/internal/heart/fly,
-						/obj/item/organ/internal/lungs/fly,
-						/obj/item/organ/internal/liver/fly,
-						/obj/item/organ/internal/stomach/fly,
-						/obj/item/organ/internal/appendix/fly,
-					)
-					var/obj/item/organ/new_organ = pick(fly_organs)
-					if(new_organ)
-						new_organ = new new_organ()
-						to_chat(M, span_hear("You hear a buzzing in your ears."))
-						new_organ.Insert(M, special = TRUE,  movement_flags = DELETE_IF_REPLACED)
-					//END ORBSTATION ADDITION
-					//ORBSTATION REMOVAL: Don't turn people into flies.
-					/*var/mob/living/carbon/human/human = M
-					if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
-						var/datum/species/species_to_transform = /datum/species/fly
-						if(check_holidays(MOTH_WEEK))
-							species_to_transform = /datum/species/moth
-						if(human.dna && human.dna.species.id != initial(species_to_transform.id))
-							to_chat(M, span_hear("You hear a buzzing in your ears."))
-							human.set_species(species_to_transform)
-							human.log_message("was turned into a [initial(species_to_transform.name)] through [src].", LOG_GAME)*/
-					//END ORBSTATION REMOVAL
-			calibrated = FALSE
-	return
+	if(!ismovable(M))
+		return
+	var/turf/start_turf = get_turf(M)
+	if(!do_teleport(M, target, channel = TELEPORT_CHANNEL_BLUESPACE))
+		return
+	use_energy(active_power_usage)
+	new /obj/effect/temp_visual/portal_animation(start_turf, src, M)
+	if(!calibrated && ishuman(M) && prob(30 - ((accuracy) * 10))) //oh dear a problem
+		var/mob/living/carbon/human/human = M
+		if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
+			//ORBSTATION ADDITION: Give people fly organs on a teleporter accident.
+			var/list/fly_organs = list(
+				/obj/item/organ/internal/eyes/fly,
+				/obj/item/organ/internal/tongue/fly,
+				/obj/item/organ/internal/heart/fly,
+				/obj/item/organ/internal/lungs/fly,
+				/obj/item/organ/internal/liver/fly,
+				/obj/item/organ/internal/stomach/fly,
+				/obj/item/organ/internal/appendix/fly,
+			)
+			var/obj/item/organ/new_organ = pick(fly_organs)
+			if(new_organ)
+				new_organ = new new_organ()
+				to_chat(M, span_hear("You hear a buzzing in your ears."))
+				new_organ.Insert(M, special = TRUE,  movement_flags = DELETE_IF_REPLACED)
+			//END ORBSTATION ADDITION
+			//ORBSTATION REMOVAL: Don't turn people into flies.
+			/*var/datum/species/species_to_transform = /datum/species/fly
+			if(check_holidays(MOTH_WEEK))
+				species_to_transform = /datum/species/moth
+			if(human.dna && human.dna.species.id != initial(species_to_transform.id))
+				to_chat(M, span_hear("You hear a buzzing in your ears."))
+				human.set_species(species_to_transform)
+				human.log_message("was turned into a [initial(species_to_transform.name)] through [src].", LOG_GAME)*/
+	calibrated = FALSE
 
 /obj/machinery/teleport/hub/update_icon_state()
 	icon_state = "[base_icon_state][panel_open ? "-o" : (is_ready() ? 1 : 0)]"

@@ -24,7 +24,7 @@
 	return FALSE
 
 /datum/bodypart_overlay/mutant/snout_rat/get_global_feature_list()
-	return GLOB.rat_snouts_list
+	return SSaccessories.rat_snouts_list
 
 /datum/bodypart_overlay/mutant/snout_rat/colour_inner(mutable_appearance/appearance, obj/item/bodypart/limb)
 	appearance.color = COLOR_WHITE // Don't know why I had to do this but it works
@@ -42,4 +42,4 @@
 	feature_key = "rat_tail"
 
 /datum/bodypart_overlay/mutant/tail/rat/get_global_feature_list()
-	return GLOB.rat_tails_list
+	return SSaccessories.rat_tails_list

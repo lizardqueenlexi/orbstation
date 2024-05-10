@@ -75,7 +75,7 @@
 				msg += "<B>[t_He] [t_has] severe burns!</B>\n"
 
 	if(HAS_TRAIT(src, TRAIT_DUMB))
-		msg += "[t_He] seem[p_s()] to be clumsy and unable to focus.\n"
+		msg += "[t_He] seem[p_s()] to be clumsy and unable to focus.\n" //ORBSTATION EDIT: changed think to focus
 
 	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks))
 		msg += "[t_He] [t_is] covered in something flammable.\n"

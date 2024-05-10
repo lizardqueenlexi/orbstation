@@ -83,7 +83,7 @@
 /datum/crafting_recipe/buster_sword
 	name = "Colossal Sword"
 	result = /obj/item/buster_sword
-	always_available = FALSE
+	crafting_flags = parent_type::crafting_flags | CRAFT_MUST_BE_LEARNED
 	tool_behaviors = list(TOOL_WRENCH, TOOL_SCREWDRIVER, TOOL_WELDER)
 	reqs = list(
 		/obj/item/buster_sword_core = 1,

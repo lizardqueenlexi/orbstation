@@ -25,8 +25,6 @@
 /datum/asset/spritesheet/languages/create_spritesheets()
 	var/list/to_insert = list()
 
-	setup_language_list() //ensure languages have been initialized first
-
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
 		var/icon/language_icon = icon(language.icon, icon_state = language.icon_state)
