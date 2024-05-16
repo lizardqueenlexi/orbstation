@@ -1,27 +1,27 @@
 // Hides some things we don't want to be craftable
 /datum/crafting_recipe/tailclub
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 /datum/crafting_recipe/tailwhip
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 /datum/crafting_recipe/catwhip
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 /datum/crafting_recipe/lizardhat
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 /datum/crafting_recipe/lizardhat_alternate
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 /datum/crafting_recipe/food/catburger
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 /datum/crafting_recipe/food/tailkebab
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 /datum/crafting_recipe/lizardwine
-	non_craftable = FALSE
+	non_craftable = TRUE
 
 // Changes some recipes for things whose ingredients we don't like
 /datum/crafting_recipe/lizardboots
