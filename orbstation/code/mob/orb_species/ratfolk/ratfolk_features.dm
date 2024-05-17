@@ -8,10 +8,10 @@
 	should_generate_icons = TRUE
 
 /datum/preference/choiced/rat_snout/init_possible_values()
-	return assoc_to_keys_features(GLOB.rat_snouts_list)
+	return assoc_to_keys_features(SSaccessories.rat_snouts_list)
 
 /datum/preference/choiced/rat_snout/icon_for(value)
-	return generate_ratfolk_side_shot(GLOB.rat_snouts_list[value], "rat_snout", include_snout = FALSE)
+	return generate_ratfolk_side_shot(SSaccessories.rat_snouts_list[value], "rat_snout", include_snout = FALSE)
 
 /datum/preference/choiced/rat_snout/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["rat_snout"] = value
@@ -52,7 +52,7 @@
 	relevant_external_organ = /obj/item/organ/external/tail/ratfolk
 
 /datum/preference/choiced/rat_tail/init_possible_values()
-	return assoc_to_keys_features(GLOB.rat_tails_list)
+	return assoc_to_keys_features(SSaccessories.rat_tails_list)
 
 /datum/preference/choiced/rat_tail/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["rat_tail"] = value
@@ -72,10 +72,10 @@
 	relevant_mutant_bodypart = "rat_ears"
 
 /datum/preference/choiced/rat_ears/init_possible_values()
-	return assoc_to_keys_features(GLOB.rat_ears_list)
+	return assoc_to_keys_features(SSaccessories.rat_ears_list)
 
 /datum/preference/choiced/rat_ears/icon_for(value)
-	return generate_ratfolk_side_shot(GLOB.rat_ears_list[value], "rat_ears", include_snout=FALSE)
+	return generate_ratfolk_side_shot(SSaccessories.rat_ears_list[value], "rat_ears", include_snout=FALSE)
 
 /datum/preference/choiced/rat_ears/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["rat_ears"] = value

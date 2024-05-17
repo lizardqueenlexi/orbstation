@@ -110,7 +110,7 @@
 
 /datum/species/ratfolk/randomize_features()
 	var/list/features = ..()
-	features["rat_snout"] = GLOB.color_list_moth[pick(GLOB.rat_snouts_list)]
-	features["rat_tail"] = GLOB.color_list_moth[pick(GLOB.rat_tails_list)]
-	features["rat_ears"] = GLOB.color_list_moth[pick(GLOB.rat_ears_list)]
+	features["rat_snout"] = pick(SSaccessories.rat_snouts_list)
+	features["rat_tail"] = pick(SSaccessories.rat_tails_list)
+	features["rat_ears"] = pick(SSaccessories.rat_ears_list)
 	return features
