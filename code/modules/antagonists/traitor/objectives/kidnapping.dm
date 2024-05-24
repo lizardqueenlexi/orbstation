@@ -68,6 +68,7 @@
 		/datum/job/chemist,
 		/datum/job/doctor,
 		/datum/job/psychologist,
+		/datum/job/coroner,
 		// Science
 		/datum/job/geneticist,
 		/datum/job/roboticist,
@@ -99,6 +100,7 @@
 
 	target_jobs = list(
 		// Cargo
+		/datum/job/bitrunner,
 		/datum/job/shaft_miner,
 		// Medical
 		/datum/job/paramedic,

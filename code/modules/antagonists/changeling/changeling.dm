@@ -526,6 +526,7 @@
 
 	new_profile.age = target.age
 	new_profile.physique = target.physique
+	new_profile.athletics_level = target.mind?.get_skill_level(/datum/skill/athletics) || SKILL_LEVEL_NONE
 	new_profile.height = target.get_mob_height() //ORBSTATION EDIT
 
 	// Grab the target's quirks.
@@ -767,6 +768,7 @@
 	user.socks = chosen_profile.socks
 	user.age = chosen_profile.age
 	user.physique = chosen_profile.physique
+	user.mind?.set_level(/datum/skill/athletics, chosen_profile.athletics_level, silent = TRUE)
 	user.grad_style = LAZYLISTDUPLICATE(chosen_profile.grad_style)
 	user.grad_color = LAZYLISTDUPLICATE(chosen_profile.grad_color)
 	user.voice = chosen_profile.voice
@@ -916,6 +918,8 @@
 	var/age
 	/// The body type of the profile source.
 	var/physique
+	/// The athleticism of the profile source.
+	var/athletics_level
 	/// The quirks of the profile source.
 	var/list/quirks = list()
 	/// The hair and facial hair gradient styles of the profile source.
@@ -961,6 +965,7 @@
 	new_profile.id_icon = id_icon
 	new_profile.age = age
 	new_profile.physique = physique
+	new_profile.athletics_level = athletics_level
 	new_profile.quirks = quirks.Copy()
 	new_profile.grad_style = LAZYLISTDUPLICATE(grad_style)
 	new_profile.grad_color = LAZYLISTDUPLICATE(grad_color)
