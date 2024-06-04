@@ -145,6 +145,8 @@
 	control_part_datum.part_item = mod
 	mod.mod_parts["[mod.slot_flags]"] = control_part_datum
 	for(var/path in variants[default_skin])
+		if(!ispath(path))
+			continue
 		var/obj/item/mod_part = new path(mod)
 		if(mod_part.slot_flags == ITEM_SLOT_OCLOTHING && isclothing(mod_part))
 			var/obj/item/clothing/chestplate = mod_part
@@ -447,16 +449,6 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 2
 	charge_drain = DEFAULT_CHARGE_DRAIN * 2
-	allowed_suit_storage = list(
-		/obj/item/resonator,
-		/obj/item/mining_scanner,
-		/obj/item/t_scanner/adv_mining_scanner,
-		/obj/item/pickaxe,
-		/obj/item/kinetic_crusher,
-		/obj/item/stack/ore/plasma,
-		/obj/item/storage/bag/ore,
-		/obj/item/gun/energy/recharge/kinetic_accelerator,
-	)
 	inbuilt_modules = list(/obj/item/mod/module/ash_accretion, /obj/item/mod/module/sphere_transform)
 	variants = list(
 		"mining" = list(
@@ -526,8 +518,12 @@
 		),
 	)
 
+/datum/mod_theme/loader/New()
+	.=..()
+	allowed_suit_storage = GLOB.mining_suit_allowed
+
 /datum/armor/mod_theme_mining
-	melee = 15
+	melee = 20
 	bullet = 5
 	laser = 5
 	energy = 5
@@ -583,10 +579,14 @@
 			/obj/item/clothing/gloves/mod = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = GAUNTLET_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = GAUNTLET_SEAL_MESSAGE,
 			),
 			/obj/item/clothing/shoes/mod = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
 			),
 		),
 	)
@@ -1379,10 +1379,14 @@
 			/obj/item/clothing/gloves/mod = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = GAUNTLET_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = GAUNTLET_SEAL_MESSAGE,
 			),
 			/obj/item/clothing/shoes/mod = list(
 				SEALED_CLOTHING = THICKMATERIAL,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
 			),
 		),
 	)
@@ -1525,6 +1529,8 @@
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
 				SEALED_INVISIBILITY = HIDEJUMPSUIT,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
 			),
 			/obj/item/clothing/gloves/mod = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
@@ -2184,14 +2190,20 @@
 				UNSEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				SEALED_INVISIBILITY = HIDEJUMPSUIT,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = CHESTPLATE_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = CHESTPLATE_SEAL_MESSAGE,
 			),
 			/obj/item/clothing/gloves/mod = list(
 				UNSEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = GAUNTLET_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = GAUNTLET_SEAL_MESSAGE,
 			),
 			/obj/item/clothing/shoes/mod = list(
 				UNSEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
 				CAN_OVERSLOT = TRUE,
+				UNSEALED_MESSAGE = BOOT_UNSEAL_MESSAGE,
+				SEALED_MESSAGE = BOOT_SEAL_MESSAGE,
 			),
 		),
 	)
