@@ -86,7 +86,7 @@
 	id = "head_synth"
 	display_name = "Head Synthesis"
 	description = "The limb grower might be more useful if it could grow new heads as well."
-	prereq_ids = list("xenoorgan_bio")
+	prereq_ids = list("gene_engineering")
 	design_ids = list(
 		"limbdesign_heads",
 	)
@@ -96,7 +96,7 @@
 	id = "xenomorph_bio"
 	display_name = "Xeno-organ Biology"
 	description = "Preliminary research into the mysterious physiology of the xenomorph species."
-	prereq_ids = list("adv_biotech")
+	prereq_ids = list("xenobiology")
 	design_ids = list(
 		"limbdesign_xeno",
 	)

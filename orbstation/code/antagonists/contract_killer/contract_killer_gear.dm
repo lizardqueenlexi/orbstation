@@ -59,12 +59,12 @@
 	/// Icon state of the kit
 	var/icon_state
 	/// Path to the kit item
-	var/kit_path = /obj/item/storage/secure/briefcase/contract_killer
+	var/kit_path = /obj/item/storage/briefcase/secure/contract_killer
 	/// Weight of the kit
 	var/weight = CONTRACT_KILLER_KIT_COMMON
 
 /// Special briefcase for contract killer gear. Disguised as a regular secure briefcase.
-/obj/item/storage/secure/briefcase/contract_killer
+/obj/item/storage/briefcase/secure/contract_killer
 	throwforce = 25 //it's secretly a formidible throwing weapon
 	throw_speed = 1 //but also kind of a joke
 	throw_range = 7
@@ -78,9 +78,9 @@
 		and a few bonuses to help you really look the part."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "pistol"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/hitman
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/hitman
 
-/obj/item/storage/secure/briefcase/contract_killer/hitman/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/hitman/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pistol/suppressed(src)
 	new /obj/item/ammo_box/magazine/m9mm(src)
 	new /obj/item/clothing/under/suit/black(src)
@@ -96,9 +96,9 @@
 		more or less at random. Guaranteed to always contain a couple of really nice ones."
 	icon = 'icons/obj/weapons/stabby.dmi'
 	icon_state = "buckknife"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/knives
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/knives
 
-/obj/item/storage/secure/briefcase/contract_killer/knives/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/knives/PopulateContents()
 	var/list/rare_knives = list(
 		/obj/item/knife/combat,
 		/obj/item/knife/bloodletter,
@@ -146,9 +146,9 @@
 		Contains a full chameleon kit, with an extra set of no-slip chameleon shoes and a customizable agent ID."
 	icon = 'icons/obj/clothing/masks.dmi'
 	icon_state = "balaclava"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/spy
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/spy
 
-/obj/item/storage/secure/briefcase/contract_killer/spy/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/spy/PopulateContents()
 	new /obj/item/storage/box/syndie_kit/chameleon(src)
 	new /obj/item/clothing/shoes/chameleon/noslip(src)
 	new /obj/item/card/id/advanced/chameleon(src)
@@ -160,9 +160,9 @@
 	 syringes, a compact syringe gun, and a bottle of pentetic acid (in case you screw up, or if your target is a jellyperson)."
 	icon = 'icons/obj/weapons/guns/syringegun.dmi'
 	icon_state = "dartsyringegun"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/poison
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/poison
 
-/obj/item/storage/secure/briefcase/contract_killer/poison/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/poison/PopulateContents()
 	var/list/poisons_list = list(
 		/obj/item/reagent_containers/cup/bottle/polonium,
 		/obj/item/reagent_containers/cup/bottle/venom,
@@ -192,9 +192,9 @@
 		Contains advanced insulated gloves, a camera bug, an emag, a doorjack, and a set of tools."
 	icon = 'icons/obj/card.dmi'
 	icon_state = "emag"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/hacker
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/hacker
 
-/obj/item/storage/secure/briefcase/contract_killer/hacker/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/hacker/PopulateContents()
 	new /obj/item/clothing/gloves/chief_engineer(src)
 	new /obj/item/computer_disk/syndicate/camera_app(src)
 	new /obj/item/card/emag(src)
@@ -210,10 +210,10 @@
 		drill for making adjustments."
 	icon = 'icons/obj/antags/syndicate_tools.dmi'
 	icon_state = "powerfist"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/powerfist
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/powerfist
 	weight = CONTRACT_KILLER_KIT_UNCOMMON
 
-/obj/item/storage/secure/briefcase/contract_killer/powerfist/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/powerfist/PopulateContents()
 	new /obj/item/melee/powerfist(src)
 	for(var/i in 1 to 3)
 		new /obj/item/tank/internals/oxygen/red(src)
@@ -227,16 +227,16 @@
 		Personal injury and instant death may occur."
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "secure"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/holding
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/holding
 	weight = CONTRACT_KILLER_KIT_UNCOMMON
 
-/obj/item/storage/secure/briefcase/contract_killer/holding/Initialize(mapload)
+/obj/item/storage/briefcase/secure/contract_killer/holding/Initialize(mapload)
 	. = ..()
 
 	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30, storage_type = /datum/storage/bag_of_holding)
 	atom_storage.allow_big_nesting = TRUE
 
-/obj/item/storage/secure/briefcase/contract_killer/holding/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/holding/PopulateContents()
 	return //contains nothing
 
 /// A chameleon projector, and a rush gland implanter to zoom away if you get caught
@@ -246,10 +246,10 @@
 		potted plant was an assassin. Contains a chameleon projector. Also contains a rush gland autosurgeon, for quick getaways."
 	icon = 'icons/obj/devices/syndie_gadget.dmi'
 	icon_state = "shield0"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/prophunt
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/prophunt
 	weight = CONTRACT_KILLER_KIT_UNCOMMON
 
-/obj/item/storage/secure/briefcase/contract_killer/prophunt/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/prophunt/PopulateContents()
 	new /obj/item/chameleon(src)
 	new /obj/item/autosurgeon/rush_gland(src)
 
@@ -261,10 +261,10 @@
 		may go bad in there."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "cheesewheel"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/cheeserush
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/cheeserush
 	weight = CONTRACT_KILLER_KIT_UNCOMMON
 
-/obj/item/storage/secure/briefcase/contract_killer/cheeserush/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/cheeserush/PopulateContents()
 	new /obj/item/autosurgeon/rat_stomach(src)
 	new /obj/item/implanter/cheese(src)
 	for(var/i in 1 to 3)
@@ -277,13 +277,13 @@
 		let you build your OWN arsenal, one piece at a time. Contains a large assortment of monster pieces for crafting, and some meat for... snacks?"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "sinew"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/viscera
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/viscera
 	weight = CONTRACT_KILLER_KIT_UNCOMMON
 
-/obj/item/storage/secure/briefcase/contract_killer/viscera
+/obj/item/storage/briefcase/secure/contract_killer/viscera
 	desc = "A large briefcase with a digital locking system. It's concerningly damp."
 
-/obj/item/storage/secure/briefcase/contract_killer/viscera/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/viscera/PopulateContents()
 	for(var/i in 1 to 20)
 		new /obj/item/stack/sheet/bone(src)
 	for(var/i in 1 to 6)
@@ -308,10 +308,10 @@
 		A POWERFUL ZETAN WEAPON FOR ONLY THE STRONGEST ASSASSINS. DON'T TELL ANYONE, OK?"
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "shrink_ray"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/zetan
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/zetan
 	weight = CONTRACT_KILLER_KIT_RARE
 
-/obj/item/storage/secure/briefcase/contract_killer/zetan/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/zetan/PopulateContents()
 	var/choice = rand(3)
 	switch(choice)
 		if(1)
@@ -329,10 +329,10 @@
 		what you have here, they'll turn you into a chicken, or maybe inside-out. Keep it quiet. Contains two random wizardly items and a nice hat."
 	icon = 'icons/obj/clothing/head/wizard.dmi'
 	icon_state = "wizard"
-	kit_path = /obj/item/storage/secure/briefcase/contract_killer/wizard
+	kit_path = /obj/item/storage/briefcase/secure/contract_killer/wizard
 	weight = CONTRACT_KILLER_KIT_RARE
 
-/obj/item/storage/secure/briefcase/contract_killer/wizard/PopulateContents()
+/obj/item/storage/briefcase/secure/contract_killer/wizard/PopulateContents()
 	var/list/wizard_items = list(
 		/obj/item/gun/magic/staff/animate/unrestricted,
 		/obj/item/gun/magic/staff/chaos/unrestricted,

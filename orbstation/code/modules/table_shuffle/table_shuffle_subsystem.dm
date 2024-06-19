@@ -150,7 +150,7 @@ SUBSYSTEM_DEF(table_shuffle)
 				move_prob += prob_add
 			if(opt & SHUFFLE_FROM_BOXES)
 				for(var/obj/item/storage/box in struct.loc)
-					if(istype(box,/obj/item/storage/secure) || istype(box,/obj/item/storage/lockbox)) continue
+					if(istype(box,/obj/item/storage/briefcase/secure) || istype(box,/obj/item/storage/lockbox)) continue
 					boxes += box
 		else if(istype(struct,/obj/structure/rack))
 			if(opt & SHUFFLE_FROM_RACKS)
@@ -161,7 +161,7 @@ SUBSYSTEM_DEF(table_shuffle)
 				move_prob += prob_add
 			if(opt & SHUFFLE_FROM_BOXES)
 				for(var/obj/item/storage/box in struct.loc)
-					if(istype(box,/obj/item/storage/secure) || istype(box,/obj/item/storage/lockbox)) continue
+					if(istype(box,/obj/item/storage/briefcase/secure) || istype(box,/obj/item/storage/lockbox)) continue
 					boxes += box
 		else if(istype(struct,/obj/structure/closet))
 			var/obj/structure/closet/closet = struct
@@ -174,7 +174,7 @@ SUBSYSTEM_DEF(table_shuffle)
 				if(!closet.contents_initialized) // so glad they delayed doing this so that I could be the one to tear the shrink wrap.  sigh.
 					closet.PopulateContents()
 				for(var/obj/item/storage/box in closet)
-					if(istype(box,/obj/item/storage/secure) || istype(box,/obj/item/storage/lockbox)) continue
+					if(istype(box,/obj/item/storage/briefcase/secure) || istype(box,/obj/item/storage/lockbox)) continue
 					boxes += box
 		else if(istype(struct,/obj/structure/chair)) // dropped it while resting.  I'd add beds except bedsheets cover a lot.
 			if(opt & SHUFFLE_TO_FURNITURE)

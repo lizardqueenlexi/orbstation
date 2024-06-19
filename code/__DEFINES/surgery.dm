@@ -33,6 +33,8 @@
 #define IS_ORGANIC_LIMB(limb) (limb.bodytype & BODYTYPE_ORGANIC)
 /// Helper to figure out if a limb is robotic
 #define IS_ROBOTIC_LIMB(limb) (limb.bodytype & BODYTYPE_ROBOTIC)
+/// Helper to figure out if a limb is a peg limb
+#define IS_PEG_LIMB(limb) (limb.bodytype & BODYTYPE_PEG)
 /// ORBSTATION ADDITION: Helper to figure out if a limb is digitigrade
 #define IS_DIGITIGRADE_LIMB(limb) (limb.bodytype & BODYSHAPE_DIGITIGRADE)
 
