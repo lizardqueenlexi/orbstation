@@ -16124,12 +16124,14 @@
 /area/station/engineering/atmos)
 "fFS" = (
 /obj/machinery/door/window/elevator/right/directional/west{
-	transport_linked_id = "biodome_lake_lift"
+	transport_linked_id = "biodome_lake_lift";
+	elevator_mode = 1
 	},
 /obj/machinery/button/elevator/directional/north{
 	id = "biodome_lake_lift"
 	},
 /obj/machinery/lift_indicator/directional/north,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
 "fFW" = (
@@ -16196,8 +16198,10 @@
 /area/station/maintenance/fore/greater)
 "fHe" = (
 /obj/machinery/door/window/elevator/left/directional/west{
-	transport_linked_id = "biodome_lake_lift"
+	transport_linked_id = "biodome_lake_lift";
+	elevator_mode = 1
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
 "fHG" = (
@@ -57875,7 +57879,8 @@
 	id = "biodome_lake_lift"
 	},
 /obj/machinery/door/window/elevator/left/directional/south{
-	transport_linked_id = "biodome_lake_lift"
+	transport_linked_id = "biodome_lake_lift";
+	elevator_mode = 1
 	},
 /turf/open/misc/ashplanet/wateryrock/biodome,
 /area/station/biodome)
