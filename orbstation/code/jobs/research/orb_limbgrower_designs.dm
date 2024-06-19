@@ -362,7 +362,7 @@
 	)
 
 /datum/techweb_node/head_synthesis
-	id = "head_synth"
+	id = "head_synthesis"
 	display_name = "Head Synthesis"
 	description = "The limb grower might be more useful if it could grow new heads as well."
 	prereq_ids = list("nonhuman_advanced")
