@@ -6,6 +6,7 @@
 	design_ids = list(
 		"healthanalyzer",
 		"autopsyscanner",
+		"genescanner",
 		"medical_kiosk",
 		"chem_master",
 		"ph_meter",
@@ -54,7 +55,6 @@
 		"scan_console",
 		"dna_disk",
 		"dnainfuser",
-		"genescanner",
 		"mod_dna_lock",
 		"self_actualization_device",
 	)
