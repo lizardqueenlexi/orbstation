@@ -149,7 +149,7 @@
 		"Hey. Being serious for a moment. Thank's for everything you've done.",
 		)
 
-/obj/machinery/zetan_pirate_experimentor/MouseDrop_T(mob/living/target, mob/user)
+/obj/machinery/zetan_pirate_experimentor/mouse_drop_receive(atom/target, mob/user, params)
 	if(user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_UI_BLOCKED) || !Adjacent(user) || !target.Adjacent(user))
 		return
 	if(!(ishuman(target) || iscow(target)))
