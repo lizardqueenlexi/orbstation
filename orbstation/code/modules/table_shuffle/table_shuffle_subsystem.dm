@@ -58,6 +58,9 @@ SUBSYSTEM_DEF(table_shuffle)
 	var/list/did_shuffle = list()
 
 /datum/controller/subsystem/table_shuffle/Initialize()
+
+#ifndef MAP_TEST
+
 	if(config.Get(/datum/config_entry/flag/disable_table_shuffle))
 		return SS_INIT_NO_NEED
 	vend_only = config.Get(/datum/config_entry/flag/shuffle_vend_only)
@@ -104,6 +107,8 @@ SUBSYSTEM_DEF(table_shuffle)
 			var/obj/obj = pick(candidate_tables)
 			if(istype(obj))
 				new /obj/item/folder/shufflelog(obj.loc)
+
+#endif
 	return SS_INIT_SUCCESS
 
 /**
