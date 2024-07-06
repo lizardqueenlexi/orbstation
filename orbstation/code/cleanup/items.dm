@@ -125,10 +125,6 @@
 /obj/item/clothing/mask/cigarette/shadyjims
 	desc = "A Shady Rick's Hunger Sticks cigarette."
 
-/obj/item/toy/plush/greek_cucumber/Initialize(mapload, vol)
-	. = ..()
-	return INITIALIZE_HINT_QDEL
-
 // It's already a reference item. Why are they lizardskin and not snakeskin?
 /obj/item/clothing/shoes/discoshoes
 	name = "green snakeskin shoes"
