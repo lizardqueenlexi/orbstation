@@ -17,7 +17,8 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/item_quirk/clown_enjoyer, /datum/quirk/item_quirk/mime_fan),
 	list(/datum/quirk/bad_touch, /datum/quirk/friendly),
 	list(/datum/quirk/extrovert, /datum/quirk/introvert),
-	list(/datum/quirk/prosthetic_limb, /datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/alien_prosthesis, /datum/quirk/bioscrambler_victim, /datum/quirk/transhumanist, /datum/quirk/body_purist), //ORBSTATION
+	list(/datum/quirk/prosthetic_limb, /datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/alien_prosthesis, /datum/quirk/bioscrambler_victim, /datum/quirk/body_purist),
+	list(/datum/quirk/transhumanist, /datum/quirk/body_purist), //ORBSTATION
 	list(/datum/quirk/prosthetic_organ, /datum/quirk/tin_man, /datum/quirk/body_purist),
 	list(/datum/quirk/quadruple_amputee, /datum/quirk/paraplegic, /datum/quirk/hemiplegic, /datum/quirk/augmented),//ORBSTATION
 	list(/datum/quirk/quadruple_amputee, /datum/quirk/augmented, /datum/quirk/frail),//ORBSTATION

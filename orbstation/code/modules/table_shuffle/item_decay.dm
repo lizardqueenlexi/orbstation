@@ -24,7 +24,7 @@
 	return 100
 
 /// cigarette/shuffle_decay: leave behind butt
-/obj/item/clothing/mask/cigarette/shuffle_decay()
+/obj/item/cigarette/shuffle_decay()
 	if(ispath(type_butt))
 		SStable_shuffle.extra_dirt(/obj/effect/decal/cleanable/ash,loc)
 		return new type_butt(loc)

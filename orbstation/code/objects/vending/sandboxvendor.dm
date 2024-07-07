@@ -22,7 +22,7 @@
 				/obj/item/storage/backpack/holding = 999,
 				/obj/item/storage/box/material = 999,
 				/obj/item/storage/box/other_material = 999,
-				/obj/item/stock_parts/cell/infinite = 999,
+				/obj/item/stock_parts/power_store/cell/infinite = 999,
 				/obj/item/toy/balloon/corgi = 999,
 				/obj/item/storage/box/hug/plushes = 999,
 				/obj/item/choice_beacon/music = 999,
@@ -122,7 +122,7 @@
 			"name" = "Mutations",
 			"icon" = "podcast",
 			"products" = list(
-				/obj/item/dnainjector/reset_genome = 999,
+				/obj/item/storage/pill_bottle/mutadone = 999,
 				/obj/item/dnainjector/antenna = 999,
 				/obj/item/dnainjector/antiglow = 999,
 				/obj/item/dnainjector/chameleonmut = 999,
