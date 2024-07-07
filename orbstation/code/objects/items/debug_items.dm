@@ -18,54 +18,6 @@
 	matter = INFINITY
 	max_matter = INFINITY
 
-/obj/item/dnainjector/reset_genome
-	name = "\improper DNA injector (Reset Genome)"
-	desc = "Wow, uh, this is kind of grim. Don't think too hard about it."
-	remove_mutations = list( // should remove everything except monkified, maybe there's an easier way to do this? hopefully I didn't miss any!
-		/datum/mutation/human/acidflesh,
-		/datum/mutation/human/antenna,
-		/datum/mutation/human/bad_dna,
-		/datum/mutation/human/badblink,
-		/datum/mutation/human/glow,
-		/datum/mutation/human/glow/anti,
-		/datum/mutation/human/blind,
-		/datum/mutation/human/clumsy,
-		/datum/mutation/human/cough,
-		/datum/mutation/human/cryokinesis,
-		/datum/mutation/human/deaf,
-		/datum/mutation/human/dwarfism,
-		/datum/mutation/human/elvis,
-		/datum/mutation/human/epilepsy,
-		/datum/mutation/human/geladikinesis,
-		/datum/mutation/human/gigantism,
-		/datum/mutation/human/nearsight,
-		/datum/mutation/human/glow,
-		/datum/mutation/human/hulk,
-		/datum/mutation/human/illiterate,
-		/datum/mutation/human/insulated,
-		/datum/mutation/human/laser_eyes,
-		/datum/mutation/human/mindreader,
-		/datum/mutation/human/mute,
-		/datum/mutation/human/olfaction,
-		/datum/mutation/human/piglatin,
-		/datum/mutation/human/paranoia,
-		/datum/mutation/human/pressure_adaptation,
-		/datum/mutation/human/radioactive,
-		/datum/mutation/human/shock,
-		/datum/mutation/human/spastic,
-		/datum/mutation/human/nervousness,
-		/datum/mutation/human/swedish,
-		/datum/mutation/human/telekinesis,
-		/datum/mutation/human/temperature_adaptation,
-		/datum/mutation/human/thermal,
-		/datum/mutation/human/extrastun,
-		/datum/mutation/human/unintelligible,
-		/datum/mutation/human/void,
-		/datum/mutation/human/xray,
-		/datum/mutation/human/wacky,
-		/datum/mutation/human/webbing
-		)
-
 /obj/item/storage/box/other_material
 	name = "box of other materials"
 	illustration = "syndiebox"
