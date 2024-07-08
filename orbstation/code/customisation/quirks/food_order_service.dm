@@ -88,8 +88,8 @@
 		/obj/item/food/pizza/energy,
 		/obj/item/food/grown/apple,
 		/obj/item/tank/internals/plasmaman/belt/full,
-		/obj/item/stock_parts/cell,
-		/obj/item/stock_parts/cell/upgraded/plus,
+		/obj/item/stock_parts/power_store/cell,
+		/obj/item/stock_parts/power_store/cell/upgraded/plus,
 		)
 
 

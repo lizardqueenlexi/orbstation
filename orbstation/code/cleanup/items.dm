@@ -122,7 +122,7 @@
 	name = "\improper Shady Rick's Hunger Sticks packet"
 	desc = "Need a lunch break now? Eat too much and can't sample the chef's latest creation? Preparing for a hot dog eating contest? Smoke Shady Rick's Hunger Sticks and get hungry in minutes! Guaranteed results!"
 
-/obj/item/clothing/mask/cigarette/shadyjims
+/obj/item/cigarette/shadyjims
 	desc = "A Shady Rick's Hunger Sticks cigarette."
 
 // It's already a reference item. Why are they lizardskin and not snakeskin?
