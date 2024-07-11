@@ -33,4 +33,4 @@
 /obj/projectile/bullet/blasting
 	name = "bolt of blasting"
 	damage = 20
-	embedding = null
+	embed_type = null

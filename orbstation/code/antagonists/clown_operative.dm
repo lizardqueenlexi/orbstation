@@ -42,14 +42,14 @@
 		/obj/item/mod/module/storage/syndicate,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/magnetic_harness,
-		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/waddle,
 		/obj/item/mod/module/bikehorn,
 	)
 	default_pins = list(
 		/obj/item/mod/module/armor_booster,
-		/obj/item/mod/module/jetpack/advanced,
+		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/bikehorn,
 	)
 
