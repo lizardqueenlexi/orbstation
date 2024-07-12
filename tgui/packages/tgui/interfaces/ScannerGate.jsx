@@ -13,6 +13,60 @@ const DISEASE_THEASHOLD_LIST = [
   'BIOHAZARD',
 ];
 
+const TARGET_SPECIES_LIST = [
+  {
+    name: 'Human',
+    value: 'human',
+  },
+  {
+    name: 'Lizardperson',
+    value: 'lizard',
+  },
+  {
+    name: 'Flyperson',
+    value: 'fly',
+  },
+  {
+    name: 'Felinid',
+    value: 'felinid',
+  },
+  {
+    name: 'Plasmaman',
+    value: 'plasma',
+  },
+  {
+    name: 'Mothperson',
+    value: 'moth',
+  },
+  {
+    name: 'Jellyperson',
+    value: 'jelly',
+  },
+  {
+    name: 'Podperson',
+    value: 'pod',
+  },
+  {
+    name: 'Golem',
+    value: 'golem',
+  },
+  {
+    name: 'Zombie',
+    value: 'zombie',
+  },
+];
+
+const TARGET_NUTRITION_LIST = [
+  {
+    name: 'Starving',
+    value: 150,
+  },
+  //{ ORBSTATION EDIT: obese removal
+  //  name: 'Obese',
+  //  value: 600,
+  //},
+];
+
 export const ScannerGate = (props) => {
   const { act, data } = useBackend();
   return (
@@ -49,8 +103,16 @@ const SCANNER_GATE_ROUTES = {
     component: () => ScannerGateDisease,
   },
   Species: {
-    title: 'Scanner Mode: Zombie',
-    component: () => ScannerGateZombie,
+    title: 'Scanner Mode: Species',
+    component: () => ScannerGateSpecies,
+  },
+  Nutrition: {
+    title: 'Scanner Mode: Nutrition',
+    component: () => ScannerGateNutrition,
+  },
+  Contraband: {
+    title: 'Scanner Mode: Contraband',
+    component: () => ScannerGateContraband,
   },
 };
 
@@ -78,7 +140,8 @@ const ScannerGateControl = (props) => {
 };
 
 const ScannerGateOff = (props) => {
-  const { act } = useBackend();
+  const { act, data } = useBackend();
+  const { contraband_enabled } = data;
   return (
     <>
       <Box mb={2}>Select a scanning mode below.</Box>
@@ -100,8 +163,17 @@ const ScannerGateOff = (props) => {
           onClick={() => act('set_mode', { new_mode: 'Disease' })}
         />
         <Button
-          content="Zombie"
-          onClick={() => act('set_mode', { new_mode: 'Zombie' })}
+          content="Species"
+          onClick={() => act('set_mode', { new_mode: 'Species' })}
+        />
+        <Button
+          content="Nutrition"
+          onClick={() => act('set_mode', { new_mode: 'Nutrition' })}
+        />
+        <Button
+          content="Contraband"
+          disabled={contraband_enabled ? false : true}
+          onClick={() => act('set_mode', { new_mode: 'Contraband' })}
         />
       </Box>
     </>
@@ -178,14 +250,79 @@ const ScannerGateDisease = (props) => {
   );
 };
 
-const ScannerGateZombie = (props) => {
+const ScannerGateSpecies = (props) => {
+  const { act, data } = useBackend();
+  const { reverse, target_species } = data;
+  const species = TARGET_SPECIES_LIST.find((species) => {
+    return species.value === target_species;
+  });
+  return (
+    <>
+      <Box mb={2}>
+        Trigger if the person scanned is {reverse ? 'not' : ''} of the{' '}
+        {species.name} species.
+        {target_species === 'zombie' &&
+          ' All zombie types will be detected, including dormant zombies.'}
+      </Box>
+      <Box mb={2}>
+        {TARGET_SPECIES_LIST.map((species) => (
+          <Button.Checkbox
+            key={species.value}
+            checked={species.value === target_species}
+            content={species.name}
+            onClick={() =>
+              act('set_target_species', {
+                new_species: species.value,
+              })
+            }
+          />
+        ))}
+      </Box>
+      <ScannerGateMode />
+    </>
+  );
+};
+
+const ScannerGateNutrition = (props) => {
+  const { act, data } = useBackend();
+  const { reverse, target_nutrition } = data;
+  const nutrition = TARGET_NUTRITION_LIST.find((nutrition) => {
+    return nutrition.value === target_nutrition;
+  });
+  return (
+    <>
+      <Box mb={2}>
+        Trigger if the person scanned {reverse ? 'does not have' : 'has'} the{' '}
+        {nutrition.name} nutrition level.
+      </Box>
+      <Box mb={2}>
+        {TARGET_NUTRITION_LIST.map((nutrition) => (
+          <Button.Checkbox
+            key={nutrition.name}
+            checked={nutrition.value === target_nutrition}
+            content={nutrition.name}
+            onClick={() =>
+              act('set_target_nutrition', {
+                new_nutrition: nutrition.name,
+              })
+            }
+          />
+        ))}
+      </Box>
+      <ScannerGateMode />
+    </>
+  );
+};
+
+const ScannerGateContraband = (props) => {
   const { data } = useBackend();
   const { reverse } = data;
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned is {reverse ? 'not' : ''} a zombie. All
-        zombie types will be detected, including dormant zombies.
+        Trigger if the person scanned {reverse ? 'does not have' : 'has'} any
+        anything considered contraband. Requires an N-spect scanner installed to
+        enable.
       </Box>
       <ScannerGateMode />
     </>

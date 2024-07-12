@@ -20,7 +20,7 @@
 	cost = 11
 	surplus = 50
 	progression_minimum = 30 MINUTES
-	illegal_tech = FALSE
+	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 
 /obj/item/ammo_box/c38/special_hotload //The speedloader
 	name = "Speed Loader (.38 Special Hot Load)"
@@ -39,4 +39,4 @@
 	progression_minimum = 30 MINUTES
 	item = /obj/item/ammo_box/c38/special_hotload
 	cost = 3
-	illegal_tech = FALSE
+	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
