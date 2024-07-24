@@ -24,11 +24,11 @@
 	worn_icon_state = "moon_amulette_inactive"
 	focus_icon_name = "moon_amulette"
 
-/obj/item/clothing/neck/heretic_focus/crimson_focus
+/obj/item/clothing/neck/heretic_focus/crimson_medallion
 	icon = 'orbstation/icons/obj/items/clothing/heretic_amulet.dmi'
-	icon_state = "crimson_focus_0"
-	worn_icon_state = "crimson_focus_inactive"
-	focus_icon_name = "crimson_focus_amulette"
+	icon_state = "crimson_medallion_0"
+	worn_icon_state = "crimson_medallion_inactive"
+	focus_icon_name = "crimson_medallion_amulette"
 
 /obj/item/clothing/neck/heretic_focus/equipped(mob/user, slot)
 	. = ..()
