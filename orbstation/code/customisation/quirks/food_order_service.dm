@@ -209,6 +209,6 @@
 	var/mob/living/carbon/human/quirk_payer = parent
 	podspawn(list(
 		"target" = get_turf(quirk_payer),
-		"style" = STYLE_BLUESPACE,
+		"style" = /datum/pod_style/advanced,
 		"spawn" = pick(deliverable_food)
 	))

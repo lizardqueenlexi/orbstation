@@ -75,7 +75,7 @@
 		return
 	podspawn(list(
 		"target" = pick_n_take(target_turfs),
-		"style" = STYLE_SEETHROUGH,
+		"style" = /datum/pod_style/seethrough,
 		"spawn" = landing_atom,
 		"delays" = list(POD_TRANSIT = 0, POD_FALLING = (3 SECONDS), POD_OPENING = 0, POD_LEAVING = 0),
 		"effectStealth" = TRUE,

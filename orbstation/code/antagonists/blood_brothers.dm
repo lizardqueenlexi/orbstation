@@ -285,7 +285,7 @@
 		landing_zones += possible
 	podspawn(list(
 		"target" = length(landing_zones) ? pick(landing_zones) : loc,
-		"style" = STYLE_SYNDICATE,
+		"style" = /datum/pod_style/syndicate,
 		"spawn" = generate_reward_crate(),
 	))
 
