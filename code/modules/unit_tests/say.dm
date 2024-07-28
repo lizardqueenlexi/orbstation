@@ -51,7 +51,7 @@
 	talking_lizard.set_active_language(/datum/language/common)
 	talking_lizard.say(unhissed_quote)
 	TEST_ASSERT(handle_speech_result, "Handle speech signal was not fired")
-	TEST_ASSERT_EQUAL(hissed_quote, handle_speech_result[SPEECH_MESSAGE], "Speech modifier test failed: [handle_speech_result[SPEECH_LANGUAGE]] did not equal [unhissed_quote] when spoken by a lizard in language [handle_speech_result[SPEECH_LANGUAGE]]") //ORBSTATION EDIT
+	TEST_ASSERT_EQUAL(unhissed_quote, handle_speech_result[SPEECH_MESSAGE], "Speech modifier test failed: [handle_speech_result[SPEECH_LANGUAGE]] did not equal [unhissed_quote] when spoken by a lizard in language [handle_speech_result[SPEECH_LANGUAGE]]") //ORBSTATION EDIT
 
 	handle_speech_result = null
 
