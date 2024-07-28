@@ -42,7 +42,7 @@
 /datum/unit_test/speech_modifiers/Run()
 	talking_lizard = allocate(/mob/living/carbon/human/consistent)
 	talking_lizard.set_species(/datum/species/lizard)
-	var/hissed_quote = "SSShe isss ssso sssasssy"
+	//var/hissed_quote = "SSShe isss ssso sssasssy" //ORBSTATION REMOVAL
 	var/unhissed_quote = "She is so sassy"
 
 	RegisterSignal(talking_lizard, COMSIG_MOB_SAY, PROC_REF(handle_speech))
