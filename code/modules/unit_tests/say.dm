@@ -42,16 +42,16 @@
 /datum/unit_test/speech_modifiers/Run()
 	talking_lizard = allocate(/mob/living/carbon/human/consistent)
 	talking_lizard.set_species(/datum/species/lizard)
-	var/hissed_quote = "SSShe isss ssso sssasssy"
+	//var/hissed_quote = "SSShe isss ssso sssasssy" //ORBSTATION REMOVAL
 	var/unhissed_quote = "She is so sassy"
 
 	RegisterSignal(talking_lizard, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
-	// lizard's forked tongue causes hissing when speaking common
+	// ORBSTATION EDIT: Test now ensures lizard tongues do not cause hissing, in case something upstream changes again.
 	talking_lizard.set_active_language(/datum/language/common)
 	talking_lizard.say(unhissed_quote)
 	TEST_ASSERT(handle_speech_result, "Handle speech signal was not fired")
-	TEST_ASSERT_EQUAL(hissed_quote, handle_speech_result[SPEECH_MESSAGE], "Speech modifier test failed: [handle_speech_result[SPEECH_LANGUAGE]] did not equal [hissed_quote] when spoken by a lizard in language [handle_speech_result[SPEECH_LANGUAGE]]")
+	TEST_ASSERT_EQUAL(unhissed_quote, handle_speech_result[SPEECH_MESSAGE], "Speech modifier test failed: [handle_speech_result[SPEECH_LANGUAGE]] did not equal [unhissed_quote] when spoken by a lizard in language [handle_speech_result[SPEECH_LANGUAGE]]") //ORBSTATION EDIT
 
 	handle_speech_result = null
 
