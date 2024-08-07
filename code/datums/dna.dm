@@ -237,13 +237,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		L[DNA_MUSHROOM_CAPS_BLOCK] = construct_block(SSaccessories.caps_list.Find(features["caps"]), length(SSaccessories.caps_list))
 	if(features["pod_hair"])
 		L[DNA_POD_HAIR_BLOCK] = construct_block(SSaccessories.pod_hair_list.Find(features["pod_hair"]), length(SSaccessories.pod_hair_list))
-	// ORBSTATION
-	if(features["rat_snout"])
-		L[DNA_RAT_SNOUT_BLOCK] = construct_block(SSaccessories.rat_snouts_list.Find(features["rat_snout"]), SSaccessories.rat_snouts_list.len)
-	if(features["rat_tail"])
-		L[DNA_RAT_TAIL_BLOCK] = construct_block(SSaccessories.rat_tails_list.Find(features["rat_tail"]), SSaccessories.rat_tails_list.len)
-	if(features["rat_ears"])
-		L[DNA_RAT_EARS_BLOCK] = construct_block(SSaccessories.rat_ears_list.Find(features["rat_ears"]), SSaccessories.rat_ears_list.len)
 	if(features["moth_color"])
 		L[DNA_MOTH_COLOR_BLOCK] = sanitize_hexcolor(features["moth_color"], include_crunch = FALSE)
 
@@ -390,13 +383,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(SSaccessories.caps_list.Find(features["caps"]), length(SSaccessories.caps_list)))
 		if(DNA_POD_HAIR_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(SSaccessories.pod_hair_list.Find(features["pod_hair"]), length(SSaccessories.pod_hair_list)))
-		// ORBSTATION ADDITION
-		if(DNA_RAT_SNOUT_BLOCK)
-			set_uni_feature_block(blocknumber, construct_block(SSaccessories.rat_snouts_list.Find(features["rat_snout"]), SSaccessories.rat_snouts_list.len))
-		if(DNA_RAT_TAIL_BLOCK)
-			set_uni_feature_block(blocknumber, construct_block(SSaccessories.rat_tails_list.Find(features["rat_tail"]), SSaccessories.rat_tails_list.len))
-		if(DNA_RAT_EARS_BLOCK)
-			set_uni_feature_block(blocknumber, construct_block(SSaccessories.rat_ears_list.Find(features["rat_ears"]), SSaccessories.rat_ears_list.len))
 		if(DNA_MOTH_COLOR_BLOCK)
 			set_uni_feature_block(blocknumber, sanitize_hexcolor(features["moth_color"], include_crunch = FALSE))
 
@@ -700,13 +686,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		dna.features["caps"] = SSaccessories.caps_list[deconstruct_block(get_uni_feature_block(features, DNA_MUSHROOM_CAPS_BLOCK), length(SSaccessories.caps_list))]
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = SSaccessories.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), length(SSaccessories.pod_hair_list))]
-	// ORBSTATION ADDITION
-	if(dna.features["rat_snout"])
-		dna.features["rat_snout"] = SSaccessories.rat_snouts_list[deconstruct_block(get_uni_feature_block(features, DNA_RAT_SNOUT_BLOCK), SSaccessories.rat_snouts_list.len)]
-	if(dna.features["rat_tail"])
-		dna.features["rat_tail"] = SSaccessories.rat_tails_list[deconstruct_block(get_uni_feature_block(features, DNA_RAT_TAIL_BLOCK), SSaccessories.rat_tails_list.len)]
-	if(dna.features["rat_ears"])
-		dna.features["rat_ears"] = SSaccessories.rat_ears_list[deconstruct_block(get_uni_feature_block(features, DNA_RAT_EARS_BLOCK), SSaccessories.rat_ears_list.len)]
 	if(dna.features["moth_color"])
 		dna.features["moth_color"] = sanitize_hexcolor(get_uni_feature_block(features, DNA_MOTH_COLOR_BLOCK))
 

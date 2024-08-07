@@ -12,23 +12,12 @@
 
 /obj/item/organ/internal/ears/ratfolk/on_mob_insert(mob/living/carbon/human/ear_owner)
 	. = ..()
-	if(istype(ear_owner) && ear_owner.dna)
-		color = ear_owner.dna.features["mcolor"]
-		if(ears_pref) // copy the ear shape from the old owner of the ears if there was one
-			ear_owner.dna.features["rat_ears"] = ear_owner.dna.species.mutant_bodyparts["rat_ears"] = ears_pref
-		else if(ear_owner.dna.features["rat_ears"]) // otherwise use their preference if there is one
-			ear_owner.dna.species.mutant_bodyparts["rat_ears"] = ear_owner.dna.features["rat_ears"]
-		else // otherwise default to round
-			ear_owner.dna.features["rat_ears"] = ear_owner.dna.species.mutant_bodyparts["rat_ears"] = "Round"
-		ear_owner.dna.update_uf_block(DNA_RAT_EARS_BLOCK)
+	if(istype(ear_owner))
 		ear_owner.update_body()
 
 /obj/item/organ/internal/ears/ratfolk/on_mob_remove(mob/living/carbon/human/ear_owner)
 	. = ..()
-	if(istype(ear_owner) && ear_owner.dna)
-		color = ear_owner.dna.features["mcolor"]
-		ears_pref = ear_owner.dna.features["rat_ears"]
-		ear_owner.dna.species.mutant_bodyparts -= "rat_ears"
+	if(istype(ear_owner))
 		ear_owner.update_body()
 
 // EYES - better darkvision, sensitive to flash, lower health
