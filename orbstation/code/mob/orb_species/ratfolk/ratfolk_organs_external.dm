@@ -9,6 +9,8 @@
 	preference = "feature_rat_snout"
 	external_bodyshapes = BODYSHAPE_SNOUTED
 
+	dna_block = DNA_RAT_SNOUT_BLOCK
+
 	bodypart_overlay = /datum/bodypart_overlay/mutant/snout_rat
 
 /datum/bodypart_overlay/mutant/snout_rat
@@ -33,6 +35,7 @@
 	name = "ratfolk tail"
 	desc = "A severed rat tail."
 	preference = "feature_rat_tail"
+	dna_block = DNA_RAT_TAIL_BLOCK
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/rat
 
 /datum/bodypart_overlay/mutant/tail/rat

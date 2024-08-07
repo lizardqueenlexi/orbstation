@@ -116,7 +116,11 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["tail_lizard"] = get_consistent_feature_entry(SSaccessories.tails_list_lizard)
 	target.dna.features["tail_monkey"] = get_consistent_feature_entry(SSaccessories.tails_list_monkey)
 	target.dna.features["pod_hair"] = get_consistent_feature_entry(SSaccessories.pod_hair_list)
+
 	// ORBSTATION
+	target.dna.features["rat_snout"] = get_consistent_feature_entry(SSaccessories.rat_snouts_list)
+	target.dna.features["rat_tail"]  = get_consistent_feature_entry(SSaccessories.rat_tails_list)
+	target.dna.features["rat_ears"] = get_consistent_feature_entry(SSaccessories.rat_ears_list)
 	target.dna.features["moth_color"] = "#ffd98c"
 
 	target.dna.initialize_dna(create_mutation_blocks = FALSE, randomize_features = FALSE)
