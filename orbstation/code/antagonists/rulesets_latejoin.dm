@@ -18,6 +18,14 @@
 	antag_datum = /datum/antagonist/contract_killer
 	antag_flag = ROLE_KILLER_LATEJOIN
 	antag_flag_override = ROLE_CONTRACT_KILLER
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+	)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
