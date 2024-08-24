@@ -7,21 +7,18 @@
 		The added weight means they might fall off if you get into a scrape."
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/prescription_lenses/afterattack(obj/item/clothing/glasses/target_glasses, mob/user, proximity)
-	. = ..()
-	if (!proximity)
-		return
+/obj/item/prescription_lenses/interact_with_atom(obj/item/clothing/glasses/target_glasses, mob/user, list/modifiers)
 	if (!istype(target_glasses))
 		return
 	if (!isturf(target_glasses.loc))
-		user.balloon_alert(user, "take glasses off") //They need to be outside your inventory or the trait won't apply
+		user.balloon_alert(user, "put glasses down!") //They need to be outside your inventory or the trait won't apply
 		return
 	if ((HAS_TRAIT(target_glasses, TRAIT_NEARSIGHTED_CORRECTED)) || HAS_TRAIT(target_glasses, TRAIT_FARSIGHTED_CORRECTED))
-		user.balloon_alert(user, "already corrective")
+		user.balloon_alert(user, "already corrective!")
 		return
 	user.visible_message(span_notice("[user] starts attaching [src] to [target_glasses]."))
 	if (!do_after(user, 5 SECONDS, target = target_glasses))
-		user.balloon_alert(user, "interrupted")
+		user.balloon_alert(user, "interrupted!")
 		return
 	if (length(target_glasses.clothing_traits))
 		target_glasses.clothing_traits |= TRAIT_NEARSIGHTED_CORRECTED
@@ -29,7 +26,9 @@
 	else
 		target_glasses.clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED, TRAIT_FARSIGHTED_CORRECTED)
 	target_glasses.AddComponent(/datum/component/knockoff, 25, list(BODY_ZONE_PRECISE_EYES), slot_flags)
+	user.balloon_alert(user, "lens added")
 	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /datum/crafting_recipe/prescription_lenses
 	name = "Prescription Lens Kit"

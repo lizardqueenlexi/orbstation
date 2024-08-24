@@ -13,31 +13,29 @@
 		/obj/item/clothing/gloves/rapid,
 	))
 
-/obj/item/radio_glove_assembly/afterattack(obj/item/clothing/gloves/target_gloves, mob/user, proximity)
-	. = ..()
-	if (!proximity)
-		return
+/obj/item/radio_glove_assembly/interact_with_atom(obj/item/clothing/gloves/target_gloves, mob/user, list/modifiers)
 	if (!istype(target_gloves))
 		return
 	if (is_type_in_typecache(target_gloves, gloves_blacklist))
-		user.balloon_alert(user, "incompatible")
+		user.balloon_alert(user, "incompatible!")
 		return
 	if (!isturf(target_gloves.loc))
-		user.balloon_alert(user, "put gloves down") //They need to be outside your inventory or the trait won't apply
+		user.balloon_alert(user, "put gloves down!") //They need to be outside your inventory or the trait won't apply
 		return
 	if (target_gloves.clothing_traits && (TRAIT_CAN_SIGN_ON_COMMS in target_gloves.clothing_traits))
 		user.balloon_alert(user, "already upgraded")
 		return
 	user.visible_message(span_notice("[user] starts attaching [src] to [target_gloves]."))
 	if (!do_after(user, 5 SECONDS, target = target_gloves))
-		user.balloon_alert(user, "interrupted")
+		user.balloon_alert(user, "interrupted!")
 		return
 	if (!target_gloves.clothing_traits)
 		target_gloves.clothing_traits = list()
 	target_gloves.clothing_traits += TRAIT_CAN_SIGN_ON_COMMS
 	target_gloves.update_appearance()
-	user.balloon_alert(user, "success")
+	user.balloon_alert(user, "assembly added")
 	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/clothing/gloves/update_overlays()
 	. = ..()

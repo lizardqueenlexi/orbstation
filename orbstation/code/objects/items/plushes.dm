@@ -139,10 +139,7 @@
 	)
 
 // Absorb DNA Sting
-/obj/item/toy/plush/crew/nancyplushie/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if (!proximity_flag)
-		return
+/obj/item/toy/plush/crew/nancyplushie/interact_with_atom(atom/target, mob/user, list/modifiers)
 	var/matched_name
 	for (var/blorbo in plushie_dna)
 		if (findtext(target.name, blorbo))
@@ -153,6 +150,7 @@
 	balloon_alert_to_viewers("giggle~")
 	absorbed_dna |= matched_name
 	flick("nancyflash", src)
+	return ITEM_INTERACT_SUCCESS
 
 // Transform
 /obj/item/toy/plush/crew/nancyplushie/attack_self(mob/user)

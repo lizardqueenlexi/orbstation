@@ -63,9 +63,8 @@
 	user.balloon_alert(user, "marked [target_mob]!")
 	current_target = weak_reference
 
-/obj/item/cursed_tome/afterattack(turf/target_turf, mob/user, proximity, params)
-	. = ..()
-	if (!isturf(target_turf) || !proximity)
+/obj/item/cursed_tome/interact_with_atom(turf/target_turf, mob/user, list/modifiers)
+	if (!isturf(target_turf))
 		return
 	var/mob/living/owner = weak_owner?.resolve()
 	if (owner != user)
@@ -73,13 +72,13 @@
 	var/mob/living/target = current_target?.resolve()
 	if (!target)
 		user.balloon_alert(user, "no target!")
-		return COMPONENT_CANCEL_ATTACK_CHAIN
+		return
 	if (drawing_rune)
 		user.balloon_alert(user, "already busy!")
-		return COMPONENT_CANCEL_ATTACK_CHAIN
+		return
 
 	draw_rune(user, target_turf)
-	return COMPONENT_CANCEL_ATTACK_CHAIN
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/cursed_tome/proc/draw_rune(mob/user, turf/target_turf)
 	user.visible_message(span_notice("[user] starts mumbling and waving their arms over the ground!"))
