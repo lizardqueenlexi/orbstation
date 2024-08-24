@@ -21,7 +21,7 @@
 		return
 	target_headset.hearing_aid = TRUE
 	target_headset.update_appearance()
-	user.balloon_alert(user, "success")
+	user.balloon_alert(user, "hearing aid added")
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 

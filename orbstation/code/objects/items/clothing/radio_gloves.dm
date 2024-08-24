@@ -33,7 +33,7 @@
 		target_gloves.clothing_traits = list()
 	target_gloves.clothing_traits += TRAIT_CAN_SIGN_ON_COMMS
 	target_gloves.update_appearance()
-	user.balloon_alert(user, "success")
+	user.balloon_alert(user, "assembly added")
 	qdel(src)
 	return ITEM_INTERACT_SUCCESS
 
