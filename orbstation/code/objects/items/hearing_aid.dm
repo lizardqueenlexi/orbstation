@@ -6,26 +6,24 @@
 	desc = "Attach to a headset to provide auditory support for the hard of hearing."
 	w_class = WEIGHT_CLASS_TINY
 
-/obj/item/hearing_aid/afterattack(obj/item/radio/headset/target_headset, mob/user, proximity)
-	. = ..()
-	if (!proximity)
-		return
+/obj/item/hearing_aid/interact_with_atom(obj/item/radio/headset/target_headset, mob/user, list/modifiers)
 	if (!istype(target_headset))
 		return
 	if (!isturf(target_headset.loc))
-		user.balloon_alert(user, "put headset down") //They need to be outside your inventory or the trait won't apply
+		user.balloon_alert(user, "put headset down!") //They need to be outside your inventory or the trait won't apply
 		return
 	if (target_headset.hearing_aid)
-		user.balloon_alert(user, "already upgraded")
+		user.balloon_alert(user, "already upgraded!")
 		return
 	user.visible_message(span_notice("[user] starts attaching [src] to [target_headset]."))
 	if (!do_after(user, 5 SECONDS, target = target_headset))
-		user.balloon_alert(user, "interrupted")
+		user.balloon_alert(user, "interrupted!")
 		return
 	target_headset.hearing_aid = TRUE
 	target_headset.update_appearance()
 	user.balloon_alert(user, "success")
 	qdel(src)
+	return ITEM_INTERACT_SUCCESS
 
 // Start with one if you are deaf
 /datum/quirk/item_quirk/deafness/add_unique()

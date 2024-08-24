@@ -32,18 +32,17 @@
 	else
 		. += span_cult("Spirits following you: <b>[num_orbiters] / [num_ghosts]</b>")
 
-/obj/item/demonology_for_dummies/afterattack(atom/target, mob/user, proximity, params)
-	. = ..()
+/obj/item/demonology_for_dummies/interact_with_atom(atom/target, mob/user, list/modifiers)
 	if (drawing_rune)
 		user.balloon_alert(user, "already busy!")
-		return COMPONENT_CANCEL_ATTACK_CHAIN
+		return
 
-	if (!proximity || !check_allowed_items(target) || !isliving(user))
+	if (!check_allowed_items(target) || !isliving(user))
 		return
 
 	if (isturf(target))
 		try_draw_rune(user, target)
-		return COMPONENT_CANCEL_ATTACK_CHAIN
+		return ITEM_INTERACT_SUCCESS
 
 /obj/item/demonology_for_dummies/proc/try_draw_rune(mob/living/user, turf/target_turf)
 	for (var/turf/nearby_turf as anything in RANGE_TURFS(1, target_turf))
