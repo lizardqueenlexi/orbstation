@@ -1272,16 +1272,16 @@
 /area/station/security/office)
 "auN" = (
 /obj/machinery/airalarm/directional/south,
-/obj/effect/mapping_helpers/airalarm/mixingchamber_access,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/dark_red,
-/obj/effect/turf_decal/tile/dark_red/anticorner/contrasted,
+/obj/effect/mapping_helpers/airalarm/mixingchamber_access,
 /obj/effect/mapping_helpers/airalarm/link{
 	chamber_id = "ordnanceburn"
 	},
 /obj/effect/mapping_helpers/airalarm/tlv_no_checks,
+/obj/effect/turf_decal/siding/dark_red,
+/obj/effect/turf_decal/tile/dark_red/anticorner/contrasted,
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
 "auO" = (
@@ -3112,6 +3112,7 @@
 "baT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
 "bbk" = (
@@ -3431,7 +3432,7 @@
 "bip" = (
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "biu" = (
 /obj/machinery/camera/directional/east{
 	c_tag = "Hallway - Bridge Lake Overlook"
@@ -3691,10 +3692,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
-"bmc" = (
-/obj/effect/landmark/start/hangover,
-/turf/open/water/jungle/biodome,
-/area/station/biodome)
 "bmm" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -4051,7 +4048,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/closed/wall/r_wall,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "btO" = (
 /obj/machinery/door/airlock/security{
 	name = "Courtroom Holding Area"
@@ -7901,16 +7898,16 @@
 	},
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/mixingchamber_access,
-/obj/machinery/meter,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/airalarm/link{
 	chamber_id = "ordnancefreezer"
 	},
 /obj/effect/mapping_helpers/airalarm/tlv_no_checks,
+/obj/machinery/meter,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
-/area/station/science/ordnance/freezerchamber)
+/area/station/science/ordnance)
 "cJm" = (
 /obj/machinery/light/floor,
 /obj/effect/turf_decal/siding/purple{
@@ -12440,7 +12437,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "eqU" = (
 /obj/machinery/meter/monitored/distro_loop,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
@@ -16466,7 +16463,7 @@
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "fLn" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral,
@@ -22602,7 +22599,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "hVQ" = (
 /obj/structure/chair/sofa/bench{
 	dir = 4
@@ -25681,6 +25678,9 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
+"jaY" = (
+/turf/closed/wall/r_wall,
+/area/station/science/ordnance/burnchamber)
 "jaZ" = (
 /obj/structure/broken_flooring/singular/directional/west,
 /turf/open/floor/plating,
@@ -27424,7 +27424,7 @@
 "jGE" = (
 /obj/structure/filingcabinet,
 /obj/machinery/camera/directional/north{
-	c_tag = "Security - Cargo Outpost"
+	c_tag = "Security Outpost - Cargo"
 	},
 /obj/machinery/newscaster/directional/north,
 /obj/effect/turf_decal/tile/brown/half/contrasted{
@@ -33650,6 +33650,10 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/east{
+	areastring = "/area/station/science/ordnance/burnchamber"
+	},
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
 "lHq" = (
@@ -41603,7 +41607,7 @@
 "ovW" = (
 /obj/structure/closet/secure_closet/security/science,
 /obj/machinery/camera/directional/north{
-	c_tag = "Security - Science Outpost"
+	c_tag = "Security Outpost - Research"
 	},
 /obj/effect/turf_decal/tile/purple/half/contrasted{
 	dir = 8
@@ -42093,7 +42097,7 @@
 "oDR" = (
 /obj/machinery/air_sensor/ordnance_burn_chamber,
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "oDT" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -45319,6 +45323,7 @@
 /area/station/ai_monitored/turret_protected/ai)
 "pKz" = (
 /obj/effect/spawner/random/maintenance,
+/obj/effect/landmark/start/hangover,
 /turf/open/misc/ashplanet/wateryrock/biodome,
 /area/station/biodome)
 "pKF" = (
@@ -45346,7 +45351,7 @@
 /area/station/service/hydroponics)
 "pLp" = (
 /obj/machinery/camera/directional/east{
-	c_tag = "Hallway - AI Sat and Science Back Entrance"
+	c_tag = "Hallway - AI Sat and Research Back Entrance"
 	},
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
@@ -45741,7 +45746,7 @@
 /area/station/maintenance/port/greater)
 "pSI" = (
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "pSM" = (
 /turf/open/floor/carpet/lone/star,
 /area/station/security/brig)
@@ -46084,7 +46089,7 @@
 	pixel_y = -32
 	},
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "pZn" = (
 /obj/machinery/vending/sustenance,
 /turf/open/floor/carpet/black,
@@ -47451,7 +47456,7 @@
 /area/station/service/chapel/funeral)
 "qwQ" = (
 /obj/machinery/camera/directional/west{
-	c_tag = "Hallway - Science Lobby"
+	c_tag = "Hallway - Research Lobby"
 	},
 /obj/effect/turf_decal/tile/purple/half/contrasted{
 	dir = 8
@@ -48647,7 +48652,7 @@
 	pixel_y = -24
 	},
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "qRD" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/wood,
@@ -55310,7 +55315,7 @@
 "tje" = (
 /obj/machinery/igniter/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "tjf" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -58722,10 +58727,6 @@
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
 "uup" = (
-/obj/machinery/button/ignition/incinerator/ordmix{
-	pixel_x = 32;
-	pixel_y = -8
-	},
 /obj/machinery/button/door/incinerator_vent_ordmix{
 	pixel_y = 8;
 	pixel_x = 32
@@ -58736,6 +58737,10 @@
 /obj/machinery/meter,
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 4
+	},
+/obj/machinery/button/ignition/incinerator/ordmix{
+	pixel_y = -8;
+	pixel_x = 32
 	},
 /turf/open/floor/iron/white,
 /area/station/science/ordnance)
@@ -63407,7 +63412,7 @@
 	dir = 4
 	},
 /turf/closed/wall/r_wall,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "wfW" = (
 /turf/open/floor/engine/hull/reinforced,
 /area/space/nearstation)
@@ -64068,7 +64073,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "wov" = (
 /obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 1
@@ -67432,7 +67437,7 @@
 "xyQ" = (
 /obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "xzb" = (
 /obj/structure/table,
 /obj/item/toy/cards/deck,
@@ -67878,7 +67883,7 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/access/all/science/ordnance,
 /turf/open/floor/engine/vacuum,
-/area/station/science/ordnance)
+/area/station/science/ordnance/burnchamber)
 "xGz" = (
 /obj/effect/spawner/random/structure/musician,
 /turf/open/floor/plating,
@@ -106873,7 +106878,7 @@ cCZ
 aWF
 cCZ
 cCZ
-cxr
+jaY
 fLl
 xGv
 wfT
@@ -107130,7 +107135,7 @@ cCZ
 aWF
 cCZ
 cCZ
-cxr
+jaY
 wot
 oDR
 eqT
@@ -107387,7 +107392,7 @@ cCZ
 aWF
 cCZ
 cCZ
-cxr
+jaY
 pSI
 tje
 pSI
@@ -107644,7 +107649,7 @@ cCZ
 aWF
 cCZ
 cCZ
-cxr
+jaY
 xyQ
 xyQ
 xyQ
@@ -107901,7 +107906,7 @@ cCZ
 aWF
 cCZ
 cCZ
-cxr
+jaY
 cCZ
 cCZ
 cCZ
@@ -108982,7 +108987,7 @@ oHx
 vEK
 abE
 fNG
-bmc
+qKr
 gHP
 doI
 qlZ
