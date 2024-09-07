@@ -8,28 +8,30 @@
 	icon_state = "ears_item"
 	visual = TRUE
 	damage_multiplier = 2
-	var/ears_pref = null
+	dna_block = DNA_RAT_EARS_BLOCK
 
-/obj/item/organ/internal/ears/ratfolk/on_mob_insert(mob/living/carbon/human/ear_owner)
-	. = ..()
-	if(istype(ear_owner) && ear_owner.dna)
-		color = ear_owner.dna.features["mcolor"]
-		if(ears_pref) // copy the ear shape from the old owner of the ears if there was one
-			ear_owner.dna.features["rat_ears"] = ear_owner.dna.species.mutant_organs["rat_ears"] = ears_pref
-		else if(ear_owner.dna.features["rat_ears"]) // otherwise use their preference if there is one
-			ear_owner.dna.species.mutant_organs["rat_ears"] = ear_owner.dna.features["rat_ears"]
-		else // otherwise default to round
-			ear_owner.dna.features["rat_ears"] = ear_owner.dna.species.mutant_organs["rat_ears"] = "Round"
-		ear_owner.dna.update_uf_block(DNA_RAT_EARS_BLOCK)
-		ear_owner.update_body()
+	bodypart_overlay = /datum/bodypart_overlay/mutant/rat_ears
 
-/obj/item/organ/internal/ears/ratfolk/on_mob_remove(mob/living/carbon/human/ear_owner)
-	. = ..()
-	if(istype(ear_owner) && ear_owner.dna)
-		color = ear_owner.dna.features["mcolor"]
-		ears_pref = ear_owner.dna.features["rat_ears"]
-		ear_owner.dna.species.mutant_organs -= "rat_ears"
-		ear_owner.update_body()
+/datum/bodypart_overlay/mutant/rat_ears
+	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
+	color_source = ORGAN_COLOR_INHERIT
+	feature_key = "rat_ears"
+
+	/// We dont color the inner part, which is the front layer
+	var/colorless_layer = EXTERNAL_FRONT
+
+/datum/bodypart_overlay/mutant/rat_ears/get_global_feature_list()
+	return SSaccessories.rat_ears_list
+
+/datum/bodypart_overlay/mutant/rat_ears/can_draw_on_bodypart(mob/living/carbon/human/human)
+	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
+		return FALSE
+	return TRUE
+
+/datum/bodypart_overlay/mutant/rat_ears/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
+	if(draw_layer != bitflag_to_layer(colorless_layer))
+		return ..()
+	return overlay
 
 // EYES - better darkvision, sensitive to flash, lower health
 
