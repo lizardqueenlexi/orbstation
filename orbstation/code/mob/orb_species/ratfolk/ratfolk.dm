@@ -36,6 +36,51 @@
 /datum/species/ratfolk/get_scream_sound(mob/living/carbon/human/ratfolk)
 	return 'orbstation/sound/voice/ratfolk/ratfolk_scream.ogg'
 
+/datum/species/ratfolk/get_cough_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return pick(
+			'sound/voice/human/female_cough1.ogg',
+			'sound/voice/human/female_cough2.ogg',
+			'sound/voice/human/female_cough3.ogg',
+			'sound/voice/human/female_cough4.ogg',
+			'sound/voice/human/female_cough5.ogg',
+			'sound/voice/human/female_cough6.ogg',
+		)
+	return pick(
+		'sound/voice/human/male_cough1.ogg',
+		'sound/voice/human/male_cough2.ogg',
+		'sound/voice/human/male_cough3.ogg',
+		'sound/voice/human/male_cough4.ogg',
+		'sound/voice/human/male_cough5.ogg',
+		'sound/voice/human/male_cough6.ogg',
+	)
+
+/datum/species/ratfolk/get_cry_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return pick(
+			'sound/voice/human/female_cry1.ogg',
+			'sound/voice/human/female_cry2.ogg',
+		)
+	return pick(
+		'sound/voice/human/male_cry1.ogg',
+		'sound/voice/human/male_cry2.ogg',
+		'sound/voice/human/male_cry3.ogg',
+	)
+
+
+/datum/species/ratfolk/get_sneeze_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return 'sound/voice/human/female_sneeze1.ogg'
+	return 'sound/voice/human/male_sneeze1.ogg'
+
+/datum/species/ratfolk/get_laugh_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return 'sound/voice/human/womanlaugh.ogg'
+	return pick(
+		'sound/voice/human/manlaugh1.ogg',
+		'sound/voice/human/manlaugh2.ogg',
+	)
+
 /datum/species/ratfolk/get_species_description()
 	return "The crafty, darkness-loving Ratfolk hail from vast underground cities beneath the frozen, \
 	snow-swept surface of Engira. Their knack for construction and repair makes them ideal engineers, \
