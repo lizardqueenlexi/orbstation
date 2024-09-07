@@ -26,9 +26,6 @@
 /datum/bodypart_overlay/mutant/snout_rat/get_global_feature_list()
 	return SSaccessories.rat_snouts_list
 
-/datum/bodypart_overlay/mutant/snout_rat/colour_inner(mutable_appearance/appearance, obj/item/bodypart/limb)
-	appearance.color = COLOR_WHITE // Don't know why I had to do this but it works
-
 // TAIL
 
 /obj/item/organ/external/tail/ratfolk

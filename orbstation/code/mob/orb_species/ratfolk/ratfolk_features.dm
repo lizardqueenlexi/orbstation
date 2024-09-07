@@ -69,7 +69,7 @@
 	category = PREFERENCE_CATEGORY_FEATURES
 	main_feature_name = "Ears"
 	should_generate_icons = TRUE
-	relevant_mutant_bodypart = "rat_ears"
+	relevant_external_organ = /obj/item/organ/internal/ears/ratfolk
 
 /datum/preference/choiced/rat_ears/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.rat_ears_list)

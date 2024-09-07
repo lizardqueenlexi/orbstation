@@ -3,7 +3,6 @@
 /datum/sprite_accessory/rat_snouts
 	icon = 'orbstation/icons/mob/species/ratfolk/bodyparts.dmi'
 	em_block = TRUE
-	hasinner = TRUE
 
 /datum/sprite_accessory/rat_snouts/round
 	name = "Round"
@@ -37,7 +36,6 @@
 /datum/sprite_accessory/rat_ears
 	icon = 'orbstation/icons/mob/species/ratfolk/bodyparts.dmi'
 	em_block = TRUE
-	hasinner = TRUE
 
 /datum/sprite_accessory/rat_ears/round
 	name = "Round"

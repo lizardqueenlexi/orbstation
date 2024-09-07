@@ -16,11 +16,10 @@
 
 	siemens_coeff = 0.75 // slightly resistant to shocks, but not as much as Ethereals
 
-	external_organs = list(
+	mutant_organs = list(
 		/obj/item/organ/external/snout_rat = "Round",
 		/obj/item/organ/external/tail/ratfolk = "High",
 	)
-	mutant_bodyparts = list("rat_ears" = "Round")
 	mutanteyes = /obj/item/organ/internal/eyes/ratfolk
 	mutantstomach = /obj/item/organ/internal/stomach/ratfolk
 	mutantears = /obj/item/organ/internal/ears/ratfolk

@@ -54,7 +54,7 @@
 	return ..()
 
 /obj/item/plural_system_chip/attack_self(mob/user)
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return
 	if(!user.is_holding(src))
 		return
@@ -200,7 +200,7 @@
 	plural_system_compatible = FALSE
 
 /obj/item/card/id/attack_self(mob/user)
-	if(user.incapacitated())
+	if(user.incapacitated)
 		return
 	if(!user.is_holding(src))
 		return
