@@ -16,11 +16,10 @@
 
 	siemens_coeff = 0.75 // slightly resistant to shocks, but not as much as Ethereals
 
-	external_organs = list(
+	mutant_organs = list(
 		/obj/item/organ/external/snout_rat = "Round",
 		/obj/item/organ/external/tail/ratfolk = "High",
 	)
-	mutant_bodyparts = list("rat_ears" = "Round")
 	mutanteyes = /obj/item/organ/internal/eyes/ratfolk
 	mutantstomach = /obj/item/organ/internal/stomach/ratfolk
 	mutantears = /obj/item/organ/internal/ears/ratfolk
@@ -36,6 +35,51 @@
 
 /datum/species/ratfolk/get_scream_sound(mob/living/carbon/human/ratfolk)
 	return 'orbstation/sound/voice/ratfolk/ratfolk_scream.ogg'
+
+/datum/species/ratfolk/get_cough_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return pick(
+			'sound/voice/human/female_cough1.ogg',
+			'sound/voice/human/female_cough2.ogg',
+			'sound/voice/human/female_cough3.ogg',
+			'sound/voice/human/female_cough4.ogg',
+			'sound/voice/human/female_cough5.ogg',
+			'sound/voice/human/female_cough6.ogg',
+		)
+	return pick(
+		'sound/voice/human/male_cough1.ogg',
+		'sound/voice/human/male_cough2.ogg',
+		'sound/voice/human/male_cough3.ogg',
+		'sound/voice/human/male_cough4.ogg',
+		'sound/voice/human/male_cough5.ogg',
+		'sound/voice/human/male_cough6.ogg',
+	)
+
+/datum/species/ratfolk/get_cry_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return pick(
+			'sound/voice/human/female_cry1.ogg',
+			'sound/voice/human/female_cry2.ogg',
+		)
+	return pick(
+		'sound/voice/human/male_cry1.ogg',
+		'sound/voice/human/male_cry2.ogg',
+		'sound/voice/human/male_cry3.ogg',
+	)
+
+
+/datum/species/ratfolk/get_sneeze_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return 'sound/voice/human/female_sneeze1.ogg'
+	return 'sound/voice/human/male_sneeze1.ogg'
+
+/datum/species/ratfolk/get_laugh_sound(mob/living/carbon/human/human)
+	if(human.physique == FEMALE)
+		return 'sound/voice/human/womanlaugh.ogg'
+	return pick(
+		'sound/voice/human/manlaugh1.ogg',
+		'sound/voice/human/manlaugh2.ogg',
+	)
 
 /datum/species/ratfolk/get_species_description()
 	return "The crafty, darkness-loving Ratfolk hail from vast underground cities beneath the frozen, \

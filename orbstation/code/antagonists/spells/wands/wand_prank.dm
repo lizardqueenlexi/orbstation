@@ -13,8 +13,8 @@
 
 /obj/item/gun/magic/wand/prank/zap_self(mob/living/user)
 	. = ..()
-	var/obj/item/food/pie/cream/pie/magical/pie = new(src)
-	pie.splat(user)
+	var/obj/item/food/pie/cream/magical/pie = new(src)
+	pie.stun_and_blur(user)
 	charges--
 
 /obj/item/ammo_casing/magic/prank
@@ -25,22 +25,21 @@
 	name = "bolt of pratfalls"
 	icon = 'icons/obj/food/piecake.dmi'
 	icon_state = "pie"
-	/// Our internal pie
-	var/obj/item/food/pie/cream/pie/magical/pie = new()
 
 /obj/projectile/magic/prank/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
-	pie.splat(target)
+	var/obj/item/food/pie/cream/magical/pie = new()
+	pie.stun_and_blur(target)
 
 /// This creates an extremely messy cream pie which your audience will love
-/obj/item/food/pie/cream/pie/magical
+/obj/item/food/pie/cream/magical
 
-/obj/item/food/pie/cream/pie/magical/splat(atom/movable/hit_atom)
+/obj/item/food/pie/cream/magical/stun_and_blur(mob/living/victim, can_splat_on)
+	..()
 	var/datum/reagents/lube = new /datum/reagents(1000)
 	lube.add_reagent(/datum/reagent/lube, 100)
-	lube.my_atom = get_turf(hit_atom)
+	lube.my_atom = get_turf(victim)
 	lube.create_foam(/datum/effect_system/fluid_spread/foam, DIAMOND_AREA(2))
 	qdel(lube)
-	var/laugh_sound = list('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg')
-	playsound(hit_atom, laugh_sound, 100, FALSE)
-	return ..()
+	var/static/laugh_sound = list('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg')
+	playsound(victim, laugh_sound, 100, FALSE)

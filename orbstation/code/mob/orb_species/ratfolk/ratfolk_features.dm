@@ -58,8 +58,7 @@
 	target.dna.features["rat_tail"] = value
 
 /datum/preference/choiced/rat_tail/create_default_value()
-	var/datum/sprite_accessory/tails/rat/high/tail = /datum/sprite_accessory/tails/rat/high
-	return initial(tail.name)
+	return /datum/sprite_accessory/tails/rat/high::name
 
 // EARS
 
@@ -69,7 +68,7 @@
 	category = PREFERENCE_CATEGORY_FEATURES
 	main_feature_name = "Ears"
 	should_generate_icons = TRUE
-	relevant_mutant_bodypart = "rat_ears"
+	relevant_external_organ = /obj/item/organ/internal/ears/ratfolk
 
 /datum/preference/choiced/rat_ears/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.rat_ears_list)
@@ -79,7 +78,3 @@
 
 /datum/preference/choiced/rat_ears/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["rat_ears"] = value
-
-/datum/preference/choiced/rat_ears/create_default_value()
-	var/datum/sprite_accessory/rat_ears/round/ears = /datum/sprite_accessory/rat_ears/round
-	return initial(ears.name)
