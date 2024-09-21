@@ -1,5 +1,5 @@
 #define IC_VERBS list("say", "me", "whisper")
-#define VISIBLE_OOC_VERBS list("looc") //ORBSTATION ADDITION: LOOC is visible
+#define VISIBLE_OOC_VERBS list("looc") //ORBSTATION: LOOC is visible
 
 /client/var/commandbar_thinking = FALSE
 /client/var/commandbar_typing = FALSE
@@ -10,7 +10,7 @@
 /client/proc/handle_commandbar_typing(href_list)
 	if (!typing_indicators) //check pref
 		return
-	//ORBSTATION ADDITION: LOOC is visible
+	//ORBSTATION: LOOC is visible
 	if (length(href_list["verb"]) < 1 || !(LOWER_TEXT(href_list["verb"]) in IC_VERBS) || !(LOWER_TEXT(href_list["verb"]) in VISIBLE_OOC_VERBS)  || text2num(href_list["argument_length"]) < 1)
 		if (commandbar_typing)
 			commandbar_typing = FALSE

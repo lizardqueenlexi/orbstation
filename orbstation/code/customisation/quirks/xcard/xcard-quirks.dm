@@ -88,19 +88,17 @@
 
 
 //proc to append x-card traits to examine text (everyone should be able to see these!)
-/mob/living/carbon/human/proc/examine_xcards()
+/mob/living/carbon/proc/examine_xcards()
 	var/list/xcard_list = list()
-	var/list/msg = list()
+	. = list()
 
 	for (var/datum/quirk/xcard/quirk_type as anything in subtypesof(/datum/quirk/xcard))
 		if(initial(quirk_type.examine_text) && HAS_TRAIT(src, initial(quirk_type.mob_trait)))
-			xcard_list += span_notice("[p_They()] [p_are()] [initial(quirk_type.examine_text)]\n")
+			xcard_list += span_notice("[p_They()] [p_are()] [initial(quirk_type.examine_text)]")
 
 	if(length(xcard_list))
-		msg += span_notice("\n<b>[p_They()] [p_have()] the following X-cards:</b>\n")
-		msg += xcard_list
-
-	return msg
+		. += span_boldnotice("[p_They()] [p_have()] the following X-cards")
+		. += xcard_list
 
 //alternate mood event for the eyestab x-card
 /datum/mood_event/face_stab

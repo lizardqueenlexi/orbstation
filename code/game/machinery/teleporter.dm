@@ -84,7 +84,7 @@
 	if(!calibrated && ishuman(M) && prob(30 - ((accuracy) * 10))) //oh dear a problem
 		var/mob/living/carbon/human/human = M
 		if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
-			//ORBSTATION ADDITION: Give people fly organs on a teleporter accident.
+			//ORBSTATION: Give people fly organs on a teleporter accident.
 			var/list/fly_organs = list(
 				/obj/item/organ/internal/eyes/fly,
 				/obj/item/organ/internal/tongue/fly,

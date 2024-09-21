@@ -177,7 +177,7 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_operative/finish_setup(mob/new_character, index)
 	..()
-	new_character.mind.set_assigned_role(SSjob.GetJobType(/datum/job/lone_operative))
+	new_character.mind.set_assigned_role(SSjob.get_job_type(/datum/job/lone_operative))
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_operative/finish_setup(mob/new_character, index)
 	..()
@@ -212,7 +212,7 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_operative_funny/finish_setup(mob/new_character, index)
 	..()
-	new_character.mind.set_assigned_role(SSjob.GetJobType(/datum/job/clown_operative))
+	new_character.mind.set_assigned_role(SSjob.get_job_type(/datum/job/clown_operative))
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_operative_funny/finish_setup(mob/new_character, index)
 	..()
