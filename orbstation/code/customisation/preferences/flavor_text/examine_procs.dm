@@ -1,39 +1,11 @@
-// Handles the hyperlink to display the "close examine" box in chat
-/mob/living/carbon/human/Topic(href, href_list)
-	. = ..()
-
-	if(href_list["show_flavor_text"])
-		var/mob/living/carbon/human/target = locate(href_list["show_flavor_text"])
-		if(target) //code here copied from "run_examinate()" in mob.dm. might be ugly.
-			var/list/result = target.examine_more(usr)
-			if(result.len) //add proper linebreaks
-				for(var/i in 1 to (length(result) - 1))
-					result[i] += "\n"
-			to_chat(usr, examine_block("<span class='infoplain'>[result.Join()]</span>"))
-
-// Handles the hyperlink to display the "close examine" box in chat (silicon this time)
-/mob/living/silicon/robot/Topic(href, href_list)
-	. = ..()
-
-	if(href_list["show_flavor_text"])
-		var/mob/living/silicon/robot/target = locate(href_list["show_flavor_text"])
-		if(target) //code here copied from "run_examinate()" in mob.dm. might be ugly.
-			var/list/result = target.examine_more(usr)
-			if(result.len) //add proper linebreaks
-				for(var/i in 1 to (length(result) - 1))
-					result[i] += "\n"
-			to_chat(src, examine_block("<span class='infoplain'>[result.Join()]</span>"))
-
-// Switches off scar descriptions - to make space for flavor text on the same panel
-/datum/scar/get_examine_description(mob/viewer)
-	return
-
 // Display flavor text when examining closely
 /mob/living/carbon/human/examine_more(mob/user)
 	. = ..()
 
-	var/obscured = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-	. += obscured ? span_warning("\nTheir face is hidden! You can't see any details.") : "\n" + dna.features["flavor_text"]
+	if(block_flavour_text())
+		return
+
+	. += span_info(dna.features["flavor_text"])
 
 /mob/living/silicon/robot/examine_more(mob/user)
 	. = ..()
@@ -42,3 +14,18 @@
 		. += client.prefs.read_preference(/datum/preference/text/silicon_flavor_text)
 
 	return .
+
+/mob/living/carbon/proc/block_flavour_text()
+	var/obj/item/bodypart/our_head = get_bodypart(BODY_ZONE_HEAD)
+	if(isnull(our_head) || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || (our_head.brutestate + our_head.burnstate) > 2 || !real_name || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN))
+		return TRUE
+
+	if(((wear_mask && !istype(wear_mask, /obj/item/clothing/mask/gas/mime) && !istype(wear_mask, /obj/item/clothing/mask/gas/clown_hat) && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))))
+		return TRUE
+
+/mob/living/carbon/proc/get_short_description_examine_info(mob/living/user)
+	. = list()
+	if(block_flavour_text())
+		return
+
+	. += span_info(dna.features["flavor_text_short"])

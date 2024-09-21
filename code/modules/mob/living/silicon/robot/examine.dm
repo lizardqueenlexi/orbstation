@@ -1,17 +1,15 @@
 /mob/living/silicon/robot/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!")
+	. = list()
 	if(desc)
 		. += "[desc]"
 
 	//ORBSTATION: Display "short flavor text" before anything else
 	if(client)
-		. += "</span>"
-		. += client.prefs.read_preference(/datum/preference/text/short/silicon_flavor_text_short)
-		. += "<span class='info'>"
+		. += span_info(client.prefs.read_preference(/datum/preference/text/short/silicon_flavor_text_short))
 	//END ORBSTATION
 
 	var/model_name = model ? "\improper [model.name]" : "\improper Default"
-	. += "\nIt is currently \a \"[span_bold("[model_name]")]\"-type cyborg.\n"
+	. += "It is currently <b>\a [model_name]-type</b> cyborg."
 
 	var/obj/act_module = get_active_held_item()
 	if(act_module)
@@ -21,13 +19,13 @@
 		if (getBruteLoss() < maxHealth*0.5)
 			. += span_warning("It looks slightly dented.")
 		else
-			. += span_warning("<B>It looks severely dented!</B>")
+			. += span_boldwarning("It looks severely dented!")
 	if (getFireLoss() || getToxLoss())
 		var/overall_fireloss = getFireLoss() + getToxLoss()
 		if (overall_fireloss < maxHealth * 0.5)
 			. += span_warning("It looks slightly charred.")
 		else
-			. += span_warning("<B>It looks severely burnt and heat-warped!</B>")
+			. += span_boldwarning("It looks severely burnt and heat-warped!")
 	if (health < -maxHealth*0.5)
 		. += span_warning("It looks barely operational.")
 	if (fire_stacks < 0)
@@ -53,13 +51,7 @@
 			. += span_warning("It doesn't seem to be responding.")
 		if(DEAD)
 			. += span_deadsay("It looks like its system is corrupted and requires a reset.")
-	. += "</span>"
 
-	//ORBSTATION: display link for examining closer
-	. += span_bold("<a href='?src=[REF(src)];show_flavor_text=[REF(src)]'>Look closer?</a>")
-	//END ORBSTATION
+	. += span_notice("<i>Examine again to take a better look...</i>") //ORBSTATION ADDTION
 
 	. += ..()
-
-/mob/living/silicon/robot/get_examine_string(mob/user, thats = FALSE)
-	return null
