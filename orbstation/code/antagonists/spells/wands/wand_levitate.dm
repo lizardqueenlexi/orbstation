@@ -8,7 +8,7 @@
 	ammo_type = /obj/item/ammo_casing/magic/levitate
 	icon_state = "telewand"
 	base_icon_state = "telewand"
-	fire_sound = 'sound/magic/repulse.ogg'
+	fire_sound = 'sound/effects/magic/repulse.ogg'
 	max_charges = 12
 
 /obj/item/gun/magic/wand/levitate/zap_self(mob/living/user)

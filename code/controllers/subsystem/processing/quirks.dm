@@ -8,7 +8,7 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/item_quirk/farsighted, /datum/quirk/illiterate), //ORBSTATION
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/door_closer), //ORBSTATION
 	list(/datum/quirk/damned, /datum/quirk/item_quirk/spiritual), //ORBSTATION
-	list(/datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/nearsighted, /datum/quirk/item_quirk/farsighted),//ORBSTATION: added "Farsighted" to this list
+	list(/datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/nearsighted,  /datum/quirk/item_quirk/scarred_eye, /datum/quirk/item_quirk/farsighted),//ORBSTATION: added "Farsighted" to this list
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/touchy),
 	list(/datum/quirk/jolly, /datum/quirk/depression, /datum/quirk/apathetic, /datum/quirk/hypersensitive),
 	list(/datum/quirk/no_taste, /datum/quirk/vegetarian, /datum/quirk/deviant_tastes, /datum/quirk/gamer),
@@ -30,6 +30,7 @@ GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
 	list(/datum/quirk/photophobia, /datum/quirk/nyctophobia),
 	list(/datum/quirk/item_quirk/settler, /datum/quirk/freerunning),
 	list(/datum/quirk/numb, /datum/quirk/selfaware),
+	list(/datum/quirk/empath, /datum/quirk/evil),
 ))
 
 GLOBAL_LIST_INIT(quirk_string_blacklist, generate_quirk_string_blacklist())

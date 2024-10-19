@@ -8,7 +8,7 @@
 	ammo_type = /obj/item/ammo_casing/magic/pax
 	icon_state = "revivewand"
 	base_icon_state = "revivewand"
-	fire_sound = 'sound/effects/kiss.ogg'
+	fire_sound = 'sound/effects/emotes/kiss.ogg'
 	max_charges = 12
 
 /obj/item/gun/magic/wand/pax/fire_gun(atom/target, mob/living/user, flag, params)

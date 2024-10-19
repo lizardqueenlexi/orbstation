@@ -59,7 +59,7 @@
 		return FALSE
 
 	user.balloon_alert(user, "rune complete")
-	playsound(src, 'sound/magic/staff_animation.ogg', 5, TRUE, 5)
+	playsound(src, 'sound/effects/magic/staff_animation.ogg', 5, TRUE, 5)
 	drawing_rune = FALSE
 	user.visible_message(span_notice("[src] crumbles to dust as an unnerving sigil takes shape!"))
 
@@ -78,7 +78,7 @@
 	anchored = TRUE
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	layer = SIGIL_LAYER
+	layer = RUNE_LAYER
 	/// Stops spam clicking
 	var/is_in_use = FALSE
 	/// What are we going to summon?

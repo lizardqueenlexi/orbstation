@@ -7,7 +7,7 @@
 	background_icon_state = "bg_demon"
 	button_icon_state = "soultap"
 
-	sound = 'sound/magic/demon_consume.ogg'
+	sound = 'sound/effects/magic/demon_consume.ogg'
 	cooldown_time = 30 SECONDS
 	cooldown_reduction_per_rank = 3 SECONDS
 

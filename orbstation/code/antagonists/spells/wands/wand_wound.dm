@@ -8,7 +8,7 @@
 	ammo_type = /obj/item/ammo_casing/magic/wound
 	icon_state = "deathwand"
 	base_icon_state = "deathwand"
-	fire_sound = 'sound/magic/wandodeath.ogg'
+	fire_sound = 'sound/effects/magic/wandodeath.ogg'
 	max_charges = 5
 
 /obj/item/gun/magic/wand/wound/zap_self(mob/living/user)

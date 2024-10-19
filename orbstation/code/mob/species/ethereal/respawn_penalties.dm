@@ -41,7 +41,7 @@
 /obj/structure/ethereal_crystal/heal_ethereal()
 	var/mob/living/ethereal = ethereal_heart.owner
 	if (!ethereal)
-		playsound(get_turf(src), 'sound/effects/ethereal_revive.ogg', 100)
+		playsound(get_turf(src), 'sound/mobs/humanoids/ethereal/ethereal_revive.ogg', 100)
 		qdel(src)
 		return
 	ethereal_heart.owner.revive(HEAL_ALL)
@@ -54,7 +54,7 @@
 
 	var/random_trauma = pick(GLOB.orb_mysterious_brain_traumas)
 	ethereal_heart.owner.gain_trauma(random_trauma, TRAUMA_RESILIENCE_SURGERY)
-	playsound(get_turf(ethereal_heart.owner), 'sound/effects/ethereal_revive.ogg', 100)
+	playsound(get_turf(ethereal_heart.owner), 'sound/mobs/humanoids/ethereal/ethereal_revive.ogg', 100)
 	qdel(src)
 
 /**

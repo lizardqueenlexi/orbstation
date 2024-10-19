@@ -8,7 +8,7 @@
 	ammo_type = /obj/item/ammo_casing/magic/teleport_rune
 	icon_state = "telewand"
 	base_icon_state = "telewand"
-	fire_sound = 'sound/magic/teleport_app.ogg'
+	fire_sound = 'sound/effects/magic/teleport_app.ogg'
 	max_charges = 12
 
 /obj/item/gun/magic/wand/teleport_rune/zap_self(mob/living/user)
@@ -47,7 +47,7 @@ GLOBAL_LIST_INIT(connected_wards, list())
 	icon_state = "ward"
 	density = FALSE
 	anchored = TRUE
-	layer = SIGIL_LAYER
+	layer = RUNE_LAYER
 	///Cooldown for teleporting, shared by all runes in case they infinitely loop when receiving contents
 	var/static/cooldown_time = 1 SECONDS
 	/// Storage for last activated time
@@ -100,5 +100,5 @@ GLOBAL_LIST_INIT(connected_wards, list())
 		do_teleport(thing,
 			destination,
 			channel = TELEPORT_CHANNEL_MAGIC,)
-	playsound(src, 'sound/magic/wand_teleport.ogg', 50)
-	playsound(destination, 'sound/magic/wand_teleport.ogg', 50)
+	playsound(src, 'sound/effects/magic/wand_teleport.ogg', 50)
+	playsound(destination, 'sound/effects/magic/wand_teleport.ogg', 50)

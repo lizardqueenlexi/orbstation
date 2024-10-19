@@ -53,7 +53,7 @@
 		return // Shouldn't be possible
 	jaunt.forceMove(get_turf(nearby_reflection))
 	jaunt.eject_jaunter()
-	playsound(jaunter, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
+	playsound(jaunter, 'sound/effects/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	jaunter.visible_message(
 		span_boldwarning("[jaunter] phases into reality before your very eyes!"),
 		span_boldwarning("You manage to fling yourself out of the reflection coming off of [nearby_reflection] before you are completely destroyed!"))

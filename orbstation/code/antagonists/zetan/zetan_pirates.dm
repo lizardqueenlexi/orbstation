@@ -98,7 +98,7 @@
 	inhand_icon_state = "zetan_revolver"
 	throwforce = 10
 	throw_speed = 3
-	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
+	fire_sound = 'sound/items/weapons/gun/revolver/shot_alt.ogg'
 	fire_sound_volume = 90
 	spread = 15
 	fire_delay = 1 SECONDS
@@ -171,7 +171,7 @@
 	var/obj/item/organ/internal/heart/gland/funnyorgan = new organtype()
 	funnyorgan.Insert(target, special = TRUE)
 	var/turf/dumpzone = get_safe_random_station_turf()
-	do_teleport(target, dumpzone, asoundout = 'sound/weapons/zapbang.ogg')
+	do_teleport(target, dumpzone, asoundout = 'sound/items/weapons/zapbang.ogg')
 	say(pick(winquotes))
 
 	if(target.stat != CONSCIOUS)

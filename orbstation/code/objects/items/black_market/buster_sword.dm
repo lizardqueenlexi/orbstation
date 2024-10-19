@@ -9,15 +9,15 @@
 	tk_throw_range = 1
 	tk_throw_range = 1
 	throw_speed = 1
-	drop_sound = 'sound/items/handling/crowbar_drop.ogg'
+	drop_sound = 'sound/items/handling/tools/crowbar_drop.ogg'
 	/// Damage to deal to someone this is dragged across
 	force = 15
 	throwforce = 15
 	wound_bonus = 5
 	bare_wound_bonus = 10
 	sharpness = SHARP_EDGED
-	hitsound = 'sound/weapons/slice.ogg'
-	mob_throw_hit_sound = 'sound/weapons/slice.ogg'
+	hitsound = 'sound/items/weapons/slice.ogg'
+	mob_throw_hit_sound = 'sound/items/weapons/slice.ogg'
 	/// Chance to destroy floor tiles while moving
 	var/break_floor_chance = 15
 
@@ -62,8 +62,8 @@
 	throw_range = 1
 	tk_throw_range = 1
 	throw_speed = 1
-	drop_sound = 'sound/items/handling/crowbar_drop.ogg'
-	pickup_sound = 'sound/items/handling/crowbar_pickup.ogg'
+	drop_sound = 'sound/items/handling/tools/crowbar_drop.ogg'
+	pickup_sound = 'sound/items/handling/tools/crowbar_pickup.ogg'
 
 /obj/item/buster_sword_core/examine_more(mob/user)
 	. = ..()

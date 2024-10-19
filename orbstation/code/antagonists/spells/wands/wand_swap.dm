@@ -8,7 +8,7 @@
 	ammo_type = /obj/item/ammo_casing/magic/swap
 	icon_state = "telewand"
 	base_icon_state = "telewand"
-	fire_sound = 'sound/magic/swap.ogg'
+	fire_sound = 'sound/effects/magic/swap.ogg'
 	max_charges = 20
 
 /obj/item/gun/magic/wand/swap/zap_self(mob/living/user)
@@ -39,8 +39,8 @@
 	var/turf/my_turf = get_turf(firer)
 	var/turf/your_turf = get_turf(hit_target)
 
-	do_teleport(firer, your_turf, asoundin = 'sound/magic/swap.ogg', channel = TELEPORT_CHANNEL_MAGIC)
-	do_teleport(hit_target, my_turf, asoundin = 'sound/magic/swap.ogg', channel = TELEPORT_CHANNEL_MAGIC)
+	do_teleport(firer, your_turf, asoundin = 'sound/effects/magic/swap.ogg', channel = TELEPORT_CHANNEL_MAGIC)
+	do_teleport(hit_target, my_turf, asoundin = 'sound/effects/magic/swap.ogg', channel = TELEPORT_CHANNEL_MAGIC)
 	var/obj/effect/particle_effect/fluid/smoke/poof_in = new (my_turf)
 	poof_in.lifetime = 3
 	var/obj/effect/particle_effect/fluid/smoke/poof_out = new (your_turf)

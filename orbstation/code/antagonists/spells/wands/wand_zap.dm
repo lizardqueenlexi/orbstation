@@ -8,7 +8,7 @@
 	ammo_type = /obj/item/ammo_casing/energy/electrode
 	icon_state = "revivewand"
 	base_icon_state = "revivewand"
-	fire_sound = 'sound/weapons/taser.ogg'
+	fire_sound = 'sound/items/weapons/taser.ogg'
 	max_charges = 8
 
 /obj/item/gun/magic/wand/zap/zap_self(mob/living/user)

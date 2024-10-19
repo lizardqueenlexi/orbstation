@@ -52,8 +52,8 @@
 	block_chance = 50
 	wound_bonus = 8
 	armour_penetration = 35
-	block_sound = 'sound/weapons/parry.ogg'
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	block_sound = 'sound/items/weapons/parry.ogg'
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb_continuous = list("sweeps", "brushes off", "slashes", "cuts")
 	attack_verb_simple = list("sweep", "brush off", "slash", "cut")

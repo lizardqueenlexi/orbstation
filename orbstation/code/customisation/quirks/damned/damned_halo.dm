@@ -57,7 +57,7 @@
 /datum/status_effect/temporary_damned_halo/on_apply()
 	if(!HAS_TRAIT(owner, TRAIT_DAMNED_HALO))
 		owner.AddElement(/datum/element/damned_halo)
-		playsound(owner, 'sound/magic/magic_block_holy.ogg', 50, TRUE)
+		playsound(owner, 'sound/effects/magic/magic_block_holy.ogg', 50, TRUE)
 		owner.visible_message(span_bolddanger("A cursed halo reveals itself over [owner]!"))
 	return ..()
 

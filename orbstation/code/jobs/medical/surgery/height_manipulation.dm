@@ -33,16 +33,16 @@
 		/obj/item/knife/butcher = 25,
 	)
 	preop_sound = list(
-		/obj/item/bonesetter = 'sound/surgery/organ2.ogg',
-		/obj/item/crowbar/power = 'sound/items/jaws_pry.ogg',
-		/obj/item/crowbar = 'sound/items/ratchet.ogg',
-		/obj/item/circular_saw = 'sound/surgery/saw.ogg',
-		/obj/item/melee/arm_blade = 'sound/weapons/bladeslice.ogg',
-		/obj/item/fireaxe = 'sound/weapons/bladeslice.ogg',
-		/obj/item/hatchet = 'sound/weapons/bladeslice.ogg',
-		/obj/item/knife/butcher = 'sound/weapons/bladeslice.ogg',
+		/obj/item/bonesetter = 'sound/items/handling/surgery/organ2.ogg',
+		/obj/item/crowbar/power = 'sound/items/tools/jaws_pry.ogg',
+		/obj/item/crowbar = 'sound/items/tools/ratchet.ogg',
+		/obj/item/circular_saw = 'sound/items/handling/surgery/saw.ogg',
+		/obj/item/melee/arm_blade = 'sound/items/weapons/bladeslice.ogg',
+		/obj/item/fireaxe = 'sound/items/weapons/bladeslice.ogg',
+		/obj/item/hatchet = 'sound/items/weapons/bladeslice.ogg',
+		/obj/item/knife/butcher = 'sound/items/weapons/bladeslice.ogg',
 	)
-	success_sound = 'sound/surgery/organ1.ogg'
+	success_sound = 'sound/items/handling/surgery/organ1.ogg'
 
 /datum/surgery_step/manipulate_spine/New()
 	..()

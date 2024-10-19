@@ -37,7 +37,7 @@
 	user.temporarilyRemoveItemFromInventory(src, force=TRUE)
 	if(length(contents))
 		user.put_in_hands(contents[1])
-	playsound(loc, 'sound/items/poster_ripped.ogg', 50, vary=TRUE)
+	playsound(loc, 'sound/items/poster/poster_ripped.ogg', 50, vary=TRUE)
 	var/turf/turf_loc = get_turf(user)
 	new /obj/effect/decal/cleanable/wrapping(turf_loc) //leave scraps on the floor as evidence
 	qdel(src)

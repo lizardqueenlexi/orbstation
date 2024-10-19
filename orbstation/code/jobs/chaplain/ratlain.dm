@@ -8,7 +8,7 @@
 	rites_list = list(/datum/religion_rites/ratconvert, /datum/religion_rites/pied_piper, /datum/religion_rites/ratclog)
 	altar_icon_state = "convertaltar-maint"
 
-#define SOUND_SQUEAK 'sound/creatures/mousesqueek.ogg'
+#define SOUND_SQUEAK 'sound/mobs/non-humanoids/mouse/mousesqueek.ogg'
 
 /datum/religion_sect/rat/sect_bless(mob/living/target, mob/living/chap)
 	if (!ismouse(target) && !isregalrat(target))
@@ -44,7 +44,7 @@
 	if(!do_after(user, 4 SECONDS, target = src))
 		balloon_alert(user, "interrupted!")
 		return
-	playsound(src, 'sound/magic/magic_block_holy.ogg', 60, TRUE)
+	playsound(src, 'sound/effects/magic/magic_block_holy.ogg', 60, TRUE)
 	var/mob/living/basic/mouse/new_mouse = new(get_turf(src), /* tame = */ TRUE)
 	new_mouse.visible_message(span_notice("[new_mouse] miraculously springs to life!"))
 	qdel(src)

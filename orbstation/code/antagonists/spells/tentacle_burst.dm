@@ -7,7 +7,7 @@
 	background_icon_state = "bg_demon"
 	button_icon = 'icons/mob/simple/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "goliath_tentacle_spawn"
-	sound = 'sound/magic/demon_attack1.ogg'
+	sound = 'sound/effects/magic/demon_attack1.ogg'
 	aoe_radius = 5
 	cooldown_time = 30 SECONDS
 	cooldown_reduction_per_rank = 5 SECONDS
