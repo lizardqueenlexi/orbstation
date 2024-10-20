@@ -247,7 +247,7 @@
 	plural_system.locked = TRUE
 	plural_system.update_appearance()
 	update_label()
-	playsound(src, 'sound/machines/pda_button1.ogg', 50, TRUE)
+	playsound(src, 'sound/machines/pda_button/pda_button1.ogg', 50, TRUE)
 
 /obj/item/card/id/screwdriver_act(mob/living/user, obj/item/screwtool)
 	if(!plural_system)
@@ -259,7 +259,7 @@
 	plural_system.fronter_name = null
 	plural_system = null
 	update_label()
-	playsound(src, 'sound/machines/pda_button2.ogg', 50, TRUE)
+	playsound(src, 'sound/machines/pda_button/pda_button2.ogg', 50, TRUE)
 
 // Adds a box of plural system chips to the HoP's locker.
 

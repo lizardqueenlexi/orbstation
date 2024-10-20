@@ -29,7 +29,7 @@
 	ammo_type = /obj/item/ammo_casing/magic/hallucination
 	icon_state = "polywand"
 	base_icon_state = "polywand"
-	fire_sound = 'sound/magic/staff_chaos.ogg'
+	fire_sound = 'sound/effects/magic/staff_chaos.ogg'
 	max_charges = 20
 
 /obj/item/gun/magic/wand/hallucination/zap_self(mob/living/user)

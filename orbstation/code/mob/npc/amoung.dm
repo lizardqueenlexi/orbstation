@@ -123,7 +123,7 @@
 	melee_damage_upper = 15
 	attack_verb_continuous = "slashes at"
 	attack_verb_simple = "slash at"
-	attack_sound = 'sound/weapons/circsawhit.ogg'
+	attack_sound = 'sound/items/weapons/circsawhit.ogg'
 	combat_mode = TRUE
 	mob_biotypes = MOB_ORGANIC
 	sentience_type = SENTIENCE_HUMANOID

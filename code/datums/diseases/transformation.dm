@@ -227,6 +227,9 @@
 			if(SPT_PROB(10, seconds_per_tick))
 				affected_mob.say(pick("Hsssss...", "Hungry...", "Hsssshhhhh!"), forced = "xenomorph transformation")
 
+/datum/disease/transformation/slime
+	name = "Advanced Mutation Transformation"
+	cure_text = "Frost oil"
 	cures = list(/datum/reagent/consumable/frostoil)
 	visibility_flags = NONE
 	stage1 = list("You don't feel very well.")

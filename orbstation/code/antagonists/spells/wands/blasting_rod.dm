@@ -3,7 +3,7 @@
 	name = "Rod of Blasting"
 	desc = "A wand at the cutting edge of magical research. Conjures holes in targets with startling speed and accuracy by aetherically accelerating small pieces of metal."
 	icon_state = "c38"
-	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'
+	fire_sound = 'sound/items/weapons/gun/revolver/shot_alt.ogg'
 	fire_delay = 1 SECONDS
 	obj_flags = NONE
 	unique_reskin = list(

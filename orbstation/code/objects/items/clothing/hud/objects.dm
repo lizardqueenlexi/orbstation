@@ -26,7 +26,7 @@
 	throw_speed = 4
 	attack_verb_continuous = list("slices")
 	attack_verb_simple = list("slice")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
 /obj/item/clothing/glasses/hud/health/sunglasses/gars/giga
@@ -53,7 +53,7 @@
 	throw_speed = 4
 	attack_verb_continuous = list("slices")
 	attack_verb_simple = list("slice")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
 /obj/item/clothing/glasses/hud/diagnostic/eyepatch
@@ -84,7 +84,7 @@
 	throw_speed = 4
 	attack_verb_continuous = list("slices")
 	attack_verb_simple = list("slice")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
 /obj/item/clothing/glasses/hud/diagnostic/sunglasses/gars/giga
@@ -122,7 +122,7 @@
 	throw_speed = 4
 	attack_verb_continuous = list("slices")
 	attack_verb_simple = list("slice")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
 /obj/item/clothing/glasses/sunglasses/chemical/gars/giga

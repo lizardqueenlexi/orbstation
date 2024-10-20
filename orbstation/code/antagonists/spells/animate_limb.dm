@@ -7,7 +7,7 @@
 	desc = "This spell charges your hand with an unholy energy \
 		that can be used to cause a touched victim's limb to turn on them."
 	button_icon_state = "void_magnet"
-	sound = 'sound/magic/disintegrate.ogg'
+	sound = 'sound/effects/magic/disintegrate.ogg'
 
 	school = SCHOOL_EVOCATION
 	cooldown_time = 30 SECONDS

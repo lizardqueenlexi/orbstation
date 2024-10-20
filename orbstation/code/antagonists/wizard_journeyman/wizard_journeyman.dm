@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(journeymanstart)
 	hijack_speed = 0.5
 	ui_name = "AntagInfoWizardJourneyman"
 	suicide_cry = "ARE YOU WATCHING THIS, GUYS?!"
-	preview_outfit = /datum/outfit/journeyman_wizard
+	preview_outfit = /datum/outfit/journeyman_wizard/preview
 	show_to_ghosts = TRUE
 	/// True if the wizard journeyman lair has been instantiated
 	var/static/lair_exists = FALSE

@@ -61,7 +61,7 @@
 	name = "\improper Legendary Lady Penelope Dreadful plushie"
 	desc = "A one-of-a-kind, highly collectible plushie of everyone's favorite catgirl, stuffed not only with asbestos fibers but \
 		solid gold as well. Extremely heavy."
-	hitsound = 'sound/weapons/blastcannon.ogg'
+	hitsound = 'sound/items/weapons/blastcannon.ogg'
 	force = 50
 	throwforce = 50
 	resistance_flags = INDESTRUCTIBLE
@@ -90,7 +90,7 @@
 	force = 0
 	throwforce = 0
 	item_flags = NONE
-	hitsound = 'sound/items/toysqueak1.ogg'
+	hitsound = 'sound/items/toy_squeak/toysqueak1.ogg'
 
 /obj/item/toy/plush/crew/fishplushie
 	name = "\improper Fish plushie"
@@ -98,7 +98,7 @@
 	icon_state = "fishplush"
 	attack_verb_continuous = list("bites", "squeaks", "spins")
 	attack_verb_simple = list("bite", "squeak", "spin")
-	squeak_override = list('sound/weapons/laser.ogg' = 1)
+	squeak_override = list('sound/items/weapons/laser.ogg' = 1)
 	gender = FEMALE
 
 /obj/item/toy/plush/crew/ivonaplushie
@@ -107,7 +107,7 @@
 	icon_state = "ivonaplush"
 	attack_verb_continuous = list("growls", "chomps", "slashes")
 	attack_verb_simple = list("growl", "chomp", "slash")
-	squeak_override = list('sound/weapons/kinetic_accel.ogg' = 1)
+	squeak_override = list('sound/items/weapons/kinetic_accel.ogg' = 1)
 	gender = FEMALE
 
 /obj/item/toy/plush/crew/glupplushie
@@ -180,7 +180,7 @@
 
 /// Become someone else
 /obj/item/toy/plush/crew/nancyplushie/proc/changeling_transform(picked_blorbo)
-	playsound(src, 'sound/effects/cartoon_pop.ogg', 100, vary = TRUE)
+	playsound(src, 'sound/effects/cartoon_sfx/cartoon_pop.ogg', 100, vary = TRUE)
 	transforming = FALSE
 	if (picked_blorbo in plushie_dna)
 		var/atom/plush_type = plushie_dna[picked_blorbo]
@@ -203,7 +203,7 @@
 	icon_state = "amoungplush"
 	attack_verb_continuous = list("suses", "stabs", "ejects")
 	attack_verb_simple = list("sus", "stab", "eject")
-	squeak_override = list('sound/creatures/alien_organ_cut.ogg' = 1)
+	squeak_override = list('sound/mobs/non-humanoids/alien/alien_organ_cut.ogg' = 1)
 
 /obj/item/toy/plush/tbhplushie
 	name = "tbh plushie"

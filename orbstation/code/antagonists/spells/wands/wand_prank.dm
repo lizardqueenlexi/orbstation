@@ -41,5 +41,5 @@
 	lube.my_atom = get_turf(victim)
 	lube.create_foam(/datum/effect_system/fluid_spread/foam, DIAMOND_AREA(2))
 	qdel(lube)
-	var/static/laugh_sound = list('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg')
+	var/static/laugh_sound = list('sound/items/sitcom_laugh/SitcomLaugh1.ogg', 'sound/items/sitcom_laugh/SitcomLaugh2.ogg', 'sound/items/sitcom_laugh/SitcomLaugh3.ogg')
 	playsound(victim, laugh_sound, 100, FALSE)

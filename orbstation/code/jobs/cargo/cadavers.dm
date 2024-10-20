@@ -100,8 +100,8 @@
 	max_integrity = 70
 	material_drop = /obj/item/stack/sheet/iron
 	material_drop_amount = 5
-	open_sound = 'sound/machines/closet_open.ogg'
-	close_sound = 'sound/machines/closet_close.ogg'
+	open_sound = 'sound/machines/closet/closet_open.ogg'
+	close_sound = 'sound/machines/closet/closet_close.ogg'
 	open_sound_volume = 25
 	close_sound_volume = 50
 	can_install_electronics = FALSE

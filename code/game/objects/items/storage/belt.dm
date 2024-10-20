@@ -229,6 +229,8 @@
 	icon_state = "medical"
 	inhand_icon_state = "medical"
 	worn_icon_state = "medical"
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound = 'sound/items/handling/toolbelt_pickup.ogg'
 
 /obj/item/storage/belt/medical/Initialize(mapload)
 	. = ..()
@@ -374,7 +376,7 @@
 		/obj/item/restraints/handcuffs,
 		/obj/item/restraints/legcuffs/bola,
 	))
-	atom_storage.open_sound = 'sound/items/holster.ogg'
+	atom_storage.open_sound = 'sound/items/handling/holster_open.ogg'
 	atom_storage.open_sound_vary = TRUE
 	atom_storage.rustle_sound = FALSE
 
@@ -489,6 +491,8 @@
 	icon_state = "soulstonebelt"
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound = 'sound/items/handling/toolbelt_pickup.ogg'
 
 /obj/item/storage/belt/soulstone/Initialize(mapload)
 	. = ..()
@@ -624,6 +628,8 @@
 	icon_state = "grenadebeltnew"
 	inhand_icon_state = "security"
 	worn_icon_state = "grenadebeltnew"
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound = 'sound/items/handling/toolbelt_pickup.ogg'
 
 /obj/item/storage/belt/grenade/Initialize(mapload)
 	. = ..()
@@ -687,6 +693,8 @@
 	icon_state = "janibelt"
 	inhand_icon_state = "janibelt"
 	worn_icon_state = "janibelt"
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound = 'sound/items/handling/toolbelt_pickup.ogg'
 
 /obj/item/storage/belt/janitor/Initialize(mapload)
 	. = ..()

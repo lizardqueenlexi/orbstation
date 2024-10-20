@@ -21,7 +21,7 @@
 		return
 	dormant = FALSE
 	src.visible_message(span_bolddanger("[src] is about to awaken!"))
-	playsound(loc,'sound/creatures/narsie_rises.ogg', 100, FALSE, 50, TRUE, TRUE)
+	playsound(loc,'sound/music/antag/bloodcult/narsie_rises.ogg', 100, FALSE, 50, TRUE, TRUE)
 	addtimer(CALLBACK(src, PROC_REF(awaken)), 5 SECONDS)
 
 /// Make it not invulnerable and also angry
