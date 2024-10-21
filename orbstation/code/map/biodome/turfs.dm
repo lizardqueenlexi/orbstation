@@ -2,10 +2,11 @@
 	desc = "A huge chunk of reinforced metal used to separate rooms. This one has been painted like a log."
 	color = COLOR_ORANGE_BROWN
 
-/turf/open/water/jungle/biodome
+/turf/open/water/biodome
 	name="Biodome Lake"
 	baseturfs = /turf/open/misc/asteroid
-	fishing_datum = /datum/fish_source/ocean/beach
+	fishing_datum = /datum/fish_source/river
+
 /turf/open/misc/ashplanet/wateryrock/biodome
 	name="Biodome Lake Rocks"
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
