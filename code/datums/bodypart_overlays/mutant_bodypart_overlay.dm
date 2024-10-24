@@ -123,7 +123,7 @@
 
 	switch(color_source)
 		if(ORGAN_COLOR_OVERRIDE)
-			draw_color = override_color(bodypart_owner.draw_color)
+			draw_color = override_color(bodypart_owner)
 		if(ORGAN_COLOR_INHERIT)
 			//BEGIN ORBSTATION EDIT
 			if(sprite_datum.color_src == FACIAL_HAIR_COLOR) //Re-enabling colored snouts, mostly
@@ -136,7 +136,7 @@
 			//END ORBSTATION EDIT
 		if(ORGAN_COLOR_HAIR)
 			var/datum/species/species = bodypart_owner.owner?.dna?.species
-			var/fixed_color = species?.get_fixed_hair_color(bodypart_owner)
+			var/fixed_color = species?.get_fixed_hair_color(bodypart_owner.owner)
 			if(!ishuman(bodypart_owner.owner))
 				draw_color = fixed_color
 				return
