@@ -15,9 +15,6 @@
 	r_pocket = /obj/item/teleportation_scroll/apprentice/announcement // You just get to the station, then you're on your own
 	r_hand = /obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty
 
-/datum/outfit/journeyman_wizard/preview
-	r_hand = /obj/item/wizard_diploma
-
 /// Randomise outfit
 /datum/outfit/journeyman_wizard/pre_equip(mob/living/carbon/human/H, visualsOnly)
 	. = ..()
