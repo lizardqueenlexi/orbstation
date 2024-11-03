@@ -10,8 +10,8 @@
 	if(isratfolk(human))
 		return
 
-	var/obj/item/organ/external/tail/ratfolk/mouseytail = new()
-	var/obj/item/organ/internal/ears/ratfolk/mouseyear = new()
+	var/obj/item/organ/tail/ratfolk/mouseytail = new()
+	var/obj/item/organ/ears/ratfolk/mouseyear = new()
 
 	mouseytail.Insert(human, special = FALSE, movement_flags = DELETE_IF_REPLACED)
 	mouseyear.Insert(human, special = FALSE, movement_flags = DELETE_IF_REPLACED)
@@ -27,8 +27,8 @@
 	if(isratfolk(human))
 		return
 
-	var/obj/item/organ/internal/ears/ratfolk/mouseyear = human.get_organ_slot(ORGAN_SLOT_EARS)
-	var/obj/item/organ/external/tail/ratfolk/mouseytail = human.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/ears/ratfolk/mouseyear = human.get_organ_slot(ORGAN_SLOT_EARS)
+	var/obj/item/organ/tail/ratfolk/mouseytail = human.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 
 	mouseytail.Remove(human, special = FALSE,)
 	mouseyear.Remove(human, special = FALSE,)

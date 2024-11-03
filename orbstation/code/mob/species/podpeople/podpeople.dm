@@ -74,20 +74,3 @@
 	id = SPECIES_PODPERSON_SPROUT
 	examine_limb_id = SPECIES_PODPERSON
 	heal_in_light = TRUE
-
-// Roundstart podpeople just choose their hair colour
-/datum/bodypart_overlay/mutant/pod_hair
-	color_source = ORGAN_COLOR_HAIR
-
-/datum/bodypart_overlay/mutant/pod_hair/color_image(image/overlay, draw_layer)
-	overlay.color = sprite_datum.color_src ? draw_color : null
-
-/datum/preference/color/hair_color
-	relevant_external_organ = /obj/item/organ/external/pod_hair
-
-/datum/preference/choiced/pod_hair/compile_constant_data()
-	var/list/data = ..()
-
-	data[SUPPLEMENTAL_FEATURE_KEY] = "hair_color"
-
-	return data

@@ -74,13 +74,13 @@
 	. = ..()
 	if(!.)
 		return
-	var/obj/item/organ/internal/brain/perfect_brain = new_holder.get_organ_slot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/brain/perfect_brain = new_holder.get_organ_slot(ORGAN_SLOT_BRAIN)
 	if(!perfect_brain)
 		return
 	ADD_TRAIT(perfect_brain, mob_trait, QUIRK_TRAIT)
 	RegisterSignal(new_holder, COMSIG_CARBON_GAIN_ORGAN, PROC_REF(transfer_trait))
 
-/datum/quirk/xcard/uncyborgable/proc/transfer_trait(mob/living/source, obj/item/organ/internal/brain/new_brain)
+/datum/quirk/xcard/uncyborgable/proc/transfer_trait(mob/living/source, obj/item/organ/brain/new_brain)
 	SIGNAL_HANDLER
 	if(!istype(new_brain))
 		return

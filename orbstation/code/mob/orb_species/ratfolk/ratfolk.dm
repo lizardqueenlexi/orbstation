@@ -12,17 +12,17 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/ratfolk
-	mutanttongue = /obj/item/organ/internal/tongue/ratfolk
+	mutanttongue = /obj/item/organ/tongue/ratfolk
 
 	siemens_coeff = 0.75 // slightly resistant to shocks, but not as much as Ethereals
 
 	mutant_organs = list(
-		/obj/item/organ/external/snout_rat = "Round",
-		/obj/item/organ/external/tail/ratfolk = "High",
+		/obj/item/organ/snout_rat = "Round",
+		/obj/item/organ/tail/ratfolk = "High",
 	)
-	mutanteyes = /obj/item/organ/internal/eyes/ratfolk
-	mutantstomach = /obj/item/organ/internal/stomach/ratfolk
-	mutantears = /obj/item/organ/internal/ears/ratfolk
+	mutanteyes = /obj/item/organ/eyes/ratfolk
+	mutantstomach = /obj/item/organ/stomach/ratfolk
+	mutantears = /obj/item/organ/ears/ratfolk
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/ratfolk,
@@ -83,8 +83,8 @@
 
 /datum/species/ratfolk/get_sigh_sound(mob/living/carbon/human/human)
 	if(human.physique == FEMALE)
-		return 'sound/mobs/humanoids/human/sigh/female_sigh.ogg'
-	return 'sound/mobs/humanoids/human/sigh/male_sigh.ogg'
+		return SFX_FEMALE_SIGH
+	return SFX_MALE_SIGH
 
 /datum/species/ratfolk/get_sniff_sound(mob/living/carbon/human/human)
 	if(human.physique == FEMALE)

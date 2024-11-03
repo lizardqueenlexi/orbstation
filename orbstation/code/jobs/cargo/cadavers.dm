@@ -51,7 +51,7 @@
 /datum/supply_pack/medical/cadaver/ethereal/generate()
 	. = ..()
 	var/mob/living/carbon/human/corpse = locate() in .
-	for (var/obj/item/organ/internal/heart/ethereal/illegal_heart in corpse.organs)
+	for (var/obj/item/organ/heart/ethereal/illegal_heart in corpse.organs)
 		qdel(illegal_heart)
 
 /datum/supply_pack/medical/cadaver/felinid

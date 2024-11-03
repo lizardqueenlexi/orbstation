@@ -35,7 +35,7 @@
 	ETHEREAL_PENALTY_CLUMSY = new /datum/ethereal_penalty("You fall face-first out of the crystal, but at least you are alive!", TRAIT_CLUMSY), \
 	ETHEREAL_PENALTY_PARAPLEGIA = new /datum/ethereal_penalty/paraplegia("You collapse forwards out of the crystal, you can't take much more of this!"),)
 
-/obj/item/organ/internal/heart/ethereal
+/obj/item/organ/heart/ethereal
 	var/respawn_count = 0
 
 /obj/structure/ethereal_crystal/heal_ethereal()

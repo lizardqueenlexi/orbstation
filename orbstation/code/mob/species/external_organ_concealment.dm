@@ -3,7 +3,7 @@
 	var/concealed = FALSE
 
 // Moths and Tail-owners can choose whether to show or hide their visible external organs.
-/obj/item/organ/external/tail
+/obj/item/organ/tail
 	actions_types = list(/datum/action/conceal_organ/tail)
 
 /datum/bodypart_overlay/mutant/tail
@@ -15,7 +15,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/organ/external/wings/moth
+/obj/item/organ/wings/moth
 	actions_types = list(/datum/action/conceal_organ/wings)
 
 /datum/bodypart_overlay/mutant/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
@@ -27,7 +27,7 @@
 		return TRUE
 	return FALSE
 
-/obj/item/organ/external/antennae
+/obj/item/organ/antennae
 	actions_types = list(/datum/action/conceal_organ/antennae)
 
 /datum/bodypart_overlay/mutant/antennae/can_draw_on_bodypart(mob/living/carbon/human/human)
@@ -142,11 +142,11 @@
 	return owner.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 
 /datum/action/conceal_organ/tail/toggle_concealement()
-	var/obj/item/organ/external/tail/tail = get_organ()
+	var/obj/item/organ/tail/tail = get_organ()
 	tail.bodypart_overlay.concealed = !tail.bodypart_overlay.concealed
 
 /datum/action/conceal_organ/tail/is_concealed()
-	var/obj/item/organ/external/tail/tail = get_organ()
+	var/obj/item/organ/tail/tail = get_organ()
 	return tail.bodypart_overlay.concealed
 
 /// Shows/Hides wings
@@ -159,11 +159,11 @@
 	return owner.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
 
 /datum/action/conceal_organ/wings/toggle_concealement()
-	var/obj/item/organ/external/wings/moth/wings = get_organ()
+	var/obj/item/organ/wings/moth/wings = get_organ()
 	wings.bodypart_overlay.concealed = !wings.bodypart_overlay.concealed
 
 /datum/action/conceal_organ/wings/is_concealed()
-	var/obj/item/organ/external/wings/moth/wings = get_organ()
+	var/obj/item/organ/wings/moth/wings = get_organ()
 	return wings.bodypart_overlay.concealed
 
 /// Shows/Hides wings
@@ -176,11 +176,11 @@
 	return owner.get_organ_slot(ORGAN_SLOT_EXTERNAL_ANTENNAE)
 
 /datum/action/conceal_organ/antennae/toggle_concealement()
-	var/obj/item/organ/external/antennae/antennae = get_organ()
+	var/obj/item/organ/antennae/antennae = get_organ()
 	antennae.bodypart_overlay.concealed = !antennae.bodypart_overlay.concealed
 
 /datum/action/conceal_organ/antennae/is_concealed()
-	var/obj/item/organ/external/antennae/antennae = get_organ()
+	var/obj/item/organ/antennae/antennae = get_organ()
 	return antennae.bodypart_overlay.concealed
 
 /// Returns true if your hair is hidden

@@ -1,8 +1,8 @@
 // Food taste overrides
-/obj/item/organ/internal/tongue/cat
+/obj/item/organ/tongue/cat
 	disliked_foodtypes = GROSS | CLOTH | CUCUMBER
 
-/obj/item/organ/internal/tongue/moth
+/obj/item/organ/tongue/moth
 	disliked_foodtypes = GROSS | BUGS | GORE
 
 // Implements cucumber food group
