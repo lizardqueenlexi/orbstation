@@ -10,28 +10,28 @@
 
 /datum/quirk/robot_voice/add_unique()
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	/*var/obj/item/organ/internal/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
+	/*var/obj/item/organ/tongue/old_tongue = human_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
 	old_tongue.Remove(human_holder)
 	qdel(old_tongue)*/
 
-	var/obj/item/organ/internal/tongue/robot/new_tongue = new(get_turf(human_holder))
+	var/obj/item/organ/tongue/robot/new_tongue = new(get_turf(human_holder))
 	new_tongue.Insert(human_holder, movement_flags = DELETE_IF_REPLACED)
 	// Only tongues of people with this quirk can't be removed. Manually spawned or found tongues can be.
 	new_tongue.organ_flags |= ORGAN_UNREMOVABLE
 
 /datum/quirk/robot_voice/remove()
-	var/obj/item/organ/internal/tongue/robot/quirk_tongue = quirk_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/tongue/robot/quirk_tongue = quirk_holder.get_organ_slot(ORGAN_SLOT_TONGUE)
 	if(!istype(quirk_tongue))
 		return
 
-	var/obj/item/organ/internal/tongue/new_tongue_type = /obj/item/organ/internal/tongue
+	var/obj/item/organ/tongue/new_tongue_type = /obj/item/organ/tongue
 	if(iscarbon(quirk_holder))
 		var/mob/living/carbon/carbon_quirky = quirk_holder
 		new_tongue_type = carbon_quirky.dna?.species?.mutanttongue
 	if(!new_tongue_type)
 		return
 
-	var/obj/item/organ/internal/tongue/new_tongue = new new_tongue_type()
+	var/obj/item/organ/tongue/new_tongue = new new_tongue_type()
 	//quirk_tongue.Remove(quirk_holder, TRUE)
 	new_tongue.Insert(quirk_holder, TRUE, movement_flags = DELETE_IF_REPLACED)
 	//qdel(quirk_tongue)

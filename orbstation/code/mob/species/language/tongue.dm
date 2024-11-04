@@ -1,4 +1,4 @@
-/obj/item/organ/internal/tongue/get_possible_languages()
+/obj/item/organ/tongue/get_possible_languages()
 	RETURN_TYPE(/list)
 	// This is the default list of languages most humans should be capable of speaking
 	return list(

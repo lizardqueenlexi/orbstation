@@ -86,13 +86,13 @@
 		if(!(human.mob_biotypes & (MOB_ROBOTIC|MOB_MINERAL|MOB_UNDEAD|MOB_SPIRIT)))
 			//ORBSTATION: Give people fly organs on a teleporter accident.
 			var/list/fly_organs = list(
-				/obj/item/organ/internal/eyes/fly,
-				/obj/item/organ/internal/tongue/fly,
-				/obj/item/organ/internal/heart/fly,
-				/obj/item/organ/internal/lungs/fly,
-				/obj/item/organ/internal/liver/fly,
-				/obj/item/organ/internal/stomach/fly,
-				/obj/item/organ/internal/appendix/fly,
+				/obj/item/organ/eyes/fly,
+				/obj/item/organ/tongue/fly,
+				/obj/item/organ/heart/fly,
+				/obj/item/organ/lungs/fly,
+				/obj/item/organ/liver/fly,
+				/obj/item/organ/stomach/fly,
+				/obj/item/organ/appendix/fly,
 			)
 			var/obj/item/organ/new_organ = pick(fly_organs)
 			if(new_organ)

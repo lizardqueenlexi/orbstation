@@ -13,12 +13,12 @@
 	name = "Boggle Goggles"
 	result = /obj/item/clothing/glasses/boggle
 	time = 2 SECONDS
-	reqs = list(/obj/item/organ/internal/eyes = 1, /obj/item/stack/sheet/cloth = 1)
+	reqs = list(/obj/item/organ/eyes = 1, /obj/item/stack/sheet/cloth = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/bogglealt
 	name = "Boggle Goggles"
 	result = /obj/item/clothing/glasses/boggle
 	time = 2 SECONDS
-	reqs = list(/obj/item/organ/internal/eyes = 1, /obj/item/stack/cable_coil = 5)
+	reqs = list(/obj/item/organ/eyes = 1, /obj/item/stack/cable_coil = 5)
 	category = CAT_CLOTHING

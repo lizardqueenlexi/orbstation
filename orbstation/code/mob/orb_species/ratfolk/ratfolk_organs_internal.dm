@@ -2,7 +2,7 @@
 
 // EARS
 
-/obj/item/organ/internal/ears/ratfolk
+/obj/item/organ/ears/ratfolk
 	name = "rat ears"
 	icon = 'orbstation/icons/mob/species/ratfolk/bodyparts.dmi'
 	icon_state = "ears_item"
@@ -16,6 +16,7 @@
 	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
 	color_source = ORGAN_COLOR_INHERIT
 	feature_key = "rat_ears"
+	dyable = TRUE
 
 	/// We dont color the inner part, which is the front layer
 	var/colorless_layer = EXTERNAL_FRONT
@@ -35,7 +36,7 @@
 
 // EYES - better darkvision, sensitive to flash, lower health
 
-/obj/item/organ/internal/eyes/ratfolk
+/obj/item/organ/eyes/ratfolk
 	name = "rat eyes"
 	maxHealth = 0.35 * STANDARD_ORGAN_THRESHOLD // more fragile than normal eyes
 	flash_protect = FLASH_PROTECTION_SENSITIVE
@@ -43,10 +44,10 @@
 
 // STOMACH - increases movespeed temporarily when you consume cheese reagent (found in raw cheese)
 
-/obj/item/organ/internal/stomach/ratfolk
+/obj/item/organ/stomach/ratfolk
 	name = "rat stomach"
 
-/obj/item/organ/internal/stomach/ratfolk/on_life(delta_time, times_fired)
+/obj/item/organ/stomach/ratfolk/on_life(delta_time, times_fired)
 	var/datum/reagent/consumable/cheese/cheese = locate(/datum/reagent/consumable/cheese) in owner.reagents.reagent_list
 	if(cheese?.volume)
 		cheese.volume = min(cheese.volume, 30) // let's cap the amount of cheese you can have in your stomach
@@ -55,7 +56,7 @@
 		owner.remove_status_effect(/datum/status_effect/cheese_rush)
 	return ..()
 
-/obj/item/organ/internal/stomach/ratfolk/on_mob_remove(mob/living/carbon/carbon)
+/obj/item/organ/stomach/ratfolk/on_mob_remove(mob/living/carbon/carbon)
 	if(carbon.has_movespeed_modifier(/datum/movespeed_modifier/cheese_rush))
 		to_chat(carbon, span_warning("You feel the effects of your cheese rush wear off."))
 		carbon.remove_movespeed_modifier(/datum/movespeed_modifier/cheese_rush)
@@ -95,7 +96,7 @@
 
 // TONGUE
 
-/obj/item/organ/internal/tongue/ratfolk
+/obj/item/organ/tongue/ratfolk
 	name = "ratfolk tongue"
 	desc = "If you look closely, you can see a fine layer of cheese dust. Or is that... brass?"
 	say_mod = "squeaks"

@@ -167,8 +167,8 @@
 	if(!ishuman(target))
 		return
 	spit_cash(/obj/item/stack/spacecash/c1000, 5)
-	var/organtype = pick(subtypesof(/obj/item/organ/internal/heart/gland))
-	var/obj/item/organ/internal/heart/gland/funnyorgan = new organtype()
+	var/organtype = pick(subtypesof(/obj/item/organ/heart/gland))
+	var/obj/item/organ/heart/gland/funnyorgan = new organtype()
 	funnyorgan.Insert(target, special = TRUE)
 	var/turf/dumpzone = get_safe_random_station_turf()
 	do_teleport(target, dumpzone, asoundout = 'sound/items/weapons/zapbang.ogg')

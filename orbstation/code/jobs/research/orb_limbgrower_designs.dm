@@ -133,7 +133,7 @@
 	id = "rateyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10, /datum/reagent/yuck = 10) //organic slurry is the essence of crawling around maintenance, really
-	build_path = /obj/item/organ/internal/eyes/ratfolk
+	build_path = /obj/item/organ/eyes/ratfolk
 	category = list(SPECIES_RATFOLK)
 
 /datum/design/rat_ears
@@ -141,7 +141,7 @@
 	id = "ratears"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10)
-	build_path = /obj/item/organ/internal/ears/ratfolk
+	build_path = /obj/item/organ/ears/ratfolk
 	category = list(SPECIES_RATFOLK)
 
 /datum/design/rat_stomach
@@ -149,7 +149,7 @@
 	id = "ratstomach"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 15, /datum/reagent/consumable/enzyme = 10)
-	build_path = /obj/item/organ/internal/stomach/ratfolk
+	build_path = /obj/item/organ/stomach/ratfolk
 	category = list(SPECIES_RATFOLK)
 
 //Moth organ (there's only one!)
@@ -158,7 +158,7 @@
 	id = "motheyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10)
-	build_path = /obj/item/organ/internal/eyes/moth
+	build_path = /obj/item/organ/eyes/moth
 	category = list(SPECIES_MOTH)
 
 //Jelly organs
@@ -167,7 +167,7 @@
 	id = "jellytongue"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 10)
-	build_path = /obj/item/organ/internal/tongue/jelly
+	build_path = /obj/item/organ/tongue/jelly
 	category = list(SPECIES_JELLYPERSON)
 
 /datum/design/jelly_eyes
@@ -175,7 +175,7 @@
 	id = "jellyeyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 10)
-	build_path = /obj/item/organ/internal/eyes/jelly
+	build_path = /obj/item/organ/eyes/jelly
 	category = list(SPECIES_JELLYPERSON)
 
 /datum/design/jelly_lungs
@@ -183,7 +183,7 @@
 	id = "jellylungs"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 10, /datum/reagent/toxin/plasma = 20)
-	build_path = /obj/item/organ/internal/lungs/slime
+	build_path = /obj/item/organ/lungs/slime
 	category = list(SPECIES_JELLYPERSON)
 
 //Alien organs
@@ -193,7 +193,7 @@
 	id = "alientongue"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10, /datum/reagent/toxin/acid/fluacid = 20)
-	build_path = /obj/item/organ/internal/tongue/alien
+	build_path = /obj/item/organ/tongue/alien
 	category = list(RND_CATEGORY_LIMBS_OTHER)
 
 /datum/design/xenomorph_eyes
@@ -201,7 +201,7 @@
 	id = "alieneyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10, /datum/reagent/toxin/acid/fluacid = 20)
-	build_path = /obj/item/organ/internal/eyes/alien
+	build_path = /obj/item/organ/eyes/alien
 	category = list(RND_CATEGORY_LIMBS_OTHER)
 
 /datum/design/xenomorph_liver
@@ -209,7 +209,7 @@
 	id = "alienliver"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 20, /datum/reagent/toxin/acid/fluacid = 30)
-	build_path = /obj/item/organ/internal/liver/alien
+	build_path = /obj/item/organ/liver/alien
 	category = list(RND_CATEGORY_LIMBS_OTHER)
 
 /datum/design/plasma_vessel
@@ -217,7 +217,7 @@
 	id = "alienplasmavessel"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 50, /datum/reagent/toxin/acid/fluacid = 50, /datum/reagent/toxin/plasma = 100)
-	build_path = /obj/item/organ/internal/alien/plasmavessel
+	build_path = /obj/item/organ/alien/plasmavessel
 	category = list(RND_CATEGORY_LIMBS_OTHER)
 
 /datum/design/hivenode
@@ -225,7 +225,7 @@
 	id = "hivenode"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 50, /datum/reagent/toxin/acid/fluacid = 50, /datum/reagent/consumable/ethanol/hiveminderaser = 100)
-	build_path = /obj/item/organ/internal/alien/hivenode
+	build_path = /obj/item/organ/alien/hivenode
 	category = list(RND_CATEGORY_LIMBS_OTHER)
 
 /datum/design/resinspinner
@@ -233,7 +233,7 @@
 	id = "resinspinner"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 50, /datum/reagent/toxin/acid/fluacid = 50, /datum/reagent/cellulose = 100) //cellulose might be a bit silly, but...
-	build_path = /obj/item/organ/internal/alien/resinspinner
+	build_path = /obj/item/organ/alien/resinspinner
 	category = list(RND_CATEGORY_LIMBS_OTHER)
 
 /// External Organs
@@ -243,7 +243,7 @@
 	id = "mothwings"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 30)
-	build_path = /obj/item/organ/external/wings/moth
+	build_path = /obj/item/organ/wings/moth
 	category = list(SPECIES_MOTH)
 	research_icon = 'icons/mob/human/species/moth/moth_wings.dmi'
 	research_icon_state = "m_moth_wings_monarch_BEHIND"
@@ -327,11 +327,11 @@
 /obj/machinery/limbgrower/proc/attach_snout(obj/item/bodypart/limb)
 	if(!istype(limb))
 		return
-	var/obj/item/organ/external/snout_to_insert
+	var/obj/item/organ/snout_to_insert
 	if(limb.limb_id == SPECIES_LIZARD)
-		snout_to_insert = new /obj/item/organ/external/snout(loc)
+		snout_to_insert = new /obj/item/organ/snout(loc)
 	else
-		snout_to_insert = new /obj/item/organ/external/snout_rat(loc)
+		snout_to_insert = new /obj/item/organ/snout_rat(loc)
 	snout_to_insert.bodypart_insert(limb)
 
 // Techweb nodes

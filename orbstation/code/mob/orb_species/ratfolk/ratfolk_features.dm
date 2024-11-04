@@ -49,7 +49,7 @@
 	savefile_key = "feature_rat_tail"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_external_organ = /obj/item/organ/external/tail/ratfolk
+	relevant_external_organ = /obj/item/organ/tail/ratfolk
 
 /datum/preference/choiced/rat_tail/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.rat_tails_list)
@@ -68,7 +68,7 @@
 	category = PREFERENCE_CATEGORY_FEATURES
 	main_feature_name = "Ears"
 	should_generate_icons = TRUE
-	relevant_external_organ = /obj/item/organ/internal/ears/ratfolk
+	relevant_external_organ = /obj/item/organ/ears/ratfolk
 
 /datum/preference/choiced/rat_ears/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.rat_ears_list)

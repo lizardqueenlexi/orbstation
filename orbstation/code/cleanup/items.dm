@@ -68,11 +68,11 @@
 	grind_results = list(/datum/reagent/consumable/potato_juice = 9, /datum/reagent/consumable/ethanol/slimewine = 9, /datum/reagent/monkey_powder = 9, /datum/reagent/drug/krokodil = 9, /datum/reagent/toxin/acid/nitracid = 9, /datum/reagent/baldium = 9, /datum/reagent/consumable/ethanol/hooch = 9, /datum/reagent/bluespace = 9, /datum/reagent/drug/pumpup = 9, /datum/reagent/consumable/space_cola = 9)
 
 //The lizard tail description referenced "lizard haters", but no one here hates lizards.
-/obj/item/organ/external/tail/lizard
+/obj/item/organ/tail/lizard
 	desc = "A severed lizard tail. Did you know that lizards of many species are capable of dropping their tails through a process called autotomy? That isn't what happened here."
 
 //Removed a reference to lizard wine, which doesn't really exist anymore.
-/obj/item/organ/external/tail/lizard/fake
+/obj/item/organ/tail/lizard/fake
 	desc = "A fabricated severed lizard tail. This one's made of synthflesh. Someone out there might whine about the distinction."
 
 //These two used the fashy meme you'd expect.

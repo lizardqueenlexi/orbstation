@@ -1,5 +1,5 @@
 // SNOUT
-/obj/item/organ/external/snout_rat
+/obj/item/organ/snout_rat
 	name = "ratfolk snout"
 	desc = "Take a closer look at that snout!"
 	icon_state = "snout"
@@ -12,6 +12,8 @@
 	dna_block = DNA_RAT_SNOUT_BLOCK
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/snout_rat
+
+	organ_flags = parent_type::organ_flags | ORGAN_EXTERNAL
 
 /datum/bodypart_overlay/mutant/snout_rat
 	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
@@ -35,7 +37,7 @@
 
 // TAIL
 
-/obj/item/organ/external/tail/ratfolk
+/obj/item/organ/tail/ratfolk
 	name = "ratfolk tail"
 	desc = "A severed rat tail."
 	preference = "feature_rat_tail"

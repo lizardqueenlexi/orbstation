@@ -375,7 +375,7 @@
 	name = "autosurgeon"
 	desc = "A single use autosurgeon that contains a preserved rush gland. A screwdriver can be used to remove it, but implants can't be placed back in."
 	uses = 1
-	starting_organ = /obj/item/organ/internal/monster_core/rush_gland/preserved
+	starting_organ = /obj/item/organ/monster_core/rush_gland/preserved
 
 /// An autosurgeon containing a ratfolk stomach. This will decay, so hopefully they use it quickly.
 /obj/item/autosurgeon/rat_stomach
@@ -383,18 +383,18 @@
 	desc = "A single use autosurgeon that contains a fresh ratfolk stomach. A screwdriver can be used to remove it, but implants can't be placed back in. \
 		Use it quickly, as it is not immune to decay."
 	uses = 1
-	starting_organ = /obj/item/organ/internal/stomach/ratfolk
+	starting_organ = /obj/item/organ/stomach/ratfolk
 
 // Pre-preserved monster organs, to ensure they don't decay before use
-/obj/item/organ/internal/monster_core/rush_gland/preserved/Initialize(mapload)
+/obj/item/organ/monster_core/rush_gland/preserved/Initialize(mapload)
 	. = ..()
 	preserve()
 
-/obj/item/organ/internal/monster_core/regenerative_core/legion/preserved/Initialize(mapload)
+/obj/item/organ/monster_core/regenerative_core/legion/preserved/Initialize(mapload)
 	. = ..()
 	preserve()
 
-/obj/item/organ/internal/monster_core/brimdust_sac/preserved/Initialize(mapload)
+/obj/item/organ/monster_core/brimdust_sac/preserved/Initialize(mapload)
 	. = ..()
 	preserve()
 

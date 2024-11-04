@@ -4,7 +4,7 @@
 	if(brain && HAS_TRAIT(brain, TRAIT_XCARD_BORG_IMMUNE))
 		. += span_notice("This brain is not compatible with cyborg technology.")
 
-/obj/item/organ/internal/brain/examine(mob/user)
+/obj/item/organ/brain/examine(mob/user)
 	. = ..()
 	if(HAS_TRAIT(src, TRAIT_XCARD_BORG_IMMUNE))
 		. += span_notice("This brain is not compatible with cyborg technology.")
