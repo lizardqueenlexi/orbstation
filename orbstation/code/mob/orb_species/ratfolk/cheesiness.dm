@@ -13,7 +13,6 @@
 	name = "glass of cheese sauce"
 	desc = "Rats can't get enough of the stuff!"
 	icon = 'icons/obj/drinks/drinks.dmi'
-	icon_state = "glass_yellow"
 
 /obj/item/food/cheese
 	/// Amount of cheese reagent that will be added to a person after eating the food.

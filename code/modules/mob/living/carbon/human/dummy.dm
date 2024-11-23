@@ -119,6 +119,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["tail_lizard"] = get_consistent_feature_entry(SSaccessories.tails_list_lizard)
 	target.dna.features["tail_monkey"] = get_consistent_feature_entry(SSaccessories.tails_list_monkey)
 	target.dna.features["pod_hair"] = get_consistent_feature_entry(SSaccessories.pod_hair_list)
+	target.dna.features["caps"] = get_consistent_feature_entry(SSaccessories.caps_list)
 
 	// ORBSTATION
 	target.dna.features["rat_snout"] = get_consistent_feature_entry(SSaccessories.rat_snouts_list)
