@@ -8,7 +8,7 @@
 	icon_state = "wizards_den"
 	static_lighting = TRUE
 	requires_power = FALSE
-	has_gravity = STANDARD_GRAVITY
+	default_gravity = STANDARD_GRAVITY
 	area_flags = UNIQUE_AREA | NOTELEPORT
 	flags_1 = NONE
 

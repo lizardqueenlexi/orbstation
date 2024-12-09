@@ -35,7 +35,7 @@
 	RegisterSignal(src, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, PROC_REF(on_atom_inited))
 	AddElement(/datum/element/watery_tile)
 	if(!isnull(fishing_datum))
-		AddElement(/datum/element/lazy_fishing_spot, fishing_datum)
+		add_lazy_fishing(fishing_datum)
 	ADD_TRAIT(src, TRAIT_CATCH_AND_RELEASE, INNATE_TRAIT)
 
 ///We lazily add the immerse element when something is spawned or crosses this turf and not before.
@@ -92,6 +92,7 @@
 	icon_state = "tizira_water"
 	base_icon_state = "tizira_water"
 	baseturfs = /turf/open/water/beach/tizira
+	fishing_datum = /datum/fish_source/tizira
 
 /**
  * A special subtype of water with steam particles and a status effect similar to showers, that's however only applied if
