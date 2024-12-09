@@ -1,5 +1,5 @@
 //sets moth to the correct color
-/datum/species/moth/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load, pref_load, regenerate_icons)
+/datum/species/moth/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	if(!ishuman(C))
 		return
