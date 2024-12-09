@@ -14,7 +14,7 @@
 /datum/preference/choiced/pod_blood/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["pod_blood"] = value
 
-/datum/species/pod/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
+/datum/species/pod/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load, regenerate_icons)
 	var/value = C.dna?.features?["pod_blood"]
 	if(value == "Water")
 		exotic_blood = /datum/reagent/water

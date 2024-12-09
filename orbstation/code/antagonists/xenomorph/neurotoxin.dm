@@ -16,6 +16,7 @@
 
 /// Deals stamina damage on application and more over time
 /datum/status_effect/xeno_neurotoxin
+	id = "xeno_neurotoxined"
 	duration = 6 SECONDS
 	status_type = STATUS_EFFECT_REFRESH
 	alert_type = /atom/movable/screen/alert/status_effect/xeno_neurotoxin

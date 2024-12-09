@@ -43,31 +43,7 @@
 	)
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
 
-/datum/species/jelly/get_species_description()
-	return "A relatively new race of sentient, humanoid slimes. \
-		The jellypeople are insatiably curious and yet to form a cultural identity of their own."
-
-/datum/species/jelly/get_species_lore()
-	return list(
-		"For years, jellypeople were little more than a scientific curiosity. \
-		Occasionally some crazed xenobiologist would turn their flesh into jelly in some distant research outpost. \
-		More rarely, one of the slimes they studied would show signs of sapience and — \
-		mimicking those around them — would eventually take on a humanoid appearance.",
-
-		"However, as human contact with slimes continues to increase, \
-		a second generation of jellypeople has slowly emerged: \
-		neither transformed scientist, nor ascended ooze, but carrying the slimy blood of both. \
-		This new lineage of jellypeople is cautiously but eagerly spreading across the galaxy.",
-
-		"Genial and intensely curious about the universe they've found themselves in, \
-		the members of this nascent species restlessly seek out new places, new people, and new experiences. \
-		They're drawn equally to bustling urban centers and to the far-off frontiers of space.",
-
-		"Desperately seeking a place in the cosmos, jellyperson culture appears, to the outsider, wildly inconsistent — \
-		the result of a thousand different cultural movements as they scramble for collective meaning." // thanks to mabel for this paragraph
-)
-
-/datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load)
+/datum/species/jelly/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	if(ishuman(new_jellyperson))
 		regenerate_limbs = new
@@ -233,7 +209,7 @@
 	UnregisterSignal(C, COMSIG_LIVING_DEATH)
 	..()
 
-/datum/species/jelly/slime/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/jelly/slime/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load, regenerate_icons)
 	..()
 	if(ishuman(C))
 		slime_split = new
@@ -535,7 +511,7 @@
 	QDEL_LIST(luminescent_actions)
 	return ..()
 
-/datum/species/jelly/luminescent/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species)
+/datum/species/jelly/luminescent/on_species_gain(mob/living/carbon/new_jellyperson, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	glow = new_jellyperson.mob_light(light_type = /obj/effect/dummy/lighting_obj/moblight/species)
 	update_glow(new_jellyperson)
@@ -701,7 +677,7 @@
 	return "Stargazers can link others' minds with their own, creating a private communication channel. \
 		Most things that are toxic heal them, but most things that prevent toxicity damage them!"
 
-/datum/species/jelly/stargazer/on_species_gain(mob/living/carbon/grant_to, datum/species/old_species)
+/datum/species/jelly/stargazer/on_species_gain(mob/living/carbon/grant_to, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	project_action = new(src)
 	project_action.Grant(grant_to)

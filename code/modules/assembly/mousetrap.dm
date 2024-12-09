@@ -122,31 +122,30 @@
 		switch(type)
 			if("feet") //ORBSTATION: This whole block had to be changed to give digitigrade legs immunity to mousetraps.
 				if(victim.shoes)
-					to_chat(victim, span_notice("Your [victim.shoes] protects you from [src]."))
+					to_chat(victim, span_notice("Your [victim.shoes-name] protects you from [src]."))
 				else
-					affecting = victim.get_bodypart(pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG))
+					affecting = victim.get_bodypart(pick(GLOB.leg_zones))
 					if(IS_DIGITIGRADE_LIMB(affecting))
 						affecting = null
 						to_chat(victim, span_notice("Your digitigrade legs protect you from [src]."))
 					else
-						victim.Paralyze(60)
+						victim.Paralyze(6 SECONDS)
 			//END ORBSTATION
 			if(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
 				if(!victim.gloves)
 					affecting = victim.get_bodypart(type)
-					victim.Stun(60)
+					victim.Stun(6 SECONDS)
 				else
-					to_chat(victim, span_notice("Your [victim.gloves] protects you from [src]."))
+					to_chat(victim, span_notice("Your [victim.gloves.name] protects you from [src]."))
 		if(affecting)
-			if(affecting.receive_damage(1, 0))
-				victim.update_damage_overlays()
+			victim.apply_damage(1, BRUTE, affecting, wound_bonus = CANT_WOUND)
 	else if(ismouse(target))
 		var/mob/living/basic/mouse/splatted = target
-		visible_message(span_boldannounce("SPLAT!"))
+		visible_message(span_bolddanger("SPLAT!"))
 		splatted.splat() // mousetraps are instadeath for mice
 
 	else if(isregalrat(target))
-		visible_message(span_boldannounce("Skreeeee!")) //He's simply too large to be affected by a tiny mouse trap.
+		visible_message(span_bolddanger("Skreeeee!")) //He's simply too large to be affected by a tiny mouse trap.
 
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	pulse()
