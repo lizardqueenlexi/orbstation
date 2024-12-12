@@ -6,7 +6,7 @@
 	/// Stored facial hair color for when the species is removed.
 	var/old_facehair_color
 
-/datum/species/lizard/silverscale/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/lizard/silverscale/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load, regenerate_icons)
 	..()
 	var/mob/living/carbon/human/new_silverscale = C
 	old_facehair_color = new_silverscale.facial_hair_color
