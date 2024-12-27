@@ -15,6 +15,7 @@
 
 	return .
 
+/// Blocks displaying flavour text in specific cases
 /mob/living/carbon/proc/block_flavour_text()
 	var/obj/item/bodypart/our_head = get_bodypart(BODY_ZONE_HEAD)
 	if(isnull(our_head) || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || (our_head.brutestate + our_head.burnstate) > 2 || !real_name || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN))
