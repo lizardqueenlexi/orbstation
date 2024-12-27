@@ -161,26 +161,19 @@
 #define rustg_git_revparse(rev) RUSTG_CALL(RUST_G, "rg_git_revparse")(rev)
 
 /**
- * Returns the date of the given revision in the format YYYY-MM-DD.
- * Returns null if the revision is invalid.
+ * Returns the date of the given revision using the provided format.
+ * Defaults to returning %F which is YYYY-MM-DD.
  */
-#define rustg_git_commit_date(rev) RUSTG_CALL(RUST_G, "rg_git_commit_date")(rev)
+/proc/rustg_git_commit_date(rev, format = "%F")
+	return RUSTG_CALL(RUST_G, "rg_git_commit_date")(rev, format)
 
-#define rustg_hash_string(algorithm, text) call(RUST_G, "hash_string")(algorithm, text)
-#define rustg_hash_file(algorithm, fname) call(RUST_G, "hash_file")(algorithm, fname)
-#define rustg_hash_generate_totp(seed) call(RUST_G, "generate_totp")(seed)
-#define rustg_hash_generate_totp_tolerance(seed, tolerance) call(RUST_G, "generate_totp_tolerance")(seed, tolerance)
-
-#define RUSTG_HASH_MD5 "md5"
-#define RUSTG_HASH_SHA1 "sha1"
-#define RUSTG_HASH_SHA256 "sha256"
-#define RUSTG_HASH_SHA512 "sha512"
-#define RUSTG_HASH_XXH64 "xxh64"
-#define RUSTG_HASH_BASE64 "base64"
-
-#ifdef RUSTG_OVERRIDE_BUILTINS
-	#define md5(thing) (isfile(thing) ? rustg_hash_file(RUSTG_HASH_MD5, "[thing]") : rustg_hash_string(RUSTG_HASH_MD5, thing))
-#endif
+/**
+ * Returns the formatted datetime string of HEAD using the provided format.
+ * Defaults to returning %F which is YYYY-MM-DD.
+ * This is different to rustg_git_commit_date because it only needs the logs directory.
+ */
+/proc/rustg_git_commit_date_head(format = "%F")
+	return RUSTG_CALL(RUST_G, "rg_git_commit_date_head")(format)
 
 #define RUSTG_HTTP_METHOD_GET "get"
 #define RUSTG_HTTP_METHOD_PUT "put"
@@ -202,6 +195,20 @@
 /proc/rustg_log_close_all() return RUSTG_CALL(RUST_G, "log_close_all")()
 
 #define rustg_noise_get_at_coordinates(seed, x, y) RUSTG_CALL(RUST_G, "noise_get_at_coordinates")(seed, x, y)
+
+/**
+ * Generates a 2D poisson disk distribution ('blue noise'), which is relatively uniform.
+ *
+ * params:
+ * 	`seed`: str
+ * 	`width`: int, width of the noisemap (see world.maxx)
+ * 	`length`: int, height of the noisemap (see world.maxy)
+ * 	`radius`: int, distance between points on the noisemap
+ *
+ * returns:
+ * 	a width*length length string of 1s and 0s representing a 2D poisson sample collapsed into a 1D string
+ */
+#define rustg_noise_poisson_map(seed, width, length, radius) RUSTG_CALL(RUST_G, "noise_poisson_map")(seed, width, length, radius)
 
 /*
  * Takes in a string and json_encode()"d lists to produce a sanitized string.
@@ -254,20 +261,45 @@
 	#define url_decode(text) rustg_url_decode(text)
 #endif
 
+/// Provided a static RSC file path or a raw text file path, returns the duration of the file in deciseconds as a float.
+/proc/rustg_sound_length(file_path)
+	var/static/list/sound_cache
+	if(isnull(sound_cache))
+		sound_cache = list()
+
+	. = 0
+
+	if(!istext(file_path))
+		if(!isfile(file_path))
+			CRASH("rustg_sound_length error: Passed non-text object")
+
+		if(length("[file_path]")) // Runtime generated RSC references stringify into 0-length strings.
+			file_path = "[file_path]"
+		else
+			CRASH("rustg_sound_length does not support non-static file refs.")
+
+	var/cached_length = sound_cache[file_path]
+	if(!isnull(cached_length))
+		return cached_length
+
+	var/ret = RUSTG_CALL(RUST_G, "sound_len")(file_path)
+	var/as_num = text2num(ret)
+	if(isnull(ret))
+		. = 0
+		CRASH("rustg_sound_length error: [ret]")
+
+	sound_cache[file_path] = as_num
+	return as_num
+
+
+#define RUSTG_SOUNDLEN_SUCCESSES "successes"
+#define RUSTG_SOUNDLEN_ERRORS "errors"
 /**
- * This proc generates a noise grid using worley noise algorithm
- *
- * Returns a single string that goes row by row, with values of 1 representing an alive cell, and a value of 0 representing a dead cell.
- *
- * Arguments:
- * * region_size: The size of regions
- * * threshold: the value that determines wether a cell is dead or alive
- * * node_per_region_chance: chance of a node existiing in a region
- * * size: size of the returned grid
- * * node_min: minimum amount of nodes in a region (after the node_per_region_chance is applied)
- * * node_max: maximum amount of nodes in a region
- */
-#define rustg_worley_generate(region_size, threshold, node_per_region_chance, size, node_min, node_max) \
-	call(RUST_G, "worley_generate")(region_size, threshold, node_per_region_chance, size, node_min, node_max)
-
-
+ * Returns a nested key-value list containing "successes" and "errors"
+ * The format is as follows:
+ * list(
+ *  RUSTG_SOUNDLEN_SUCCESES = list("sounds/test.ogg" = 25.34),
+ *  RUSTG_SOUNDLEN_ERRORS = list("sound/bad.png" = "SoundLen: Unable to decode file."),
+ *)
+*/
+#define rustg_sound_length_list(file_paths) json_decode(RUSTG_CALL(RUST_G, "sound_len_list")(json_encode(file_paths)))
