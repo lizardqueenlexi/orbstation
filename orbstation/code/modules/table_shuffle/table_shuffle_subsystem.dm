@@ -247,7 +247,7 @@ SUBSYSTEM_DEF(table_shuffle)
 		for(var/obj/machinery/vending/vendor in vending)
 			var/list/candidate_products = list()
 			for(var/datum/data/vending_product/candy in vendor.product_records)
-				if((candy.amount == 0) || (candy.custom_price > vender_budget) || !prob(prob_max)) continue
+				if((candy.amount == 0) || (candy.price > vender_budget) || !prob(prob_max)) continue
 				candidate_products += candy
 
 			while(candidate_products.len && prob(vend_prob))
