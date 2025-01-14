@@ -72,7 +72,6 @@
 	balloon_alert(user, "gps activated")
 	ADD_TRAIT(user, TRAIT_MULTIZ_SUIT_SENSORS, REF(src))
 	gps_enabled = TRUE
-	RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(send_death_alert)) // Orbstation
 
 /// Disables the GPS and removes the multiz trait
 /obj/item/kheiral_cuffs/proc/remove_kheiral_network(mob/user)
@@ -100,12 +99,6 @@
 		far_from_home = TRUE
 		if(isliving(loc))
 			connect_kheiral_network(loc)
-
-/// Orbstation: Registered to the COMSIG_LIVING_DEATH signal. Sends out an alert over alert_channels when the wearer dies.
-/obj/item/kheiral_cuffs/proc/send_death_alert(mob/living/wearer, gibbed)
-	var/area/location = get_area(wearer)
-	for(var/radio_channel as anything in alert_channels)
-		radio.talk_into(src, "Mining alert! [wearer ? wearer : "Someone"] has [gibbed ? "had their body destroyed" : "died"] at [location ? location : "an unknown location"]!", radio_channel)
 
 /obj/item/kheiral_cuffs/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
