@@ -36,26 +36,31 @@
 	ETHEREAL_PENALTY_PARAPLEGIA = new /datum/ethereal_penalty/paraplegia("You collapse forwards out of the crystal, you can't take much more of this!"),)
 
 /obj/item/organ/heart/ethereal
+///Keeps track of the amount of death we suffered
 	var/respawn_count = 0
 
 /obj/structure/ethereal_crystal/heal_ethereal()
-	var/mob/living/ethereal = ethereal_heart.owner
-	if (!ethereal)
+	var/mob/living/carbon/regenerating = ethereal_heart.owner
+	if (!regenerating)
 		playsound(get_turf(src), 'sound/mobs/humanoids/ethereal/ethereal_revive.ogg', 100)
 		qdel(src)
 		return
-	ethereal_heart.owner.revive(HEAL_ALL)
-	ethereal_heart = ethereal.get_organ_slot(ORGAN_SLOT_HEART)
+
+	playsound(get_turf(regenerating), 'sound/mobs/humanoids/ethereal/ethereal_revive.ogg', 100)
+	regenerating.revive(HEAL_ALL & ~HEAL_REFRESH_ORGANS)
+
+	ethereal_heart = regenerating.get_organ_slot(ORGAN_SLOT_HEART)
 	if (!(prob(90) && apply_new_penalty()))
-		to_chat(ethereal_heart.owner, span_notice("[notify_player_consequences()]"))
+		to_chat(regenerating, span_notice("[notify_player_consequences()]"))
 
 	if (ethereal_heart.respawn_count >= ETHEREAL_PENALTY_CLUMSY)
-		ethereal_heart.owner.Paralyze(5 SECONDS)
+		regenerating.Paralyze(5 SECONDS)
 
 	var/random_trauma = pick(GLOB.orb_mysterious_brain_traumas)
-	ethereal_heart.owner.gain_trauma(random_trauma, TRAUMA_RESILIENCE_SURGERY)
-	playsound(get_turf(ethereal_heart.owner), 'sound/mobs/humanoids/ethereal/ethereal_revive.ogg', 100)
-	qdel(src)
+	regenerating.gain_trauma(random_trauma, TRAUMA_RESILIENCE_SURGERY)
+
+	if(!QDELETED(src))
+		qdel(src)
 
 /**
  * Tries to apply a new penalty from our list of penalties.
