@@ -4,6 +4,8 @@
 
 // Shifted to glob so they are generated at world start instead of risking players doing preference stuff before the subsystem inits
 GLOBAL_LIST_INIT_TYPED(quirk_blacklist, /list/datum/quirk, list(
+	list(/datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/nearsighted),
+	list(/datum/quirk/item_quirk/blindness, /datum/quirk/item_quirk/scarred_eye),
 	list(/datum/quirk/mute, /datum/quirk/robot_voice), //ORBSTATION
 	list(/datum/quirk/item_quirk/farsighted, /datum/quirk/illiterate), //ORBSTATION
 	list(/datum/quirk/item_quirk/blindness, /datum/quirk/door_closer), //ORBSTATION

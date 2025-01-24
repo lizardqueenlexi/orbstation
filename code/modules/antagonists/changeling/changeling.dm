@@ -534,7 +534,7 @@
 	new_profile.age = target.age
 	new_profile.physique = target.physique
 	new_profile.athletics_level = target.mind?.get_skill_level(/datum/skill/athletics) || SKILL_LEVEL_NONE
-	new_profile.height = target.get_mob_height() //ORBSTATION EDIT
+	new_profile.height = target.mob_height //ORBSTATION EDIT
 
 	// Grab the target's quirks.
 	for(var/datum/quirk/target_quirk as anything in target.quirks)

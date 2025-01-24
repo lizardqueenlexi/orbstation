@@ -54,7 +54,7 @@
 		return SURGERY_STEP_FAIL
 	if(implement_type in implements_shorten)
 		current_type = "shorten"
-		if(human_target.get_mob_height() <= HUMAN_HEIGHT_SHORTEST)
+		if(human_target.mob_height <= HUMAN_HEIGHT_SHORTEST)
 			to_chat(user, span_warning("You don't think you can make [target] any shorter..."))
 			return SURGERY_STEP_FAIL
 		display_results(
@@ -67,7 +67,7 @@
 		display_pain(target, "Your [parse_zone(user.zone_selected)] aches with pain!")
 	else
 		current_type = "lengthen"
-		if(human_target.get_mob_height() >= HUMAN_HEIGHT_TALLEST)
+		if(human_target.mob_height >= HUMAN_HEIGHT_TALLEST)
 			to_chat(user, span_warning("You don't think you can make [target] any taller..."))
 			return SURGERY_STEP_FAIL
 		display_results(
@@ -89,7 +89,7 @@
 			span_notice("[user] lengthens [target]'s spine!"),
 			span_notice("[user] lengthens [target]'s spine!"),
 		)
-		human_target.set_mob_height(human_target.get_mob_height()+2) //each height is 2 values apart, so this raises height by one step
+		human_target.set_mob_height(human_target.mob_height+2) //each height is 2 values apart, so this raises height by one step
 	else if(current_type == "shorten")
 		display_results(
 			user,
@@ -98,7 +98,7 @@
 			span_notice("[user] shortens [target]'s spine!"),
 			span_notice("[user] shortens [target]'s spine!"),
 		)
-		human_target.set_mob_height(human_target.get_mob_height()-2)
+		human_target.set_mob_height(human_target.mob_height-2)
 	return ..()
 
 /datum/surgery_step/manipulate_spine/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, fail_prob = 0)
