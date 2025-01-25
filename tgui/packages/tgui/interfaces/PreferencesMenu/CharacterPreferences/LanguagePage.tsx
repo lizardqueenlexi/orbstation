@@ -1,6 +1,6 @@
+import { useBackend } from 'tgui/backend';
 import { Box, Button, Section, Stack } from 'tgui-core/components';
 
-import { useBackend } from 'tgui/backend';
 import { PreferencesMenuData } from '../types';
 
 export const KnownLanguage = (props) => {

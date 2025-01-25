@@ -7,11 +7,11 @@ import { PageButton } from '../components/PageButton';
 import { PreferencesMenuData } from '../types';
 import { AntagsPage } from './AntagsPage';
 import { JobsPage } from './JobsPage';
+import { LanguagePage } from './LanguagePage';
 import { LoadoutPage } from './loadout';
 import { MainPage } from './MainPage';
 import { QuirksPage } from './QuirksPage';
 import { SpeciesPage } from './SpeciesPage';
-import { LanguagePage } from './LanguagePage'; //Orbstation addition
 
 enum Page {
   Antags,
@@ -20,7 +20,7 @@ enum Page {
   Species,
   Quirks,
   Loadout,
-  Languages, //ORBSTATION ADDITION
+  Languages,
 }
 
 type ProfileProps = {

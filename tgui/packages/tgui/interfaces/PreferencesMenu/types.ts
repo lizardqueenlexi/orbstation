@@ -12,6 +12,7 @@ export enum Food {
   Breakfast = 'BREAKFAST',
   Bugs = 'BUGS',
   Cloth = 'CLOTH',
+  Cucumber = 'CUCUMBER',
   Dairy = 'DAIRY',
   Fried = 'FRIED',
   Fruit = 'FRUIT',
@@ -97,8 +98,6 @@ export type QuirkInfo = {
   quirk_blacklist: string[][];
   points_enabled: boolean;
 };
-
-// ORBSTATION ADDITIONS START
 
 export type Language = {
   description: string;
@@ -187,13 +186,13 @@ export type PreferencesMenuData = {
   antag_days_left?: Record<string, number>;
   selected_antags: string[];
 
-  biggest_head: Record<string, JobPriority>; ///ORBSTATION addition
-  department_counts: Record<string, number>; ///ORBSTATION addition
-  department_high: Record<string, number>; ///ORBSTATION addition
+  biggest_head: Record<string, JobPriority>;
+  department_counts: Record<string, number>;
+  department_high: Record<string, number>;
 
-  selected_languages: Language[]; ///ORBSTATION addition
-  unselected_languages: Language[]; ///ORBSTATION addition
-  total_language_points: number; ///ORBSTATION addition
+  selected_languages: Language[];
+  unselected_languages: Language[];
+  total_language_points: number;
 
   active_slot: number;
   name_to_use: string;
