@@ -11,7 +11,6 @@ GLOBAL_LIST_INIT(orb_mysterious_brain_traumas, list(
 		/datum/brain_trauma/special/death_whispers,
 		/datum/brain_trauma/special/existential_crisis,
 		/datum/brain_trauma/special/tenacity,
-		/datum/brain_trauma/special/psychotic_brawling,
 		/datum/brain_trauma/severe/hypnotic_trigger/random,
 ))
 
