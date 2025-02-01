@@ -120,17 +120,18 @@
 			pulse()
 			return FALSE
 		switch(type)
-			if("feet") //ORBSTATION: This whole block had to be changed to give digitigrade legs immunity to mousetraps.
-				if(victim.shoes)
-					to_chat(victim, span_notice("Your [victim.shoes-name] protects you from [src]."))
-				else
+			if("feet")
+				if(!victim.shoes)
 					affecting = victim.get_bodypart(pick(GLOB.leg_zones))
+					//ORBSTATION: Digitigrade legs are immune to mousetraps.
 					if(IS_DIGITIGRADE_LIMB(affecting))
 						affecting = null
 						to_chat(victim, span_notice("Your digitigrade legs protect you from [src]."))
 					else
 						victim.Paralyze(6 SECONDS)
-			//END ORBSTATION
+					//ORBSTATION EDIT END
+				else
+					to_chat(victim, span_notice("Your [victim.shoes.name] protects you from [src]."))
 			if(BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND)
 				if(!victim.gloves)
 					affecting = victim.get_bodypart(type)
