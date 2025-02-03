@@ -100,6 +100,11 @@
 ///the motherfucker who tipped us
 #define BB_BASIC_MOB_TIPPER "BB_basic_tip_tipper"
 
+/// Are we sus?
+#define BB_AMOUNG_IMPOSTOR "BB_amoung_impostor"
+/// Don't spend too much time trying to get in those things
+#define BB_AMOUNG_VENTCRAWL_COOLDOWN "BB_amoung_vent_sus"
+
 /// Is there something that scared us into being stationary? If so, hold the reference here
 #define BB_STATIONARY_CAUSE "BB_thing_that_made_us_stationary"
 ///How long should we remain stationary for?
