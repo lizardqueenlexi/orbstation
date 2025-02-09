@@ -1,3 +1,7 @@
+/datum/quirk
+	///ORBSTATION: if true, this quirk will be displayed in the x-card section of the quirk list
+	var/xcard_quirk = FALSE
+
 //quirk subtype for x-card, prevents having to manually flag quirks as an x-card quirk
 /datum/quirk/xcard
 	xcard_quirk = TRUE
