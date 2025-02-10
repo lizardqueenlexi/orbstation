@@ -97,9 +97,6 @@
 	melee_damage_lower += 10
 	melee_damage_upper += 15
 
-/mob/living/basic/amoung/death(gibbed)
-	. = ..()
-
 /mob/living/basic/amoung/bee_friendly()
 	return TRUE //why not lol
 

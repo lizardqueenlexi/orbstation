@@ -76,4 +76,3 @@
 	clear_movement_target()
 	if (!succeeded)
 		controller.set_blackboard_key(BB_AMOUNG_VENTCRAWL_COOLDOWN, world.time + 3 MINUTES)
-		to_chat(world, "ok we should have stopped?")
