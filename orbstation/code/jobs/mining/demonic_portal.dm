@@ -74,3 +74,6 @@
 				/obj/item/gun/magic/wand/babel,)
 			var/picked_type = pick(funny_wands)
 			new picked_type(loc)
+		if(29)
+			new /obj/item/clothing/gloves/fingerless/punch_mitts(loc)
+			new /obj/item/clothing/head/cowboy(loc)
