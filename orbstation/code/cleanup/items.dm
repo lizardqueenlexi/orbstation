@@ -108,6 +108,8 @@
 
 /obj/structure/sign/poster/contraband/random
 	blacklisted_types = list(
+		/obj/structure/sign/poster/traitor,
+		/obj/structure/sign/poster/abductor,
 		/obj/structure/sign/poster/contraband/got_wood,
 		/obj/structure/sign/poster/contraband/free_tonto,
 	)
