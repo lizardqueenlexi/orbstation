@@ -16,10 +16,6 @@
 /obj/item/reagent_containers/pill/sansufentanyl
 	desc = "Used to treat Causality Degradation Syndrome. Temporary side effects include - nausea, dizziness, impaired motor coordination."
 
-// Removing the traitor objective related
-/datum/traitor_objective/target_player/infect
-	progression_maximum = 0 MINUTES //cannot be rolled, ever
-
 // If the injector is somehow acquired, it will not infect the target with HMS.
 /obj/item/reagent_containers/hypospray/medipen/manifoldinjector/attack(mob/living/affected_mob, mob/living/carbon/human/user)
 	inject(affected_mob, user)
