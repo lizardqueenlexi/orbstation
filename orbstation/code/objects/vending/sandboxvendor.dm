@@ -20,7 +20,7 @@
 				/obj/item/scrying = 999,
 				/obj/item/card/id/advanced/gold/captains_spare = 999,
 				/obj/item/storage/backpack/holding = 999,
-				/obj/item/storage/box/material = 999,
+				/obj/item/storage/bag/sheetsnatcher/debug = 999,
 				/obj/item/storage/box/other_material = 999,
 				/obj/item/stock_parts/power_store/cell/infinite = 999,
 				/obj/item/toy/balloon/corgi = 999,
