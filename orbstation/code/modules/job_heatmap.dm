@@ -29,7 +29,7 @@
 			if (priority == 0)
 				continue
 			var/datum/job/job_details = get_job(job)
-			if(!job)
+			if(!job_details)
 				continue
 			if (!job_details.departments_list)
 				continue
