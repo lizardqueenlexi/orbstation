@@ -35,7 +35,7 @@
 		moth_base.blend_icon(eyes, ICON_OVERLAY)
 
 		moth_base.scale(64, 64)
-		moth_base.crop(15, 64, 15 + 31, 64 - 31)
+		moth_base.crop(15, 64 - 31, 15 + 31, 64)
 
 	var/datum/universal_icon/icon = moth_base.copy()
 	icon.blend_color(GLOB.color_list_moth[value], ICON_MULTIPLY)
