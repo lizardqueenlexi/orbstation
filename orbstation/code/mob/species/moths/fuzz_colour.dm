@@ -14,29 +14,31 @@
 	main_feature_name = "Fuzz color"
 	should_generate_icons = TRUE
 
+/datum/preference/choiced/moth_color/has_relevant_feature(datum/preferences/preferences)
+	// tied directly to species
+	return current_species_has_savekey(preferences)
+
 /datum/preference/choiced/moth_color/init_possible_values()
 	return assoc_to_keys(GLOB.color_list_moth)
 
-
 /datum/preference/choiced/moth_color/icon_for(value)
 	var/static/datum/universal_icon/moth_base
-
 	if (isnull(moth_base))
 		moth_base = uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_head")
 		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_chest_m"), ICON_OVERLAY)
 		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_l_arm"), ICON_OVERLAY)
 		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_r_arm"), ICON_OVERLAY)
 
-		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "motheyes")
+		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "motheyes_white_l")
+		eyes.blend_icon(uni_icon('icons/mob/human/human_face.dmi', "motheyes_white_r"), ICON_OVERLAY)
 		eyes.blend_color(COLOR_BLACK, ICON_MULTIPLY)
 		moth_base.blend_icon(eyes, ICON_OVERLAY)
 
 		moth_base.scale(64, 64)
 		moth_base.crop(15, 64, 15 + 31, 64 - 31)
 
-	var/datum/universal_icon/icon = new(moth_base)
+	var/datum/universal_icon/icon = moth_base.copy()
 	icon.blend_color(GLOB.color_list_moth[value], ICON_MULTIPLY)
-
 	return icon
 
 /datum/preference/choiced/moth_color/apply_to_human(mob/living/carbon/human/target, value)
