@@ -271,7 +271,7 @@
 
 	if(!is_listed)
 		ckey_list += user.ckey
-	newcarp.key = user.key
+	newcarp.PossessByPlayer(user.key)
 	newcarp.set_name()
 	on_spawned(newcarp)
 	dragon?.carp += newcarp.mind

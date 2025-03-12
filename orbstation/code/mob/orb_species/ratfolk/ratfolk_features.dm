@@ -17,29 +17,28 @@
 	target.dna.features["rat_snout"] = value
 
 /proc/generate_ratfolk_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
-	var/static/icon/rat
-	var/static/icon/rat_with_snout
+	var/static/datum/universal_icon/rat
+	var/static/datum/universal_icon/rat_with_snout
 
 	if (isnull(rat))
-		rat = icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head", EAST)
-		var/icon/eyes = icon('icons/mob/human/human_face.dmi', "eyes", EAST)
-		eyes.Blend(COLOR_GRAY, ICON_MULTIPLY)
-		rat.Blend(eyes, ICON_OVERLAY)
+		rat = uni_icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head", EAST)
+		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "eyes", EAST)
+		eyes.blend_color(COLOR_GRAY, ICON_MULTIPLY)
+		rat.blend_icon(eyes, ICON_OVERLAY)
 
-	if (include_snout)
-		rat_with_snout = icon(rat)
-		rat.Blend(icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "m_rat_snout_round_ADJ", EAST), ICON_OVERLAY)
+		rat_with_snout = rat.copy()
+		rat.blend_icon(uni_icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "m_rat_snout_round_ADJ", EAST), ICON_OVERLAY)
 
-	var/icon/final_icon = include_snout ? icon(rat_with_snout) : icon(rat)
+	var/datum/universal_icon/final_icon = include_snout ? rat_with_snout.copy() : rat.copy()
 
 	if (!isnull(sprite_accessory))
 		var/sprite_suffix = key == "rat_ears" ? "FRONT" : "ADJ"
-		var/icon/accessory_icon = icon(sprite_accessory.icon, "m_[key]_[sprite_accessory.icon_state]_[sprite_suffix]", EAST)
-		final_icon.Blend(accessory_icon, ICON_OVERLAY)
+		var/datum/universal_icon/accessory_icon = uni_icon(sprite_accessory.icon, "m_[key]_[sprite_accessory.icon_state]_[sprite_suffix]", EAST)
+		final_icon.blend_icon(accessory_icon, ICON_OVERLAY)
 
-	final_icon.Crop(11, 20, 23, 32)
-	final_icon.Scale(32, 32)
-	final_icon.Blend(COLOR_DARK_BROWN, ICON_MULTIPLY)
+	final_icon.crop(11, 20, 23, 32)
+	final_icon.scale(32, 32)
+	final_icon.blend_color(COLOR_DARK_BROWN, ICON_MULTIPLY)
 
 	return final_icon
 

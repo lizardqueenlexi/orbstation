@@ -19,23 +19,23 @@
 
 
 /datum/preference/choiced/moth_color/icon_for(value)
-	var/static/icon/moth_base
+	var/static/datum/universal_icon/moth_base
 
 	if (isnull(moth_base))
-		moth_base = icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_head")
-		moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_chest_m"), ICON_OVERLAY)
-		moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_l_arm"), ICON_OVERLAY)
-		moth_base.Blend(icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_r_arm"), ICON_OVERLAY)
+		moth_base = uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_head")
+		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_chest_m"), ICON_OVERLAY)
+		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_l_arm"), ICON_OVERLAY)
+		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_r_arm"), ICON_OVERLAY)
 
-		var/icon/eyes = icon('icons/mob/human/human_face.dmi', "motheyes")
-		eyes.Blend(COLOR_BLACK, ICON_MULTIPLY)
-		moth_base.Blend(eyes, ICON_OVERLAY)
+		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "motheyes")
+		eyes.blend_color(COLOR_BLACK, ICON_MULTIPLY)
+		moth_base.blend_icon(eyes, ICON_OVERLAY)
 
-		moth_base.Scale(64, 64)
-		moth_base.Crop(15, 64, 15 + 31, 64 - 31)
+		moth_base.scale(64, 64)
+		moth_base.crop(15, 64, 15 + 31, 64 - 31)
 
-	var/icon/icon = new(moth_base)
-	icon.Blend(GLOB.color_list_moth[value], ICON_MULTIPLY)
+	var/datum/universal_icon/icon = new(moth_base)
+	icon.blend_color(GLOB.color_list_moth[value], ICON_MULTIPLY)
 
 	return icon
 

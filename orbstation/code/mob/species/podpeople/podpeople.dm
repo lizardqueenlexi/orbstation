@@ -73,4 +73,30 @@
 /datum/species/pod/sprout
 	id = SPECIES_PODPERSON_SPROUT
 	examine_limb_id = SPECIES_PODPERSON
-	heal_in_light = TRUE
+
+	bodypart_overrides = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/pod/sprout,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/pod/sprout,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/pod/sprout,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/pod/sprout,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/pod/sprout,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/pod/sprout,
+	)
+
+/obj/item/bodypart/arm/left/pod/sprout
+	bodypart_effects = null
+
+/obj/item/bodypart/arm/right/pod/sprout
+	bodypart_effects = null
+
+/obj/item/bodypart/head/pod/sprout
+	bodypart_effects = null
+
+/obj/item/bodypart/leg/left/pod/sprout
+	bodypart_effects = null
+
+/obj/item/bodypart/leg/right/pod/sprout
+	bodypart_effects = null
+
+/obj/item/bodypart/chest/pod/sprout
+	bodypart_effects = null
