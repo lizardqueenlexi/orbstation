@@ -6,6 +6,7 @@
 	category = PREFERENCE_CATEGORY_FEATURES
 	main_feature_name = "Snout"
 	should_generate_icons = TRUE
+	relevant_external_organ = /obj/item/organ/snout_rat
 
 /datum/preference/choiced/rat_snout/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.rat_snouts_list)
@@ -22,8 +23,10 @@
 
 	if (isnull(rat))
 		rat = uni_icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head", EAST)
-		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "eyes", EAST)
-		eyes.blend_color(COLOR_GRAY, ICON_MULTIPLY)
+
+		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "eyes_l")
+		eyes.blend_icon(uni_icon('icons/mob/human/human_face.dmi', "eyes_r"), ICON_OVERLAY)
+		eyes.blend_color(COLOR_BLACK, ICON_MULTIPLY)
 		rat.blend_icon(eyes, ICON_OVERLAY)
 
 		rat_with_snout = rat.copy()
