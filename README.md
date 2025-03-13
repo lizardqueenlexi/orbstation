@@ -45,7 +45,7 @@ Please note that `orbstation/master` is a copy of the `tgstation/master` branch 
 
 | Website                   | Link                                           |
 |---------------------------|------------------------------------------------|
-| Website                   | [https://www.tgstation13.org](https://www.tgstation13.org)          |
+| Website                   | [https://tgstation13.org](https://tgstation13.org)          |
 | Code                      | [https://github.com/tgstation/tgstation](https://github.com/tgstation/tgstation)    |
 | Wiki                      | [https://tgstation13.org/wiki/Main_Page](https://tgstation13.org/wiki/Main_Page)   |
 | Codedocs                  | [https://codedocs.tgstation13.org/](https://codedocs.tgstation13.org/)       |

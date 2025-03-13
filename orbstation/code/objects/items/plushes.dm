@@ -70,7 +70,7 @@
 	custom_price = 9999999
 	custom_premium_price = 9999999
 	throw_speed = 1
-	squeak_override = 'sound/effects/grillehit.ogg'
+	squeak_override = list('sound/effects/grillehit.ogg' = 1)
 
 /obj/item/toy/plush/crew/pennyplushie/premium/Initialize(mapload)
 	. = ..()

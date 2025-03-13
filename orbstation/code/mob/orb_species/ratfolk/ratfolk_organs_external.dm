@@ -22,10 +22,13 @@
 	/// We dont color the inner part, which is the front layer
 	var/colorless_layer = EXTERNAL_FRONT
 
-/datum/bodypart_overlay/mutant/snout_rat/can_draw_on_bodypart(mob/living/carbon/human/human)
-	if(!QDELETED(human) && !(human.wear_mask?.flags_inv & HIDESNOUT) && !(human.head?.flags_inv & HIDESNOUT))
+/datum/bodypart_overlay/mutant/snout_rat/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
+	var/mob/living/carbon/human/human = bodypart_owner.owner
+	if(!istype(human))
 		return TRUE
-	return FALSE
+	if((human.head?.flags_inv & HIDESNOUT) || (human.wear_mask?.flags_inv & HIDESNOUT))
+		return FALSE
+	return TRUE
 
 /datum/bodypart_overlay/mutant/snout_rat/get_global_feature_list()
 	return SSaccessories.rat_snouts_list
