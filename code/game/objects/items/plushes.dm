@@ -19,8 +19,7 @@
 	var/obj/item/toy/plush/paternal_parent //who initiated creation
 	var/obj/item/toy/plush/maternal_parent //who owns, see love()
 	var/static/list/breeding_blacklist = typecacheof(list(
-		/obj/item/toy/plush/carpplushie/dehy_carp,
-		/obj/item/toy/plush/crew,)) // ORBSTATION EDIT - added crew plushies to the blacklist
+		/obj/item/toy/plush/carpplushie/dehy_carp,))
 	var/list/scorned = list() //who the plush hates
 	var/list/scorned_by = list() //who hates the plush, to remove external references on Destroy()
 	var/heartbroken = FALSE
