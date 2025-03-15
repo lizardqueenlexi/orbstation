@@ -179,10 +179,6 @@
 		/obj/item/uplink/sandbox = 99, // Yes, infinite traitor uplinks might destroy the station, but it's for sandbox.
 		/obj/item/reagent_containers/condiment/ants = 99,
 	)
-
-	premium = list(
-		/obj/item/toy/plush/crew/pennyplushie/premium = 1,
-	)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	refill_canister = /obj/item/vending_refill/clothing // wont populate categories without this
 	default_price = 0
