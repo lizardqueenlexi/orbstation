@@ -1,5 +1,6 @@
 /// Opportunistically searches for and hides/scurries through vents.
 /datum/ai_planning_subtree/opportunistic_ventcrawler
+	var/travel_behavior = /datum/ai_behavior/travel_towards // Orb Edit: I need to be able to override this
 
 /datum/ai_planning_subtree/opportunistic_ventcrawler/SelectBehaviors(datum/ai_controller/controller, seconds_per_tick)
 	if(HAS_TRAIT(controller.pawn, TRAIT_MOVE_VENTCRAWLING))
@@ -12,7 +13,7 @@
 		return
 
 	if(get_turf(controller.pawn) != get_turf(target))
-		controller.queue_behavior(/datum/ai_behavior/travel_towards, BB_ENTRY_VENT_TARGET)
+		controller.queue_behavior(travel_behavior, BB_ENTRY_VENT_TARGET)
 		return
 
 	controller.set_blackboard_key(BB_CURRENTLY_TARGETING_VENT, TRUE)
