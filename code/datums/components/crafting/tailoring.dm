@@ -587,9 +587,7 @@
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/balloon_helmet/check_requirements(mob/user, list/collected_requirements)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_BALLOON_SUTRA))
-		return TRUE
+	return HAS_TRAIT(user, TRAIT_BALLOON_SUTRA)
 
 /datum/crafting_recipe/balloon_tophat
 	result = /obj/item/clothing/head/hats/tophat/balloon
@@ -600,9 +598,7 @@
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/balloon_tophat/check_requirements(mob/user, list/collected_requirements)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_BALLOON_SUTRA))
-		return TRUE
+	return HAS_TRAIT(user, TRAIT_BALLOON_SUTRA)
 
 /datum/crafting_recipe/balloon_vest
 	result = /obj/item/clothing/suit/armor/balloon_vest
@@ -613,9 +609,7 @@
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/balloon_vest/check_requirements(mob/user, list/collected_requirements)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_BALLOON_SUTRA))
-		return TRUE
+	return HAS_TRAIT(user, TRAIT_BALLOON_SUTRA)
 
 /datum/crafting_recipe/press_armor
 	name = "press armor vest"
