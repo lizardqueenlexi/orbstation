@@ -45,11 +45,26 @@
 /obj/item/food/tzatziki_sauce
 	foodtypes = VEGETABLES|CUCUMBER
 
+/obj/item/food/tzatziki_and_pita_bread
+	foodtypes = VEGETABLES| GRAIN | CUCUMBER
+
 /obj/item/food/vegetarian_gyro
 	foodtypes = VEGETABLES | GRAIN | CUCUMBER
+
+/obj/item/food/grilled_beef_gyro
+	foodtypes = VEGETABLES | GRAIN | MEAT | CUCUMBER
+
+/obj/item/food/futomaki_sushi_roll
+	foodtypes = MEAT|VEGETABLES|GRAIN|SEAFOOD|CUCUMBER
 
 /obj/item/food/salad/futomaki_sushi_roll
 	foodtypes = MEAT|VEGETABLES|GRAIN|SEAFOOD|CUCUMBER
 
+/obj/item/food/philadelphia_sushi_roll
+	foodtypes = VEGETABLES|GRAIN|SEAFOOD|DAIRY|CUCUMBER
+
 /obj/item/food/salad/philadelphia_sushi_roll
 	foodtypes = VEGETABLES|GRAIN|SEAFOOD|DAIRY|CUCUMBER
+
+/obj/item/food/prospect_sunrise
+	foodtypes = MEAT | DAIRY | VEGETABLES | GRAIN | BREAKFAST | CUCUMBER
