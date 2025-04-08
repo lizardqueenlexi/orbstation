@@ -4,6 +4,7 @@
 	access_view = ACCESS_MEDICAL
 	crate_type = /obj/structure/closet/crate/coffin/stasis
 	crate_name = "medical cadaver crate"
+	test_ignored = TRUE
 
 	///Whether a vampire has arrived on the station this round
 	var/vampire_arrived = FALSE

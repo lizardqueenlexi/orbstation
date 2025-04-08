@@ -6,7 +6,7 @@
 	id = "jelarm/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
-	build_path = /obj/item/bodypart/arm/left
+	build_path = /obj/item/bodypart/arm/left/jelly
 	category = list(RND_CATEGORY_INITIAL, SPECIES_JELLYPERSON)
 
 /datum/design/jelly_rightarm
@@ -14,7 +14,7 @@
 	id = "jelarm/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
-	build_path = /obj/item/bodypart/arm/right
+	build_path = /obj/item/bodypart/arm/right/jelly
 	category = list(RND_CATEGORY_INITIAL, SPECIES_JELLYPERSON)
 
 /datum/design/jelly_leftleg
@@ -22,7 +22,7 @@
 	id = "jelleg/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
-	build_path = /obj/item/bodypart/leg/left
+	build_path = /obj/item/bodypart/leg/left/jelly
 	category = list(RND_CATEGORY_INITIAL, SPECIES_JELLYPERSON)
 
 /datum/design/jelly_rightleg
@@ -30,7 +30,7 @@
 	id = "jelleg/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
-	build_path = /obj/item/bodypart/leg/right
+	build_path = /obj/item/bodypart/leg/right/jelly
 	category = list(RND_CATEGORY_INITIAL, SPECIES_JELLYPERSON)
 
 //Podperson limbs
@@ -39,7 +39,7 @@
 	id = "podarm/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
-	build_path = /obj/item/bodypart/arm/left
+	build_path = /obj/item/bodypart/arm/left/pod
 	category = list(RND_CATEGORY_INITIAL, SPECIES_PODPERSON)
 
 /datum/design/pod_rightarm
@@ -47,7 +47,7 @@
 	id = "podarm/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
-	build_path = /obj/item/bodypart/arm/right
+	build_path = /obj/item/bodypart/arm/right/pod
 	category = list(RND_CATEGORY_INITIAL, SPECIES_PODPERSON)
 
 /datum/design/pod_leftleg
@@ -55,7 +55,7 @@
 	id = "podleg/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
-	build_path = /obj/item/bodypart/leg/left
+	build_path = /obj/item/bodypart/leg/left/pod
 	category = list(RND_CATEGORY_INITIAL, SPECIES_PODPERSON)
 
 /datum/design/pod_rightleg
@@ -63,7 +63,7 @@
 	id = "podleg/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
-	build_path = /obj/item/bodypart/leg/right
+	build_path = /obj/item/bodypart/leg/right/pod
 	category = list(RND_CATEGORY_INITIAL, SPECIES_PODPERSON)
 
 //Slimeperson limbs
@@ -114,7 +114,7 @@
 	id = "jelhead"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 30, /datum/reagent/medicine/neurine = 20)
-	build_path = /obj/item/bodypart/head
+	build_path = /obj/item/bodypart/head/jelly
 	category = list(SPECIES_JELLYPERSON)
 
 /datum/design/pod_head
@@ -122,7 +122,7 @@
 	id = "podhead"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 30, /datum/reagent/medicine/neurine = 20)
-	build_path = /obj/item/bodypart/head
+	build_path = /obj/item/bodypart/head/pod
 	category = list(SPECIES_PODPERSON)
 
 /// Organs
@@ -302,6 +302,10 @@
 		/datum/design/rat_eyes,
 		/datum/design/moth_wings,
 		/datum/design/jelly_lungs,
+		/datum/design/slime_leftarm,
+		/datum/design/slime_leftleg,
+		/datum/design/slime_rightarm,
+		/datum/design/slime_rightleg,
 	)
 
 /obj/item/disk/design_disk/limbs/heads

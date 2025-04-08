@@ -35,7 +35,10 @@
 SUBSYSTEM_DEF(table_shuffle)
 	name = "Table Shuffle"
 	flags = SS_NO_FIRE
-	init_order = INIT_ORDER_DEFAULT // No hurry
+	dependencies = list(
+		/datum/controller/subsystem/atoms,
+		/datum/controller/subsystem/mapping
+	)
 
 	var/total_vends = 0
 	var/total_moves = 0

@@ -14,18 +14,17 @@
 
 SUBSYSTEM_DEF(automapper)
 	name = "Automapper"
-	flags = SS_NO_FIRE
-	init_order = INIT_ORDER_AUTOMAPPER
+	flags = SS_NO_FIRE | SS_NO_INIT
+	dependencies = list(
+		/datum/controller/subsystem/atoms,
+		/datum/controller/subsystem/mapping
+	)
 	/// The path to our TOML file
 	var/config_file = "_maps/orbstation/automapper/automapper_config.toml"
 	/// Our loaded TOML file
-	var/loaded_config
+	var/list/loaded_config
 	/// Our preloaded map templates
 	var/list/preloaded_map_templates = list()
-
-/datum/controller/subsystem/automapper/Initialize()
-	loaded_config = rustg_read_toml_file(config_file)
-	return SS_INIT_SUCCESS
 
 /**
  * This will preload our templates into a cache ready to be loaded later.
@@ -35,6 +34,7 @@ SUBSYSTEM_DEF(automapper)
 /datum/controller/subsystem/automapper/proc/preload_templates_from_toml(map_names)
 	if(!islist(map_names))
 		map_names = list(map_names)
+	loaded_config = rustg_read_toml_file(config_file)
 	for(var/template in loaded_config["templates"])
 		var/selected_template = loaded_config["templates"][template]
 		var/required_map = selected_template["required_map"]
