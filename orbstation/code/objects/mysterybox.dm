@@ -109,7 +109,7 @@ GLOBAL_LIST_INIT(mystery_box_shoes, list(
 /obj/structure/mystery_box/close_box()
 	. = ..()
 	if(temporary_box)
-		AddElement(/datum/element/temporary_atom, 7 SECONDS, 5 SECONDS)
+		fade_into_nothing(life_time = 7 SECONDS, fade_time = 5 SECONDS)
 
 /obj/structure/mystery_box/cheese
 	desc = "A wooden crate that seems equally magical and mysterious, capable of granting the user all kinds of different items. This one seems focused on cheese."

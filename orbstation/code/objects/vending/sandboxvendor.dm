@@ -109,7 +109,7 @@
 				/obj/item/organ/cyberimp/chest/reviver = 999,
 				/obj/item/organ/cyberimp/mouth/breathing_tube = 999,
 				/obj/item/organ/cyberimp/brain/anti_stun = 999,
-				/obj/item/organ/cyberimp/arm/toolset/l = 999,
+				/obj/item/organ/cyberimp/arm/toolset = 999,
 				/obj/item/organ/cyberimp/arm/surgery = 999,
 				/obj/item/organ/cyberimp/eyes/hud/medical = 999,
 				/obj/item/organ/heart/gland/ventcrawling = 999,
