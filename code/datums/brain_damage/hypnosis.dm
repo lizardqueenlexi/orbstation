@@ -47,7 +47,7 @@
 	antagonist.objectives = list(fixation)
 
 	hypno_alert.desc = "\"[hypnotic_phrase]\"... your mind seems to be fixated on this concept."
-	..()
+	. = ..()
 
 /datum/brain_trauma/hypnosis/on_lose(silent)
 	if (HAS_TRAIT(owner, TRAIT_XCARD_HYPNOSIS)) // ORBSTATION ADDITION
