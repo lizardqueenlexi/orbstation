@@ -253,11 +253,10 @@ export function FeatureShortTextInput(
   return (
     <Input
       disabled={!serverData}
-      width="100%"
+      fluid
       value={value}
       maxLength={serverData?.maximum_length}
-      updateOnPropsChange
-      onChange={(_, value) => handleSetValue(value)}
+      onChange={handleSetValue}
     />
   );
 }
@@ -267,26 +266,28 @@ export function FeatureShortTextInput(
 const shortFlavorTextLength: number = 200;
 const longFlavorTextLength: number = 750;
 
-export const FeatureTextInput = (props: FeatureValueProps<string>) => {
+export function FeatureTextInput(props: FeatureValueProps<string>) {
+  const { value, handleSetValue } = props;
   return (
     <TextArea
       height="100px"
+      fluid
       maxLength={longFlavorTextLength}
-      value={props.value}
-      onChange={(_, value) => props.handleSetValue(value)}
+      value={value}
+      onChange={handleSetValue}
     />
   );
-};
+}
 
-export const FeatureShortFlavorTextInput = (
-  props: FeatureValueProps<string>,
-) => {
+export function FeatureShortFlavorTextInput(props: FeatureValueProps<string>) {
+  const { value, handleSetValue } = props;
   return (
     <Input
       width="100%"
+      fluid
       maxLength={shortFlavorTextLength}
-      value={props.value}
-      onChange={(_, value) => props.handleSetValue(value)}
+      value={value}
+      onChange={handleSetValue}
     />
   );
-};
+}
