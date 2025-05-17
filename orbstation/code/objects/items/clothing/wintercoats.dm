@@ -17,7 +17,7 @@
 		/obj/item/lighter,
 		/obj/item/reagent_containers/cup/glass/shaker,
 		/obj/item/reagent_containers/cup/glass/flask,
-		/obj/item/reagent_containers/cup/rag,
+		/obj/item/rag,
 		/obj/item/gun/ballistic/shotgun/doublebarrel,)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/bartender
 

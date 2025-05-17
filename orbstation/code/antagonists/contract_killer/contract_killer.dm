@@ -63,7 +63,9 @@
 	killer_dummy.set_species(/datum/species/lizard)
 
 	var/icon/killer_icon = render_preview_outfit(preview_outfit, killer_dummy)
-	killer_icon.Blend(icon('icons/effects/blood.dmi', "uniformblood"), ICON_OVERLAY)
+	var/icon/killer_blood_icon = icon('icons/effects/blood.dmi', "uniformblood")
+	killer_blood_icon.Blend(BLOOD_COLOR_RED, ICON_MULTIPLY)
+	killer_icon.Blend(killer_blood_icon, ICON_OVERLAY)
 
 	return finish_preview_icon(killer_icon)
 

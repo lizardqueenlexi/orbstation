@@ -1,3 +1,4 @@
+/*
 /datum/preference/choiced/pod_blood
 	savefile_key = "feature_pod_blood"
 	savefile_identifier = PREFERENCE_CHARACTER
@@ -21,3 +22,4 @@
 	else if (value == "Juices")
 		exotic_blood = pick(GLOB.pod_bloodtypes_juice)
 	return ..()
+*/
