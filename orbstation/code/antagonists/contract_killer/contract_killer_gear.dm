@@ -297,7 +297,10 @@
 		new /obj/item/food/meat/slab/bear(src)
 	if(prob(25)) //25% of the time you can make ash drake armor
 		for(var/i in 1 to 5)
-			new /obj/item/stack/sheet/animalhide/ashdrake(src)
+			new /obj/item/stack/sheet/animalhide/ashdrake/five(src)
+
+/obj/item/stack/sheet/animalhide/ashdrake/five
+	amount = 5
 
 // RARE KITS
 
