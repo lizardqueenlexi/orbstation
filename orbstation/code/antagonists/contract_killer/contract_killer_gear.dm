@@ -285,7 +285,7 @@
 
 /obj/item/storage/briefcase/secure/contract_killer/viscera/PopulateContents()
 	new /obj/item/stack/sheet/bone/twelve(src)
-	new /obj/item/stack/sheet/sinewsix(src)
+	new /obj/item/stack/sheet/sinew/six(src)
 	if(prob(50))
 		new /obj/item/stack/sheet/animalhide/goliath_hide/three(src)
 	else
