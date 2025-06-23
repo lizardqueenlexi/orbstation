@@ -48,8 +48,8 @@
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "tint",
-			SPECIES_PERK_NAME = "Unique Blood",
-			SPECIES_PERK_DESC = "Podpeople blood can be either water, or a random easily sourcable fruit juice",
+			SPECIES_PERK_NAME = "Water Blood",
+			SPECIES_PERK_DESC = "Podpeople blood is water.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,

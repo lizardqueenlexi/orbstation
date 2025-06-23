@@ -90,25 +90,19 @@
 	return
 
 /mob/living/carbon/human/get_id_name(if_no_id = "Unknown")
-	var/obj/item/storage/wallet/wallet = wear_id
-	var/obj/item/modular_computer/pda = wear_id
-	var/obj/item/card/id/id = wear_id
 	if(HAS_TRAIT(src, TRAIT_UNKNOWN))
 		. = if_no_id //You get NOTHING, no id name, good day sir
 		var/list/identity = list(null, null, null)
 		SEND_SIGNAL(src, COMSIG_HUMAN_GET_FORCED_NAME, identity)
 		if(identity[VISIBLE_NAME_FORCED])
-			. = identity[VISIBLE_NAME_FACE] // to return forced names when unknown, instead of ID
-			return
-	if(istype(wallet))
-		id = wallet.front_id
-	if(istype(id))
-		. = id.plural_system ? id.return_visible_plural_name() : id.registered_name ///ORBSTATION EDIT: plural chip
-	else if(istype(pda) && pda.computer_id_slot)
-		. = pda.computer_id_slot.plural_system ? pda.computer_id_slot.return_visible_plural_name() : pda.computer_id_slot.registered_name ///ORBSTATION EDIT: plural chip
+			return identity[VISIBLE_NAME_FACE] // to return forced names when unknown, instead of ID
+	else
+		var/obj/item/card/id/id = astype(wear_id, /obj/item/card/id) \
+			|| astype(wear_id, /obj/item/storage/wallet)?.front_id \
+			|| astype(wear_id, /obj/item/modular_computer)?.computer_id_slot
+		. = id?.plural_system ? id.return_visible_plural_name() : id?.registered_name ///ORBSTATION ADDITION: PLURAL CHIP
 	if(!.)
 		. = if_no_id //to prevent null-names making the mob unclickable
-	return
 
 /mob/living/carbon/human/get_idcard(hand_first = TRUE)
 	. = ..()
