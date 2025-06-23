@@ -58,7 +58,9 @@
 
 // clown op pda
 /obj/item/modular_computer/pda/nukeops/clownops
+	icon = 'icons/obj/devices/modular_pda.dmi'
 	icon_state = "pda-clown"
+	post_init_icon_state = null
 	greyscale_config = null
 	greyscale_colors = null
 	inserted_item = /obj/item/toy/crayon/rainbow
