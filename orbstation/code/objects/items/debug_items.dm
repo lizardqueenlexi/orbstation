@@ -38,7 +38,7 @@
 		/obj/item/stack/sheet/mineral/runite=50,
 		/obj/item/stack/sheet/mineral/metal_hydrogen=50,
 		/obj/item/stack/sheet/mineral/zaukerite=50,
-		/obj/item/stack/sheet/bone/twelve, //max stack size is 12 so otherwise the box fills up with bone fast
+		/obj/item/stack/sheet/bone/twelve=1, //max stack size is 12 so otherwise the box fills up with bone fast
 		/obj/item/stack/sheet/meat/fifty=1,
 		/obj/item/stack/sheet/pizza/fifty=1,
 		)
