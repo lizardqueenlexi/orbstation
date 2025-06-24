@@ -284,20 +284,35 @@
 	desc = "A large briefcase with a digital locking system. It's concerningly damp."
 
 /obj/item/storage/briefcase/secure/contract_killer/viscera/PopulateContents()
-	for(var/i in 1 to 20)
-		new /obj/item/stack/sheet/bone(src)
-	for(var/i in 1 to 6)
-		new /obj/item/stack/sheet/sinew(src)
-	for(var/i in 1 to 3)
-		if(prob(50))
-			new /obj/item/stack/sheet/animalhide/goliath_hide(src)
-		else
-			new /obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide(src)
-		new /obj/item/food/meat/slab/goliath(src)
-		new /obj/item/food/meat/slab/bear(src)
+	new /obj/item/stack/sheet/bone/twelve(src)
+	new /obj/item/stack/sheet/bone/eight(src)
+	new /obj/item/stack/sheet/sinew/six(src)
+	if(prob(50))
+		new /obj/item/stack/sheet/animalhide/goliath_hide/three(src)
+	else
+		new /obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide/three(src)
+	new /obj/item/food/meat/slab/goliath(src)
+	new /obj/item/food/meat/slab/bear(src)
 	if(prob(25)) //25% of the time you can make ash drake armor
-		for(var/i in 1 to 5)
-			new /obj/item/stack/sheet/animalhide/ashdrake(src)
+		new /obj/item/stack/sheet/animalhide/ashdrake/five(src)
+
+/obj/item/stack/sheet/bone/eight
+	amount = 8
+
+/obj/item/stack/sheet/sinew/six
+	amount = 6
+
+/obj/item/stack/sheet/animalhide/ashdrake/five
+	amount = 5
+
+/obj/item/stack/sheet/sinew/six
+	amount = 6
+
+/obj/item/stack/sheet/animalhide/goliath_hide/three
+	amount = 3
+
+/obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide/three
+	amount = 3
 
 // RARE KITS
 

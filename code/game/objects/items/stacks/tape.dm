@@ -2,8 +2,9 @@
 	name = "sticky tape"
 	singular_name = "sticky tape"
 	desc = "Used for sticking to things for sticking said things to people."
-	icon = 'icons/obj/tapes.dmi'
-	icon_state = "tape"
+	icon = 'icons/map_icons/items/_item.dmi'
+	icon_state = "/obj/item/stack/sticky_tape"
+	post_init_icon_state = "tape"
 	var/prefix = "sticky"
 	w_class = WEIGHT_CLASS_TINY
 	full_w_class = WEIGHT_CLASS_TINY
@@ -99,9 +100,11 @@
 
 /obj/item/stack/sticky_tape/pointy
 	name = "pointy tape"
+	icon = 'icons/map_icons/items/_item.dmi'
+	icon_state = "/obj/item/stack/sticky_tape/pointy"
+	post_init_icon_state = "tape_spikes"
 	singular_name = "pointy tape"
 	desc = "Used for sticking to things for sticking said things inside people."
-	icon_state = "tape_spikes"
 	prefix = "pointy"
 	conferred_embed = /datum/embedding/pointy_tape
 	merge_type = /obj/item/stack/sticky_tape/pointy
@@ -196,7 +199,12 @@
 	if(!do_after(user, 3 SECONDS, target = object_to_repair))
 		return ITEM_INTERACT_BLOCKING
 
-	object_to_repair.repair_damage(object_repair_value)
+	if(isclothing(object_to_repair))
+		var/obj/item/clothing/clothing_to_repair = object_to_repair
+		clothing_to_repair.repair()
+	else
+		object_to_repair.repair_damage(object_repair_value)
+
 	use(1)
 	to_chat(user, span_notice("You finish repairing [interacting_with] with [src]."))
 	return ITEM_INTERACT_SUCCESS

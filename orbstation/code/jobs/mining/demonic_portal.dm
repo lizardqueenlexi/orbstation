@@ -38,7 +38,7 @@
 		if(16)
 			new /obj/item/shared_storage/red(loc)
 		if(17)
-			new /obj/item/organ/cyberimp/arm/shard/katana(loc)
+			new /obj/item/organ/cyberimp/arm/toolkit/shard/katana(loc)
 		if(18)
 			new /obj/item/soulstone/anybody(loc)
 		if(19)

@@ -28,7 +28,7 @@
 // Start with one if you are deaf
 /datum/quirk/item_quirk/deafness/add_unique()
 	..()
-	give_item_to_holder(/obj/item/hearing_aid, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
+	give_item_to_holder(/obj/item/hearing_aid, list(LOCATION_BACKPACK, LOCATION_HANDS))
 
 // You can order more through cargo
 /datum/supply_pack/goody/hearing_aid

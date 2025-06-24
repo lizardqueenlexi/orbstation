@@ -128,8 +128,3 @@ export const heterochromatic: Feature<string> = {
   name: 'Heterochromatic (Right Eye) color',
   component: FeatureColorInput,
 };
-
-export const feature_pod_blood: Feature<string> = {
-  name: 'Podperson blood',
-  component: FeatureDropdownInput,
-};
