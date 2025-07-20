@@ -8,36 +8,36 @@
 	return ..()
 
 /// Midround Changeling Infiltrator Ruleset (From Ghosts)
-/datum/dynamic_ruleset/midround/from_ghosts/changeling_infiltrator
+/datum/dynamic_ruleset/midround/changeling_infiltrator
 	name = "Changeling Infiltrator"
 	config_tag = "Changeling Infiltrator"
 	preview_antag_datum = /datum/antagonist/changeling/infiltrator
 	midround_type = HEAVY_MIDROUND
-	candidate_role = "Changeling Infiltrator"
 	pref_flag = ROLE_CHANGELING_INFILTRATOR
 	jobban_flag = ROLE_CHANGELING
 	ruleset_flags = RULESET_INVADER
 	weight = 5
 	repeatable = FALSE
+	min_antag_cap = 0 // ship will spawn if there are no ghosts around
 
-/datum/dynamic_ruleset/midround/from_ghosts/changeling_infiltrator/assign_role(datum/mind/candidate)
-	spawn_infiltrator(candidate, INFIL_SPAWNER_LING)
+/datum/dynamic_ruleset/midround/changeling_infiltrator/execute()
+	spawn_infiltrator(INFIL_SPAWNER_LING, name, jobban_flag, /obj/item/melee/arm_blade)
 
 /// Midround Smuggled Syndicate Agent Ruleset (From Ghosts)
-/datum/dynamic_ruleset/midround/from_ghosts/smuggled_syndicate_agent
+/datum/dynamic_ruleset/midround/smuggled_syndicate_agent
 	name = "Smuggled Syndicate Agent"
 	config_tag = "Smuggled Syndicate Agent"
 	preview_antag_datum = /datum/antagonist/traitor/agent
 	midround_type = HEAVY_MIDROUND
-	candidate_role = "Smuggled Syndicate Agent"
 	pref_flag = ROLE_SMUGGLED_AGENT
 	jobban_flag = ROLE_TRAITOR
 	ruleset_flags = RULESET_INVADER
 	weight = 5
 	repeatable = FALSE
+	min_antag_cap = 0 // ship will spawn if there are no ghosts around
 
-/datum/dynamic_ruleset/midround/from_ghosts/smuggled_syndicate_agent/assign_role(datum/mind/candidate)
-	spawn_infiltrator(candidate, INFIL_SPAWNER_TRAITOR)
+/datum/dynamic_ruleset/midround/smuggled_syndicate_agent/execute()
+	spawn_infiltrator(INFIL_SPAWNER_TRAITOR, name, jobban_flag, /obj/item/melee/energy/sword)
 
 /// Midround Wizard Journeyman Ruleset (From Ghosts)
 /datum/dynamic_ruleset/midround/from_ghosts/wizard_journeyman
