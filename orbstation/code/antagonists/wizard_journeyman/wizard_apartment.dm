@@ -1,6 +1,6 @@
-/datum/map_template/wizard_apartment
-	name = "wizard's apartment"
-	mappath = "_maps/templates/journeyman_apartment.dmm"
+/datum/lazy_template/wizard_apartment
+	key = LAZY_TEMPLATE_KEY_WIZARD_JOURNEYMAN
+	map_name = "journeyman_apartment"
 
 /area/wizard_apartment
 	name = "Wizard's Apartment"

@@ -50,6 +50,9 @@
 	ruleset_flags = RULESET_INVADER
 	jobban_flag = ROLE_WIZARD
 	weight = 5
+	max_antag_cap = 1
+	signup_atom_appearance = /obj/item/clothing/head/wizard
+	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_WIZARD_JOURNEYMAN)
 
 /datum/dynamic_ruleset/midround/from_ghosts/wizard_journeyman/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/wizard_journeyman) // moves to lair for us

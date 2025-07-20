@@ -12,8 +12,6 @@ GLOBAL_LIST_EMPTY(journeymanstart)
 	suicide_cry = "ARE YOU WATCHING THIS, GUYS?!"
 	preview_outfit = /datum/outfit/journeyman_wizard
 	show_to_ghosts = TRUE
-	/// True if the wizard journeyman lair has been instantiated
-	var/static/lair_exists = FALSE
 	/// True if we want you to be granted objectives
 	var/give_objectives = TRUE
 	/// Gear to apply
@@ -164,16 +162,13 @@ GLOBAL_LIST_EMPTY(journeymanstart)
 
 /// Create wizard's house if it doesn't exist, then insert wizard
 /datum/antagonist/wizard_journeyman/proc/send_to_lair()
+
+	SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_WIZARD_JOURNEYMAN)
+
 	if (!owner)
 		CRASH("Antag datum with no owner.")
 	if (!owner.current)
 		return
-	if(!lair_exists)
-		var/datum/map_template/wizard_apartment/new_level = new()
-		if(!new_level.load_new_z())
-			message_admins("The wizard apartment z-level failed to load, so journeymen have nowhere to spawn.")
-			CRASH("Failed to initialize wizard apartment z-level!")
-		lair_exists = TRUE
 	if (!GLOB.journeymanstart.len)
 		return
 	owner.current.forceMove(pick(GLOB.journeymanstart))
