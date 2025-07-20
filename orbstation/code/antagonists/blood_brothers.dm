@@ -20,7 +20,6 @@
 	the_bros.bounty_complete()
 
 /datum/antagonist/brother/on_removal()
-	owner.special_role = null
 	var/obj/item/implant/holo_pad_projector/possible_implant = locate() in owner.current.implants
 	if(possible_implant)
 		qdel(possible_implant)

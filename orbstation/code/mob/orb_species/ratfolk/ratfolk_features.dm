@@ -15,7 +15,7 @@
 	return generate_ratfolk_side_shot(SSaccessories.rat_snouts_list[value], "rat_snout", include_snout = FALSE)
 
 /datum/preference/choiced/rat_snout/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["rat_snout"] = value
+	target.dna.features[FEATURE_RAT_SNOUT] = value
 
 /proc/generate_ratfolk_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
 	var/static/datum/universal_icon/rat
@@ -57,7 +57,7 @@
 	return assoc_to_keys_features(SSaccessories.rat_tails_list)
 
 /datum/preference/choiced/rat_tail/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["rat_tail"] = value
+	target.dna.features[FEATURE_RAT_TAIL] = value
 
 /datum/preference/choiced/rat_tail/create_default_value()
 	return /datum/sprite_accessory/tails/rat/high::name
@@ -79,4 +79,4 @@
 	return generate_ratfolk_side_shot(SSaccessories.rat_ears_list[value], "rat_ears", include_snout=FALSE)
 
 /datum/preference/choiced/rat_ears/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["rat_ears"] = value
+	target.dna.features[FEATURE_RAT_EARS] = value

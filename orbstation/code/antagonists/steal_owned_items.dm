@@ -69,7 +69,7 @@
 		return FALSE
 	return ..()
 
-/datum/objective_item/steal/pet/check_special_completion(obj/item/clothing/head/mob_holder/holder)
+/datum/objective_item/steal/pet/check_special_completion(obj/item/mob_holder/holder)
 	if (!istype(holder))
 		return FALSE
 	if (!holder.held_mob)

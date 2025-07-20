@@ -48,8 +48,8 @@
 	name = "infiltrator spawn point"
 
 ///Proc that spawns the infiltrator's pod and makes the spawner spawn them. Also called by the infiltrator rulesets
-/proc/spawn_infiltrator(mob/new_infil, spawner_type)
-	if(!new_infil)
+/proc/spawn_infiltrator(mob/new_infiltrator, spawner_type)
+	if(!new_infiltrator)
 		return
 
 	var/turf/picked_turf
@@ -60,10 +60,7 @@
 		var/z = SSmapping.empty_space.z_value
 		picked_turf = locate(x,y,z)
 	else // otherwise, try to use a random carp spawn location
-		var/list/spawn_points = list()
-		for(var/obj/effect/landmark/carpspawn/carp_spawn in GLOB.landmarks_list)
-			spawn_points += carp_spawn
-		var/obj/pod_spawn = pick(spawn_points)
+		var/obj/pod_spawn = find_space_spawn()
 		picked_turf = locate(pod_spawn.x,pod_spawn.y,pod_spawn.z)
 		qdel(pod_spawn) // removes the spawn point from the landmarks list so the game doesn't spawn a carp on our poor infiltrator
 
@@ -82,7 +79,7 @@
 			var/obj/effect/mob_spawn/ghost_role/spawner = new spawner_type(spawn_point.loc)
 			if(!istype(spawner))
 				CRASH("Invalid spawner sent to spawn_infiltrator!")
-			var/mob/living/carbon/human/new_mob = spawner.create_from_ghost(new_infil)
+			var/mob/living/carbon/human/new_mob = spawner.create_from_ghost(new_infiltrator)
 			return new_mob
 
 // Generic type for infiltrator spawners, should never appear in game.

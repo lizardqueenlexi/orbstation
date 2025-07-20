@@ -18,7 +18,7 @@
 	for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
 		if (player.ready != PLAYER_READY_TO_PLAY)
 			continue
-		if (!player.check_preferences())
+		if (!player.check_job_preferences())
 			continue
 		if (!player.mind)
 			continue

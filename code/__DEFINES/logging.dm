@@ -153,9 +153,8 @@
 #define LOG_CATEGORY_GAME_TRAITOR "game-traitor"
 #define LOG_CATEGORY_GAME_VOTE "game-vote"
 #define LOG_CATEGORY_GAME_WHISPER "game-whisper"
-// ORBSTATION ADDITIONS
-#define LOG_CATEGORY_GAME_LOOC "game-looc"
-// END ORBSTATION
+#define LOG_CATEGORY_GAME_GHOST_POLLS "game-ghost-polls"
+#define LOG_CATEGORY_GAME_LOOC "game-looc" // ORBSTATION ADDITION
 
 // HREF categories
 #define LOG_CATEGORY_HREF "href"

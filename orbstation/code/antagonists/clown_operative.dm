@@ -5,11 +5,15 @@
 /datum/antagonist/nukeop/clownop/lone
 	name = "Lone Clown Operative"
 	nukeop_outfit = /datum/outfit/syndicate/clownop/lone
-	always_new_team = TRUE
 	send_to_spawnpoint = FALSE
 	preview_outfit = /datum/outfit/clown_operative
 	preview_outfit_behind = null
 	nuke_icon_state = "bananiumbomb_base"
+
+/datum/antagonist/nukeop/clownop/lone/create_team(datum/team/nuclear/new_team)
+	if(new_team)
+		return ..()
+	nuke_team = new /datum/team/nuclear/loneop/clown()
 
 /datum/antagonist/nukeop/clownop/lone/forge_objectives()
 	objectives += new /datum/objective/funny_lone_operative
@@ -48,7 +52,6 @@
 		/obj/item/mod/module/bikehorn,
 	)
 	default_pins = list(
-		/obj/item/mod/module/armor_booster,
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/bikehorn,
 	)
@@ -91,3 +94,9 @@
 	explanation_text = "Use clown bombs to infest the station with clowns."
 	martyr_compatible = TRUE
 	admin_grantable = TRUE
+
+
+/datum/team/nuclear/loneop/clown
+
+/datum/team/nuclear/loneop/clown/assign_nuke()
+	return
