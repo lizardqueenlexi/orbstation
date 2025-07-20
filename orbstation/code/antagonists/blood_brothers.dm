@@ -224,7 +224,7 @@
 	if(!is_type_in_list(possible_bounty, brother_bounty))
 		return
 	// prevents steals to give double rewards
-	if(istype(possible_bounty, /obj/item/clothing/head/mob_holder))
+	if(istype(possible_bounty, /obj/item/mob_holder))
 		return
 	complete_light_steal(possible_bounty)
 

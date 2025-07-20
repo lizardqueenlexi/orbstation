@@ -25,12 +25,12 @@
 /obj/item/ammo_box/c38/special_hotload //The speedloader
 	name = "Speed Loader (.38 Special Hot Load)"
 	desc = "Designed to quickly reload the DonkCo. New Syndie."
-	icon_state = "357"
 	ammo_type = /obj/item/ammo_casing/c38/special_hotload
 	max_ammo = 7
 	caliber = CALIBER_38
 	multiple_sprites = AMMO_BOX_PER_BULLET
 	item_flags = NO_MAT_REDEMPTION
+	ammo_band_color = "#d01010"
 
 /datum/uplink_item/ammo/special_hotload //Lets you buy the speedloader
 	name = ".38 Special Hot Load Speed Loader"
