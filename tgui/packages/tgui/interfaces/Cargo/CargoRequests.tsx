@@ -3,29 +3,14 @@ import { formatMoney } from 'tgui-core/format';
 import { decodeHtmlEntities } from 'tgui-core/string';
 
 import { useBackend } from '../../backend';
-import { CargoData } from './types';
+import type { CargoData } from './types';
 
 export function CargoRequests(props) {
   const { act, data } = useBackend<CargoData>();
   const { requests = [], requestonly, can_send, can_approve_requests } = data;
 
   return (
-    <Section
-      fill
-      scrollable
-      title="Active Requests"
-      buttons={
-        !requestonly && (
-          <Button
-            icon="times"
-            color="transparent"
-            onClick={() => act('denyall')}
-          >
-            Clear
-          </Button>
-        )
-      }
-    >
+    <Section fill scrollable>
       {requests.length === 0 && <NoticeBox success>No Requests</NoticeBox>}
       {requests.length > 0 && (
         <Table>

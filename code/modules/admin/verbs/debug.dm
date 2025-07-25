@@ -167,7 +167,9 @@ ADMIN_VERB(cmd_assume_direct_control, R_ADMIN, "Assume Direct Control", "Assume 
 	var/mob/adminmob = user.mob
 	if(M.ckey)
 		M.ghostize(FALSE)
-	M.key = user.key
+
+	M.PossessByPlayer(user.key)
+
 	user.init_verbs()
 	if(isobserver(adminmob))
 		qdel(adminmob)
@@ -537,7 +539,9 @@ ADMIN_VERB(del_log, R_DEBUG, "Display del() Log", "Display del's log of everythi
 
 	dellog += "</ol>"
 
-	user << browse(dellog.Join(), "window=dellog")
+	var/datum/browser/browser = new(usr, "dellog", "Del Log", 00, 400)
+	browser.set_content(dellog.Join())
+	browser.open()
 
 ADMIN_VERB(display_overlay_log, R_DEBUG, "Display Overlay Log", "Display SSoverlays log of everything that's passed through it.", ADMIN_CATEGORY_DEBUG)
 	render_stats(SSoverlays.stats, user)
@@ -548,6 +552,8 @@ ADMIN_VERB(init_log, R_DEBUG, "Display Initialize() Log", "Displays a list of th
 	browser.open()
 
 ADMIN_VERB(debug_color_test, R_DEBUG, "Colorblind Testing", "Change your view to a budget version of colorblindness to test for usability.", ADMIN_CATEGORY_DEBUG)
+	if(!user.holder.color_test)
+		user.holder.color_test = new()
 	user.holder.color_test.ui_interact(user.mob)
 
 ADMIN_VERB(debug_plane_masters, R_DEBUG, "Edit/Debug Planes", "Edit and visualize plane masters and their connections (relays).", ADMIN_CATEGORY_DEBUG)
@@ -564,7 +570,7 @@ ADMIN_VERB(debug_plane_masters, R_DEBUG, "Edit/Debug Planes", "Edit and visualiz
 	holder.plane_debug.ui_interact(mob)
 
 ADMIN_VERB(debug_huds, R_DEBUG, "Debug HUDs", "Debug the data or antag HUDs.", ADMIN_CATEGORY_DEBUG, i as num)
-	SSadmin_verbs.dynamic_invoke_verb(user, /datum/admin_verb/debug_variables, GLOB.huds[i])
+	user.debug_variables(GLOB.huds[i])
 
 ADMIN_VERB(jump_to_ruin, R_DEBUG, "Jump to Ruin", "Displays a list of all placed ruins to teleport to.", ADMIN_CATEGORY_DEBUG)
 	var/list/names = list()
@@ -650,6 +656,14 @@ ADMIN_VERB(run_empty_query, R_DEBUG, "Run Empty Query", "Runs a specified number
 
 	message_admins("[key_name_admin(user)] ran [val] empty queries.")
 
+ADMIN_VERB(test_pathfinding, R_DEBUG, "Toggle Pathfind Testing", "Enables/Disables pathfinding testing action buttons", ADMIN_CATEGORY_DEBUG)
+	BLACKBOX_LOG_ADMIN_VERB("Toggle Pathfind Testing")
+	log_admin("[key_name(user)] [user.holder.path_debug ? "disabled" : "enabled"] their pathfinding debug tools")
+	if(!user.holder.path_debug)
+		user.holder.path_debug = new(user.holder)
+	else
+		QDEL_NULL(user.holder.path_debug)
+
 ADMIN_VERB(clear_turf_reservations, R_DEBUG, "Clear Dynamic Turf Reservations", "Deallocates all reserved space, restoring it to round start conditions.", ADMIN_CATEGORY_DEBUG)
 	var/answer = tgui_alert(
 		user,
@@ -708,10 +722,10 @@ ADMIN_VERB(stop_line_profiling, R_DEBUG, "Stop Line Profiling", "Stops tracking 
 
 ADMIN_VERB_VISIBILITY(show_line_profiling, ADMIN_VERB_VISIBLITY_FLAG_MAPPING_DEBUG)
 ADMIN_VERB(show_line_profiling, R_DEBUG, "Show Line Profiling", "Shows tracked profiling info from code lines that support it.", ADMIN_CATEGORY_PROFILE)
-	var/sortlist = list(
+	var/list/sortlist = list(
 		"Avg time" = GLOBAL_PROC_REF(cmp_profile_avg_time_dsc),
 		"Total Time" = GLOBAL_PROC_REF(cmp_profile_time_dsc),
-		"Call Count" = GLOBAL_PROC_REF(cmp_profile_count_dsc)
+		"Call Count" = GLOBAL_PROC_REF(cmp_profile_count_dsc),
 	)
 	var/sort = input(user, "Sort type?", "Sort Type", "Avg time") as null|anything in sortlist
 	if (!sort)
@@ -720,7 +734,7 @@ ADMIN_VERB(show_line_profiling, R_DEBUG, "Show Line Profiling", "Shows tracked p
 	profile_show(user, sort)
 
 ADMIN_VERB(reload_configuration, R_DEBUG, "Reload Configuration", "Reloads the configuration from the default path on the disk, wiping any in-round modifications.", ADMIN_CATEGORY_DEBUG)
-	if(!tgui_alert(user, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modifications?", "Really reset?", list("No", "Yes")) == "Yes")
+	if(tgui_alert(user, "Are you absolutely sure you want to reload the configuration from the default path on the disk, wiping any in-round modifications?", "Really reset?", list("No", "Yes")) != "Yes")
 		return
 	config.admin_reload()
 
@@ -814,82 +828,80 @@ ADMIN_VERB(check_missing_sprites, R_DEBUG, "Debug Worn Item Sprites", "We're can
 			continue
 		//Is there an explicit worn_icon to pick against the worn_icon_state? Easy street expected behavior.
 		if(sprite.worn_icon)
-			if(!(sprite.icon_state in icon_states(sprite.worn_icon)))
+			if(!icon_exists(sprite.worn_icon, sprite.icon_state))
 				to_chat(user, span_warning("ERROR sprites for [sprite.type]. Slot Flags are [sprite.slot_flags]."), confidential = TRUE)
 		else if(sprite.worn_icon_state)
 			if(sprite.slot_flags & ITEM_SLOT_MASK)
 				actual_file_name = 'icons/mob/clothing/mask.dmi'
-				if(!(sprite.worn_icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Mask slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_NECK)
 				actual_file_name = 'icons/mob/clothing/neck.dmi'
-				if(!(sprite.worn_icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Neck slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BACK)
 				actual_file_name = 'icons/mob/clothing/back.dmi'
-				if(!(sprite.worn_icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Back slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_HEAD)
 				actual_file_name = 'icons/mob/clothing/head/default.dmi'
-				if(!(sprite.worn_icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Head slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BELT)
 				actual_file_name = 'icons/mob/clothing/belt.dmi'
-				if(!(sprite.worn_icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Belt slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_SUITSTORE)
 				actual_file_name = 'icons/mob/clothing/belt_mirror.dmi'
-				if(!(sprite.worn_icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.worn_icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Suit Storage slot."), confidential = TRUE)
 		else if(sprite.icon_state)
 			if(sprite.slot_flags & ITEM_SLOT_MASK)
 				actual_file_name = 'icons/mob/clothing/mask.dmi'
-				if(!(sprite.icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Mask slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_NECK)
 				actual_file_name = 'icons/mob/clothing/neck.dmi'
-				if(!(sprite.icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Neck slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BACK)
 				actual_file_name = 'icons/mob/clothing/back.dmi'
-				if(!(sprite.icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Back slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_HEAD)
 				actual_file_name = 'icons/mob/clothing/head/default.dmi'
-				if(!(sprite.icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Head slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_BELT)
 				actual_file_name = 'icons/mob/clothing/belt.dmi'
-				if(!(sprite.icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Belt slot."), confidential = TRUE)
 			if(sprite.slot_flags & ITEM_SLOT_SUITSTORE)
 				actual_file_name = 'icons/mob/clothing/belt_mirror.dmi'
-				if(!(sprite.icon_state in icon_states(actual_file_name)))
+				if(!icon_exists(actual_file_name, sprite.icon_state))
 					to_chat(user, span_warning("ERROR sprites for [sprite.type]. Suit Storage slot."), confidential = TRUE)
 
-#ifndef OPENDREAM
+#ifndef OPENDREAM_REAL
 ADMIN_VERB(start_tracy, R_DEBUG, "Run Tracy Now", "Start running the byond-tracy profiler immediately", ADMIN_CATEGORY_DEBUG)
-	if(GLOB.tracy_initialized)
+	if(Tracy.enabled)
 		to_chat(user, span_warning("byond-tracy is already running!"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
 		return
-	else if(GLOB.tracy_init_error)
-		to_chat(user, span_danger("byond-tracy failed to initialize during an earlier attempt: [GLOB.tracy_init_error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
+	else if(Tracy.error)
+		to_chat(user, span_danger("byond-tracy failed to initialize during an earlier attempt: [Tracy.error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
 		return
 	message_admins(span_adminnotice("[key_name_admin(user)] is trying to start the byond-tracy profiler."))
 	log_admin("[key_name(user)] is trying to start the byond-tracy profiler.")
-	GLOB.tracy_initialized = FALSE
-	GLOB.tracy_init_reason = "[user.ckey]"
-	world.init_byond_tracy()
-	if(GLOB.tracy_init_error)
-		to_chat(user, span_danger("byond-tracy failed to initialize: [GLOB.tracy_init_error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
-		message_admins(span_adminnotice("[key_name_admin(user)] tried to start the byond-tracy profiler, but it failed to initialize ([GLOB.tracy_init_error])"))
-		log_admin("[key_name(user)] tried to start the byond-tracy profiler, but it failed to initialize ([GLOB.tracy_init_error])")
+	if(!Tracy.enable("[user.ckey]"))
+		var/error = Tracy.error || "N/A"
+		to_chat(user, span_danger("byond-tracy failed to initialize: [error]"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
+		message_admins(span_adminnotice("[key_name_admin(user)] tried to start the byond-tracy profiler, but it failed to initialize ([error])"))
+		log_admin("[key_name(user)] tried to start the byond-tracy profiler, but it failed to initialize ([error])")
 		return
 	to_chat(user, span_notice("byond-tracy successfully started!"), avoid_highlighting = TRUE, type = MESSAGE_TYPE_DEBUG, confidential = TRUE)
 	message_admins(span_adminnotice("[key_name_admin(user)] started the byond-tracy profiler."))
 	log_admin("[key_name(user)] started the byond-tracy profiler.")
-	if(GLOB.tracy_log)
-		rustg_file_write("[GLOB.tracy_log]", "[GLOB.log_directory]/tracy.loc")
+	if(Tracy.trace_path)
+		rustg_file_write("[Tracy.trace_path]", "[GLOB.log_directory]/tracy.loc")
 
 ADMIN_VERB_CUSTOM_EXIST_CHECK(start_tracy)
 	return CONFIG_GET(flag/allow_tracy_start) && fexists(TRACY_DLL_PATH)
@@ -904,4 +916,118 @@ ADMIN_VERB(queue_tracy, R_DEBUG, "Toggle Tracy Next Round", "Toggle running the 
 
 ADMIN_VERB_CUSTOM_EXIST_CHECK(queue_tracy)
 	return CONFIG_GET(flag/allow_tracy_queue) && fexists(TRACY_DLL_PATH)
+#endif
+
+/datum/mc_dependency_ui
+
+/datum/mc_dependency_ui/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "MCDependencyDebug")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/mc_dependency_ui/ui_state(mob/user)
+	return ADMIN_STATE(R_DEBUG)
+
+/datum/mc_dependency_ui/ui_data(mob/user)
+	var/list/data = list()
+
+	var/list/subsystems = Master.subsystems.Copy()
+	sortTim(subsystems, GLOBAL_PROC_REF(cmp_subsystem_init))
+
+	for(var/datum/controller/subsystem/subsystem as anything in subsystems)
+		var/list/sub_data = list()
+		sub_data["name"] = subsystem.name
+		var/list/dependents = list()
+		for(var/datum/controller/subsystem/dependent as anything in subsystem.dependents)
+			dependents += dependent.name
+		sub_data["dependents"] = dependents
+		data += list(sub_data)
+
+	return list(
+		"subsystems" = data
+	)
+
+/datum/mc_dependency_ui/ui_assets(mob/user)
+	return list(get_asset_datum(/datum/asset/simple/plane_background))
+
+ADMIN_VERB(debug_mc_dependencies, R_DEBUG, "Debug MC Dependencies", "Debug MC dependencies.", ADMIN_CATEGORY_DEBUG)
+	var/datum/mc_dependency_ui/data = new /datum/mc_dependency_ui()
+	data.ui_interact(usr)
+
+ADMIN_VERB(show_powernets, R_DEBUG, "Color Powernet Runs", "Colors every node and cable of every powernet in a different color.", ADMIN_CATEGORY_DEBUG)
+	var/removing = FALSE
+	for(var/obj/effect/abstract/marker/powernet/marker in GLOB.all_abstract_markers)
+		qdel(marker)
+		removing = TRUE
+
+	if(removing)
+		return
+
+	var/list/colors = GLOB.carp_colors.Copy()
+
+	if(length(colors) < length(SSmachines.powernets))
+		message_admins("[SSmachines.powernets.len] powernets exist - [length(colors)] colors available - Some powernets will be the same color!")
+
+	for(var/datum/powernet/net as anything in SSmachines.powernets)
+		if(!length(colors))
+			colors = GLOB.carp_colors.Copy()
+
+		var/selected_color = pick_n_take(colors)
+		for(var/atom/component as anything in net.nodes + net.cables)
+			var/turf/component_turf = get_turf(component)
+			var/existing = FALSE
+			for(var/obj/effect/abstract/marker/powernet/existing_marker in component_turf)
+				if(existing_marker.powernet_owner != REF(net))
+					continue
+				existing = TRUE
+				break
+			if(existing)
+				continue
+			var/obj/effect/abstract/marker/powernet/marker = new(component_turf)
+			marker.color = selected_color
+			marker.powernet_owner = REF(net)
+
+ADMIN_VERB(count_instances, R_DEBUG, "Count Atoms/Datums", "Count how many atom or datum instances there are of each type, then output it to a JSON to download.", ADMIN_CATEGORY_DEBUG)
+	var/option = tgui_alert(user, "What type of instances do you wish to count?", "Instance Count", list("Atoms", "Datums"))
+	if(!option)
+		return
+	var/list/result
+	to_chat(user, span_notice("Beginning instance count ([option])"), type = MESSAGE_TYPE_DEBUG)
+	switch(option)
+		if("Atoms")
+			result = count_atoms()
+		if("Datums")
+			result = count_datums()
+
+	if(result)
+		to_chat(user, span_adminnotice("Counted [length(result)] instances, sending compiled JSON file now."), type = MESSAGE_TYPE_DEBUG)
+		var/tmp_path = "tmp/instance_count_[user.ckey].json"
+		fdel(tmp_path)
+		rustg_file_write(json_encode(result, JSON_PRETTY_PRINT), tmp_path)
+		var/exportable_json = file(tmp_path)
+		DIRECT_OUTPUT(user, ftp(exportable_json, "[LOWER_TEXT(option)]_instance_count_round_[GLOB.round_id].json"))
+		fdel(tmp_path)
+
+#ifndef OPENDREAM
+/proc/count_atoms()
+	. = list()
+	for(var/datum/thing in world) //atoms (don't believe its lies)
+		.[thing.type]++
+	sortTim(., cmp = GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
+
+/proc/count_datums()
+	. = list()
+	for(var/datum/thing)
+		.[thing.type]++
+	sortTim(., cmp = GLOBAL_PROC_REF(cmp_numeric_dsc), associative = TRUE)
+#else
+/proc/count_atoms()
+	. = list()
+	CRASH("count_atoms not supported on OpenDream")
+
+/proc/count_datums()
+	. = list()
+	CRASH("count_datums not supported on OpenDream")
 #endif

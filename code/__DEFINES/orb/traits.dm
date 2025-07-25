@@ -34,8 +34,6 @@
 #define FARSIGHT_TRAIT "farsighted_trait"
 /// Prevents the overlay from nearsightedness
 #define TRAIT_FARSIGHTED_CORRECTED "orb_fixes_farsighted"
-/// Trait given to people with random botanical reagent blood
-#define TRAIT_POD_BLOOD "orb_trait_pod_blood"
 
 
 /// Trait given to a mob that is currently looc thinking (giving off the "thinking" icon), used in an local ooc context

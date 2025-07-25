@@ -68,10 +68,10 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 	"birds" = typecacheof(list(
 		/mob/living/basic/chick,
 		/mob/living/basic/chicken,
+		/mob/living/basic/goose,
 		/mob/living/basic/parrot,
 		/mob/living/basic/pet/penguin,
 		/mob/living/basic/raptor,
-		/mob/living/simple_animal/hostile/retaliate/goose,
 	)),
 	"conspiracies" = typecacheof(list(
 		/mob/living/basic/drone,
@@ -107,6 +107,7 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 	)),
 	"skeletons" = typecacheof(list(/mob/living/basic/skeleton)),
 	"snakes" = typecacheof(list(/mob/living/basic/snake)),
+	"space" = typecacheof(list(/mob/living/basic/voidwalker)),
 	"the supernatural" = typecacheof(list(
 		/mob/dead/observer,
 		/mob/living/basic/bat,
@@ -122,6 +123,7 @@ GLOBAL_LIST_INIT(phobia_mobs, list(
 		/mob/living/basic/wizard,
 		/mob/living/basic/zombie,
 		/mob/living/simple_animal/bot/mulebot/paranormal,
+		/mob/living/basic/voidwalker,
 	)),
 ))
 
@@ -165,7 +167,7 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/item/clothing/head/costume/kitty/genuine,
 		/obj/item/clothing/mask/gas/ninja,
 		/obj/item/clothing/under/syndicate/ninja,
-		/obj/item/clothing/under/costume/schoolgirl,
+		/obj/item/clothing/under/costume/seifuku,
 		/obj/item/energy_katana,
 		/obj/item/food/chawanmushi,
 		/obj/item/food/sashimi,
@@ -350,7 +352,7 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/item/autopsy_scanner,
 		/obj/item/hemostat,
 		/obj/item/reagent_containers/hypospray,
-		/obj/item/reagent_containers/pill/,
+		/obj/item/reagent_containers/applicator,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/retractor,
 		/obj/item/scalpel,
@@ -399,6 +401,7 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/item/storage/toolbox/fishing,
 		/obj/item/stack/sheet/animalhide/carp,
 		/obj/item/toy/plush/carpplushie,
+		/obj/item/storage/bag/fishing,
 	)),
 	"greytide" = (typecacheof(list(
 		/obj/item/clothing/under/color/grey,
@@ -571,8 +574,6 @@ GLOBAL_LIST_INIT(phobia_species, list(
 		/datum/species/plasmaman,
 		/datum/species/skeleton,
 	)),
-	"space" = typecacheof(list(/datum/species/voidwalker)),
-	"supernatural" = typecacheof(list(/datum/species/voidwalker))
 ))
 
 /// Creates a regular expression to match against the given phobia

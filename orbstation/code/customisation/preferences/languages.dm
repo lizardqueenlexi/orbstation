@@ -17,21 +17,16 @@
 
 	return language_holder
 
-/datum/asset/spritesheet/languages
+/datum/asset/spritesheet_batched/languages
 	name = "languages"
 	early = TRUE
 	cross_round_cachable = TRUE
 
-/datum/asset/spritesheet/languages/create_spritesheets()
-	var/list/to_insert = list()
+/datum/asset/spritesheet_batched/languages/create_spritesheets()
 
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
-		var/icon/language_icon = icon(language.icon, icon_state = language.icon_state)
-		to_insert[sanitize_css_class_name(language.name)] = language_icon
-
-	for (var/spritesheet_key in to_insert)
-		Insert(spritesheet_key, to_insert[spritesheet_key])
+		insert_icon(sanitize_css_class_name(language.name), uni_icon(language.icon, icon_state = language.icon_state))
 
 /// Middleware to handle languages
 /datum/preference_middleware/languages
@@ -48,7 +43,7 @@
 
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/languages),
+		get_asset_datum(/datum/asset/spritesheet_batched/languages),
 	)
 
 /datum/preference_middleware/languages/post_set_preference(mob/user, preference, value)

@@ -24,10 +24,18 @@
 #define FUGITIVE_RESULT_FUGITIVE_VICTORY 7
 #define FUGITIVE_RESULT_MAJOR_FUGITIVE 8
 
+// Wizard's contract school types
 #define APPRENTICE_DESTRUCTION "destruction"
 #define APPRENTICE_BLUESPACE "bluespace"
 #define APPRENTICE_ROBELESS "robeless"
 #define APPRENTICE_HEALING "healing"
+
+#define ALL_APPRENTICE_TYPES list( \
+	APPRENTICE_DESTRUCTION, \
+	APPRENTICE_BLUESPACE, \
+	APPRENTICE_ROBELESS, \
+	APPRENTICE_HEALING, \
+)
 
 //Pirates
 
@@ -229,6 +237,7 @@ GLOBAL_LIST_INIT(ai_employers, list(
 	"Spam Virus",
 	"SyndOS",
 	"Unshackled",
+	"Ratvarian Remnant",
 ))
 
 #define UPLINK_THEME_SYNDICATE "syndicate"
@@ -260,12 +269,10 @@ GLOBAL_LIST_INIT(ai_employers, list(
 /// Checks if the given mob is a heretic and is guaranteed to return the datum if possible - will cause issues with above trait
 #define GET_HERETIC(mob) (mob.mind?.has_antag_datum(/datum/antagonist/heretic))
 
-/// Check if the given mob is a heretic monster.
-#define IS_HERETIC_MONSTER(mob) (mob.mind?.has_antag_datum(/datum/antagonist/heretic_monster))
 /// Check if the given mob is a  lunatic
 #define IS_LUNATIC(mob) (mob.mind?.has_antag_datum(/datum/antagonist/lunatic))
 /// Checks if the given mob is either a heretic, heretic monster or a lunatic.
-#define IS_HERETIC_OR_MONSTER(mob) (IS_HERETIC(mob) || IS_HERETIC_MONSTER(mob) || IS_LUNATIC(mob))
+#define IS_HERETIC_OR_MONSTER(mob) (IS_HERETIC(mob) || HAS_TRAIT(mob, TRAIT_HERETIC_SUMMON) || IS_LUNATIC(mob))
 /// CHecks if the given mob is in the mansus realm
 #define IS_IN_MANSUS(mob) (istype(get_area(mob), /area/centcom/heretic_sacrifice))
 
@@ -284,6 +291,8 @@ GLOBAL_LIST_INIT(ai_employers, list(
 
 /// Checks if the given mob is a wizard
 #define IS_WIZARD(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/wizard) || mob?.mind?.has_antag_datum(/datum/antagonist/wizard_journeyman))
+/// Checks if the given mob is a wizard apprentice
+#define IS_WIZARD_APPRENTICE(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/wizard/apprentice))
 
 /// Checks if the given mob is a revolutionary. Will return TRUE for rev heads as well.
 #define IS_REVOLUTIONARY(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/rev))
@@ -403,8 +412,11 @@ GLOBAL_LIST_INIT(human_invader_antagonists, list(
 #define ANTAG_GROUP_CREW "Deviant Crew"
 
 
-// This flag disables certain checks that presume antagonist datums mean 'baddie'.
-#define FLAG_FAKE_ANTAG (1 << 0)
+/// Used to denote an antag datum that either isn't necessarily "evil" (like Valentines)
+/// or isn't necessarily a "real" antag (like Ashwalkers)
+#define ANTAG_FAKE (1 << 0)
+/// Antag is not added to the global list of antags
+#define ANTAG_SKIP_GLOBAL_LIST (1 << 1)
 
 #define HUNTER_PACK_COPS "Spacepol Fugitive Hunters"
 #define HUNTER_PACK_RUSSIAN "Russian Fugitive Hunters"
@@ -452,3 +464,5 @@ GLOBAL_LIST_INIT(human_invader_antagonists, list(
 
 /// Camera net used by battle royale objective
 #define BATTLE_ROYALE_CAMERA_NET "battle_royale_camera_net"
+
+#define MALF_MAX_PP 400

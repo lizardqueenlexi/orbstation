@@ -14,7 +14,7 @@
 	force = 15
 	throwforce = 15
 	wound_bonus = 5
-	bare_wound_bonus = 10
+	exposed_wound_bonus = 10
 	sharpness = SHARP_EDGED
 	hitsound = 'sound/items/weapons/slice.ogg'
 	mob_throw_hit_sound = 'sound/items/weapons/slice.ogg'

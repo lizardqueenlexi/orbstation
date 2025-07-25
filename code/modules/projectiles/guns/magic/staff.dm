@@ -208,7 +208,6 @@
 		/obj/projectile/bullet/mime,
 		/obj/projectile/curse_hand,
 		/obj/projectile/energy/electrode,
-		/obj/projectile/energy/net,
 		/obj/projectile/energy/nuclear_particle,
 		/obj/projectile/gravityattract,
 		/obj/projectile/gravitychaos,
@@ -271,13 +270,13 @@
 	)
 
 /obj/item/gun/magic/staff/spellblade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, damage_type = BRUTE)
-	if(attack_type == PROJECTILE_ATTACK || attack_type == LEAP_ATTACK)
-		final_block_chance = 0 //Don't bring a sword to a gunfight, and also you aren't going to really block someone full body tackling you with a sword
+	if(attack_type == (PROJECTILE_ATTACK || LEAP_ATTACK || OVERWHELMING_ATTACK))
+		final_block_chance = 0 //Don't bring a sword to a gunfight, and also you aren't going to really block someone full body tackling you with a sword. Or a road roller, if one happened to hit you.
 	return ..()
 
 /obj/item/gun/magic/staff/locker
 	name = "staff of the locker"
-	desc = "An artefact that expells encapsulating bolts, for incapacitating thy enemy."
+	desc = "An artefact that expels encapsulating bolts, for incapacitating thy enemy."
 	fire_sound = 'sound/effects/magic/staff_change.ogg'
 	ammo_type = /obj/item/ammo_casing/magic/locker
 	icon_state = "locker"

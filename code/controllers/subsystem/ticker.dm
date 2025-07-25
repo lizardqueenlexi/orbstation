@@ -3,8 +3,6 @@
 
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
-	init_order = INIT_ORDER_TICKER
-
 	priority = FIRE_PRIORITY_TICKER
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME
@@ -109,7 +107,7 @@ SUBSYSTEM_DEF(ticker)
 				music += S
 
 	var/old_login_music = trim(file2text("data/last_round_lobby_music.txt"))
-	if(music.len > 1)
+	if(length(music) > 1)
 		music -= old_login_music
 
 	for(var/S in music)
@@ -122,10 +120,11 @@ SUBSYSTEM_DEF(ticker)
 
 	if(!length(music))
 		music = world.file2list(ROUND_START_MUSIC_LIST, "\n")
-		login_music = pick(music)
+		if(length(music) > 1)
+			music -= old_login_music
+		set_lobby_music(pick(music))
 	else
-		login_music = "[global.config.directory]/title_music/sounds/[pick(music)]"
-
+		set_lobby_music("[global.config.directory]/title_music/sounds/[pick(music)]")
 
 	if(!GLOB.syndicate_code_phrase)
 		GLOB.syndicate_code_phrase = generate_code_phrase(return_list=TRUE)
@@ -160,7 +159,8 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-			send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), CONFIG_GET(string/channel_announce_new_game))
+			for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
+				send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag)
 			current_state = GAME_STATE_PREGAME
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 
@@ -224,7 +224,7 @@ SUBSYSTEM_DEF(ticker)
 		return TRUE
 	if(GLOB.station_was_nuked)
 		return TRUE
-	if(GLOB.revolutionary_win)
+	if(GLOB.revolution_handler?.result == REVOLUTION_VICTORY)
 		return TRUE
 	return FALSE
 
@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 	//Configure mode and assign player to antagonists
 	var/can_continue = FALSE
-	can_continue = SSdynamic.pre_setup() //Choose antagonists
+	can_continue = SSdynamic.select_roundstart_antagonists() //Choose antagonists
 	CHECK_TICK
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_PRE_JOBS_ASSIGNED, src)
 	can_continue = can_continue && SSjob.divide_occupations() //Distribute jobs
@@ -301,7 +301,37 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/PostSetup()
 	set waitfor = FALSE
-	SSdynamic.post_setup()
+
+	// Spawn traitors and stuff
+	for(var/datum/dynamic_ruleset/roundstart/ruleset in SSdynamic.queued_rulesets)
+		ruleset.execute()
+		SSdynamic.queued_rulesets -= ruleset
+		SSdynamic.executed_rulesets += ruleset
+	// Queue roundstart intercept report
+	if(!CONFIG_GET(flag/no_intercept_report))
+		GLOB.communications_controller.queue_roundstart_report()
+	// Queue admin logout report
+	addtimer(CALLBACK(src, PROC_REF(display_roundstart_logout_report)), ROUNDSTART_LOGOUT_REPORT_TIME)
+	// Queue suicide slot handling
+	if(CONFIG_GET(flag/reopen_roundstart_suicide_roles))
+		var/delay = (CONFIG_GET(number/reopen_roundstart_suicide_roles_delay) * 1 SECONDS) || 4 MINUTES
+		addtimer(CALLBACK(src, PROC_REF(reopen_roundstart_suicide_roles)), delay)
+	// Handle database
+	if(SSdbcore.Connect())
+		var/list/to_set = list()
+		var/arguments = list()
+		if(GLOB.revdata.originmastercommit)
+			to_set += "commit_hash = :commit_hash"
+			arguments["commit_hash"] = GLOB.revdata.originmastercommit
+		if(to_set.len)
+			arguments["round_id"] = GLOB.round_id
+			var/datum/db_query/query_round_game_mode = SSdbcore.NewQuery(
+				"UPDATE [format_table_name("round")] SET [to_set.Join(", ")] WHERE id = :round_id",
+				arguments
+			)
+			query_round_game_mode.Execute()
+			qdel(query_round_game_mode)
+
 	GLOB.start_state = new /datum/station_state()
 	GLOB.start_state.count()
 
@@ -328,17 +358,103 @@ SUBSYSTEM_DEF(ticker)
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
 
-		if(iter_human.mind?.special_role)
+		if(length(iter_human.mind?.get_special_roles()) > 0)
 			special_role_count++
 
 		if(!iter_human.hardcore_survival_score)
 			continue
-		if(iter_human.mind?.special_role)
+		if(iter_human.is_antag())
 			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score) * 2] hardcore random points if you greentext this round!"))
 		else
 			to_chat(iter_human, span_notice("You will gain [round(iter_human.hardcore_survival_score)] hardcore random points if you survive this round!"))
 
-	message_admins(span_alert("Game started with [special_role_count] antagonist(s) out of [GLOB.alive_player_list.len] players."))
+	message_admins(span_alert("Game started with [special_role_count] antagonist(s) out of [GLOB.alive_player_list.len] players.")) //ORBSTATION EDIT: extra message
+
+/datum/controller/subsystem/ticker/proc/display_roundstart_logout_report()
+	var/list/msg = list("[span_boldnotice("Roundstart logout report")]\n\n")
+	for(var/i in GLOB.mob_living_list)
+		var/mob/living/L = i
+		var/mob/living/carbon/C = L
+		if (istype(C) && !C.last_mind)
+			continue  // never had a client
+
+		if(L.ckey && !GLOB.directory[L.ckey])
+			msg += "<b>[L.name]</b> ([L.key]), the [L.job] (<font color='#ffcc00'><b>Disconnected</b></font>)\n"
+
+
+		if(L.ckey && L.client)
+			var/failed = FALSE
+			if(L.client.inactivity >= ROUNDSTART_LOGOUT_AFK_THRESHOLD) //Connected, but inactive (alt+tabbed or something)
+				msg += "<b>[L.name]</b> ([L.key]), the [L.job] (<font color='#ffcc00'><b>Connected, Inactive</b></font>)\n"
+				failed = TRUE //AFK client
+			if(!failed && L.stat)
+				if(HAS_TRAIT(L, TRAIT_SUICIDED)) //Suicider
+					msg += "<b>[L.name]</b> ([L.key]), the [L.job] ([span_bolddanger("Suicide")])\n"
+					failed = TRUE //Disconnected client
+				if(!failed && (L.stat == UNCONSCIOUS || L.stat == HARD_CRIT))
+					msg += "<b>[L.name]</b> ([L.key]), the [L.job] (Dying)\n"
+					failed = TRUE //Unconscious
+				if(!failed && L.stat == DEAD)
+					msg += "<b>[L.name]</b> ([L.key]), the [L.job] (Dead)\n"
+					failed = TRUE //Dead
+
+			continue //Happy connected client
+		for(var/mob/dead/observer/D in GLOB.dead_mob_list)
+			if(D.mind && D.mind.current == L)
+				if(L.stat == DEAD)
+					if(HAS_TRAIT(L, TRAIT_SUICIDED)) //Suicider
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] ([span_bolddanger("Suicide")])\n"
+						continue //Disconnected client
+					else
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] (Dead)\n"
+						continue //Dead mob, ghost abandoned
+				else
+					if(D.can_reenter_corpse)
+						continue //Adminghost, or cult/wizard ghost
+					else
+						msg += "<b>[L.name]</b> ([ckey(D.mind.key)]), the [L.job] ([span_bolddanger("Ghosted")])\n"
+						continue //Ghosted while alive
+
+	var/concatenated_message = msg.Join()
+	log_admin(concatenated_message)
+	to_chat(GLOB.admins, concatenated_message)
+
+/datum/controller/subsystem/ticker/proc/reopen_roundstart_suicide_roles()
+	var/include_command = CONFIG_GET(flag/reopen_roundstart_suicide_roles_command_positions)
+	var/list/reopened_jobs = list()
+
+	for(var/mob/living/quitter in GLOB.suicided_mob_list)
+		var/datum/job/job = SSjob.get_job(quitter.job)
+		if(!job || !(job.job_flags & JOB_REOPEN_ON_ROUNDSTART_LOSS))
+			continue
+		if(!include_command && job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
+			continue
+		job.current_positions = max(job.current_positions - 1, 0)
+		reopened_jobs += quitter.job
+
+	if(CONFIG_GET(flag/reopen_roundstart_suicide_roles_command_report))
+		if(reopened_jobs.len)
+			var/reopened_job_report_positions
+			for(var/dead_dudes_job in reopened_jobs)
+				reopened_job_report_positions = "[reopened_job_report_positions ? "[reopened_job_report_positions]\n":""][dead_dudes_job]"
+
+			var/suicide_command_report = {"
+				<font size = 3><b>[command_name()] Human Resources Board</b><br>
+				Notice of Personnel Change</font><hr>
+				To personnel management staff aboard [station_name()]:<br><br>
+				Our medical staff have detected a series of anomalies in the vital sensors
+				of some of the staff aboard your station.<br><br>
+				Further investigation into the situation on our end resulted in us discovering
+				a series of rather... unforturnate decisions that were made on the part of said staff.<br><br>
+				As such, we have taken the liberty to automatically reopen employment opportunities for the positions of the crew members
+				who have decided not to partake in our research. We will be forwarding their cases to our employment review board
+				to determine their eligibility for continued service with the company (and of course the
+				continued storage of cloning records within the central medical backup server.)<br><br>
+				<i>The following positions have been reopened on our behalf:<br><br>
+				[reopened_job_report_positions]</i>
+			"}
+
+			print_command_report(suicide_command_report, "Central Command Personnel Update")
 
 //These callbacks will fire after roundstart key transfer
 /datum/controller/subsystem/ticker/proc/OnRoundstart(datum/callback/cb)
@@ -353,10 +469,6 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	else
 		LAZYADD(round_end_events, cb)
-
-/datum/controller/subsystem/ticker/proc/station_explosion_detonation(atom/bomb)
-	if(bomb) //BOOM
-		qdel(bomb)
 
 /datum/controller/subsystem/ticker/proc/create_characters()
 	for(var/i in GLOB.new_player_list)
@@ -436,6 +548,8 @@ SUBSYSTEM_DEF(ticker)
 			if(new_player_mob.client?.prefs?.should_be_random_hardcore(player_assigned_role, new_player_living.mind))
 				new_player_mob.client.prefs.hardcore_random_setup(new_player_living)
 			SSquirks.AssignQuirks(new_player_living, new_player_mob.client)
+		if(ishuman(new_player_living))
+			SEND_SIGNAL(new_player_living, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 		CHECK_TICK
 
 	if(captainless)
@@ -479,8 +593,8 @@ SUBSYSTEM_DEF(ticker)
 			qdel(player)
 			ADD_TRAIT(living, TRAIT_NO_TRANSFORM, SS_TICKER_TRAIT)
 			if(living.client)
-				var/atom/movable/screen/splash/fade_out = new(null, living.client, TRUE)
-				fade_out.Fade(TRUE)
+				var/atom/movable/screen/splash/fade_out = new(null, null, living.client, TRUE)
+				fade_out.fade(TRUE)
 				living.client.init_verbs()
 			livings += living
 	if(livings.len)
@@ -523,11 +637,17 @@ SUBSYSTEM_DEF(ticker)
 			queued_players -= next_in_line
 			queue_delay = 0
 
+///Whether the game has started, including roundend.
 /datum/controller/subsystem/ticker/proc/HasRoundStarted()
 	return current_state >= GAME_STATE_PLAYING
 
+///Whether the game is currently in progress, excluding roundend
 /datum/controller/subsystem/ticker/proc/IsRoundInProgress()
 	return current_state == GAME_STATE_PLAYING
+
+///Whether the game is currently in progress, excluding roundend
+/datum/controller/subsystem/ticker/proc/IsPostgame()
+	return current_state == GAME_STATE_FINISHED
 
 /datum/controller/subsystem/ticker/Recover()
 	current_state = SSticker.current_state
@@ -569,6 +689,7 @@ SUBSYSTEM_DEF(ticker)
 	var/news_message
 	var/news_source = "Nanotrasen News Network"
 	var/decoded_station_name = html_decode(station_name()) //decode station_name to avoid minor_announce double encode
+	var/decoded_emergency_reason = html_decode(emergency_reason)
 
 	switch(news_report)
 		// The nuke was detonated on the syndicate recon outpost
@@ -584,7 +705,7 @@ SUBSYSTEM_DEF(ticker)
 			// Had an emergency reason supplied to pass along
 			if(emergency_reason)
 				news_message = "[decoded_station_name] has been evacuated after transmitting \
-					the following distress beacon:\n\n[html_decode(emergency_reason)]"
+					the following distress beacon:\n\n[decoded_emergency_reason]"
 			else
 				news_message = "The crew of [decoded_station_name] has been \
 					evacuated amid unconfirmed reports of enemy activity."
@@ -653,7 +774,8 @@ SUBSYSTEM_DEF(ticker)
 		// The emergency escape shuttle was hijacked
 		if(SHUTTLE_HIJACK)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [decoded_station_name] \
-				had its navigation protocols corrupted and went off course, but was recovered shortly after."
+				had its navigation protocols corrupted and went off course, but was recovered shortly after. \
+				The following distress beacon was sent prior to evacuation:\n\n[Gibberish(decoded_emergency_reason, FALSE, 8)]"
 		// A supermatter cascade triggered
 		if(SUPERMATTER_CASCADE)
 			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in \
@@ -738,11 +860,10 @@ SUBSYSTEM_DEF(ticker)
 	gather_newscaster() //called here so we ensure the log is created even upon admin reboot
 	if(!round_end_sound)
 		round_end_sound = choose_round_end_song()
-	///The reference to the end of round sound that we have chosen.
-	var/sound/end_of_round_sound_ref = sound(round_end_sound)
 	for(var/mob/M in GLOB.player_list)
-		if(M.client.prefs.read_preference(/datum/preference/toggle/sound_endofround))
-			SEND_SOUND(M.client, end_of_round_sound_ref)
+		var/pref_volume = M.client.prefs.read_preference(/datum/preference/numeric/volume/sound_midi)
+		if(pref_volume > 0)
+			SEND_SOUND(M.client, sound(round_end_sound, volume = pref_volume))
 
 	text2file(login_music, "data/last_round_lobby_music.txt")
 
@@ -754,6 +875,14 @@ SUBSYSTEM_DEF(ticker)
 		possible_themes += themes
 	if(possible_themes.len)
 		return "[global.config.directory]/reboot_themes/[pick(possible_themes)]"
+
+/// Updates the lobby music
+/// Does not update if override is FALSE and login_music is already set
+/datum/controller/subsystem/ticker/proc/set_lobby_music(new_music, override = FALSE)
+	if(!override && login_music)
+		return
+
+	login_music = new_music
 
 #undef ROUND_START_MUSIC_LIST
 #undef SS_TICKER_TRAIT

@@ -65,7 +65,7 @@
 		. += span_warning("Needs to be [EXAMINE_HINT("anchored")] to start operations.")
 		. += span_notice("It can be [EXAMINE_HINT("welded")] apart.")
 
-	. += span_notice("An [EXAMINE_HINT("plunger")] can be used to flush out reagents.")
+	. += span_notice("A [EXAMINE_HINT("plunger")] can be used to flush out reagents.")
 
 /obj/machinery/plumbing/wrench_act(mob/living/user, obj/item/tool)
 	if(user.combat_mode)
@@ -88,15 +88,15 @@
 		return ITEM_INTERACT_BLOCKING
 
 	if(I.tool_start_check(user, amount = 1))
-		to_chat(user, span_notice("You start slicing the [name] apart."))
+		to_chat(user, span_notice("You start slicing \the [src] apart."))
 		if(I.use_tool(src, user, 1.5 SECONDS, volume = 50))
 			deconstruct(TRUE)
-			to_chat(user, span_notice("You slice the [name] apart."))
+			to_chat(user, span_notice("You slice \the [src] apart."))
 			return ITEM_INTERACT_SUCCESS
 
 	return ITEM_INTERACT_BLOCKING
 
-/obj/machinery/plumbing/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+/obj/machinery/plumbing/plunger_act(obj/item/plunger/attacking_plunger, mob/living/user, reinforced)
 	user.balloon_alert_to_viewers("furiously plunging...")
 	if(do_after(user, 3 SECONDS, target = src))
 		user.balloon_alert_to_viewers("finished plunging")

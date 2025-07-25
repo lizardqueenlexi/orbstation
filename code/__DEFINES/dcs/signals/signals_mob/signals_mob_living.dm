@@ -43,7 +43,7 @@
 #define COMSIG_LIVING_REVIVE "living_revive"
 ///from base of mob/living/set_buckled(): (new_buckled)
 #define COMSIG_LIVING_SET_BUCKLED "living_set_buckled"
-///from base of mob/living/set_body_position()
+///from base of mob/living/set_body_position(): (new_position, old_position)
 #define COMSIG_LIVING_SET_BODY_POSITION  "living_set_body_position"
 /// Sent to a mob being injected with a syringe when the do_after initiates
 #define COMSIG_LIVING_TRY_SYRINGE_INJECT "living_try_syringe_inject"
@@ -96,6 +96,8 @@
 
 /// from base of mob/living/updatehealth()
 #define COMSIG_LIVING_HEALTH_UPDATE "living_health_update"
+/// from base of mob/living/updatestamina()
+#define COMSIG_LIVING_STAMINA_UPDATE "living_stamina_update"
 ///from base of mob/living/death(): (gibbed)
 #define COMSIG_LIVING_DEATH "living_death"
 
@@ -263,7 +265,7 @@
 /// Sent from a 'contract chain' button on a mob chain
 #define COMSIG_MOB_CHAIN_CONTRACT "living_chain_contracted"
 
-/// Sent from `obj/item/reagent_containers/pill/on_consumption`: (obj/item/reagent_containers/pill/pill, mob/feeder)
+/// Sent from `obj/item/reagent_containers/applicator/pill/on_consumption`: (obj/item/reagent_containers/applicator/pill/pill, mob/feeder)
 #define COMSIG_LIVING_PILL_CONSUMED "living_pill_consumed"
 
 /// Sent from a mob to their loc when starting to remove cuffs on itself
@@ -291,8 +293,10 @@
 	///cancel post eating
 	#define COMSIG_MOB_TERMINATE_EAT (1<<0)
 
-///From mob/living/carbon/proc/throw_mode_on and throw_mode_off
+///From mob/living/proc/throw_mode_on and throw_mode_off
 #define COMSIG_LIVING_THROW_MODE_TOGGLE "living_throw_mode_toggle"
+///from /atom/movable/screen/alert/give/proc/handle_transfer(): (taker, item)
+#define COMSIG_LIVING_ITEM_GIVEN "living_item_given"
 /// From mob/living/proc/on_fall
 #define COMSIG_LIVING_THUD "living_thud"
 ///From /datum/component/happiness()
@@ -305,7 +309,28 @@
 
 /// Sent to the mob when their mind is slaved
 #define COMSIG_MOB_ENSLAVED_TO "mob_enslaved_to"
-/// From /obj/item/proc/attack_atom: (mob/living/attacker, atom/attacked)
+/// From /obj/item/proc/attack_atom: (mob/living/attacker, atom/attacked, list/modifiers)
 #define COMSIG_LIVING_ATTACK_ATOM "living_attack_atom"
 /// From /mob/living/proc/stop_leaning()
 #define COMSIG_LIVING_STOPPED_LEANING "living_stopped_leaning"
+
+/// When a living mob is table slamming another mob: (mob/living/slammed, obj/structure/table/slammed_table)
+#define COMSIG_LIVING_TABLE_SLAMMING "living_table_slamming"
+/// When a living mob is table slamming another mob, neck grab (so a limb slam): (mob/living/slammed, obj/structure/table/slammed_table)
+#define COMSIG_LIVING_TABLE_LIMB_SLAMMING "living_table_limb_slamming"
+
+/// From /mob/living/get_examine_name(mob/user) : (mob/examined, visible_name, list/name_override)
+/// Allows mobs to override how they perceive others when examining
+#define COMSIG_LIVING_PERCEIVE_EXAMINE_NAME "living_perceive_examine_name"
+	#define COMPONENT_EXAMINE_NAME_OVERRIDEN (1<<0)
+
+/// From /obj/item/book/bible/attack() : (mob/living/user, obj/item/book/bible/bible, bless_result)
+#define COMSIG_LIVING_BLESSED "living_blessed"
+
+/// From /datum/surgery_step/initiate() : (mob/living/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, datum/surgery_step/step, list/modifiers)
+#define COMSIG_LIVING_INITIATE_SURGERY_STEP "living_initiate_surgery_step"
+#define COMSIG_LIVING_SURGERY_STEP_INITIATED_ON "living_surgery_step_initiated_on"
+	/// Index in modifiers containing the modifier to failure chance
+	#define FAIL_PROB_INDEX 1
+	/// Index in modifiers containing the modifer to surgery speed
+	#define SPEED_MOD_INDEX 2

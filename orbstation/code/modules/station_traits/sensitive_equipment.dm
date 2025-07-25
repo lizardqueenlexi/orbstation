@@ -22,7 +22,6 @@
 
 /datum/station_trait/sensitive_equipment/on_round_start()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_TRAITOR_OBJECTIVE_COMPLETED, PROC_REF(activate_objective_announcement))
 	RegisterSignal(SSdcs, COMSIG_GLOB_BB_PAD_COMPLETE, PROC_REF(activate_objective_announcement))
 	RegisterSignal(SSdcs, COMSIG_GLOB_UPLINK_PURCHASE, PROC_REF(activate_purchase_announcement))
 	COOLDOWN_START(src, false_alarm_cooldown, rand(FALSE_ALARM_COOLDOWN_LENGTH_MIN, FALSE_ALARM_COOLDOWN_LENGTH_MAX))

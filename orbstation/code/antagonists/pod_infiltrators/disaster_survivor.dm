@@ -16,20 +16,7 @@
 	role_name = "disaster survivor"
 
 /datum/round_event/ghost_role/disaster_survivor/spawn_role()
-	//probably the closest role that makes sense?
-	var/list/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_FUGITIVE, role = ROLE_FUGITIVE, alert_pic = /obj/machinery/sleeper, role_name_text = role_name, amount_to_pick = 1)
-	if(!candidates.len) // we only need one
-		return NOT_ENOUGH_PLAYERS
-
-	var/mob/dead/selected = pick_n_take(candidates)
-
-	var/mob/living/new_mob = spawn_infiltrator(selected, INFIL_SPAWNER_SURVIVOR)
-
-	if(!new_mob)
-		return NOT_ENOUGH_PLAYERS
-
-	spawned_mobs += new_mob
-
+	spawn_infiltrator(INFIL_SPAWNER_SURVIVOR, "disaster survivor", ROLE_FUGITIVE, alert_pic = /obj/machinery/sleeper)
 	return SUCCESSFUL_SPAWN
 
 /obj/effect/mob_spawn/ghost_role/human/infiltrator/survivor

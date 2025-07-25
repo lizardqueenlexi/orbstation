@@ -7,7 +7,52 @@
 Remember to update _globalvars/traits.dm if you're adding/removing/renaming traits.
 */
 
-//mob traits
+
+// Traits applied to global objects
+
+/// GLOB trait, applied whenever something in the world wants to use the distortion plane
+/// Distortion is an expensive effect, so it's worthwhile to keep it off until we care
+#define TRAIT_DISTORTION_IN_USE(z_layer) "distortion_in_use_#[z_layer]"
+
+/// SSeconomy trait, if the market is crashing and people can't withdraw credits from ID cards.
+#define TRAIT_MARKET_CRASHING "market_crashing"
+
+/// Traits given by station traits
+#define STATION_TRAIT_ASSISTANT_GIMMICKS "station_trait_assistant_gimmicks"
+#define STATION_TRAIT_BANANIUM_SHIPMENTS "station_trait_bananium_shipments"
+#define STATION_TRAIT_BIGGER_PODS "station_trait_bigger_pods"
+#define STATION_TRAIT_BIRTHDAY "station_trait_birthday"
+#define STATION_TRAIT_BOTS_GLITCHED "station_trait_bot_glitch"
+#define STATION_TRAIT_MACHINES_GLITCHED "station_trait_machine_glitch"
+#define STATION_TRAIT_BRIGHT_DAY "station_trait_bright_day"
+#define STATION_TRAIT_CARP_INFESTATION "station_trait_carp_infestation"
+#define STATION_TRAIT_CYBERNETIC_REVOLUTION "station_trait_cybernetic_revolution"
+#define STATION_TRAIT_ECONOMY_ALERTS "station_trait_economy_alerts"
+#define STATION_TRAIT_EMPTY_MAINT "station_trait_empty_maint"
+#define STATION_TRAIT_FILLED_MAINT "station_trait_filled_maint"
+#define STATION_TRAIT_FORESTED "station_trait_forested"
+#define STATION_TRAIT_HANGOVER "station_trait_hangover"
+#define STATION_TRAIT_HUMAN_AI "station_trait_human_ai"
+#define STATION_TRAIT_LATE_ARRIVALS "station_trait_late_arrivals"
+#define STATION_TRAIT_LOANER_SHUTTLE "station_trait_loaner_shuttle"
+#define STATION_TRAIT_MEDBOT_MANIA "station_trait_medbot_mania"
+#define STATION_TRAIT_PDA_GLITCHED "station_trait_pda_glitched"
+#define STATION_TRAIT_PREMIUM_INTERNALS "station_trait_premium_internals"
+#define STATION_TRAIT_RADIOACTIVE_NEBULA "station_trait_radioactive_nebula"
+#define STATION_TRAIT_RANDOM_ARRIVALS "station_trait_random_arrivals"
+#define STATION_TRAIT_REVOLUTIONARY_TRASHING "station_trait_revolutionary_trashing"
+#define STATION_TRAIT_SHUTTLE_SALE "station_trait_shuttle_sale"
+#define STATION_TRAIT_SMALLER_PODS "station_trait_smaller_pods"
+#define STATION_TRAIT_SPIDER_INFESTATION "station_trait_spider_infestation"
+#define STATION_TRAIT_UNIQUE_AI "station_trait_unique_ai"
+#define STATION_TRAIT_UNNATURAL_ATMOSPHERE "station_trait_unnatural_atmosphere"
+#define STATION_TRAIT_SPIKED_DRINKS "station_trait_spiked_drinks"
+
+// Hud traits
+/// This hud is owned by a client with an open escape menu
+#define TRAIT_ESCAPE_MENU_OPEN "escape_menu_open"
+
+// Mob traits
 /// Forces the user to stay unconscious.
 #define TRAIT_KNOCKEDOUT "knockedout"
 /// Prevents voluntary movement.
@@ -60,6 +105,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CLUMSY "clumsy"
 /// Trait that means you are capable of holding items in some form
 #define TRAIT_CAN_HOLD_ITEMS "can_hold_items"
+/// Trait that means you're capable of throwing things
+#define TRAIT_CAN_THROW_ITEMS "can_throw_items"
 /// Trait which lets you clamber over a barrier
 #define TRAIT_FENCE_CLIMBER "can_climb_fences"
 /// means that you can't use weapons with normal trigger guards.
@@ -137,6 +184,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_UNHUSKABLE "trait_unhuskable"
 /// Reduces the chance viruses will spread to this mob, and if the mob has a virus, slows its advancement
 #define TRAIT_VIRUS_RESISTANCE "virus_resistance"
+/// Causes viruses, infected burns, and parasites to spread more effectively and faster, like an inverse of the above.
+#define TRAIT_IMMUNODEFICIENCY "immunodeficiency"
 #define TRAIT_GENELESS "geneless"
 #define TRAIT_PIERCEIMMUNE "pierce_immunity"
 #define TRAIT_NODISMEMBER "dismember_immunity"
@@ -185,6 +234,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_TOXIMMUNE "toxin_immune"
 /// Mob is immune to oxygen damage, does not need to breathe
 #define TRAIT_NOBREATH "no_breath"
+/// Mob doesn't take oxygen damage in deep water
+#define TRAIT_NODROWN "amphibious"
+/// Mob doesn't take stamina damage from deep water and doesn't get slowdown from swimming
+#define TRAIT_SWIMMER "swimmer"
 /// Mob is currently disguised as something else (like a morph being another mob or an object). Holds a reference to the thing that applied the trait.
 #define TRAIT_DISGUISED "disguised"
 /// Use when you want a mob to be able to metabolize plasma temporarily (e.g. plasma fixation disease symptom)
@@ -199,6 +252,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NEVER_WOUNDED "never_wounded"
 /// Species with this trait have 50% extra chance of bleeding from piercing and slashing wounds
 #define TRAIT_EASYBLEED "easybleed"
+/// Mob recovers from addictions at an accelerated rate
+#define TRAIT_ADDICTIONRESILIENT "addiction_resilient"
 #define TRAIT_TOXINLOVER "toxinlover"
 /// Doesn't get overlays from being in critical.
 #define TRAIT_NOCRITOVERLAY "no_crit_overlay"
@@ -212,12 +267,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ANTIMAGIC_NO_SELFBLOCK "anti_magic_no_selfblock"
 /// This mob recently blocked magic with some form of antimagic
 #define TRAIT_RECENTLY_BLOCKED_MAGIC "recently_blocked_magic"
+/// This mob was recently treated and scanned by a medical scanner.
+#define TRAIT_RECENTLY_TREATED "recently_treated"
 /// The user can do things like use magic staffs without penalty
 #define TRAIT_MAGICALLY_GIFTED "magically_gifted"
 /// This object innately spawns with fantasy variables already applied (the magical component is given to it on initialize), and thus we never want to give it the component again.
 #define TRAIT_INNATELY_FANTASTICAL_ITEM "innately_fantastical_item"
-#define TRAIT_DEPRESSION "depression"
-#define TRAIT_JOLLY "jolly"
 #define TRAIT_NOCRITDAMAGE "no_crit"
 /// Prevents shovies and some strong blows such as unarmed punches and (unreliably) tackles the owner down
 #define TRAIT_BRAWLING_KNOCKDOWN_BLOCKED "brawling_knockdown_blocked"
@@ -379,8 +434,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// for something granting you a diagnostic hud
 #define TRAIT_DIAGNOSTIC_HUD "diag_hud"
 #define TRAIT_BOT_PATH_HUD "bot_path_hud"
-/// Is a medbot healing you
-#define TRAIT_MEDIBOTCOMINGTHROUGH "medbot"
 #define TRAIT_PASSTABLE "passtable"
 /// Lets you fly through windows
 #define TRAIT_PASSWINDOW "passwindow"
@@ -404,6 +457,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Increases chance of getting special traumas, makes them harder to cure
 #define TRAIT_SPECIAL_TRAUMA_BOOST "special_trauma_boost"
 #define TRAIT_SPACEWALK "spacewalk"
+/// Mobs with this trait still breathe gas in and out but aren't harmed by lacking any particular gas mix. (You can still be hurt by TOO MUCH of a specific gas).
+#define TRAIT_NO_BREATHLESS_DAMAGE "spacebreathing"
 /// Sanity trait to keep track of when we're in hyperspace and add the appropriate element if we weren't
 #define TRAIT_HYPERSPACED "hyperspaced"
 ///Gives the movable free hyperspace movement without being pulled during shuttle transit
@@ -426,6 +481,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SILENT_FOOTSTEPS "silent_footsteps"
 /// hnnnnnnnggggg..... you're pretty good....
 #define TRAIT_NICE_SHOT "nice_shot"
+/// trait added if mob is killed with an anti pest reagent
+#define TRAIT_BUGKILLER_DEATH "bugkiller_death"
 /// prevents the damage done by a brain tumor
 #define TRAIT_TUMOR_SUPPRESSED "brain_tumor_suppressed"
 /// Prevents hallucinations from the hallucination brain trauma (RDS)
@@ -479,8 +536,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PRESERVE_UI_WITHOUT_CLIENT "preserve_ui_without_client"
 /// This mob overrides certain SSlag_switch measures with this special trait
 #define TRAIT_BYPASS_MEASURES "bypass_lagswitch_measures"
-/// Someone can safely be attacked with honorbound with ONLY a combat mode check, the trait is assuring holding a weapon and hitting won't hurt them..
-#define TRAIT_ALLOWED_HONORBOUND_ATTACK "allowed_honorbound_attack"
 /// The user is sparring
 #define TRAIT_SPARRING "sparring"
 /// The user is currently challenging an elite mining mob. Prevents him from challenging another until he's either lost or won.
@@ -516,6 +571,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Mob has a scar on their left/right eye
 #define TRAIT_RIGHT_EYE_SCAR "right_eye_scar"
 #define TRAIT_LEFT_EYE_SCAR "left_eye_scar"
+/// Mob has their face visually, but not physically, covered
+#define TRAIT_FACE_COVERED "face_covered"
 
 /// Trait added when a revenant is visible.
 #define TRAIT_REVENANT_REVEALED "revenant_revealed"
@@ -584,10 +641,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Whether or not the user is in a MODlink call, prevents making more calls
 #define TRAIT_IN_CALL "in_call"
 
-/// Is the mob standing on an elevated surface? This prevents them from dropping down if not elevated first.
-#define TRAIT_ON_ELEVATED_SURFACE "on_elevated_surface"
 /// Does the mob ignore elevation? (e.g. xeno larvas on hiding)
 #define TRAIT_IGNORE_ELEVATION "ignore_elevation"
+/// Is the mob currently elevated? (eg standing on a table)
+#define TRAIT_MOB_ELEVATED "mob_elevated"
 
 /// Prevents you from twohanding weapons.
 #define TRAIT_NO_TWOHANDING "no_twohanding"
@@ -620,10 +677,16 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DISPLAY_JOB_IN_BINARY "display job in binary"
 
 /// Trait that determines vulnerability to being stunned from a shove
-#define TRAIT_STUN_ON_NEXT_SHOVE "stun on next shove"
+#define TRAIT_DAZED "dazed"
 
 /// Trait that determines whether our mob gains more strength from drinking during a fist fight
 #define TRAIT_DRUNKEN_BRAWLER "drunken brawler"
+
+/// Trait that ensures that a shot with a projectile always lands exactly where it was aimed at. Or the head.alist
+#define TRAIT_DESIGNATED_TARGET "designated_target"
+
+/// Trait that makes you bite when attacking with an unarmed strike.
+#define TRAIT_FERAL_BITER "feral biter"
 
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
@@ -643,10 +706,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MAINTENANCE_METABOLISM "maintenance_metabolism"
 #define TRAIT_CORONER_METABOLISM "coroner_metabolism"
 #define TRAIT_HUMAN_AI_METABOLISM "human_ai_metabolism"
-
-//LUNG TRAITS
-/// Lungs always breathe normally when in vacuum/space.
-#define TRAIT_SPACEBREATHING "spacebreathing"
 
 /// This mob can strip other mobs.
 #define TRAIT_CAN_STRIP "can_strip"
@@ -695,11 +754,16 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Cannot be turned into a funny skeleton by the plasma river
 #define TRAIT_NO_PLASMA_TRANSFORM "no_plasma_transform"
 
+/// Mind trait that allows you to see blessed tiles.
+#define TRAIT_SEE_BLESSED_TILES "sees_blessed_tiles"
+
 /// Weather immunities, also protect mobs inside them.
 #define TRAIT_LAVA_IMMUNE "lava_immune" //Used by lava turfs and The Floor Is Lava.
 #define TRAIT_ASHSTORM_IMMUNE "ashstorm_immune"
 #define TRAIT_SNOWSTORM_IMMUNE "snowstorm_immune"
 #define TRAIT_RADSTORM_IMMUNE "radstorm_immune"
+#define TRAIT_SANDSTORM_IMMUNE "sandstorm_immune"
+#define TRAIT_RAINSTORM_IMMUNE "rainstorm_immune"
 #define TRAIT_WEATHER_IMMUNE "weather_immune" //Immune to ALL weather effects.
 
 /// Cannot be grabbed by goliath tentacles
@@ -777,9 +841,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///If the crate is immune to the wrong content in manifest error
 #define TRAIT_NO_MANIFEST_CONTENTS_ERROR "no_manifest_contents_error"
 
-///SSeconomy trait, if the market is crashing and people can't withdraw credits from ID cards.
-#define TRAIT_MARKET_CRASHING "market_crashing"
-
 // item traits
 #define TRAIT_NODROP "nodrop"
 /// cannot be inserted in a storage.
@@ -788,6 +849,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_T_RAY_VISIBLE "t-ray-visible"
 /// If this item's been fried
 #define TRAIT_FOOD_FRIED "food_fried"
+/// Has the ingredients_holder component
+#define TRAIT_INGREDIENTS_HOLDER "ingredients_holder"
 /// If this item's been bbq grilled
 #define TRAIT_FOOD_BBQ_GRILLED "food_bbq_grilled"
 /// This is a silver slime created item
@@ -874,6 +937,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CONTRABAND_BLOCKER "contraband_blocker"
 /// For edible items that cannot be composted inside hydro trays
 #define TRAIT_UNCOMPOSTABLE "uncompostable"
+/// Items with this trait will not have their worn icon overlayed.
+#define TRAIT_NO_WORN_ICON "no_worn_icon"
+/// Items with this trait will not appear when examined.
+#define TRAIT_EXAMINE_SKIP "examine_skip"
 
 //quirk traits
 #define TRAIT_ALCOHOL_TOLERANCE "alcohol_tolerance"
@@ -890,7 +957,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SELF_AWARE "self_aware"
 #define TRAIT_FREERUNNING "freerunning"
 #define TRAIT_SKITTISH "skittish"
-#define TRAIT_PROSOPAGNOSIA "prosopagnosia"
 #define TRAIT_TAGGER "tagger"
 #define TRAIT_PHOTOGRAPHER "photographer"
 #define TRAIT_MUSICIAN "musician"
@@ -917,6 +983,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This mob always lands on their feet when they fall, for better or for worse.
 #define TRAIT_CATLIKE_GRACE "catlike_grace"
 
+///Won't show up on cameras when they snap a photo.
+#define TRAIT_INVISIBLE_TO_CAMERA "invisible_to_camera"
+
 ///if the atom has a sticker attached to it
 #define TRAIT_STICKERED "stickered"
 
@@ -936,8 +1005,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_DRYABLE "trait_dryable"
 ///Trait for dried items
 #define TRAIT_DRIED "trait_dried"
-/// Trait for customizable reagent holder
-#define TRAIT_CUSTOMIZABLE_REAGENT_HOLDER "customizable_reagent_holder"
 /// Trait for allowing an item that isn't food into the customizable reagent holder
 #define TRAIT_ODD_CUSTOMIZABLE_FOOD_INGREDIENT "odd_customizable_food_ingredient"
 
@@ -984,6 +1051,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// If present on a [/mob/living/carbon], will make them appear to have a medium level disease on health HUDs.
 #define TRAIT_DISEASELIKE_SEVERITY_MEDIUM "diseaselike_severity_medium"
+/// If present on a [/mob/living/carbon], will make them appear to have a dangerous level disease on health HUDs.
+#define TRAIT_DISEASELIKE_SEVERITY_HIGH "diseaselike_severity_high"
 
 /// trait denoting someone will crawl faster in soft crit
 #define TRAIT_TENACIOUS "tenacious"
@@ -1030,6 +1099,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///A trait for mechs that were created through the normal construction process, and not spawned by map or other effects.
 #define TRAIT_MECHA_CREATED_NORMALLY "trait_mecha_created_normally"
 
+/// Trait to apply to mechs after a diagnostic scan has been created, to prevent you from generating duplicates of a scan on the same machine.
+#define TRAIT_MECHA_DIAGNOSTIC_CREATED "trait_mecha_diagnostic_created"
+
 /// Stops a movable from being removed from the mob it's in by the content_barfer component.
 #define TRAIT_NOT_BARFABLE "not_barfable"
 
@@ -1048,8 +1120,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FISH_FED_LUBE "fish_fed_lube"
 #define TRAIT_FISH_WELL_COOKED "fish_well_cooked"
 #define TRAIT_FISH_NO_HUNGER "fish_no_hunger"
-///It comes from a fish case. Relevant for bounties so far.
-#define TRAIT_FISH_FROM_CASE "fish_from_case"
+///Fish with this trait only sell for 1/20 of the original price when exported. For fish cases and trophy mounts.
+#define TRAIT_FISH_LOW_PRICE "fish_from_case"
 ///Fish will also occasionally fire weak tesla zaps
 #define TRAIT_FISH_ELECTROGENESIS "fish_electrogenesis"
 ///Offsprings from this fish will never be of its same type (unless it's self-reproducing).
@@ -1098,6 +1170,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_MIRROR_REFLECTION "no_mirror_reflection"
 /// If this movable is currently treading in a turf with the immerse element.
 #define TRAIT_IMMERSED "immersed"
+/// From [/datum/element/elevation] for purpose of checking if the object causes things in its turf to become elevated
+#define TRAIT_ELEVATING_OBJECT "elevating_object"
 /// From [/datum/element/elevation_core] for purpose of checking if the turf has the trait from an instance of the element
 #define TRAIT_ELEVATED_TURF "elevated_turf"
 /**
@@ -1119,36 +1193,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CHUUNIBYOU "chuunibyou"
 /// Has splattercasting
 #define TRAIT_SPLATTERCASTER "splattercaster"
-
-///Traits given by station traits
-#define STATION_TRAIT_ASSISTANT_GIMMICKS "station_trait_assistant_gimmicks"
-#define STATION_TRAIT_BANANIUM_SHIPMENTS "station_trait_bananium_shipments"
-#define STATION_TRAIT_BIGGER_PODS "station_trait_bigger_pods"
-#define STATION_TRAIT_BIRTHDAY "station_trait_birthday"
-#define STATION_TRAIT_BOTS_GLITCHED "station_trait_bot_glitch"
-#define STATION_TRAIT_MACHINES_GLITCHED "station_trait_machine_glitch"
-#define STATION_TRAIT_BRIGHT_DAY "station_trait_bright_day"
-#define STATION_TRAIT_CARP_INFESTATION "station_trait_carp_infestation"
-#define STATION_TRAIT_CYBERNETIC_REVOLUTION "station_trait_cybernetic_revolution"
-#define STATION_TRAIT_EMPTY_MAINT "station_trait_empty_maint"
-#define STATION_TRAIT_FILLED_MAINT "station_trait_filled_maint"
-#define STATION_TRAIT_FORESTED "station_trait_forested"
-#define STATION_TRAIT_HANGOVER "station_trait_hangover"
-#define STATION_TRAIT_HUMAN_AI "station_trait_human_ai"
-#define STATION_TRAIT_LATE_ARRIVALS "station_trait_late_arrivals"
-#define STATION_TRAIT_LOANER_SHUTTLE "station_trait_loaner_shuttle"
-#define STATION_TRAIT_MEDBOT_MANIA "station_trait_medbot_mania"
-#define STATION_TRAIT_PDA_GLITCHED "station_trait_pda_glitched"
-#define STATION_TRAIT_PREMIUM_INTERNALS "station_trait_premium_internals"
-#define STATION_TRAIT_RADIOACTIVE_NEBULA "station_trait_radioactive_nebula"
-#define STATION_TRAIT_RANDOM_ARRIVALS "station_trait_random_arrivals"
-#define STATION_TRAIT_REVOLUTIONARY_TRASHING "station_trait_revolutionary_trashing"
-#define STATION_TRAIT_SHUTTLE_SALE "station_trait_shuttle_sale"
-#define STATION_TRAIT_SMALLER_PODS "station_trait_smaller_pods"
-#define STATION_TRAIT_SPIDER_INFESTATION "station_trait_spider_infestation"
-#define STATION_TRAIT_UNIQUE_AI "station_trait_unique_ai"
-#define STATION_TRAIT_UNNATURAL_ATMOSPHERE "station_trait_unnatural_atmosphere"
-#define STATION_TRAIT_SPIKED_DRINKS "station_trait_spiked_drinks"
 
 ///Deathmatch traits
 #define TRAIT_DEATHMATCH_EXPLOSIVE_IMPLANTS "deathmath_explosive_implants"
@@ -1174,6 +1218,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///The entity has AI 'access', so is either an AI, has an access wand, or is an admin ghost AI. Used to block off regular Silicons from things.
 ///This is put on the mob, it is used on the client for Admins but they are the exception as they use `isAdminGhostAI`.
 #define TRAIT_AI_ACCESS "ai_access_trait"
+///The entity should have `SPAN_COMMAND` in binary the same way as AI does.
+#define TRAIT_LOUD_BINARY "loud_binary_trait"
+///The entity is able to receive a tracking button in chat
+#define TRAIT_CAN_GET_AI_TRACKING_MESSAGE "can_get_ai_tracking_message"
 
 ///Used by wearable_client_colour to determine whether the mob wants to have the colours of the screen affected by worn items (some still do regardless).
 #define TRAIT_SEE_WORN_COLOURS "see_worn_colour"
@@ -1226,6 +1274,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Makes a character be better/worse at defending against tackling depending on their tail's status
 #define TRAIT_TACKLING_TAILED_DEFENDER "tackling_tailed_defender"
+
+/// Makes a character better at tackling if they have a tail
+#define TRAIT_TACKLING_TAILED_POUNCE "tackling_tailed_pounce"
 
 /// Is runechat for this atom/movable currently disabled, regardless of prefs or anything?
 #define TRAIT_RUNECHAT_HIDDEN "runechat_hidden"
@@ -1289,7 +1340,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait determines if this mob has examined an eldritch painting
 #define TRAIT_ELDRITCH_PAINTING_EXAMINE "eldritch_painting_examine"
 
-/// Trait used by the /datum/brain_trauma/severe/flesh_desire trauma to change their preferences of what they eat
+/// Trait used by the /obj/item/wallframe/painting/eldritch/desire status effect to change their preferences of what they eat
 #define TRAIT_FLESH_DESIRE "flesh_desire"
 
 ///Trait granted by janitor skillchip, allows communication with cleanbots
@@ -1324,6 +1375,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait given to anything linked to, not necessarily allied to, the mansus
 #define TRAIT_MANSUS_TOUCHED "mansus_touched"
 
+/// Trait given to all participants in a heretic arena
+#define TRAIT_ELDRITCH_ARENA_PARTICIPANT "eldritch_arena_participant"
 
 // These traits are used in IS_X() as an OR, and is utilized for pseudoantags (such as deathmatch or domains) so they don't need to actually get antag status.
 // To specifically and only get the antag datum, GET_X() exists now.
@@ -1427,5 +1480,70 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Trait applied when the wire bundle component is added to an [/obj/item/integrated_circuit]
 #define TRAIT_COMPONENT_WIRE_BUNDLE "component_wire_bundle"
+
+/// Apply this trait to mobs which can "buckle" to humans
+#define TRAIT_CAN_MOUNT_HUMANS "can_mount_humans"
+/// Apply this trait to mobs which can "buckle" to cyborgs
+#define TRAIT_CAN_MOUNT_CYBORGS "can_mount_cyborgs"
+
+/// Trait that is added to fishes that someone already caught, be it in-game or just theoretically, such as when they're bought
+/// Prevents fishing achievement from being granted by catching one of these
+#define TRAIT_NO_FISHING_ACHIEVEMENT "no_fishing_achievement"
+
+/**
+ * This trait is given to turfs that have had shuttle frame parts built on them, but are not yet part of a shuttle.
+ * When attempting custom shuttle creation, a flood fill algorithm
+ * checks for turfs with this trait to determine the turfs
+ * that will constitute the created shuttle.
+ */
+#define TRAIT_SHUTTLE_CONSTRUCTION_TURF "shuttle_construction_turf"
+
+// Trait given to areas with a shuttle construction turf in them
+#define TRAIT_HAS_SHUTTLE_CONSTRUCTION_TURF "has_shuttle_construction_turf"
+
+///A trait given to users as a mutex to prevent repeated unresolved attempts to christen a shuttle
+#define TRAIT_ATTEMPTING_CHRISTENING "attempting_christening"
+
+///Trait given to heretic summons, making them immune to heretic spells
+#define TRAIT_HERETIC_SUMMON "heretic_summon"
+
+///trait given to mobs that are difficult to tame through mounting
+#define TRAIT_MOB_DIFFICULT_TO_MOUNT "difficult_to_mount"
+
+///trait given to mobs that are easy to tame through mounting
+#define TRAIT_MOB_EASY_TO_MOUNT "easy_to_mount"
+
+/// Prevents items from being speed potion-ed, but allows their speed to be altered in other ways
+#define TRAIT_NO_SPEED_POTION "no_speed_potion"
+
+/// Prevents observers from being able to observe (seeing their UI and such)
+#define TRAIT_NO_OBSERVE "no_observe"
+
+/// Demolition modifier when hitting this object is inverted (ie, 1 / demolition)
+#define TRAIT_INVERTED_DEMOLITION "demolition_inverted"
+
+/// Makes the mob immune to carpotoxin
+#define TRAIT_CARPOTOXIN_IMMUNE "carpotoxin_immune"
+
+/// Trait given when we escape into our shell
+#define TRAIT_SHELL_RETREATED "shell_retreated"
+
+/// Trait given to colorblind mobs
+#define TRAIT_COLORBLIND "colorblind"
+
+/// Trait that blocks invisibility (uh as of writing only the space camo but might expand later idk)
+#define TRAIT_INVISIBILITY_BLOCKED "invisibility_blocked"
+
+/// Trait that signals to objects on this turf that its open (has UNDERFLOOR_INTERACTIBLE) but still covers them
+#define TRAIT_UNCOVERED_TURF "uncovered_turf"
+
+/// A trait that blocks the metabolism of formaldehyde
+#define TRAIT_BLOCK_FORMALDEHYDE_METABOLISM "block_formaldehyde_metabolism"
+
+///Attached to objects currently on tables and such, allowing them to walk on other objects without the climbing delay
+#define TRAIT_ON_CLIMBABLE "on_climbable"
+
+/// Trait that allows mobs to perform surgery on themselves
+#define TRAIT_SELF_SURGERY "self_surgery"
 
 // END TRAIT DEFINES

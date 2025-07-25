@@ -1,3 +1,7 @@
+/datum/quirk
+	///ORBSTATION: if true, this quirk will be displayed in the x-card section of the quirk list
+	var/xcard_quirk = FALSE
+
 //quirk subtype for x-card, prevents having to manually flag quirks as an x-card quirk
 /datum/quirk/xcard
 	xcard_quirk = TRUE
@@ -70,7 +74,7 @@
 	examine_text = "cannot be made into a cyborg."
 
 // casting the trait so it applies to the brain level
-/datum/quirk/xcard/uncyborgable/add_to_holder(mob/living/new_holder, quirk_transfer, client/client_source)
+/datum/quirk/xcard/uncyborgable/add_to_holder(mob/living/new_holder, quirk_transfer, client/client_source, unique = TRUE, announce = TRUE)
 	. = ..()
 	if(!.)
 		return

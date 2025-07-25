@@ -1,20 +1,22 @@
-import { filter } from 'common/collections';
+import { filter } from 'es-toolkit/compat';
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
   Button,
+  Floating,
   Icon,
-  Popper,
+  Input,
   Stack,
   Tooltip,
 } from 'tgui-core/components';
+import { createSearch } from 'tgui-core/string';
 
 import {
-  PreferencesMenuData,
-  Quirk,
+  type PreferencesMenuData,
+  type Quirk,
   RandomSetting,
-  ServerData,
+  type ServerData,
 } from '../types';
 import { useRandomToggleState } from '../useRandomToggleState';
 import { useServerPrefs } from '../useServerPrefs';
@@ -65,20 +67,20 @@ function QuirkList(props: QuirkProps & QuirkListProps) {
   } = props;
 
   return (
-    // Stack is not used here for a variety of IE flex bugs
-    <Box className="PreferencesMenu__Quirks__QuirkList">
+    <Stack vertical g={0}>
       {quirks.map(([quirkKey, quirk]) => (
-        <QuirkDisplay
-          key={quirkKey}
-          onClick={onClick}
-          quirk={quirk}
-          quirkKey={quirkKey}
-          randomBodyEnabled={randomBodyEnabled}
-          selected={selected}
-          serverData={serverData}
-        />
+        <Stack.Item key={quirkKey} m={0}>
+          <QuirkDisplay
+            onClick={onClick}
+            quirk={quirk}
+            quirkKey={quirkKey}
+            randomBodyEnabled={randomBodyEnabled}
+            selected={selected}
+            serverData={serverData}
+          />
+        </Stack.Item>
       ))}
-    </Box>
+    </Stack>
   );
 }
 
@@ -109,7 +111,7 @@ function QuirkDisplay(props: QuirkDisplayProps) {
         onClick(quirkKey, quirk);
       }}
     >
-      <Stack fill>
+      <Stack fill g={0}>
         <Stack.Item
           align="center"
           style={{
@@ -214,74 +216,60 @@ function QuirkPopper(props: QuirkPopperProps) {
   const hasExpandableCustomization =
     customizable &&
     selected &&
-    customizationExpanded &&
     customization_options &&
     Object.entries(customization_options).length > 0;
 
   return (
-    <Popper
+    <Floating
+      stopChildPropagation
       placement="bottom-end"
-      onClickOutside={() => setCustomizationExpanded(false)}
-      isOpen={customizationExpanded}
-      baseZIndex={1}
+      onOpenChange={setCustomizationExpanded}
       content={
-        <div>
-          {!!customization_options && hasExpandableCustomization && (
-            <Box
-              mt="1px"
-              style={{
-                boxShadow: '0px 4px 8px 3px rgba(0, 0, 0, 0.7)',
-              }}
-            >
-              <Stack
-                onClick={(e) => {
-                  e.stopPropagation();
-                }}
-                maxWidth="300px"
-                backgroundColor="black"
-                px="5px"
-                py="3px"
-              >
-                <Stack.Item>
-                  <PreferenceList
-                    preferences={getCorrespondingPreferences(
+        hasExpandableCustomization && (
+          <Box
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            style={{
+              boxShadow: '0px 4px 8px 3px rgba(0, 0, 0, 0.7)',
+            }}
+          >
+            <Stack maxWidth="300px" backgroundColor="black" px="5px" py="3px">
+              <Stack.Item>
+                <PreferenceList
+                  preferences={getCorrespondingPreferences(
+                    customization_options,
+                    character_preferences.manually_rendered_features,
+                  )}
+                  randomizations={getRandomization(
+                    getCorrespondingPreferences(
                       customization_options,
                       character_preferences.manually_rendered_features,
-                    )}
-                    randomizations={getRandomization(
-                      getCorrespondingPreferences(
-                        customization_options,
-                        character_preferences.manually_rendered_features,
-                      ),
-                      serverData,
-                      randomBodyEnabled,
-                    )}
-                    maxHeight="100px"
-                  />
-                </Stack.Item>
-              </Stack>
-            </Box>
-          )}
-        </div>
+                    ),
+                    serverData,
+                    randomBodyEnabled,
+                  )}
+                  maxHeight="100px"
+                />
+              </Stack.Item>
+            </Stack>
+          </Box>
+        )
       }
     >
-      <div>
+      <div style={{ display: 'flow-root' }}>
         {selected && (
           <Button
             selected={customizationExpanded}
             icon="cog"
             tooltip="Customize"
-            onClick={(e) => {
-              e.stopPropagation();
-              setCustomizationExpanded(!customizationExpanded);
-            }}
             style={{
               float: 'right',
             }}
           />
         )}
       </div>
-    </Popper>
+    </Floating>
   );
 }
 
@@ -311,11 +299,15 @@ export function QuirksPage(props) {
     data.character_preferences.non_contextual.random_body !==
       RandomSetting.Disabled || randomToggleEnabled;
 
-  const [selectedQuirks, setSelectedQuirks] = useState(data.selected_quirks);
+  const selectedQuirks = data.selected_quirks;
+  function setSelectedQuirks(selected_quirks) {
+    data.selected_quirks = selected_quirks;
+  }
 
+  const [searchQuery, setSearchQuery] = useState('');
   const server_data = useServerPrefs();
   if (!server_data) return;
-
+  const quirkSearch = createSearch(searchQuery, (quirk: Quirk) => quirk.name);
   const {
     max_positive_quirks: maxPositiveQuirks,
     quirk_blacklist: quirkBlacklist,
@@ -377,7 +369,9 @@ export function QuirksPage(props) {
         }
       }
     }
-
+    if (data.species_disallowed_quirks.includes(quirk.name)) {
+      return 'This quirk is incompatible with your selected species.';
+    }
     return;
   }
 
@@ -392,7 +386,7 @@ export function QuirksPage(props) {
   }
 
   return (
-    <Stack align="center" fill>
+    <Stack fill>
       <Stack.Item basis="50%">
         <Stack vertical fill align="center">
           <Stack.Item>
@@ -418,8 +412,15 @@ export function QuirksPage(props) {
               Available Quirks
             </Box>
           </Stack.Item>
-
-          <Stack.Item grow width="100%">
+          <Stack.Item>
+            <Input
+              placeholder="Search quirks..."
+              width="200px"
+              value={searchQuery}
+              onChange={setSearchQuery}
+            />
+          </Stack.Item>
+          <Stack.Item grow className="PreferencesMenu__Quirks__QuirkList">
             <QuirkList
               selected={false}
               onClick={(quirkName, quirk) => {
@@ -433,7 +434,10 @@ export function QuirksPage(props) {
               }}
               quirks={quirks
                 .filter(([quirkName, _]) => {
-                  return selectedQuirks.indexOf(quirkName) === -1;
+                  return (
+                    selectedQuirks.indexOf(quirkName) === -1 &&
+                    quirkSearch(quirkInfo[quirkName])
+                  );
                 })
                 .map(([quirkName, quirk]) => {
                   return [
@@ -451,7 +455,7 @@ export function QuirksPage(props) {
         </Stack>
       </Stack.Item>
 
-      <Stack.Item>
+      <Stack.Item align="center">
         <Icon name="exchange-alt" size={1.5} ml={2} mr={2} />
       </Stack.Item>
 
@@ -464,7 +468,6 @@ export function QuirksPage(props) {
               <Box mt={maxPositiveQuirks > 0 ? 3.4 : 0} />
             )}
           </Stack.Item>
-
           <Stack.Item>
             {pointsEnabled ? (
               <StatDisplay>{balance}</StatDisplay>
@@ -472,14 +475,13 @@ export function QuirksPage(props) {
               <Box mt={maxPositiveQuirks > 0 ? 3.4 : 0} />
             )}
           </Stack.Item>
-
           <Stack.Item>
             <Box as="b" fontSize="1.6em">
               Current Quirks
             </Box>
           </Stack.Item>
-
-          <Stack.Item grow width="100%">
+          <Stack.Item p={1.5} /> {/* Filler to better align the menu*/}
+          <Stack.Item grow className="PreferencesMenu__Quirks__QuirkList">
             <QuirkList
               selected
               onClick={(quirkName, quirk) => {

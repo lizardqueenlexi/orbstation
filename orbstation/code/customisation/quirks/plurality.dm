@@ -19,7 +19,7 @@
 	new_system_chip.locked = FALSE
 	new_system_chip.system_name_locked = TRUE
 	new_system_chip.update_appearance()
-	give_item_to_holder(new_system_chip, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS))
+	give_item_to_holder(new_system_chip, list(LOCATION_BACKPACK, LOCATION_HANDS))
 
 // Plural system chip item, used to store information on plural systems.
 

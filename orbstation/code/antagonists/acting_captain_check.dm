@@ -25,6 +25,6 @@
 	. = ..()
 	if (!acting_captain)
 		return
-	if (!is_special_character(new_captain))
+	if (!new_captain.is_antag())
 		return
 	message_admins("[new_captain] became Acting Captain, but may be an antagonist!")

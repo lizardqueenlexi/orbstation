@@ -1,12 +1,12 @@
 /obj/item/autosurgeon/syndicate/chainsaw
 	desc = "A single use autosurgeon that contains a combat arms-up chainsaw augment. A screwdriver can be used to remove it, but implants can't be placed back in."
 	uses = 1
-	starting_organ = /obj/item/organ/cyberimp/arm/melee/chainsaw
+	starting_organ = /obj/item/organ/cyberimp/arm/toolkit/chainsaw
 
-/obj/item/organ/cyberimp/arm/melee/chainsaw/l
+/obj/item/organ/cyberimp/arm/toolkit/chainsaw/l
 	zone = BODY_ZONE_L_ARM
 
-/obj/item/organ/cyberimp/arm/melee/chainsaw
+/obj/item/organ/cyberimp/arm/toolkit/chainsaw
 	name = "arm-mounted chainsaw implant"
 	desc = "A chainsaw hand implanted inside the arm. The chainsaw emerges from the subject's arm and remains inside when not in use."
 	icon = 'icons/obj/weapons/chainsaw.dmi'

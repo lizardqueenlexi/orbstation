@@ -31,7 +31,7 @@
 		new_ability.Grant(user)
 
 	for(var/mutation in mutations_to_add)
-		user.dna.add_mutation(mutation)
+		user.dna.add_mutation(mutation, MUTATION_SOURCE_GHOST_ROLE)
 
 /datum/outfit/deathmatch_loadout/naked
 	name = "Deathmatch: Naked"
@@ -53,7 +53,7 @@
 /datum/outfit/deathmatch_loadout/assistant/weaponless
 	name = "Deathmatch: Assistant loadout (Weaponless)"
 	display_name = "Assistant (Unarmed)"
-	desc = "What is an assistant without a toolbox? nothing"
+	desc = "What is an assistant without a toolbox? Nothing!"
 	l_hand = null
 
 /datum/outfit/deathmatch_loadout/operative
@@ -154,7 +154,7 @@
 /datum/outfit/deathmatch_loadout/battler
 	name = "Deathmatch: Battler Base"
 	display_name = "Battler"
-	desc = "What is a battler whith out weapone?."
+	desc = "What is a battler without weapons?"
 
 	shoes = /obj/item/clothing/shoes/combat
 	uniform = /obj/item/clothing/under/syndicate
@@ -298,7 +298,7 @@
 	desc = "What"
 
 	l_hand = /obj/item/toy/katana
-	uniform = /obj/item/clothing/under/costume/schoolgirl
+	uniform = /obj/item/clothing/under/costume/seifuku
 	suit = /obj/item/clothing/suit/costume/joker
 	shoes = /obj/item/clothing/shoes/clown_shoes/meown_shoes
 	head = /obj/item/clothing/head/costume/kitty
@@ -645,7 +645,7 @@
 	r_pocket = /obj/item/grenade/syndieminibomb
 	implants = list(/obj/item/implant/explosive/macro)
 	backpack_contents = list(
-		/obj/item/assembly/signaler = 10,
+		/obj/item/assembly/signaler/low_range = 10,
 	)
 
 /datum/outfit/deathmatch_loadout/tider
@@ -779,7 +779,7 @@
 /datum/outfit/deathmatch_loadout/lizardkind
 	name = "Deathmatch: Lizard Species"
 	display_name = "Lizardfolk"
-	desc = "They may be heavily discrimated against, they may be most often seen doing menial activities, but at least they, uh, uhh..."
+	desc = "They may be heavily discriminated against, they may be most often seen doing menial activities, but at least they, uh, uhh..."
 	species_override = /datum/species/lizard
 
 	head = /obj/item/clothing/head/soft/purple
@@ -1041,7 +1041,6 @@
 	// I mean is it really that bad if they don't even know half this stuff is added to them.
 	// It's like, forbidden knowledge. It fits with the mansus theme - great excuse for poor design!
 	knowledge_to_grant = list(
-		/datum/heretic_knowledge/duel_stance,
 		/datum/heretic_knowledge/blade_grasp,
 		/datum/heretic_knowledge/blade_dance,
 		/datum/heretic_knowledge/blade_upgrade/blade,
@@ -1123,8 +1122,8 @@
 		/datum/action/cooldown/spell/smoke/lesser
 	)
 	mutations_to_add = list(
-		/datum/mutation/human/medieval,
-		/datum/mutation/human/lay_on_hands, // useless, but fun
+		/datum/mutation/medieval,
+		/datum/mutation/lay_on_hands, // useless, but fun
 	)
 
 // Rat'var Apostate

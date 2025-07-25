@@ -12,6 +12,7 @@ import { capitalizeAll, createSearch } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { getLayoutState, LAYOUT, LayoutToggle } from './common/LayoutToggle';
 
 type VendingData = {
   all_products_free: boolean;
@@ -143,7 +144,6 @@ export const Vending = (props) => {
               stockSearch={stockSearch}
               setStockSearch={setStockSearch}
               selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
             />
           </Stack.Item>
 
@@ -191,17 +191,10 @@ const ProductDisplay = (props: {
   stockSearch: string;
   setStockSearch: (search: string) => void;
   selectedCategory: string | null;
-  setSelectedCategory: (category: string) => void;
 }) => {
   const { data } = useBackend<VendingData>();
-  const {
-    custom,
-    inventory,
-    stockSearch,
-    setStockSearch,
-    selectedCategory,
-    setSelectedCategory,
-  } = props;
+  const { custom, inventory, stockSearch, setStockSearch, selectedCategory } =
+    props;
   const {
     stock,
     all_products_free,
@@ -209,7 +202,7 @@ const ProductDisplay = (props: {
     displayed_currency_icon,
     displayed_currency_name,
   } = data;
-  const [toggleLayout, setToggleLayout] = useState(true);
+  const [toggleLayout, setToggleLayout] = useState(getLayoutState(LAYOUT.Grid));
 
   return (
     <Section
@@ -220,26 +213,20 @@ const ProductDisplay = (props: {
         <Stack>
           {!all_products_free && user && (
             <Stack.Item fontSize="16px" color="green">
-              {(user && user.cash) || 0}
-              {displayed_currency_name}{' '}
+              {user?.cash || 0}
+              {displayed_currency_name}
               <Icon name={displayed_currency_icon} color="gold" />
             </Stack.Item>
           )}
           <Stack.Item>
             <Input
-              onInput={(_, value) => setStockSearch(value)}
+              onChange={setStockSearch}
+              expensive
               placeholder="Search..."
               value={stockSearch}
             />
           </Stack.Item>
-          <Stack.Item>
-            <Button
-              icon={toggleLayout ? 'border-all' : 'list'}
-              tooltip={toggleLayout ? 'View as Grid' : 'View as List'}
-              tooltipPosition={'bottom-end'}
-              onClick={() => setToggleLayout(!toggleLayout)}
-            />
-          </Stack.Item>
+          <LayoutToggle state={toggleLayout} setState={setToggleLayout} />
         </Stack>
       }
     >
@@ -254,7 +241,7 @@ const ProductDisplay = (props: {
         .map((product) => (
           <Product
             key={product.path}
-            fluid={toggleLayout}
+            fluid={toggleLayout === LAYOUT.List}
             custom={custom}
             product={product}
             productStock={stock[product.path]}
@@ -304,6 +291,7 @@ const Product = (props) => {
           })
         : act('vend', {
             ref: product.ref,
+            discountless: !!product.premium,
           });
     },
   };

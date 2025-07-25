@@ -20,7 +20,7 @@
 				/obj/item/scrying = 999,
 				/obj/item/card/id/advanced/gold/captains_spare = 999,
 				/obj/item/storage/backpack/holding = 999,
-				/obj/item/storage/box/material = 999,
+				/obj/item/storage/bag/sheetsnatcher/debug = 999,
 				/obj/item/storage/box/other_material = 999,
 				/obj/item/stock_parts/power_store/cell/infinite = 999,
 				/obj/item/toy/balloon/corgi = 999,
@@ -109,8 +109,8 @@
 				/obj/item/organ/cyberimp/chest/reviver = 999,
 				/obj/item/organ/cyberimp/mouth/breathing_tube = 999,
 				/obj/item/organ/cyberimp/brain/anti_stun = 999,
-				/obj/item/organ/cyberimp/arm/toolset/l = 999,
-				/obj/item/organ/cyberimp/arm/surgery = 999,
+				/obj/item/organ/cyberimp/arm/toolkit/toolset = 999,
+				/obj/item/organ/cyberimp/arm/toolkit/surgery = 999,
 				/obj/item/organ/cyberimp/eyes/hud/medical = 999,
 				/obj/item/organ/heart/gland/ventcrawling = 999,
 				/obj/item/skillchip/job/engineer/free = 999,
@@ -178,10 +178,6 @@
 		/obj/item/guardian_creator/tech = 99,
 		/obj/item/uplink/sandbox = 99, // Yes, infinite traitor uplinks might destroy the station, but it's for sandbox.
 		/obj/item/reagent_containers/condiment/ants = 99,
-	)
-
-	premium = list(
-		/obj/item/toy/plush/crew/pennyplushie/premium = 1,
 	)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	refill_canister = /obj/item/vending_refill/clothing // wont populate categories without this

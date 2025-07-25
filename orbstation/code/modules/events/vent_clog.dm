@@ -11,7 +11,7 @@
 	spawn_delay = rand(15, 25)
 	maximum_spawns = rand(3, 5)
 	filth_spawn_types = list(
-		/obj/effect/decal/cleanable/xenoblood,
+		/obj/effect/decal/cleanable/blood/xeno,
 		/obj/effect/decal/cleanable/fuel_pool,
 		/obj/effect/decal/cleanable/greenglow,
 		/obj/effect/decal/cleanable/vomit,

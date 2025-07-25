@@ -36,7 +36,7 @@
 									entry += " - <font color='black'><b>DEAD</b></font>"
 							else
 								entry += " - <font color='black'><b>DEAD</b></font>"
-					if(is_special_character(client.mob))
+					if(client.mob.is_antag())
 						entry += " - <b><font color='red'>Antagonist</font></b>"
 				entry += " [ADMIN_QUE(client.mob)]"
 				entry += " ([round(client.avgping, 1)]ms)"
@@ -67,7 +67,7 @@
 	msg += "</tr></table>"
 
 	msg += "<b>Total Players: [length(Lines)]</b>"
-	to_chat(src, fieldset_block(span_bold("Current Players"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_OOC)
+	to_chat(src, fieldset_block(span_bold("Current Players"), span_infoplain(msg), "boxed_message"), type = MESSAGE_TYPE_INFO)
 
 /client/verb/adminwho()
 	set category = "Admin"
@@ -80,7 +80,7 @@
 	lines += span_bold(header)
 	lines += payload_string
 
-	to_chat(src, fieldset_block(span_bold(header), jointext(lines, "\n"), "boxed_message"), type = MESSAGE_TYPE_OOC)
+	to_chat(src, fieldset_block(span_bold(header), jointext(lines, "\n"), "boxed_message"), type = MESSAGE_TYPE_INFO)
 
 /// Proc that generates the applicable string to dispatch to the client for adminwho.
 /client/proc/generate_adminwho_string()

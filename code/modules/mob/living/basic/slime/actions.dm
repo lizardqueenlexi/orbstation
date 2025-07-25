@@ -142,14 +142,17 @@
 			baby.befriend(slime_friend)
 
 		babies += baby
-		baby.mutation_chance = clamp(mutation_chance+(rand(5,-5)),0,100)
+		if(mutation_chance == 0)
+			baby.mutation_chance = 0
+		else
+			baby.mutation_chance = clamp(mutation_chance+(rand(5,-5)),0,100)
 		SSblackbox.record_feedback("tally", "slime_babies_born", 1, baby.slime_type.colour)
 
 	var/mob/living/basic/slime/new_slime = pick(babies) // slime that the OG slime will move into.
 	new_slime.set_combat_mode(TRUE)
 
 	if(isnull(mind))
-		new_slime.key = key
+		new_slime.PossessByPlayer(key)
 	else
 		mind.transfer_to(new_slime)
 

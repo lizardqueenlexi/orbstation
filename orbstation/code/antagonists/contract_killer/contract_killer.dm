@@ -3,12 +3,11 @@
 	name = "Contract Killer"
 	show_in_antagpanel = TRUE
 	antagpanel_category = "Other"
-	job_rank = ROLE_CONTRACT_KILLER
+	pref_flag = ROLE_CONTRACT_KILLER
 	antag_hud_name = "contractkiller"
 	ui_name = "AntagInfoMinor"
 	show_name_in_check_antagonists = TRUE
 	roundend_category = "contract killers"
-	count_against_dynamic_roll_chance = FALSE
 	silent = FALSE
 	suicide_cry = "FOR THE PAY!! Wait-"
 	preview_outfit = /datum/outfit/contract_killer
@@ -63,7 +62,9 @@
 	killer_dummy.set_species(/datum/species/lizard)
 
 	var/icon/killer_icon = render_preview_outfit(preview_outfit, killer_dummy)
-	killer_icon.Blend(icon('icons/effects/blood.dmi', "uniformblood"), ICON_OVERLAY)
+	var/icon/killer_blood_icon = icon('icons/effects/blood.dmi', "uniformblood")
+	killer_blood_icon.Blend(BLOOD_COLOR_RED, ICON_MULTIPLY)
+	killer_icon.Blend(killer_blood_icon, ICON_OVERLAY)
 
 	return finish_preview_icon(killer_icon)
 

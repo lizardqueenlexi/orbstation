@@ -118,8 +118,10 @@
 		return favorite_food
 	return deliverable_food
 
-/datum/quirk/food_order_subscriber/add()
-	. = ..()
+/datum/quirk/food_order_subscriber/add_unique(client/client_source)
+	var/mob/living/carbon/human/human_holder = quirk_holder
+	if(!human_holder.account_id)
+		return
 	reroll_list()
 	RegisterSignal(quirk_holder, COMSIG_QUIRK_ADDED, PROC_REF(reroll_list))
 

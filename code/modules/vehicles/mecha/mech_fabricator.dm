@@ -64,7 +64,6 @@
 	rmat = AddComponent(/datum/component/remote_materials, mapload && link_on_init)
 	cached_designs = list()
 	illegal_local_designs = list()
-	RefreshParts() //Recalculating local material sizes if the fab isn't linked
 	return ..()
 
 /obj/machinery/mecha_part_fabricator/Destroy()
@@ -367,8 +366,8 @@
 
 /obj/machinery/mecha_part_fabricator/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/sheetmaterials),
-		get_asset_datum(/datum/asset/spritesheet/research_designs)
+		get_asset_datum(/datum/asset/spritesheet_batched/sheetmaterials),
+		get_asset_datum(/datum/asset/spritesheet_batched/research_designs)
 	)
 
 /obj/machinery/mecha_part_fabricator/ui_interact(mob/user, datum/tgui/ui)
@@ -382,7 +381,7 @@
 
 	var/list/designs = list()
 
-	var/datum/asset/spritesheet/research_designs/spritesheet = get_asset_datum(/datum/asset/spritesheet/research_designs)
+	var/datum/asset/spritesheet_batched/research_designs/spritesheet = get_asset_datum(/datum/asset/spritesheet_batched/research_designs)
 	var/size32x32 = "[spritesheet.name]32x32"
 
 	for(var/datum/design/design in cached_designs)

@@ -8,14 +8,14 @@
 	icon_state = "ears_item"
 	visual = TRUE
 	damage_multiplier = 2
-	dna_block = DNA_RAT_EARS_BLOCK
+	dna_block = /datum/dna_block/feature/rat_ears
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/rat_ears
 
 /datum/bodypart_overlay/mutant/rat_ears
 	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
 	color_source = ORGAN_COLOR_INHERIT
-	feature_key = "rat_ears"
+	feature_key = FEATURE_RAT_EARS
 	dyable = TRUE
 
 	/// We dont color the inner part, which is the front layer
@@ -24,7 +24,10 @@
 /datum/bodypart_overlay/mutant/rat_ears/get_global_feature_list()
 	return SSaccessories.rat_ears_list
 
-/datum/bodypart_overlay/mutant/rat_ears/can_draw_on_bodypart(mob/living/carbon/human/human)
+/datum/bodypart_overlay/mutant/rat_ears/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
+	var/mob/living/carbon/human/human = bodypart_owner.owner
+	if(!istype(human))
+		return TRUE
 	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
 		return FALSE
 	return TRUE

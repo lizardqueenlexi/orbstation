@@ -39,12 +39,15 @@
 #define POINT_PLANE 5
 
 //---------- LIGHTING -------------
-///Normal 1 per turf dynamic lighting underlays
+/// Normal 1 per turf dynamic lighting underlays
 #define LIGHTING_PLANE 10
 
-///Lighting objects that are "free floating"
+/// Lighting objects that are "free floating"
 #define O_LIGHTING_VISUAL_PLANE 11
-#define O_LIGHTING_VISUAL_RENDER_TARGET "O_LIGHT_VISUAL_PLANE"
+#define O_LIGHTING_VISUAL_RENDER_TARGET "*O_LIGHT_VISUAL_PLANE"
+
+// Render plate used by overlay lighting to mask turf lights
+#define TURF_LIGHTING_PLATE 12
 
 #define EMISSIVE_PLANE 13
 /// This plane masks out lighting to create an "emissive" effect, ie for glowing lights in otherwise dark areas.
@@ -56,30 +59,44 @@
 #define EMISSIVE_SPACE_LAYER 3
 #define EMISSIVE_WALL_LAYER 4
 
-#define RENDER_PLANE_LIGHTING 15
+#define EMISSIVE_BLOOM_MASK_PLATE 15
+#define EMISSIVE_BLOOM_MASK_TARGET "*EMISSIVE_BLOOM_MASK_PLATE"
+#define EMISSIVE_BLOOM_PLATE 16
+
+//-------------------- Game plane assembly ---------------------
+
+#define RENDER_PLANE_GAME 17
+/// If fov is enabled we'll draw game to this and do shit to it
+#define RENDER_PLANE_GAME_MASKED 18
+/// The bit of the game plane that is let alone is sent here
+#define RENDER_PLANE_GAME_UNMASKED 19
+
+//-------------------- Lighting ---------------------
+
+#define RENDER_PLANE_LIGHTING 20
 
 /// Masks the lighting plane with turfs, so we never light up the void
 /// Failing that, masks emissives and the overlay lighting plane
-#define LIGHT_MASK_PLANE 16
+#define LIGHT_MASK_PLANE 21
 #define LIGHT_MASK_RENDER_TARGET "*LIGHT_MASK_PLANE"
 
 ///Things that should render ignoring lighting
-#define ABOVE_LIGHTING_PLANE 17
+#define ABOVE_LIGHTING_PLANE 22
 
-#define WEATHER_GLOW_PLANE 18
+#define WEATHER_GLOW_PLANE 23
 
 ///---------------- MISC -----------------------
 
 ///Pipecrawling images
-#define PIPECRAWL_IMAGES_PLANE 20
+#define PIPECRAWL_IMAGES_PLANE 24
 
 ///AI Camera Static
-#define CAMERA_STATIC_PLANE 21
+#define CAMERA_STATIC_PLANE 25
 
 ///Anything that wants to be part of the game plane, but also wants to draw above literally everything else
-#define HIGH_GAME_PLANE 22
+#define HIGH_GAME_PLANE 26
 
-#define FULLSCREEN_PLANE 23
+#define FULLSCREEN_PLANE 27
 
 ///--------------- FULLSCREEN RUNECHAT BUBBLES ------------
 
@@ -99,11 +116,7 @@
 // The largest plane here must still be less than RENDER_PLANE_GAME
 
 //-------------------- Rendering ---------------------
-#define RENDER_PLANE_GAME 40
-/// If fov is enabled we'll draw game to this and do shit to it
-#define RENDER_PLANE_GAME_MASKED 41
-/// The bit of the game plane that is let alone is sent here
-#define RENDER_PLANE_GAME_UNMASKED 42
+#define LIT_GAME_RENDER_PLATE 40
 #define RENDER_PLANE_NON_GAME 45
 
 // Only VERY special planes should be here, as they are above not just the game, but the UI planes as well.
@@ -149,13 +162,14 @@
 #define LATTICE_LAYER (8 + TOPDOWN_LAYER)
 #define DISPOSAL_PIPE_LAYER (9 + TOPDOWN_LAYER)
 #define WIRE_LAYER (10 + TOPDOWN_LAYER)
-#define GLASS_FLOOR_LAYER (11 + TOPDOWN_LAYER)
-#define TRAM_RAIL_LAYER (12 + TOPDOWN_LAYER)
-#define ABOVE_OPEN_TURF_LAYER (13 + TOPDOWN_LAYER)
+#define BELOW_CATWALK_LAYER (11 + TOPDOWN_LAYER)
+#define GLASS_FLOOR_LAYER (12 + TOPDOWN_LAYER)
 ///catwalk overlay of /turf/open/floor/plating/catwalk_floor
-#define CATWALK_LAYER (14 + TOPDOWN_LAYER)
-#define LOWER_RUNE_LAYER (15 + TOPDOWN_LAYER)
-#define RUNE_LAYER (16 + TOPDOWN_LAYER)
+#define CATWALK_LAYER (13 + TOPDOWN_LAYER)
+#define TRAM_RAIL_LAYER (14 + TOPDOWN_LAYER)
+#define ABOVE_OPEN_TURF_LAYER (15 + TOPDOWN_LAYER)
+#define LOWER_RUNE_LAYER (16 + TOPDOWN_LAYER)
+#define RUNE_LAYER (17 + TOPDOWN_LAYER)
 #define CLEANABLE_FLOOR_OBJECT_LAYER (21 + TOPDOWN_LAYER)
 
 //Placeholders in case the game plane and possibly other things between it and the floor plane are ever made into topdown planes
@@ -303,14 +317,21 @@
 /// Layer for light overlays
 #define LIGHT_DEBUG_LAYER 6
 
+/// Layer for pathfinding arrows
+#define PATH_ARROW_DEBUG_LAYER 7
+/// Layer for pathfinding overlays
+#define PATH_DEBUG_LAYER 8
+
 ///Layer for lobby menu collapse button
 #define LOBBY_BELOW_MENU_LAYER 2
-///Layer for lobby menu background image and main buttons (Join/Ready, Observe, Character Prefs)
-#define LOBBY_MENU_LAYER 3
+/// Layer for background
+#define LOBBY_BACKGROUND_LAYER 3
+///Layer for main buttons (Join/Ready, Observe, Character Prefs)
+#define LOBBY_MENU_LAYER 4
 ///Layer for lobby menu shutter, which covers up the menu to collapse/expand it
-#define LOBBY_SHUTTER_LAYER 4
+#define LOBBY_SHUTTER_LAYER 5
 ///Layer for lobby menu buttons that are hanging away from and lower than the main panel
-#define LOBBY_BOTTOM_BUTTON_LAYER 5
+#define LOBBY_BOTTOM_BUTTON_LAYER 6
 
 ///cinematics are "below" the splash screen
 #define CINEMATIC_LAYER -1

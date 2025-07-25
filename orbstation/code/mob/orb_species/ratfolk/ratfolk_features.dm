@@ -6,6 +6,7 @@
 	category = PREFERENCE_CATEGORY_FEATURES
 	main_feature_name = "Snout"
 	should_generate_icons = TRUE
+	relevant_external_organ = /obj/item/organ/snout_rat
 
 /datum/preference/choiced/rat_snout/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.rat_snouts_list)
@@ -14,32 +15,33 @@
 	return generate_ratfolk_side_shot(SSaccessories.rat_snouts_list[value], "rat_snout", include_snout = FALSE)
 
 /datum/preference/choiced/rat_snout/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["rat_snout"] = value
+	target.dna.features[FEATURE_RAT_SNOUT] = value
 
 /proc/generate_ratfolk_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
-	var/static/icon/rat
-	var/static/icon/rat_with_snout
+	var/static/datum/universal_icon/rat
+	var/static/datum/universal_icon/rat_with_snout
 
 	if (isnull(rat))
-		rat = icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head", EAST)
-		var/icon/eyes = icon('icons/mob/human/human_face.dmi', "eyes", EAST)
-		eyes.Blend(COLOR_GRAY, ICON_MULTIPLY)
-		rat.Blend(eyes, ICON_OVERLAY)
+		rat = uni_icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head", EAST)
 
-	if (include_snout)
-		rat_with_snout = icon(rat)
-		rat.Blend(icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "m_rat_snout_round_ADJ", EAST), ICON_OVERLAY)
+		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "eyes_l")
+		eyes.blend_icon(uni_icon('icons/mob/human/human_face.dmi', "eyes_r"), ICON_OVERLAY)
+		eyes.blend_color(COLOR_BLACK, ICON_MULTIPLY)
+		rat.blend_icon(eyes, ICON_OVERLAY)
 
-	var/icon/final_icon = include_snout ? icon(rat_with_snout) : icon(rat)
+		rat_with_snout = rat.copy()
+		rat.blend_icon(uni_icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "m_rat_snout_round_ADJ", EAST), ICON_OVERLAY)
+
+	var/datum/universal_icon/final_icon = include_snout ? rat_with_snout.copy() : rat.copy()
 
 	if (!isnull(sprite_accessory))
 		var/sprite_suffix = key == "rat_ears" ? "FRONT" : "ADJ"
-		var/icon/accessory_icon = icon(sprite_accessory.icon, "m_[key]_[sprite_accessory.icon_state]_[sprite_suffix]", EAST)
-		final_icon.Blend(accessory_icon, ICON_OVERLAY)
+		var/datum/universal_icon/accessory_icon = uni_icon(sprite_accessory.icon, "m_[key]_[sprite_accessory.icon_state]_[sprite_suffix]", EAST)
+		final_icon.blend_icon(accessory_icon, ICON_OVERLAY)
 
-	final_icon.Crop(11, 20, 23, 32)
-	final_icon.Scale(32, 32)
-	final_icon.Blend(COLOR_DARK_BROWN, ICON_MULTIPLY)
+	final_icon.crop(11, 20, 23, 32)
+	final_icon.scale(32, 32)
+	final_icon.blend_color(COLOR_DARK_BROWN, ICON_MULTIPLY)
 
 	return final_icon
 
@@ -55,7 +57,7 @@
 	return assoc_to_keys_features(SSaccessories.rat_tails_list)
 
 /datum/preference/choiced/rat_tail/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["rat_tail"] = value
+	target.dna.features[FEATURE_RAT_TAIL] = value
 
 /datum/preference/choiced/rat_tail/create_default_value()
 	return /datum/sprite_accessory/tails/rat/high::name
@@ -77,4 +79,4 @@
 	return generate_ratfolk_side_shot(SSaccessories.rat_ears_list[value], "rat_ears", include_snout=FALSE)
 
 /datum/preference/choiced/rat_ears/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["rat_ears"] = value
+	target.dna.features[FEATURE_RAT_EARS] = value

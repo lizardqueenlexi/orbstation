@@ -8,7 +8,7 @@
 	force = 12
 	sharpness = SHARP_POINTY
 	wound_bonus = -10
-	bare_wound_bonus = 15
+	exposed_wound_bonus = 15
 	armour_penetration = 6
 	demolition_mod = 1.2
 	throwforce = 11
@@ -63,7 +63,8 @@
 /obj/item/fish/starfish/chrystarfish/set_status(new_status, silent)
 	. = ..()
 	if(new_status == FISH_DEAD)
-		new fillet_type(get_turf(src))
+		if(fillet_type)
+			new fillet_type(get_turf(src))
 		playsound(src, SFX_SHATTER, 50)
 		qdel(src)
 
@@ -113,7 +114,7 @@
 	force = 19
 	sharpness = SHARP_POINTY
 	wound_bonus = -5
-	bare_wound_bonus = 20
+	exposed_wound_bonus = 20
 	armour_penetration = 12
 	block_chance = 33
 	throwforce = 7
@@ -126,8 +127,8 @@
 	pickup_sound = SFX_FISH_PICKUP
 	sound_vary = TRUE
 
-	base_pixel_x = -16
-	pixel_x = -16
+	base_pixel_w = -16
+	pixel_w = -16
 	sprite_width = 13
 	sprite_height = 9
 
@@ -187,10 +188,13 @@
 	block_chance *= multiplier
 	armour_penetration *= multiplier
 	wound_bonus *= multiplier
-	bare_wound_bonus *= multiplier
+	exposed_wound_bonus *= multiplier
 
 /obj/item/fish/dolphish/do_fish_process(seconds_per_tick)
 	. = ..()
+	if(QDELETED(src))
+		return
+
 	var/patience_reduction = 1
 
 	var/turf/onturf = get_turf(loc)
@@ -222,7 +226,7 @@
 		if(0)
 			// No check, we always want sharky to bite jerky on 0
 			moc.visible_message(span_bolddanger("[src] bites directly into [moc] and squirms away from [moc.p_their()] grasp!"), span_userdanger("[src] sinks its fangs into you!!"))
-			moc.apply_damage(force, BRUTE, moc.get_active_hand(), wound_bonus = wound_bonus, bare_wound_bonus = bare_wound_bonus, sharpness = sharpness, attacking_item = src)
+			moc.apply_damage(force, BRUTE, moc.get_active_hand(), wound_bonus = wound_bonus, exposed_wound_bonus = exposed_wound_bonus, sharpness = sharpness, attacking_item = src)
 			forceMove(moc.drop_location())
 			moc.painful_scream()
 			patience = max_patience
@@ -254,7 +258,7 @@
 		span_warning("You try to pet [src], but it sinks its fangs into your hand!"),
 		vision_distance = DEFAULT_MESSAGE_RANGE - 3,
 		)
-	user.apply_damage(force, BRUTE, user.get_active_hand(), wound_bonus = wound_bonus, bare_wound_bonus = bare_wound_bonus, sharpness = sharpness, attacking_item = src)
+	user.apply_damage(force, BRUTE, user.get_active_hand(), wound_bonus = wound_bonus, exposed_wound_bonus = exposed_wound_bonus, sharpness = sharpness, attacking_item = src)
 	if(!in_aquarium)
 		forceMove(user.drop_location())
 	user.painful_scream()
@@ -715,7 +719,10 @@
 /datum/bodypart_overlay/simple/babbearfish
 	icon_state = "babbearfish"
 
-/datum/bodypart_overlay/simple/babbearfish/can_draw_on_bodypart(mob/living/carbon/human/human)
+/datum/bodypart_overlay/simple/babbearfish/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
+	var/mob/living/carbon/human/human = bodypart_owner.owner
+	if(!istype(human))
+		return TRUE
 	if((human.head?.flags_inv & HIDEEARS) || (human.wear_mask?.flags_inv & HIDEEARS))
 		return FALSE
 	return TRUE
@@ -740,7 +747,7 @@
 	. = ..()
 	limb.remove_bodypart_overlay(babbel_overlay)
 
-/obj/item/organ/ears/babbelfish/attack(mob/living/target_mob, mob/living/user, params)
+/obj/item/organ/ears/babbelfish/attack(mob/living/target_mob, mob/living/user, list/modifiers, list/attack_modifiers)
 	. = ..()
 	var/obj/item/organ/ears/ears = target_mob.get_organ_slot(ORGAN_SLOT_EARS)
 	if(!ears)

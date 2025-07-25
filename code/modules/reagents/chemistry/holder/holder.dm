@@ -1,6 +1,3 @@
-#define REAGENT_TRANSFER_AMOUNT "amount"
-#define REAGENT_PURITY "purity"
-
 ///////////////////////////////Main reagents code/////////////////////////////////////////////
 
 /// Holder for a bunch of [/datum/reagent]
@@ -83,7 +80,8 @@
  * * added_purity - override to force a purity when added
  * * added_ph - override to force a pH when added
  * * override_base_ph - ingore the present pH of the reagent, and instead use the default (i.e. if buffers/reactions alter it)
- * * ignore splitting - Don't call the process that handles reagent spliting in a mob (impure/inverse) - generally leave this false unless you care about REAGENTS_DONOTSPLIT flags (see reagent defines)
+ * * list/reagent_added - If not null use this as an holder to store and retrive the reagent datum that was just added without having to locate it after this proc returns. Clear the list to erase old values
+ * * creation_callback - Callback to invoke when the reagent is created
  */
 /datum/reagents/proc/add_reagent(
 	datum/reagent/reagent_type,
@@ -91,10 +89,11 @@
 	list/data = null,
 	reagtemp = DEFAULT_REAGENT_TEMPERATURE,
 	added_purity = null,
-	added_ph,
+	added_ph = null,
 	no_react = FALSE,
 	override_base_ph = FALSE,
-	ignore_splitting = FALSE
+	list/reagent_added = null,
+	datum/callback/creation_callback = null,
 )
 	if(!ispath(reagent_type))
 		stack_trace("invalid reagent passed to add reagent [reagent_type]")
@@ -104,30 +103,20 @@
 		stack_trace("non finite amount passed to add reagent [amount] [reagent_type]")
 		return FALSE
 
-	if(SEND_SIGNAL(src, COMSIG_REAGENTS_PRE_ADD_REAGENT, reagent_type, amount, reagtemp, data, no_react) & COMPONENT_CANCEL_REAGENT_ADD)
-		return FALSE
-
 	var/datum/reagent/glob_reagent = GLOB.chemical_reagents_list[reagent_type]
 	if(!glob_reagent)
 		stack_trace("[my_atom] attempted to add a reagent called '[reagent_type]' which doesn't exist. ([usr])")
 		return FALSE
-	if(isnull(added_purity)) //Because purity additions can be 0
+	if(!added_purity) //Because purity additions can be 0
 		added_purity = glob_reagent.creation_purity //Usually 1
 	if(!added_ph)
 		added_ph = glob_reagent.ph
 
 	//Split up the reagent if it's in a mob
-	var/has_split = FALSE
-	if(!ignore_splitting && (flags & REAGENT_HOLDER_ALIVE)) //Stomachs are a pain - they will constantly call on_mob_add unless we split on addition to stomachs, but we also want to make sure we don't double split
-		var/adjusted_vol = process_mob_reagent_purity(glob_reagent, amount, added_purity)
-		if(!adjusted_vol) //If we're inverse or FALSE cancel addition
-			return amount
-			/* We return true here because of #63301
-			The only cases where this will be false or 0 if its an inverse chem, an impure chem of 0 purity (highly unlikely if even possible), or if glob_reagent is null (which shouldn't happen at all as there's a check for that a few lines up),
-			In the first two cases, we would want to return TRUE so trans_to and other similar methods actually delete the corresponding chemical from the original reagent holder.
-			*/
-		amount = adjusted_vol
-		has_split = TRUE
+	if(flags & REAGENT_HOLDER_ALIVE)
+		amount = process_mob_reagent_purity(glob_reagent, amount, added_purity, reagent_added)
+		if(amount <= 0) //Inverse or nothing was added. return true amount
+			return amount * -1
 
 	var/cached_total = total_volume
 	if(cached_total + amount > maximum_volume)
@@ -164,10 +153,14 @@
 				else
 					set_temperature(reagtemp)
 
-			SEND_SIGNAL(src, COMSIG_REAGENTS_ADD_REAGENT, iter_reagent, amount, reagtemp, data, no_react)
+			if(!isnull(reagent_added))
+				reagent_added += iter_reagent
 			if(!no_react && !is_reacting) //To reduce the amount of calculations for a reaction the reaction list is only updated on a reagents addition.
 				handle_reactions()
 			return amount
+
+	if(!is_reacting && amount < CHEMICAL_VOLUME_ROUNDING)
+		return 0
 
 	//otherwise make a new one
 	var/datum/reagent/new_reagent = new reagent_type(data)
@@ -177,13 +170,12 @@
 	new_reagent.purity = added_purity
 	new_reagent.creation_purity = added_purity
 	new_reagent.ph = added_ph
+	if (creation_callback)
+		creation_callback.Invoke(new_reagent)
 	new_reagent.on_new(data)
 
 	if(isliving(my_atom))
 		new_reagent.on_mob_add(my_atom, amount) //Must occur before it could posibly run on_mob_delete
-
-	if(has_split) //prevent it from splitting again
-		new_reagent.chemical_flags |= REAGENT_DONOTSPLIT
 
 	update_total()
 	if(reagtemp != cached_temp)
@@ -193,7 +185,8 @@
 		else
 			set_temperature(reagtemp)
 
-	SEND_SIGNAL(src, COMSIG_REAGENTS_NEW_REAGENT, new_reagent, amount, reagtemp, data, no_react)
+	if(!isnull(reagent_added))
+		reagent_added += new_reagent
 	if(!no_react)
 		handle_reactions()
 	return amount
@@ -236,7 +229,6 @@
 	var/total_removed_amount = 0
 	var/remove_amount = 0
 	var/list/cached_reagents = reagent_list
-	var/list/removed_reagents = list()
 	for(var/datum/reagent/cached_reagent as anything in cached_reagents)
 		//check for specific type or subtypes
 		if(!include_subtypes)
@@ -249,8 +241,6 @@
 		remove_amount = min(cached_reagent.volume, amount)
 		cached_reagent.volume -= remove_amount
 
-		//record the changes
-		removed_reagents[cached_reagent] = remove_amount
 		total_removed_amount += remove_amount
 
 		//if we reached here means we have found our specific reagent type so break
@@ -261,10 +251,6 @@
 	update_total()
 	if(!safety)
 		handle_reactions()
-
-	//inform others about our reagents being removed
-	for(var/datum/reagent/removed_reagent as anything in removed_reagents)
-		SEND_SIGNAL(src, COMSIG_REAGENTS_REM_REAGENT, removed_reagent, removed_reagents[removed_reagent])
 
 	return total_removed_amount
 
@@ -290,20 +276,28 @@
 		stack_trace("illegal percentage value passed to remove all reagents [amount]")
 		return FALSE
 
+	if(!relative)
+		amount = min(amount, total_volume)
 	amount = round(amount, CHEMICAL_QUANTISATION_LEVEL)
 	if(amount <= 0)
 		return FALSE
 
 	var/list/cached_reagents = reagent_list
+	var/remove_amount
 	var/total_removed_amount = 0
 	var/part = amount
 	if(!relative)
 		part /= total_volume
-	for(var/datum/reagent/reagent as anything in cached_reagents)
-		total_removed_amount += remove_reagent(reagent.type, reagent.volume * part)
+	for(var/datum/reagent/cached_reagent as anything in cached_reagents)
+		//reduce the volume
+		remove_amount = cached_reagent.volume * part
+		cached_reagent.volume -= remove_amount
+
+		total_removed_amount += remove_amount
+	update_total()
 	handle_reactions()
 
-	return round(total_removed_amount, CHEMICAL_VOLUME_ROUNDING)
+	return round(total_removed_amount, CHEMICAL_QUANTISATION_LEVEL)
 
 /**
  * Removes an specific reagent from this holder
@@ -339,7 +333,8 @@
 	datum/reagent/source_reagent_typepath,
 	datum/reagent/target_reagent_typepath,
 	multiplier = 1,
-	include_source_subtypes = FALSE
+	include_source_subtypes = FALSE,
+	keep_data = FALSE,
 )
 	if(!ispath(source_reagent_typepath))
 		stack_trace("invalid reagent path passed to convert reagent [source_reagent_typepath]")
@@ -352,6 +347,8 @@
 	var/weighted_purity = 0
 	var/weighted_ph = 0
 	var/reagent_volume = 0
+	///Stores the data value of the reagent to be converted if keep_data is TRUE. Might not work well if include_source_subtypes is TRUE.
+	var/list/reagent_data
 
 	var/list/cached_reagents = reagent_list
 	for(var/datum/reagent/cached_reagent as anything in cached_reagents)
@@ -370,6 +367,8 @@
 
 		//zero the volume out so it gets removed
 		cached_reagent.volume = 0
+		if(keep_data)
+			reagent_data = copy_data(cached_reagent)
 
 		//if we reached here means we have found our specific reagent type so break
 		if(!include_source_subtypes)
@@ -378,7 +377,14 @@
 	//add the new target reagent with the averaged values from the source reagents
 	if(weighted_volume > 0)
 		update_total()
-		add_reagent(target_reagent_typepath, weighted_volume * multiplier, reagtemp = chem_temp, added_purity = (weighted_purity / weighted_volume), override_base_ph = TRUE, added_ph = (weighted_ph / weighted_volume))
+		add_reagent(
+			target_reagent_typepath,
+			weighted_volume * multiplier,
+			data = reagent_data,
+			reagtemp = chem_temp,
+			added_purity = (weighted_purity / weighted_volume),
+			added_ph = (weighted_ph / weighted_volume),
+		)
 
 /// Removes all reagents
 /datum/reagents/proc/clear_reagents()
@@ -388,8 +394,6 @@
 	for(var/datum/reagent/reagent as anything in cached_reagents)
 		reagent.volume = 0
 	update_total()
-
-	SEND_SIGNAL(src, COMSIG_REAGENTS_CLEAR_REAGENTS)
 
 /**
  * Transfer some stuff from this holder to a target object
@@ -465,8 +469,8 @@
 		transfer_reactions(target_holder)
 
 	var/trans_data = null
+	var/list/r_to_send = methods ? list() : null // Validated list of reagents to be exposed
 	var/list/transfer_log = list()
-	var/list/r_to_send = list()	// Validated list of reagents to be exposed
 	var/list/reagents_to_remove = list()
 
 	var/part = isnull(target_id) ? (amount / total_volume) : 1
@@ -494,12 +498,10 @@
 			update_total()
 			target_holder.update_total()
 			continue
-		transfered_amount = target_holder.add_reagent(reagent.type, transfer_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT) //we only handle reaction after every reagent has been transferred.
+		transfered_amount = target_holder.add_reagent(reagent.type, transfer_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE, reagent_added = r_to_send, creation_callback = CALLBACK(src, PROC_REF(_on_transfer_creation), reagent, target_holder)) //we only handle reaction after every reagent has been transferred.
 		if(!transfered_amount)
 			continue
-		if(methods)
-			r_to_send += reagent
-		reagents_to_remove += list(list("R" = reagent, "T" = transfer_amount))
+		reagents_to_remove[reagent] = transfer_amount
 		total_transfered_amount += transfered_amount
 
 		if(!isnull(target_id))
@@ -510,28 +512,37 @@
 		target_holder.expose(isorgan(target_atom) ? target : target_atom, methods, part, show_message, r_to_send)
 
 	//remove chemicals that were added above
-	for(var/list/data as anything in reagents_to_remove)
-		var/datum/reagent/reagent = data["R"]
-		transfer_amount = data["T"]
+	for(var/datum/reagent/reagent as anything in reagents_to_remove)
+		transfer_amount = reagents_to_remove[reagent]
 		if(methods)
 			reagent.on_transfer(target_atom, methods, transfer_amount)
-		remove_reagent(reagent.type, transfer_amount)
-		transfer_log[reagent.type] = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
+		reagent.volume -= transfer_amount
+		update_total()
+		transfer_log += "[reagent.type] ([transfer_amount]u, [reagent.purity] purity)"
 
 	//combat log
 	if(transferred_by && target_atom)
+		//logging mob holder
 		var/atom/log_target = target_atom
 		if(isorgan(target_atom))
 			var/obj/item/organ/organ_item = target_atom
 			log_target = organ_item.owner ? organ_item.owner : organ_item
 		log_target.add_hiddenprint(transferred_by) //log prints so admins can figure out who touched it last.
-		log_combat(transferred_by, log_target, "transferred reagents to", my_atom, "which had [get_external_reagent_log_string(transfer_log)]")
+
+		//logging reagents
+		log_combat(transferred_by, log_target, "transferred reagents to", my_atom, "which had [english_list(transfer_log)]")
 
 	if(!no_react)
 		target_holder.handle_reactions()
-		src.handle_reactions()
+		handle_reactions()
 
-	return round(total_transfered_amount, CHEMICAL_VOLUME_ROUNDING)
+	return total_transfered_amount
+
+///For internal purposes. Sends a signal when a new reagent has been created in the target reagent holder upon transfer
+/datum/reagents/proc/_on_transfer_creation(datum/reagent/reagent, datum/reagents/target_holder, datum/reagent/new_reagent)
+	PRIVATE_PROC(TRUE)
+
+	SEND_SIGNAL(reagent, COMSIG_REAGENT_ON_TRANSFER, target_holder, new_reagent)
 
 /**
  * Copies the reagents to the target object
@@ -541,13 +552,15 @@
  * * multiplier - multiplies each reagent amount by this number well byond their available volume before transfering. used to create reagents from thin air if you ever need to
  * * preserve_data - preserve user data of all reagents after transfering
  * * no_react - if TRUE will not handle reactions
+ * * copy_methods - forwards reagent exposure method flags like INGEST & INHALE to reagent.on_transfer to trigger transfer effects.
  */
 /datum/reagents/proc/copy_to(
 	atom/target,
 	amount = 1,
 	multiplier = 1,
 	preserve_data = TRUE,
-	no_react = FALSE
+	no_react = FALSE,
+	copy_methods
 )
 	if(QDELETED(target) || !total_volume)
 		return
@@ -580,7 +593,9 @@
 		transfer_amount = reagent.volume * part * multiplier
 		if(preserve_data)
 			trans_data = copy_data(reagent)
-		transfered_amount = target_holder.add_reagent(reagent.type, transfer_amount, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
+		transfered_amount = target_holder.add_reagent(reagent.type, transfer_amount, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE)
+		if(copy_methods && !no_react)
+			reagent.on_transfer(target, copy_methods, transfer_amount)
 		if(!transfered_amount)
 			continue
 		total_transfered_amount += transfered_amount
@@ -588,53 +603,49 @@
 	if(!no_react)
 		// pass over previous ongoing reactions before handle_reactions is called
 		transfer_reactions(target_holder)
-
-		target_holder.update_total()
 		target_holder.handle_reactions()
 
-	return round(total_transfered_amount, CHEMICAL_VOLUME_ROUNDING)
+	return total_transfered_amount
 
 /**
- * Multiplies the reagents inside this holder by a specific amount
+ * Multiplies reagents inside this holder by a specific amount
  * Arguments
- * * multiplier - the amount to multiply each reagent by
+ *
+ * * multiplier - the amount to multiply each reagent, its a percentile value where < 1 will reduce the volume and
+ * * > 1 will increase the volume. Final multiplier applied to the reagent volume is (1 - multiplier)
+ * * datum/reagent/target_id - multiply only this reagent in this holder leaving others untouched
  */
-/datum/reagents/proc/multiply_reagents(multiplier = 1)
+/datum/reagents/proc/multiply(multiplier = 1, datum/reagent/target_id)
+	if(!total_volume)
+		return
+
+	multiplier = round(min(multiplier, maximum_volume / total_volume), CHEMICAL_QUANTISATION_LEVEL)
+	if(multiplier < 0 || multiplier == 1)
+		return
+
+	if(!isnull(target_id) && !ispath(target_id))
+		stack_trace("Bad reagent path [target_id] passed to multiply")
+		return
+
+	var/change = (multiplier - 1) //Get the % change
+	var/reagent_change
 	var/list/cached_reagents = reagent_list
-	if(!total_volume || multiplier == 1)
-		return
-	var/change = (multiplier - 1) //Get the % change
 	for(var/datum/reagent/reagent as anything in cached_reagents)
-		_multiply_reagent(reagent, change)
+		if(!isnull(target_id) && reagent.type != target_id)
+			continue
+
+		reagent_change = reagent.volume * change
 		if(change > 0)
-			add_reagent(reagent.type, reagent.volume * change, added_purity = reagent.purity, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
+			add_reagent(reagent.type, reagent_change, added_purity = reagent.purity, added_ph = reagent.ph, no_react = TRUE)
 		else
-			remove_reagent(reagent.type, abs(reagent.volume * change)) //absolute value to prevent a double negative situation (removing -50% would be adding 50%)
+			reagent.volume += reagent_change
 
-	update_total()
+		if(!isnull(target_id))
+			break
+
+	if(change < 0)
+		update_total()
 	handle_reactions()
-
-/**
- * Multiplies a single inside this holder by a specific amount
- * Arguments
- * * reagent_path - The path of the reagent we want to multiply the volume of.
- * * multiplier - the amount to multiply each reagent by
- */
-/datum/reagents/proc/multiply_single_reagent(reagent_path, multiplier = 1)
-	var/datum/reagent/reagent = locate(reagent_path) in reagent_list
-	if(!reagent || multiplier == 1)
-		return
-	var/change = (multiplier - 1) //Get the % change
-	_multiply_reagent(reagent, change)
-	update_total()
-	handle_reactions()
-
-///Proc containing the operations called by both multiply_reagents() and multiply_single_reagent()
-/datum/reagents/proc/_multiply_reagent(datum/reagent/reagent, change)
-	if(change > 0)
-		add_reagent(reagent.type, reagent.volume * change, added_purity = reagent.purity, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)
-	else
-		remove_reagent(reagent.type, abs(reagent.volume * change)) //absolute value to prevent a double negative situation (removing -50% would be adding 50%)
 
 /// Updates [/datum/reagents/var/total_volume]
 /datum/reagents/proc/update_total()
@@ -686,10 +697,11 @@
 	else
 		ph = clamp(total_ph / total_volume, CHEMICAL_MIN_PH, CHEMICAL_MAX_PH)
 
-	//now send the signals after the volume & ph has been computed
-	for(var/datum/reagent/deleted_reagent as anything in deleted_reagents)
-		SEND_SIGNAL(src, COMSIG_REAGENTS_DEL_REAGENT, deleted_reagent)
-		qdel(deleted_reagent)
+	//clear out deleted reagents
+	QDEL_LIST(deleted_reagents)
+
+	//inform hooks about reagent changes
+	SEND_SIGNAL(src, COMSIG_REAGENTS_HOLDER_UPDATED)
 
 /**
  * Shallow copies (deep copy of viruses) data from the provided reagent into our copy of that reagent
@@ -712,8 +724,10 @@
 	// that could possibly eat up a lot of memory needlessly
 	// if most data lists are read-only.
 	if(trans_data["viruses"])
-		var/list/v = trans_data["viruses"]
-		trans_data["viruses"] = v.Copy()
+		var/list/viruses = list()
+		for (var/datum/disease/disease as anything in trans_data["viruses"])
+			viruses += disease.Copy()
+		trans_data["viruses"] = viruses
 
 	return trans_data
 
@@ -831,24 +845,6 @@
 
 
 //===============================Logging==========================================
-/**
- * Outputs a log-friendly list of reagents based on an external reagent list.
- *
- * Arguments:
- * * external_list - Assoc list of (reagent_type) = list(REAGENT_TRANSFER_AMOUNT = amounts, REAGENT_PURITY = purity)
- */
-/datum/reagents/proc/get_external_reagent_log_string(external_list)
-	if(!length(external_list))
-		return "no reagents"
-
-	var/list/data = list()
-
-	for(var/reagent_type in external_list)
-		var/list/qualities = external_list[reagent_type]
-		data += "[reagent_type] ([round(qualities[REAGENT_TRANSFER_AMOUNT], CHEMICAL_QUANTISATION_LEVEL)]u, [qualities[REAGENT_PURITY]] purity)"
-
-	return english_list(data)
-
 /// Outputs a log-friendly list of reagents based on the internal reagent_list.
 /datum/reagents/proc/get_reagent_log_string()
 	if(!length(reagent_list))
@@ -857,9 +853,6 @@
 	var/list/data = list()
 
 	for(var/datum/reagent/reagent as anything in reagent_list)
-		data += "[reagent.type] ([round(reagent.volume, CHEMICAL_QUANTISATION_LEVEL)]u, [reagent.purity] purity)"
+		data += "[reagent.type] [reagent.volume]u, [reagent.purity] purity)"
 
 	return english_list(data)
-
-#undef REAGENT_TRANSFER_AMOUNT
-#undef REAGENT_PURITY

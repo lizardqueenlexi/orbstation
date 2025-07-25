@@ -20,7 +20,6 @@
 	the_bros.bounty_complete()
 
 /datum/antagonist/brother/on_removal()
-	owner.special_role = null
 	var/obj/item/implant/holo_pad_projector/possible_implant = locate() in owner.current.implants
 	if(possible_implant)
 		qdel(possible_implant)
@@ -137,7 +136,7 @@
 		to_chat(brother.current, span_notice("Your implant fizzles away! The Syndicate has given you a new objective."))
 		var/datum/antagonist/brother/bb_datum = brother.has_antag_datum(/datum/antagonist/brother)
 		bb_datum.objectives += newkill
-		log_traitor("BLOOD BROTHER: [name] delivered a [steal_objective.steal_target] at [worldtime2text()].")
+		log_traitor("BLOOD BROTHER: [name] delivered a [steal_objective.steal_target] at [gameTimestamp()].")
 
 /// generates a light steal objective if there are no objectives and then from then on generates murder or heist objectives
 /datum/team/brother_team/forge_single_objective()
@@ -225,7 +224,7 @@
 	if(!is_type_in_list(possible_bounty, brother_bounty))
 		return
 	// prevents steals to give double rewards
-	if(istype(possible_bounty, /obj/item/clothing/head/mob_holder))
+	if(istype(possible_bounty, /obj/item/mob_holder))
 		return
 	complete_light_steal(possible_bounty)
 
