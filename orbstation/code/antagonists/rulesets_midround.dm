@@ -1,7 +1,7 @@
 /// Midround Traitor Ruleset (From Living)
 
 // Don't create more traitors if it exceeds the limit for the current population
-/datum/dynamic_ruleset/midround/from_living/autotraitor/can_be_selected()
+/datum/dynamic_ruleset/midround/from_living/traitor/can_be_selected()
 	if(!SSdynamic.traitor_limit_reached())
 		message_admins("Midround ruleset [name] could not be executed due to the traitor limit.")
 		return FALSE

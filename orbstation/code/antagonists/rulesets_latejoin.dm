@@ -1,7 +1,7 @@
 /// Latejoin Traitor Ruleset
 
 // Don't create more traitors if it exceeds the limit for the current population
-/datum/dynamic_ruleset/latejoin/infiltrator/can_be_selected()
+/datum/dynamic_ruleset/latejoin/traitor/can_be_selected()
 	if(!SSdynamic.traitor_limit_reached())
 		return FALSE
 	return ..()
