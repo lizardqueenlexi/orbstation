@@ -48,10 +48,7 @@
 	name = "infiltrator spawn point"
 
 ///Proc that spawns the infiltrator's pod and makes the spawner spawn them. Also called by the infiltrator rulesets
-/proc/spawn_infiltrator(mob/new_infil, spawner_type)
-	if(!new_infil)
-		return
-
+/proc/spawn_infiltrator(spawner_type, role_name, jobban, alert_pic)
 	var/turf/picked_turf
 	var/datum/map_template/shuttle/infiltrator_pod/ship = new
 	if(SSmapping.empty_space) // if there's an empty space z level, spawn the pod somewhere there
@@ -60,10 +57,7 @@
 		var/z = SSmapping.empty_space.z_value
 		picked_turf = locate(x,y,z)
 	else // otherwise, try to use a random carp spawn location
-		var/list/spawn_points = list()
-		for(var/obj/effect/landmark/carpspawn/carp_spawn in GLOB.landmarks_list)
-			spawn_points += carp_spawn
-		var/obj/pod_spawn = pick(spawn_points)
+		var/obj/pod_spawn = find_space_spawn()
 		picked_turf = locate(pod_spawn.x,pod_spawn.y,pod_spawn.z)
 		qdel(pod_spawn) // removes the spawn point from the landmarks list so the game doesn't spawn a carp on our poor infiltrator
 
@@ -77,13 +71,28 @@
 	// don't feel great about this, but the problem is that get_affected_turfs returns a list of turfs
 	// so you have to loop through the turfs and then loop through each turf to find the spawner object
 	// the pirate event also does this. it is what it is
+	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be considered for a [span_notice("[role_name]?")]", check_jobban = jobban, alert_pic = alert_pic, role_name_text = role_name)
+
 	for(var/turf/ship_turf in ship.get_affected_turfs(picked_turf, centered = TRUE))
 		for(var/obj/effect/landmark/infil_spawn/spawn_point in ship_turf)
 			var/obj/effect/mob_spawn/ghost_role/spawner = new spawner_type(spawn_point.loc)
 			if(!istype(spawner))
 				CRASH("Invalid spawner sent to spawn_infiltrator!")
-			var/mob/living/carbon/human/new_mob = spawner.create_from_ghost(new_infil)
-			return new_mob
+			if(candidates.len > 0)
+				var/our_candidate = pick(candidates)
+				var/spawned_mob = spawner.create_from_ghost(our_candidate)
+				candidates -= our_candidate
+				notify_ghosts(
+					"A [role_name] has woken up: [spawned_mob]!",
+					source = spawned_mob,
+					header = "Infiltrator!",
+				)
+			else
+				notify_ghosts(
+					"A [role_name] sleeper is available: [spawner]!",
+					source = spawner,
+					header = "Infiltrator spawn!",
+				)
 
 // Generic type for infiltrator spawners, should never appear in game.
 /obj/effect/mob_spawn/ghost_role/human/infiltrator

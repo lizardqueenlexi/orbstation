@@ -60,7 +60,7 @@
 
 /datum/objective_item/steal/pet
 	name = "a pet"
-	targetitem = /obj/item/clothing/head/mob_holder
+	targetitem =  /obj/item/mob_holder
 	/// Typepaths of pet to steal
 	var/list/pet_type
 
@@ -69,15 +69,15 @@
 		return FALSE
 	return ..()
 
-/datum/objective_item/steal/pet/check_special_completion(obj/item/clothing/head/mob_holder/holder)
+/datum/objective_item/steal/pet/check_special_completion(obj/item/mob_holder/holder)
 	if (!istype(holder))
 		return FALSE
 	if (!holder.held_mob)
 		return FALSE
 	return (is_type_in_list(holder.held_mob, pet_type))
 
-/obj/item/clothing/head/mob_holder/add_stealing_item_objective()
-	GLOB.steal_item_handler.objectives_by_path[/obj/item/clothing/head/mob_holder] += src
+/obj/item/mob_holder/add_stealing_item_objective()
+	GLOB.steal_item_handler.objectives_by_path[/obj/item/mob_holder] += src
 
 /datum/objective_item/steal/pet/ian
 	name = "Ian, without a pet carrier"

@@ -42,7 +42,7 @@
 	return icon
 
 /datum/preference/choiced/moth_color/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["moth_color"] = GLOB.color_list_moth[value]
+	target.dna.features[FEATURE_MOTH_COLOR] = GLOB.color_list_moth[value]
 
 //Moth bodypart overrides
 /obj/item/bodypart/head/moth
@@ -72,11 +72,11 @@
 /datum/species/moth/get_features()
 	var/list/features = ..()
 
-	features += "feature_mothcolor"
+	features += FEATURE_MOTH_COLOR
 
 	return features
 
 /datum/species/moth/randomize_features()
 	var/list/features = ..()
-	features["moth_color"] = GLOB.color_list_moth[pick(GLOB.color_list_moth)]
+	features[FEATURE_MOTH_COLOR] = GLOB.color_list_moth[pick(GLOB.color_list_moth)]
 	return features

@@ -13,7 +13,7 @@
 	attack_verb_simple = list("stab", "open", "felony", "crime")
 	sharpness = SHARP_POINTY //letter openers are better for stabbing than slashing
 	wound_bonus = 0
-	bare_wound_bonus = 10
+	exposed_wound_bonus = 10
 
 /datum/uplink_item/role_restricted/letter_opener
 	name = "Letter Opener"

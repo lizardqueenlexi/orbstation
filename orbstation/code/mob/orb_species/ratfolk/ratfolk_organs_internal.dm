@@ -8,14 +8,14 @@
 	icon_state = "ears_item"
 	visual = TRUE
 	damage_multiplier = 2
-	dna_block = DNA_RAT_EARS_BLOCK
+	dna_block = /datum/dna_block/feature/rat_ears
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/rat_ears
 
 /datum/bodypart_overlay/mutant/rat_ears
 	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
 	color_source = ORGAN_COLOR_INHERIT
-	feature_key = "rat_ears"
+	feature_key = FEATURE_RAT_EARS
 	dyable = TRUE
 
 	/// We dont color the inner part, which is the front layer

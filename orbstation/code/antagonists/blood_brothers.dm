@@ -20,7 +20,6 @@
 	the_bros.bounty_complete()
 
 /datum/antagonist/brother/on_removal()
-	owner.special_role = null
 	var/obj/item/implant/holo_pad_projector/possible_implant = locate() in owner.current.implants
 	if(possible_implant)
 		qdel(possible_implant)
@@ -225,7 +224,7 @@
 	if(!is_type_in_list(possible_bounty, brother_bounty))
 		return
 	// prevents steals to give double rewards
-	if(istype(possible_bounty, /obj/item/clothing/head/mob_holder))
+	if(istype(possible_bounty, /obj/item/mob_holder))
 		return
 	complete_light_steal(possible_bounty)
 

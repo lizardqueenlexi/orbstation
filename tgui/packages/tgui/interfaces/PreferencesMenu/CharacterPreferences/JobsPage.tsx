@@ -1,5 +1,5 @@
-import { sortBy } from 'common/collections';
-import { PropsWithChildren, ReactNode } from 'react';
+import { sortBy } from 'es-toolkit';
+import type { PropsWithChildren, ReactNode } from 'react';
 import { useBackend } from 'tgui/backend';
 import {
   Box,
@@ -13,19 +13,18 @@ import { classes } from 'tgui-core/react';
 
 import {
   createSetPreference,
-  Job,
+  type Job,
   JoblessRole,
   JobPriority,
-  PreferencesMenuData,
+  type PreferencesMenuData,
 } from '../types';
 import { useServerPrefs } from '../useServerPrefs';
 
 function sortJobs(entries: [string, Job][], head?: string) {
-  return sortBy(
-    entries,
+  return sortBy(entries, [
     ([key, _]) => (key === head ? -1 : 1),
     ([key, _]) => key,
-  );
+  ]);
 }
 
 const PRIORITY_BUTTON_SIZE = '18px';
@@ -199,8 +198,7 @@ function JobRow(props: JobRowProps) {
 
   const createSetPriority = createCreateSetPriorityFromName(name);
 
-  const experienceNeeded =
-    data.job_required_experience && data.job_required_experience[name];
+  const experienceNeeded = data.job_required_experience?.[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
   let rightSide: ReactNode;

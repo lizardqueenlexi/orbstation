@@ -34,7 +34,7 @@
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/chosen = pick(candidates)
 		surprise_dracula.key = chosen.key
-		surprise_dracula.mind.special_role = ROLE_FUGITIVE
+		LAZYADD(surprise_dracula.mind.special_roles, ROLE_FUGITIVE)
 		to_chat(surprise_dracula, span_warning("You are a vampire, freshly escaped from imprisonment by NanoTrasen's secret Occultism Department. You've managed to stow away in place of a medical cadaver, bound for the unknown reaches of the Spinward Sector. \
 								You must do whatever it takes to evade capture."))
 		surprise_dracula.log_message("was made into a vampire fugitive by medical cadaver crate", LOG_GAME)

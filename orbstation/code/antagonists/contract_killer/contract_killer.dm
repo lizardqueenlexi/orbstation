@@ -3,12 +3,11 @@
 	name = "Contract Killer"
 	show_in_antagpanel = TRUE
 	antagpanel_category = "Other"
-	job_rank = ROLE_CONTRACT_KILLER
+	pref_flag = ROLE_CONTRACT_KILLER
 	antag_hud_name = "contractkiller"
 	ui_name = "AntagInfoMinor"
 	show_name_in_check_antagonists = TRUE
 	roundend_category = "contract killers"
-	count_against_dynamic_roll_chance = FALSE
 	silent = FALSE
 	suicide_cry = "FOR THE PAY!! Wait-"
 	preview_outfit = /datum/outfit/contract_killer

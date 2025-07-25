@@ -9,7 +9,7 @@
 	preference = "feature_rat_snout"
 	external_bodyshapes = BODYSHAPE_SNOUTED
 
-	dna_block = DNA_RAT_SNOUT_BLOCK
+	dna_block = /datum/dna_block/feature/rat_snout
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/snout_rat
 
@@ -17,7 +17,7 @@
 
 /datum/bodypart_overlay/mutant/snout_rat
 	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
-	feature_key = "rat_snout"
+	feature_key = FEATURE_RAT_SNOUT
 
 	/// We dont color the inner part, which is the front layer
 	var/colorless_layer = EXTERNAL_FRONT
@@ -44,11 +44,11 @@
 	name = "ratfolk tail"
 	desc = "A severed rat tail."
 	preference = "feature_rat_tail"
-	dna_block = DNA_RAT_TAIL_BLOCK
+	dna_block = /datum/dna_block/feature/rat_tail
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/rat
 
 /datum/bodypart_overlay/mutant/tail/rat
-	feature_key = "rat_tail"
+	feature_key = FEATURE_RAT_TAIL
 
 /datum/bodypart_overlay/mutant/tail/rat/get_global_feature_list()
 	return SSaccessories.rat_tails_list

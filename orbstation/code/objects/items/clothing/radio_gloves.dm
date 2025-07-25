@@ -9,7 +9,6 @@
 	var/static/list/gloves_blacklist = typecacheof(list(
 		/obj/item/clothing/gloves/boxing,
 		/obj/item/clothing/gloves/bracer,
-		/obj/item/clothing/gloves/maid,
 		/obj/item/clothing/gloves/rapid,
 	))
 

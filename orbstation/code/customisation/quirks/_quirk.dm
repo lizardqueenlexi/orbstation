@@ -1,5 +1,5 @@
 ///sends signal whenever a quirk is added
-/datum/quirk/add_to_holder(mob/living/new_holder, quirk_transfer = FALSE, client/client_source, unique = TRUE)
+/datum/quirk/add_to_holder(mob/living/new_holder, quirk_transfer = FALSE, client/client_source, unique = TRUE, announce = TRUE)
 	. = ..()
 	if(!.)
 		return FALSE
