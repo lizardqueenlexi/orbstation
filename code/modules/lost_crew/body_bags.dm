@@ -17,7 +17,7 @@
 	/// Whether or not we spawn a paper with everything thats happened to the body
 	var/debug = FALSE
 
-/obj/structure/closet/body_bag/lost_crew/with_body/PopulateContents()
+/obj/structure/closet/body_bag/lost_crew/with_body/populate_contents_immediate()
 	. = ..()
 
 	var/list/recovered_items = list()
