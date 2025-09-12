@@ -138,6 +138,12 @@
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/engineering/atmos)
+"bf" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored,
+/turf/open/floor/engine/air{
+	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
+	},
+/area/ruin/space/ks13/engineering/atmos)
 "bm" = (
 /obj/structure/lattice,
 /turf/template_noop,
@@ -247,12 +253,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/security/cell)
-"cq" = (
-/obj/effect/mapping_helpers/burnt_floor,
-/obj/structure/table,
-/obj/item/stock_parts/power_store/battery/high,
-/turf/open/floor/iron/airless,
-/area/ruin/space/ks13/engineering/tech_storage)
 "cr" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/effect/decal/cleanable/blood/drip{
@@ -409,21 +409,6 @@
 /obj/item/clothing/head/costume/xenos,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/ai/vault)
-"dL" = (
-/obj/structure/cable,
-/obj/effect/mapping_helpers/burnt_floor,
-/obj/item/ammo_casing/c357{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/obj/item/ammo_casing/c357,
-/obj/item/ammo_casing/c357{
-	pixel_x = -10;
-	pixel_y = 7;
-	dir = 9
-	},
-/turf/open/floor/iron/airless,
-/area/ruin/space/ks13/hallway/central)
 "dO" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Court Room Public Access"
@@ -840,17 +825,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/engineering/supermatter)
-"jQ" = (
-/obj/item/ammo_casing/c357{
-	pixel_x = 4;
-	pixel_y = -7
-	},
-/obj/item/ammo_casing/c357{
-	pixel_x = -5
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/airless,
-/area/ruin/space/ks13/service/cafe)
 "jV" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/middle,
 /turf/open/floor/plating/airless,
@@ -1047,6 +1021,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/ks13/medical/morgue)
+"mi" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored,
+/turf/open/floor/engine/airless,
+/area/ruin/space/ks13/engineering/atmos)
 "mv" = (
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/effect/mapping_helpers/apc/no_charge,
@@ -1057,19 +1035,6 @@
 /obj/structure/lattice/catwalk,
 /turf/template_noop,
 /area/ruin/space/solars/ks13/aft_solars)
-"mC" = (
-/obj/effect/mapping_helpers/burnt_floor,
-/obj/item/ammo_casing/c357{
-	pixel_x = 8;
-	dir = 8;
-	pixel_y = 6
-	},
-/obj/item/ammo_casing/c357{
-	pixel_x = 6;
-	pixel_y = -4
-	},
-/turf/open/floor/plating/airless,
-/area/ruin/space/ks13/hallway/central)
 "mE" = (
 /obj/structure/grille/broken,
 /obj/item/shard,
@@ -1170,23 +1135,6 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/ks13/service/chapel)
-"nY" = (
-/obj/structure/cable,
-/obj/effect/mapping_helpers/burnt_floor,
-/obj/item/ammo_casing/c357{
-	pixel_x = -6;
-	pixel_y = 3
-	},
-/obj/item/ammo_casing/c357{
-	pixel_x = -5
-	},
-/obj/item/ammo_casing/c357{
-	pixel_x = 6;
-	dir = 9;
-	pixel_y = -3
-	},
-/turf/open/floor/iron/airless,
-/area/ruin/space/ks13/hallway/central)
 "od" = (
 /turf/closed/wall/r_wall,
 /area/ruin/space/ks13/hallway/aft)
@@ -1794,6 +1742,12 @@
 "rw" = (
 /turf/closed/wall,
 /area/ruin/space/ks13/service/chapel)
+"rx" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored,
+/turf/open/floor/engine/air{
+	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
+	},
+/area/ruin/space/ks13/engineering/atmos)
 "ry" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/dirt,
@@ -1867,14 +1821,6 @@
 "rM" = (
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/science/ordnance_hall)
-"rN" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
-	chamber_id = "ks13"
-	},
-/turf/open/floor/engine/air{
-	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
-	},
-/area/ruin/space/ks13/engineering/atmos)
 "rO" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "derelict11"
@@ -3401,6 +3347,12 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/engineering/atmos)
+"zP" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/structure/table,
+/obj/item/stock_parts/power_store/battery/high,
+/turf/open/floor/iron/airless,
+/area/ruin/space/ks13/engineering/tech_storage)
 "zR" = (
 /obj/structure/table,
 /turf/open/floor/iron,
@@ -4197,6 +4149,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white/airless,
 /area/ruin/space/ks13/medical/medbay)
+"Eb" = (
+/obj/structure/cable,
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/item/ammo_casing/c357{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/ammo_casing/c357{
+	pixel_x = -5
+	},
+/obj/item/ammo_casing/c357{
+	pixel_x = 6;
+	dir = 9;
+	pixel_y = -3
+	},
+/turf/open/floor/iron/airless,
+/area/ruin/space/ks13/hallway/central)
 "Ec" = (
 /obj/structure/frame/computer{
 	anchored = 1;
@@ -4412,6 +4381,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/hallway/aft)
+"Fl" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored,
+/turf/open/floor/engine/airless,
+/area/ruin/space/ks13/engineering/atmos)
 "Fn" = (
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -4952,12 +4925,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/science/genetics)
-"HU" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
-	chamber_id = "ks13-2"
-	},
-/turf/open/floor/engine/airless,
-/area/ruin/space/ks13/engineering/atmos)
 "HV" = (
 /obj/effect/mapping_helpers/broken_floor,
 /obj/structure/cable,
@@ -5054,6 +5021,15 @@
 "IF" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"IG" = (
+/obj/item/ammo_casing/c357,
+/obj/item/ammo_casing/c357{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/ruin/space/ks13/service/cafe)
 "IH" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/item/stack/sheet/iron,
@@ -5889,14 +5865,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"Nf" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
-	chamber_id = "ks13"
-	},
-/turf/open/floor/engine/air{
-	initial_gas_mix = "o2=20000;n2=80000;TEMP=293.15"
-	},
-/area/ruin/space/ks13/engineering/atmos)
 "Nh" = (
 /obj/structure/table,
 /obj/item/stock_parts/servo{
@@ -6357,6 +6325,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/hallway/aft)
+"Pv" = (
+/obj/item/ammo_casing/c357{
+	pixel_x = 4;
+	pixel_y = -7
+	},
+/obj/item/ammo_casing/c357{
+	pixel_x = -5
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/airless,
+/area/ruin/space/ks13/service/cafe)
 "Pw" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron,
@@ -6523,12 +6502,6 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/service/cafe)
-"Qq" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored{
-	chamber_id = "ks13-2"
-	},
-/turf/open/floor/engine/airless,
-/area/ruin/space/ks13/engineering/atmos)
 "Qr" = (
 /obj/structure/girder/reinforced,
 /turf/open/floor/plating/airless,
@@ -6861,6 +6834,21 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/engineering/aft_solars_control)
+"Sk" = (
+/obj/structure/cable,
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/item/ammo_casing/c357{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/obj/item/ammo_casing/c357,
+/obj/item/ammo_casing/c357{
+	pixel_x = -10;
+	pixel_y = 7;
+	dir = 9
+	},
+/turf/open/floor/iron/airless,
+/area/ruin/space/ks13/hallway/central)
 "Sl" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
@@ -7089,15 +7077,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/engineering/aft_solars_control)
-"Ta" = (
-/obj/item/ammo_casing/c357,
-/obj/item/ammo_casing/c357{
-	pixel_x = 5;
-	pixel_y = 6
-	},
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/ruin/space/ks13/service/cafe)
 "Tb" = (
 /obj/machinery/door/window/left/directional/west{
 	name = "Chapel"
@@ -7608,6 +7587,19 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/service/hydro)
+"VH" = (
+/obj/effect/mapping_helpers/burnt_floor,
+/obj/item/ammo_casing/c357{
+	pixel_x = 8;
+	dir = 8;
+	pixel_y = 6
+	},
+/obj/item/ammo_casing/c357{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/ks13/hallway/central)
 "VJ" = (
 /obj/item/stack/cable_coil/cut,
 /turf/open/floor/iron/airless,
@@ -11450,7 +11442,7 @@ Us
 Rt
 iy
 iy
-cq
+zP
 QG
 sU
 sU
@@ -11588,7 +11580,7 @@ vA
 fO
 Qp
 fO
-Ta
+IG
 Qp
 Hz
 OC
@@ -11701,7 +11693,7 @@ pC
 pc
 rz
 xR
-jQ
+Pv
 Au
 xh
 rq
@@ -12263,7 +12255,7 @@ yl
 pT
 tY
 mb
-Qq
+mi
 hQ
 CI
 JE
@@ -12376,7 +12368,7 @@ yR
 pT
 tY
 Eo
-HU
+Fl
 zO
 RO
 Dl
@@ -12602,7 +12594,7 @@ yl
 Uw
 tY
 EP
-Nf
+bf
 hQ
 Az
 CI
@@ -12715,7 +12707,7 @@ yl
 Uw
 tY
 Sy
-rN
+rx
 ve
 WI
 yA
@@ -13503,7 +13495,7 @@ PN
 Xr
 Ln
 qn
-mC
+VH
 xW
 BU
 Dn
@@ -13615,7 +13607,7 @@ hn
 Ew
 tT
 Ew
-dL
+Sk
 BA
 UN
 vP
@@ -13954,7 +13946,7 @@ qX
 yg
 yg
 tm
-nY
+Eb
 Cw
 Lq
 Nl

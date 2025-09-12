@@ -106,23 +106,10 @@
 					if(PAYMENT_CLINICAL)
 						to_chat(user, span_warning("Scanning... [physical_cash_total] credits detected.  Insufficent funds."))
 				return FALSE
-			switch(transaction_style)
-				if(PAYMENT_FRIENDLY)
-					to_chat(user, span_warning("Sorry, you need more credits to complete the transaction!"))
-				if(PAYMENT_ANGRY)
-					to_chat(user, span_warning("LEARN TO COUNT DUMMY YOU NEED MORE MONEY."))
-				if(PAYMENT_CLINICAL)
-					to_chat(user, span_warning("Scanning... [physical_cash_total] credits detected.  Insufficent funds."))
-			return FALSE
-		// /armless
+		return FALSE
 
-		switch(transaction_style)
-			if(PAYMENT_FRIENDLY)
-				to_chat(user, span_warning("Sorry, you need more credits to complete the transaction!"))
-			if(PAYMENT_ANGRY)
-				to_chat(user, span_warning("THAT'S NOT ENOUGH CASH YOU DUMB BUTT."))
-			if(PAYMENT_CLINICAL)
-				to_chat(user, span_warning("Scanning... [physical_cash_total] credits detected.  Insufficent funds."))
+	if(physical_cash_total < total_cost)
+		to_chat(user, span_warning("Insufficient funds. Aborting."))
 		return FALSE
 	for(var/obj/cash_object in counted_money)
 		qdel(cash_object)
@@ -188,7 +175,7 @@
 	log_econ("[total_cost] credits were spent on [parent] by [user] via [idcard.registered_account.account_holder]'s card.")
 	idcard.registered_account.bank_card_talk("[total_cost] credits deducted from your account.")
 	playsound(src, 'sound/effects/cashregister.ogg', 20, TRUE)
-	SSeconomy.track_purchase(idcard.registered_account, total_cost, parent)
+	SSeconomy.add_audit_entry(idcard.registered_account, total_cost, parent)
 	return TRUE
 
 /**
