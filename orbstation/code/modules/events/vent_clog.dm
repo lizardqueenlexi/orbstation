@@ -23,7 +23,7 @@
 		/mob/living/basic/skeleton,
 		/mob/living/basic/killer_tomato,
 		/mob/living/simple_animal/hostile/ooze,
-		/mob/living/basic/legion_brood,
+		/mob/living/basic/mining/legion_brood,
 	)
 	return pick(mob_list)
 
