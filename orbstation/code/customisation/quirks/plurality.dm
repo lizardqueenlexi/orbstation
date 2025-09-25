@@ -169,16 +169,6 @@
 	QDEL_NULL(plural_system)
 	return ..()
 
-/obj/item/card/id/equipped(mob/user, slot, initial = FALSE)
-	. = ..()
-	if(plural_system && slot == ITEM_SLOT_ID)
-		RegisterSignal(user, COMSIG_MOVABLE_MESSAGE_GET_NAME_PART, PROC_REF(return_plural_message_name_part))
-
-/obj/item/card/id/dropped(mob/user, silent = FALSE)
-	. = ..()
-	if(plural_system)
-		UnregisterSignal(user, list(COMSIG_HUMAN_GET_VISIBLE_NAME, COMSIG_MOVABLE_MESSAGE_GET_NAME_PART))
-
 /obj/item/card/id/proc/return_visible_plural_label()
 		var/name_string = plural_system.fronter_name ? plural_system.fronter_name : registered_name
 		return "[name_string]'s ID Card {[plural_system.system_name]}"
@@ -191,10 +181,10 @@
 	SIGNAL_HANDLER
 	if(visible_name)
 		return
-	var/voice_name = source.GetVoice()
+	var/voice_name = source.get_voice()
 	if(source.name != voice_name)
 		voice_name += " (as {[plural_system.system_name]})"
-	stored_name[NAME_PART_INDEX] = voice_name
+	return voice_name
 
 /obj/item/card/id/advanced/chameleon
 	plural_system_compatible = FALSE
@@ -253,7 +243,7 @@
 	if(!plural_system)
 		to_chat(user, span_warning("There's no plural system chip installed."))
 		return
-	UnregisterSignal(user, list(COMSIG_HUMAN_GET_VISIBLE_NAME, COMSIG_MOVABLE_MESSAGE_GET_NAME_PART))
+	UnregisterSignal(user, COMSIG_HUMAN_GET_VISIBLE_NAME)
 	user.put_in_hands(plural_system)
 	to_chat(user, span_notice("You remove [plural_system] from [src]."))
 	plural_system.fronter_name = null
