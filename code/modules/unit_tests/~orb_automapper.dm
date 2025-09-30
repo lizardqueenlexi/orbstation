@@ -28,5 +28,5 @@
 /datum/unit_test/area_spawn
 
 /datum/unit_test/area_spawn/Run()
-	for(var/area_spawn_type as anything in SSarea_spawn.failed_area_spawns)
+	for(var/area_spawn_type in SSarea_spawn.failed_area_spawns)
 		TEST_FAIL("[area_spawn_type] could not find any suitable turfs among its target areas].")
