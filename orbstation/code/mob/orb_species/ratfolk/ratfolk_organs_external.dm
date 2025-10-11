@@ -6,7 +6,6 @@
 
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_SNOUT
-	preference = "feature_rat_snout"
 	external_bodyshapes = BODYSHAPE_SNOUTED
 
 	dna_block = /datum/dna_block/feature/rat_snout
@@ -43,7 +42,6 @@
 /obj/item/organ/tail/ratfolk
 	name = "ratfolk tail"
 	desc = "A severed rat tail."
-	preference = "feature_rat_tail"
 	dna_block = /datum/dna_block/feature/rat_tail
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/rat
 
