@@ -266,7 +266,7 @@ SUBSYSTEM_DEF(area_spawn)
 	/// See orbstation/_global/automapper.dm
 	var/mode = AREA_SPAWN_MODE_OPEN
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
-	var/list/blacklisted_stations = list("Biodome", "Runtime Station", "MultiZ Debug", "Gateway Test")
+	var/list/blacklisted_stations = list("Biodome", "Runtime Station", "Minimal Runtime Station", "MultiZ Debug", "Gateway Test")
 	/// If failing to find a suitable area is OK, then this should be TRUE or CI will fail.
 	/// Should probably be true if the target_areas are random, such as ruins.
 	var/optional = FALSE
@@ -323,7 +323,7 @@ SUBSYSTEM_DEF(area_spawn)
 	/// The atom type that we want to spawn
 	var/desired_atom
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
-	var/list/blacklisted_stations = list("Biodome", "Runtime Station", "MultiZ Debug")
+	var/list/blacklisted_stations = list("Biodome", "Runtime Station", "Minimal Runtime Station", "MultiZ Debug", "Gateway Test")
 
 /**
  * Spawn the atoms.

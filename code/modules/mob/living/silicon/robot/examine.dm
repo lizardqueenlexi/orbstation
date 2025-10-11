@@ -55,3 +55,6 @@
 	. += span_notice("<i>Examine again to take a better look...</i>") //ORBSTATION ADDTION
 
 	. += ..()
+
+/mob/living/silicon/robot/examine_descriptor(mob/user)
+	return "cyborg"
