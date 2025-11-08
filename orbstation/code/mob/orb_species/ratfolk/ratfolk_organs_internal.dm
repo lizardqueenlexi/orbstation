@@ -8,7 +8,7 @@
 	icon_state = "ears_item"
 	visual = TRUE
 	damage_multiplier = 2
-	dna_block = /datum/dna_block/feature/rat_ears
+	dna_block = /datum/dna_block/feature/accessory/rat_ears
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/rat_ears
 
@@ -20,9 +20,6 @@
 
 	/// We dont color the inner part, which is the front layer
 	var/colorless_layer = EXTERNAL_FRONT
-
-/datum/bodypart_overlay/mutant/rat_ears/get_global_feature_list()
-	return SSaccessories.rat_ears_list
 
 /datum/bodypart_overlay/mutant/rat_ears/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
 	var/mob/living/carbon/human/human = bodypart_owner.owner

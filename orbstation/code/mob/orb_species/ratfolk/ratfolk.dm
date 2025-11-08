@@ -169,7 +169,7 @@
 
 /datum/species/ratfolk/randomize_features()
 	var/list/features = ..()
-	features[FEATURE_RAT_SNOUT] = pick(SSaccessories.rat_snouts_list)
-	features[FEATURE_RAT_TAIL] = pick(SSaccessories.rat_tails_list)
-	features[FEATURE_RAT_EARS] = pick(SSaccessories.rat_ears_list)
+	features[FEATURE_RAT_SNOUT] = pick(SSaccessories.feature_list[FEATURE_RAT_SNOUT])
+	features[FEATURE_RAT_TAIL] = pick(SSaccessories.feature_list[FEATURE_RAT_TAIL])
+	features[FEATURE_RAT_EARS] = pick(SSaccessories.feature_list[FEATURE_RAT_EARS])
 	return features

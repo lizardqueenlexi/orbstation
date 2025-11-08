@@ -1,10 +1,17 @@
+/datum/species/moth/get_features()
+	var/list/features = ..()
+
+	features += "feature_mothcolor"
+
+	return features
+
 //sets moth to the correct color
 /datum/species/moth/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	if(!ishuman(C))
-		return
+		return	0
 	var/mob/living/carbon/human/moth = C
-	fixed_mut_color = moth.dna.features["moth_color"]
+	fixed_mut_color = moth.dna.features[FEATURE_MOTH_COLOR]
 
 //Pref for moth coloration
 /datum/preference/choiced/moth_color
