@@ -1,21 +1,11 @@
-/datum/dna_block/feature/rat_snout
+/datum/dna_block/feature/accessory/rat_snout
 	feature_key = FEATURE_RAT_SNOUT
 
-/datum/dna_block/feature/rat_snout/create_unique_block(mob/living/carbon/human/target)
-	return construct_block(SSaccessories.rat_snouts_list.Find(target.dna.features[feature_key]), length(SSaccessories.rat_snouts_list))
-
-/datum/dna_block/feature/rat_ears
+/datum/dna_block/feature/accessory/rat_ears
 	feature_key = FEATURE_RAT_EARS
 
-/datum/dna_block/feature/rat_ears/create_unique_block(mob/living/carbon/human/target)
-	return construct_block(SSaccessories.rat_ears_list.Find(target.dna.features[feature_key]), length(SSaccessories.rat_ears_list))
-
-/datum/dna_block/feature/rat_tail
+/datum/dna_block/feature/accessory/rat_tail
 	feature_key = FEATURE_RAT_TAIL
-
-/datum/dna_block/feature/rat_tail/create_unique_block(mob/living/carbon/human/target)
-	return construct_block(SSaccessories.rat_tails_list.Find(target.dna.features[feature_key]), length(SSaccessories.rat_tails_list))
-
 
 /datum/dna_block/feature/moth_color
 	block_length = DNA_BLOCK_SIZE_COLOR

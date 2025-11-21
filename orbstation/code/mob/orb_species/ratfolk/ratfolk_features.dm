@@ -1,6 +1,6 @@
 // SNOUT
 
-/datum/preference/choiced/rat_snout
+/datum/preference/choiced/species_feature/rat_snout
 	savefile_key = "feature_rat_snout"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_FEATURES
@@ -8,14 +8,8 @@
 	should_generate_icons = TRUE
 	relevant_organ = /obj/item/organ/snout_rat
 
-/datum/preference/choiced/rat_snout/init_possible_values()
-	return assoc_to_keys_features(SSaccessories.rat_snouts_list)
-
-/datum/preference/choiced/rat_snout/icon_for(value)
-	return generate_ratfolk_side_shot(SSaccessories.rat_snouts_list[value], "rat_snout", include_snout = FALSE)
-
-/datum/preference/choiced/rat_snout/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features[FEATURE_RAT_SNOUT] = value
+/datum/preference/choiced/species_feature/rat_snout/icon_for(value)
+	return generate_ratfolk_side_shot(get_accessory_for_value(value), "rat_snout", include_snout = FALSE)
 
 /proc/generate_ratfolk_side_shot(datum/sprite_accessory/sprite_accessory, key, include_snout = TRUE)
 	var/static/datum/universal_icon/rat
@@ -46,24 +40,15 @@
 
 // TAIL
 
-/datum/preference/choiced/rat_tail
+/datum/preference/choiced/species_feature/rat_tail
 	savefile_key = "feature_rat_tail"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	relevant_organ = /obj/item/organ/tail/ratfolk
 
-/datum/preference/choiced/rat_tail/init_possible_values()
-	return assoc_to_keys_features(SSaccessories.rat_tails_list)
-
-/datum/preference/choiced/rat_tail/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features[FEATURE_RAT_TAIL] = value
-
-/datum/preference/choiced/rat_tail/create_default_value()
-	return /datum/sprite_accessory/tails/rat/high::name
-
 // EARS
 
-/datum/preference/choiced/rat_ears
+/datum/preference/choiced/species_feature/rat_ears
 	savefile_key = "feature_rat_ears"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_FEATURES
@@ -71,11 +56,5 @@
 	should_generate_icons = TRUE
 	relevant_organ = /obj/item/organ/ears/ratfolk
 
-/datum/preference/choiced/rat_ears/init_possible_values()
-	return assoc_to_keys_features(SSaccessories.rat_ears_list)
-
-/datum/preference/choiced/rat_ears/icon_for(value)
-	return generate_ratfolk_side_shot(SSaccessories.rat_ears_list[value], "rat_ears", include_snout=FALSE)
-
-/datum/preference/choiced/rat_ears/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features[FEATURE_RAT_EARS] = value
+/datum/preference/choiced/species_feature/rat_ears/icon_for(value)
+	return generate_ratfolk_side_shot(get_accessory_for_value(value), "rat_ears", include_snout=FALSE)

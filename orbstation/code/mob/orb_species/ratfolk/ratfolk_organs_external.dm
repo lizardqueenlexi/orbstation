@@ -8,7 +8,7 @@
 	slot = ORGAN_SLOT_EXTERNAL_SNOUT
 	external_bodyshapes = BODYSHAPE_SNOUTED
 
-	dna_block = /datum/dna_block/feature/rat_snout
+	dna_block = /datum/dna_block/feature/accessory/rat_snout
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/snout_rat
 
@@ -29,9 +29,6 @@
 		return FALSE
 	return TRUE
 
-/datum/bodypart_overlay/mutant/snout_rat/get_global_feature_list()
-	return SSaccessories.rat_snouts_list
-
 /datum/bodypart_overlay/mutant/snout_rat/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
 	if(draw_layer != bitflag_to_layer(colorless_layer))
 		return ..()
@@ -42,11 +39,8 @@
 /obj/item/organ/tail/ratfolk
 	name = "ratfolk tail"
 	desc = "A severed rat tail."
-	dna_block = /datum/dna_block/feature/rat_tail
+	dna_block = /datum/dna_block/feature/accessory/rat_tail
 	bodypart_overlay = /datum/bodypart_overlay/mutant/tail/rat
 
 /datum/bodypart_overlay/mutant/tail/rat
 	feature_key = FEATURE_RAT_TAIL
-
-/datum/bodypart_overlay/mutant/tail/rat/get_global_feature_list()
-	return SSaccessories.rat_tails_list
