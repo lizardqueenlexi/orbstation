@@ -4,6 +4,7 @@
 	key = "s"
 	icon = 'orbstation/icons/language.dmi'
 	icon_state = "sol"
+	always_use_default_namelist = TRUE
 	// these syllables are the ones used for galcom in tg main, a mix of english and chinese.
 	syllables = list(
 		// each sublist has an equal chance of being picked, so each syllable has an equal chance of being english or chinese
