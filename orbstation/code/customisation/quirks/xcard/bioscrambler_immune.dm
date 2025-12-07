@@ -23,6 +23,6 @@
 		if(3) //deal toxin damage and cause temporary sickness
 			to_chat(src, span_userdanger("Your stomach churns as your body twists unnaturally!"))
 			vomit()
-			adjustToxLoss(20)
+			adjust_tox_loss(20)
 			set_eye_blur_if_lower(20 SECONDS)
 			set_timed_status_effect(10 SECONDS, /datum/status_effect/dizziness)

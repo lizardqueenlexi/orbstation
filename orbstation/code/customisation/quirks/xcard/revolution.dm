@@ -3,14 +3,14 @@
 
     if (!HAS_TRAIT(victim, TRAIT_XCARD_REV_IMMUNE))
         return FALSE
-        
+
     to_chat(aggressor, span_warning("[victim] manages to resist your influence through sheer force of will, but reels in pain from the psychic blast!"))
 
     to_chat(victim, span_hypnophrase("A wave of psychic influence rolls over you!"))
     to_chat(victim, span_hypnophrase("You reel in pain from \the [src]'s psychic blast!"))
 
     victim.apply_damage(40, BRUTE, BODY_ZONE_HEAD)
-    victim.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
+    victim.adjust_organ_loss(ORGAN_SLOT_BRAIN, 20)
 
     to_chat(victim, span_hypnophrase("You successfully shield your brain from conversion, \
                                         but feel darkness encroaching as the identity of your attacker fades from your memory..."))

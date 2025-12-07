@@ -31,7 +31,7 @@
 	icon_state = "slimewineglass"
 
 /datum/reagent/consumable/ethanol/slimewine/on_mob_life(mob/living/carbon/drinker, delta_time, times_fired)
-	drinker.adjustToxLoss(1 * REM * delta_time, FALSE, required_biotype = affected_biotype)
+	drinker.adjust_tox_loss(1 * REM * delta_time, FALSE, required_biotype = affected_biotype)
 	return ..()
 
 /datum/crafting_recipe/slimewine

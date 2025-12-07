@@ -16,7 +16,7 @@
 	if (!.)
 		return
 	user.apply_status_effect(/datum/status_effect/pacify/visible, 30 SECONDS) // Don't miss!
-	user.adjustBruteLoss(-30)
+	user.adjust_brute_loss(-30)
 
 /obj/item/gun/magic/wand/pax/zap_self(mob/living/user)
 	playsound(user, fire_sound, 50, TRUE)
@@ -40,7 +40,7 @@
 		return
 
 	victim.apply_status_effect(/datum/status_effect/pacify/visible, 30 SECONDS)
-	victim.adjustBruteLoss(-30)
+	victim.adjust_brute_loss(-30)
 
 // Default pacify status effect has no screen alert but I think this should have one
 /datum/status_effect/pacify/visible

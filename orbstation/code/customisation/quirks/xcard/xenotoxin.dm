@@ -48,7 +48,7 @@
 
     // apply a fluctuating amount of stamina damage in little chunks over time
     if (SPT_PROB(STAM_DAMAGE_RATE, seconds_per_tick))
-        victim.adjustStaminaLoss(rand(STAM_DAMAGE_MIN, STAM_DAMAGE_MAX) * REM * seconds_per_tick, 0)
+        victim.adjust_stamina_loss(rand(STAM_DAMAGE_MIN, STAM_DAMAGE_MAX) * REM * seconds_per_tick, 0)
 
     // check to see if we should apply a damage burst
     // these deal sudden, larger amounts of toxin and stamina damage, and display a warning message
@@ -76,8 +76,8 @@
 /// Apply a "damage burst", which deals increasing amounts of toxicity and stamina damage, causes breath loss, and deals a small amount of organ damage
 /datum/reagent/toxin/xenotoxin/proc/damage_burst_normal(mob/living/carbon/victim, damage_mul, seconds_per_tick)
 
-    victim.adjustToxLoss(damage_mul * toxpwr * REM * seconds_per_tick, 0)
-    victim.adjustStaminaLoss(damage_mul * rand(STAM_DAMAGE_MIN, STAM_DAMAGE_MAX) * REM * seconds_per_tick, 0)  // REM is reagent-effects-multiplier
+    victim.adjust_tox_loss(damage_mul * toxpwr * REM * seconds_per_tick, 0)
+    victim.adjust_stamina_loss(damage_mul * rand(STAM_DAMAGE_MIN, STAM_DAMAGE_MAX) * REM * seconds_per_tick, 0)  // REM is reagent-effects-multiplier
 
     victim.losebreath++
 

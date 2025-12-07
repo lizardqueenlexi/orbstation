@@ -6,21 +6,12 @@
 	fire_sound = 'sound/items/weapons/gun/revolver/shot_alt.ogg'
 	fire_delay = 1 SECONDS
 	obj_flags = NONE
-	unique_reskin = list(
-		"Default" = "c38",
-		"Fitz Special" = "c38_fitz",
-		"Police Positive Special" = "c38_police",
-		"Blued Steel" = "c38_blued",
-		"Stainless Steel" = "c38_stainless",
-		"Gold Trim" = "c38_trim",
-		"Golden" = "c38_gold",
-		"The Peacemaker" = "c38_peacemaker",
-		"Black Panther" = "c38_panther"
-	)
 
 /obj/item/gun/blasting_rod/Initialize(mapload)
 	. = ..()
 	chambered = new /obj/item/ammo_casing/blasting(src)
+
+	AddComponent(/datum/component/reskinable_item, /datum/atom_skin/blasting_rod)
 
 /obj/item/gun/blasting_rod/handle_chamber(empty_chamber, from_firing, chamber_next_round)
 	chambered.newshot()
@@ -34,3 +25,43 @@
 	name = "bolt of blasting"
 	damage = 20
 	embed_type = null
+
+/datum/atom_skin/blasting_rod
+	abstract_type = /datum/atom_skin/blasting_rod
+	change_base_icon_state = TRUE
+
+/datum/atom_skin/blasting_rod/default
+	preview_name = "Default"
+	new_icon_state = "c38"
+
+/datum/atom_skin/blasting_rod/fitz
+	preview_name = "Fitz Special"
+	new_icon_state = "c38_fitz"
+
+/datum/atom_skin/blasting_rod/police
+	preview_name = "Police Positive Special"
+	new_icon_state = "c38_police"
+
+/datum/atom_skin/blasting_rod/blued
+	preview_name = "Blued Steel"
+	new_icon_state = "c38_blued"
+
+/datum/atom_skin/blasting_rod/blued
+	preview_name = "Stainless Steel"
+	new_icon_state = "c38_stainless"
+
+/datum/atom_skin/blasting_rod/trim
+	preview_name = "Gold Trim"
+	new_icon_state = "c38_trim"
+
+/datum/atom_skin/blasting_rod/gold
+	preview_name = "Golden"
+	new_icon_state = "c38_gold"
+
+/datum/atom_skin/blasting_rod/peacemaker
+	preview_name = "The Peacemaker"
+	new_icon_state = "c38_peacemaker"
+
+/datum/atom_skin/blasting_rod/panther
+	preview_name = "Black Panther"
+	new_icon_state = "c38_panther"

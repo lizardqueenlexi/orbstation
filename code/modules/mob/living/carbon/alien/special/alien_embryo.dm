@@ -52,10 +52,10 @@
 			if(SPT_PROB(2, seconds_per_tick))
 				to_chat(owner, span_danger("Your stomach hurts."))
 				if(prob(20))
-					owner.adjustToxLoss(1)
+					owner.adjust_tox_loss(1)
 		if(6)
 			to_chat(owner, span_danger("You feel something tearing its way out of your chest..."))
-			owner.adjustToxLoss(5 * seconds_per_tick) // Why is this [TOX]?
+			owner.adjust_tox_loss(5 * seconds_per_tick) // Why is this [TOX]?
 
 /// Controls Xenomorph Embryo growth. If embryo is fully grown (or overgrown), stop the proc. If not, increase the stage by one and if it's not fully grown (stage 6), add a timer to do this proc again after however long the growth time variable is.
 /obj/item/organ/body_egg/alien_embryo/proc/advance_embryo_stage()
@@ -144,7 +144,7 @@
 	if(gib_on_success)
 		new_xeno.visible_message(span_danger("[new_xeno] bursts out of [owner] in a shower of gore!"), span_userdanger("You exit [owner], your previous host."), span_hear("You hear organic matter ripping and tearing!"))
 
-	owner.cut_overlay(overlay)
+	owner.cut_overlay(overlay) //ORBSTATION EDIT
 	owner.spawn_gibs() // we still want the gory visual effect
 	if(owner.blood_volume)
 		owner.spray_blood(owner.dir, WOUND_SEVERITY_LOSS)

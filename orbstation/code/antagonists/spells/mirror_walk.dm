@@ -78,7 +78,7 @@
 
 /datum/status_effect/mirror_fracture/tick()
 	var/mob/living/carbon/human/victim = owner
-	victim.adjustBruteLoss(2) // Approximately 1 per second
+	victim.adjust_brute_loss(2) // Approximately 1 per second
 
 /atom/movable/screen/alert/status_effect/mirror_fracture
 	name = "Mirror fracture"
