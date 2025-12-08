@@ -36,7 +36,7 @@
 		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_l_arm"), ICON_OVERLAY)
 		moth_base.blend_icon(uni_icon('orbstation/icons/mob/species/moth/bodyparts_greyscale.dmi', "moth_r_arm"), ICON_OVERLAY)
 
-		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "motheyes_white_l")
+		var/datum/universal_icon/eyes = uni_icon(/obj/item/organ/eyes/moth::eye_icon, "[/obj/item/organ/eyes/moth::eye_icon_state]_l", EAST)
 		eyes.blend_icon(uni_icon('icons/mob/human/human_face.dmi', "motheyes_white_r"), ICON_OVERLAY)
 		eyes.blend_color(COLOR_BLACK, ICON_MULTIPLY)
 		moth_base.blend_icon(eyes, ICON_OVERLAY)

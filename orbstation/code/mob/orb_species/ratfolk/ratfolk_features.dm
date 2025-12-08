@@ -17,8 +17,8 @@
 
 	if (isnull(rat))
 		rat = uni_icon('orbstation/icons/mob/species/ratfolk/bodyparts.dmi', "ratfolk_head", EAST)
+		var/datum/universal_icon/eyes = uni_icon(/obj/item/organ/eyes/ratfolk::eye_icon, "[/obj/item/organ/eyes/ratfolk::eye_icon_state]_l", EAST)
 
-		var/datum/universal_icon/eyes = uni_icon('icons/mob/human/human_face.dmi', "eyes_l", EAST)
 		eyes.blend_color(COLOR_BLACK, ICON_MULTIPLY)
 		rat.blend_icon(eyes, ICON_OVERLAY)
 
