@@ -6,8 +6,8 @@
 	icon_state = "boggle"
 	worn_icon_state = "eyeglasses"
 	gender = PLURAL
-	custom_materials = null
 	clothing_traits = list(TRAIT_NEARSIGHTED_CORRECTED,TRAIT_FARSIGHTED_CORRECTED)
+	custom_materials = null
 
 /datum/crafting_recipe/boggle
 	name = "Boggle Goggles"
@@ -15,6 +15,7 @@
 	time = 2 SECONDS
 	reqs = list(/obj/item/organ/eyes = 1, /obj/item/stack/sheet/cloth = 1)
 	category = CAT_CLOTHING
+	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
 
 /datum/crafting_recipe/bogglealt
 	name = "Boggle Goggles"
@@ -22,3 +23,4 @@
 	time = 2 SECONDS
 	reqs = list(/obj/item/organ/eyes = 1, /obj/item/stack/cable_coil = 5)
 	category = CAT_CLOTHING
+	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
