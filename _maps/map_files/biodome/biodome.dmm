@@ -6770,6 +6770,12 @@
 /area/station/engineering/lobby)
 "cqR" = (
 /obj/machinery/chem_master,
+/obj/machinery/button/door/directional/north{
+	id = "pharmacy_shutters";
+	name = "Pharmacy Shutter Controls";
+	pixel_y = 25;
+	req_access = list("pharmacy")
+	},
 /turf/open/floor/iron/white/small,
 /area/station/medical/pharmacy)
 "cqS" = (
@@ -12503,19 +12509,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
-"eoF" = (
-/obj/machinery/button/door/directional/north{
-	id = "pharmacy_shutters";
-	name = "Pharmacy Shutter Controls";
-	pixel_y = 55;
-	req_access = list("pharmacy")
-	},
-/obj/structure/chair/office/light{
-	dir = 4
-	},
-/obj/effect/landmark/start/chemist,
-/turf/open/floor/iron/white/small,
-/area/station/medical/pharmacy)
 "eoI" = (
 /obj/effect/spawner/random/trash/graffiti,
 /obj/structure/cable,
@@ -14225,6 +14218,7 @@
 /obj/item/taperecorder,
 /obj/structure/table/wood,
 /obj/structure/sign/painting/library_private{
+	pixel_x = -32;
 	pixel_y = -32
 	},
 /turf/open/floor/engine/cult,
@@ -28918,6 +28912,7 @@
 /area/station/engineering/gravity_generator)
 "jZF" = (
 /obj/effect/spawner/random/trash/crushed_can,
+/obj/machinery/light/small/directional/west,
 /turf/open/floor/plating,
 /area/station/maintenance/central/greater)
 "jZJ" = (
@@ -61100,7 +61095,6 @@
 "uTS" = (
 /obj/effect/landmark/start/research_director,
 /obj/structure/chair/office,
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/rd)
 "uTW" = (
@@ -64171,12 +64165,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
-"vXp" = (
-/obj/machinery/light/small/directional/east,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/plating,
-/area/station/maintenance/central/greater)
 "vXu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -64222,15 +64210,6 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/upper)
-"vXZ" = (
-/obj/structure/holosign/barrier/atmos/leaf{
-	dir = 8
-	},
-/obj/machinery/camera/directional/west{
-	c_tag = "Biodome - Overpass Fore"
-	},
-/turf/open/openspace,
-/area/station/biodome)
 "vYf" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Maintenance Hatch"
@@ -67726,6 +67705,9 @@
 "xfC" = (
 /obj/effect/turf_decal/delivery/red,
 /obj/item/book/random,
+/obj/machinery/camera/directional/west{
+	c_tag = "Biodome - Overpass Fore"
+	},
 /turf/open/floor/bronze,
 /area/station/service/library/lounge)
 "xfO" = (
@@ -68051,12 +68033,6 @@
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/grass,
 /area/station/biodome/fore)
-"xmp" = (
-/obj/machinery/camera/directional/west{
-	c_tag = "Civilian - Garden Overlook Port"
-	},
-/turf/open/openspace,
-/area/station/service/hydroponics/garden)
 "xmN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -109025,7 +109001,7 @@ lJT
 jcx
 uOG
 jcx
-vXp
+jcx
 jcx
 klU
 nkC
@@ -156271,7 +156247,7 @@ gxn
 isx
 riL
 kkB
-xmp
+nDd
 xxS
 riL
 gxn
@@ -161945,7 +161921,7 @@ epr
 epr
 nRf
 cqR
-eoF
+jXb
 iEt
 jtS
 gFM
@@ -166832,7 +166808,7 @@ opX
 gNF
 oHW
 uyN
-vXZ
+opX
 rqE
 kNc
 vop
@@ -180990,7 +180966,7 @@ sJh
 nzQ
 nUl
 nUl
-vSj
+nUl
 nUl
 nUl
 kPb
