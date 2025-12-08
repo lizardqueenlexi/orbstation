@@ -1,5 +1,6 @@
 /datum/language
-	var/secret = FALSE //whether the language should be hidden on the language menu
+	///whether the language should be hidden on the language menu
+	var/secret = FALSE
 
 // Aphasia - language only granted by brain damage
 /datum/language/aphasia
