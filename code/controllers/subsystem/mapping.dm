@@ -435,8 +435,8 @@ Used by the AI doomsday and the self-destruct nuke.
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
 	// ORBSTATION ADDITION BEGIN - We need to load our templates from cache after our space has been carved out.
-	if(!LAZYLEN(errorList))
-		SSautomapper.load_templates_from_cache(files)
+	///if(!LAZYLEN(errorList))
+	//	SSautomapper.load_templates_from_cache(files)
 	// ORBSTATION ADDITION END
 	if(!silent)
 		INIT_ANNOUNCE("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!")
