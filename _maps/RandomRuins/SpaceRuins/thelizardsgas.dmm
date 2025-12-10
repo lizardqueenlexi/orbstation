@@ -96,6 +96,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/thelizardsgas)
+"iV" = (
+/obj/structure/rack,
+/obj/item/clothing/shoes/cowboy,
+/obj/structure/cable,
+/turf/open/floor/iron/white/side,
+/area/ruin/space/has_grav/thelizardsgas)
 "jv" = (
 /obj/machinery/airalarm/directional/north{
 	locked = 0
@@ -116,6 +122,12 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white/side,
+/area/ruin/space/has_grav/thelizardsgas)
+"kS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored,
+/turf/open/floor/engine/plasma{
+	initial_gas_mix = "plasma=35000;TEMP=293.15"
+	},
 /area/ruin/space/has_grav/thelizardsgas)
 "mN" = (
 /obj/effect/spawner/random/food_or_drink/booze,
@@ -146,12 +158,6 @@
 "oZ" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall,
-/area/ruin/space/has_grav/thelizardsgas)
-"qV" = (
-/obj/structure/rack,
-/obj/item/clothing/shoes/cowboy,
-/obj/structure/cable,
-/turf/open/floor/iron/white/side,
 /area/ruin/space/has_grav/thelizardsgas)
 "rs" = (
 /obj/machinery/button/door/directional/west{
@@ -221,23 +227,11 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/thelizardsgas)
-"yU" = (
-/obj/structure/sign/warning/no_smoking/directional/north{
-	desc = "An incredibly bad idea."
-	},
-/turf/template_noop,
-/area/template_noop)
 "zn" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/food_or_drink/snack,
 /obj/effect/spawner/random/food_or_drink/snack,
 /turf/open/floor/iron/white,
-/area/ruin/space/has_grav/thelizardsgas)
-"zs" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored,
-/turf/open/floor/engine/plasma{
-	initial_gas_mix = "plasma=35000;TEMP=293.15"
-	},
 /area/ruin/space/has_grav/thelizardsgas)
 "zz" = (
 /obj/machinery/door/window/left/directional/south,
@@ -318,6 +312,12 @@
 /obj/structure/flora/rock,
 /turf/open/misc/asteroid/airless,
 /area/ruin/space/has_grav/thelizardsgas)
+"HE" = (
+/obj/structure/sign/warning/no_smoking/directional/north{
+	desc = "An incredibly bad idea."
+	},
+/turf/template_noop,
+/area/space/nearstation)
 "Io" = (
 /obj/machinery/power/smes{
 	charge = 4e+007;
@@ -472,6 +472,14 @@
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/thelizardsgas)
+"Uh" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
+	dir = 4
+	},
+/turf/open/floor/engine/plasma{
+	initial_gas_mix = "plasma=35000;TEMP=293.15"
+	},
+/area/ruin/space/has_grav/thelizardsgas)
 "Um" = (
 /obj/structure/flora/rock/pile/style_random,
 /turf/open/misc/asteroid/airless,
@@ -537,14 +545,6 @@
 "Zs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/ruin/space/has_grav/thelizardsgas)
-"Zw" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/monitored{
-	dir = 4
-	},
-/turf/open/floor/engine/plasma{
-	initial_gas_mix = "plasma=35000;TEMP=293.15"
-	},
 /area/ruin/space/has_grav/thelizardsgas)
 
 (1,1,1) = {"
@@ -771,7 +771,7 @@ Qg
 LA
 OQ
 DG
-zs
+kS
 Tj
 na
 sN
@@ -807,7 +807,7 @@ Wh
 mR
 mR
 mR
-yU
+HE
 CA
 MB
 CA
@@ -823,7 +823,7 @@ CA
 CA
 Qg
 LA
-Zw
+Uh
 DG
 DG
 rC
@@ -935,7 +935,7 @@ LT
 xy
 Kw
 mR
-qV
+iV
 Zs
 zn
 UO

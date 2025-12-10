@@ -18,6 +18,7 @@
 	sharpness = SHARP_EDGED
 	hitsound = 'sound/items/weapons/slice.ogg'
 	mob_throw_hit_sound = 'sound/items/weapons/slice.ogg'
+	custom_materials = list(/datum/material/iron = 6000, /datum/material/alloy/plasteel = 2000, /datum/material/titanium = 1000)
 	/// Chance to destroy floor tiles while moving
 	var/break_floor_chance = 15
 

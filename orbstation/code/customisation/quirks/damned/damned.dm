@@ -27,7 +27,7 @@
 	var/area/holder_area = get_area(human_target)
 	if(istype(holder_area, /area/station/service/chapel))
 		to_chat(human_target, span_warning("The gods reject your presence!"))
-		human_target.adjustFireLoss(2 * delta_time)
+		human_target.adjust_fire_loss(2 * delta_time)
 		human_target.adjust_fire_stacks(3 * delta_time)
 		human_target.ignite_mob()
 		human_target.apply_status_effect(/datum/status_effect/temporary_damned_halo)
@@ -87,7 +87,7 @@
 	var/mob/living/carbon/human/H = L
 	if(HAS_TRAIT(H, TRAIT_DAMNED))
 		H.visible_message(span_warning("[user] blinds [H] with the power of [deity_name]!"))
-		H.adjustFireLoss(5)
+		H.adjust_fire_loss(5)
 		H.adjust_temp_blindness(5 SECONDS)
 		H.apply_status_effect(/datum/status_effect/temporary_damned_halo)
 		return FALSE
@@ -107,8 +107,8 @@
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	if(HAS_TRAIT(affected_mob, TRAIT_DAMNED))
 		affected_mob.set_confusion_if_lower(3 SECONDS)
-		affected_mob.adjustFireLoss(0.25*delta_time, 0)
-		affected_mob.adjustToxLoss(0.25*delta_time, 0)
+		affected_mob.adjust_fire_loss(0.25*delta_time, 0)
+		affected_mob.adjust_tox_loss(0.25*delta_time, 0)
 		affected_mob.apply_status_effect(/datum/status_effect/temporary_damned_halo)
 	return ..()
 

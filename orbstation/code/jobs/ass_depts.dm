@@ -27,7 +27,6 @@
 /datum/job/assistant/dept/sci
 	title = JOB_ASSISTANT_SCI
 	description = "Witness the marvels of modern age technology, and be a test subject for them."
-	department_head = list(JOB_RESEARCH_DIRECTOR)
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_RD
@@ -79,7 +78,6 @@
 /datum/job/assistant/dept/med
 	title = JOB_ASSISTANT_MED
 	description = "Handle patients coming in and out of medbay, lack a medical license."
-	department_head = list(JOB_CHIEF_MEDICAL_OFFICER)
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_CMO
@@ -131,7 +129,6 @@
 /datum/job/assistant/dept/eng
 	title = JOB_ASSISTANT_ENG
 	description = "Make your own pet projects, get called away to fix every little thing."
-	department_head = list(JOB_CHIEF_ENGINEER)
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_CE
@@ -185,7 +182,6 @@
 /datum/job/assistant/dept/srv
 	title = JOB_ASSISTANT_SRV
 	description = "Bus tables, work for tips."
-	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = SUPERVISOR_HOP

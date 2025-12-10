@@ -63,7 +63,7 @@
 	// ORBSTATION: Zombie organ only damages you if you're in critical condition.
 	if(owner.health <= HEALTH_THRESHOLD_CRIT && owner.stat != DEAD)
 		if (causes_damage && !iszombie(owner))
-			owner.adjustToxLoss(0.5 * seconds_per_tick)
+			owner.adjust_tox_loss(0.5 * seconds_per_tick)
 	if(timer_id || HAS_TRAIT(owner, TRAIT_SUICIDED) || !owner.get_organ_by_type(/obj/item/organ/brain))
 		return
 	if(owner.stat != DEAD && !converts_living)

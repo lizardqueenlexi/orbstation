@@ -13,6 +13,7 @@
 	icon_state = "base"
 	anchored = FALSE
 	density = TRUE
+	custom_materials = list(/datum/material/iron = 700)
 	var/emagged = FALSE
 	var/datum/weakref/dancer = null
 

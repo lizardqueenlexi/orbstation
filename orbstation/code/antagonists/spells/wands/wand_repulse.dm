@@ -14,7 +14,7 @@
 /obj/item/gun/magic/wand/repulse/zap_self(mob/living/user)
 	. = ..()
 	user.visible_message(span_warning("[user] blasts themself into the ground!"))
-	user.adjustBruteLoss(30)
+	user.adjust_brute_loss(30)
 	user.Paralyze(10 SECONDS)
 
 /obj/item/ammo_casing/magic/repulse

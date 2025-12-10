@@ -90,7 +90,7 @@
 			/obj/item/food/cheese/wedge = 40,
 			/obj/item/food/cheese/firm_cheese_slice = 15,
 			/obj/item/food/cheese/mozzarella = 15,
-			/obj/item/food/sandwich/cheese/grilled = 5,
+			/obj/item/food/sandwich/grilled_cheese = 5,
 			/obj/item/food/cheesyfries = 5,
 			/obj/item/food/herby_cheese = 2,
 			/obj/item/food/grilled_cheese = 2,

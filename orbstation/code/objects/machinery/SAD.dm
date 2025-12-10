@@ -151,8 +151,8 @@
 		for(var/datum/brain_trauma/trauma as anything in patient.get_traumas())
 			trauma_list += trauma
 
-	var/brute_damage = patient.getBruteLoss()
-	var/burn_damage = patient.getFireLoss()
+	var/brute_damage = patient.get_brute_loss()
+	var/burn_damage = patient.get_fire_loss()
 
 	patient.client?.prefs?.safe_transfer_prefs_to(patient)
 	patient.dna.update_dna_identity()
@@ -164,14 +164,14 @@
 		This may be a false positive from changing from a humanized monkey into a character, so be careful.")
 
 	// Apply organ damage
-	patient.setOrganLoss(ORGAN_SLOT_HEART, heart_damage)
-	patient.setOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
-	patient.setOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
-	patient.setOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
+	patient.adjust_organ_loss(ORGAN_SLOT_HEART, heart_damage)
+	patient.adjust_organ_loss(ORGAN_SLOT_LIVER, liver_damage)
+	patient.adjust_organ_loss(ORGAN_SLOT_LUNGS, lung_damage)
+	patient.adjust_organ_loss(ORGAN_SLOT_STOMACH, stomach_damage)
 	// Head organ damage.
-	patient.setOrganLoss(ORGAN_SLOT_EYES, eye_damage)
-	patient.setOrganLoss(ORGAN_SLOT_EARS, ear_damage)
-	patient.setOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+	patient.adjust_organ_loss(ORGAN_SLOT_EYES, eye_damage)
+	patient.adjust_organ_loss(ORGAN_SLOT_EARS, ear_damage)
+	patient.adjust_organ_loss(ORGAN_SLOT_BRAIN, brain_damage)
 
 	//Re-Applies Trauma
 	var/obj/item/organ/brain/patient_brain = patient.get_organ_by_type(/obj/item/organ/brain)
@@ -180,8 +180,8 @@
 		patient_brain.traumas = trauma_list
 
 	//Re-Applies Damage
-	patient.setBruteLoss(brute_damage)
-	patient.setFireLoss(burn_damage)
+	patient.set_brute_loss(brute_damage)
+	patient.set_fire_loss(burn_damage)
 
 	open_machine()
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)

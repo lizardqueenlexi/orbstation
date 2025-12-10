@@ -6,6 +6,7 @@
 	desc = "Use on any pair of glasses to attach corrective prescription lenses. \
 		The added weight means they might fall off if you get into a scrape."
 	w_class = WEIGHT_CLASS_TINY
+	custom_materials = list(/datum/material/glass = 25)
 
 /obj/item/prescription_lenses/interact_with_atom(obj/item/clothing/glasses/target_glasses, mob/user, list/modifiers)
 	if (!istype(target_glasses))

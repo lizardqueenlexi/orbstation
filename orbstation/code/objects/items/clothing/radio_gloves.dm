@@ -5,6 +5,7 @@
 	icon_state = "glove_wires"
 	desc = "Use on any pair of gloves to attach sign language translation cables."
 	w_class = WEIGHT_CLASS_TINY
+	custom_materials = list(/datum/material/iron = 9, /datum/material/glass = 4)
 	/// "Gloves" which don't cover your fingers and look silly with the overlay attached
 	var/static/list/gloves_blacklist = typecacheof(list(
 		/obj/item/clothing/gloves/boxing,
