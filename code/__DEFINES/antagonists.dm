@@ -218,12 +218,6 @@ GLOBAL_LIST_INIT(syndicate_employers, list(
 	"Tiger Cooperative Fanatic",
 	"Waffle Corporation Terrorist",
 	"Waffle Corporation",
-	//ORBSTATION EMPLOYERS
-	"Azik Interstellar",
-	"Chariraxa Agricultural Concern",
-	"Ngaouhaki FPC",
-	"Suojaheimøstusek Resource & Logistics, plc",
-	"True Soldiers of the 3rd Soviet Union",
 ))
 ///employers that are from Nanotrasen
 GLOBAL_LIST_INIT(nanotrasen_employers, list(
@@ -254,13 +248,6 @@ GLOBAL_LIST_INIT(normal_employers, list(
 	"Legal Trouble",
 	"MI13",
 	"Waffle Corporation",
-	//ORBSTATION EMPLOYERS
-	"Azik Interstellar",
-	"Chariraxa Agricultural Concern",
-	"Flagbearers of the New Kronstadt",
-	"Ghosts of the 3rd Soviet Union",
-	"Ngaouhaki FPC",
-	"Suojaheimøstusek Resource & Logistics, plc",
 ))
 
 ///employers for malfunctioning ais. they do not have sides, unlike traitors.
