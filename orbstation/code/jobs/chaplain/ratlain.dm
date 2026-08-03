@@ -202,7 +202,9 @@
 	var/static/list/mouse_commands = list(
 		/datum/pet_command/idle,
 		/datum/pet_command/free,
-		/datum/pet_command/follow,
+		/datum/pet_command/follow/start_active,
+		/datum/pet_command/perform_trick_sequence,
+		/datum/pet_command/attack/mouse
 	)
 
 /datum/religion_rites/pied_piper/perform_rite(mob/living/user, atom/religious_tool)
@@ -250,31 +252,25 @@
 
 	var/list/command_list = mouse_commands.Copy()
 	if (rite_target.obj_damage == 0) // This is a mouse, not a rat
-		rite_target.ai_controller = new /datum/ai_controller/basic_controller/mouse_friend(rite_target)
+		rite_target.ai_controller = new /datum/ai_controller/basic_controller/mouse/friend(rite_target)
 	else
-		command_list += /datum/pet_command/attack/mouse
-	rite_target.AddComponent(/datum/component/obeys_commands, command_list)
+		qdel(rite_target.GetComponent(/datum/component/obeys_commands))
+		rite_target.AddComponent(/datum/component/obeys_commands, command_list)
 	qdel(rite_target.GetComponent(/datum/component/tameable))
 	rite_target.befriend(user)
 	playsound(user, SOUND_SQUEAK, 25, TRUE, -1)
 	rite_target.balloon_alert_to_viewers("squeak!")
 	rite_target.resist_buckle()
 
-/// Mouse AI which isn't scared of humans and can follow instructions
-/datum/ai_controller/basic_controller/mouse_friend
-	blackboard = list(
-		BB_CURRENT_HUNTING_TARGET = null, // cheese
-		BB_LOW_PRIORITY_HUNTING_TARGET = null, // cable
+/datum/ai_controller/basic_controller/mouse/friend
+	behavior_tree_json = "orbstation/code/jobs/chaplain/mouse_friend.bt.json"
+
+	blackboard = list( // Always cowardly
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic, // Use this to find people to run away from
+		BB_PET_TARGETING_STRATEGY = /datum/targeting_strategy/basic/not_friends,
+		BB_SONG_LINES = MOUSE_SONG,
 	)
 
-	ai_traits = STOP_MOVING_WHEN_PULLED
-	ai_movement = /datum/ai_movement/basic_avoidance
-	idle_behavior = /datum/idle_behavior/idle_random_walk
-	planning_subtrees = list(
-		/datum/ai_planning_subtree/pet_planning,
-		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cheese,
-		/datum/ai_planning_subtree/random_speech/mouse,
-		/datum/ai_planning_subtree/find_and_hunt_target/look_for_cables,
-	)
+	ai_traits = PASSIVE_AI_FLAGS
 
 #undef SOUND_SQUEAK
