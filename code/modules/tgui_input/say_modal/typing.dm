@@ -66,7 +66,7 @@
 
 /// Overrides for overlay creation
 /mob/living/create_thinking_indicator()
-	if(active_thinking_indicator || active_typing_indicator || stat != CONSCIOUS || !(HAS_TRAIT(src, TRAIT_THINKING_IN_CHARACTER) || HAS_TRAIT(src, TRAIT_THINKING_LOOC)))
+	if(active_thinking_indicator || active_typing_indicator || IS_UNCONSCIOUS_OR_CRIT(src) || !HAS_TRAIT(src, TRAIT_THINKING_IN_CHARACTER || HAS_TRAIT(src, TRAIT_THINKING_LOOC)))
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_THINKING_IN_CHARACTER))
 		active_thinking_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon]3", TYPING_LAYER)
@@ -83,7 +83,7 @@
 	active_thinking_indicator = null
 
 /mob/living/create_typing_indicator()
-	if(active_typing_indicator || active_thinking_indicator || stat != CONSCIOUS || !(HAS_TRAIT(src, TRAIT_THINKING_IN_CHARACTER) || HAS_TRAIT(src, TRAIT_THINKING_LOOC)))
+	if(active_typing_indicator || active_thinking_indicator || IS_UNCONSCIOUS_OR_CRIT(src) || !HAS_TRAIT(src, TRAIT_THINKING_IN_CHARACTER) || HAS_TRAIT(src, TRAIT_THINKING_LOOC))
 		return FALSE
 	if(HAS_TRAIT(src, TRAIT_THINKING_IN_CHARACTER))
 		active_typing_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "[bubble_icon]0", TYPING_LAYER)
@@ -104,4 +104,3 @@
 	REMOVE_TRAIT(src, TRAIT_THINKING_LOOC, CURRENTLY_TYPING_TRAIT)
 	remove_thinking_indicator()
 	remove_typing_indicator()
-
