@@ -32,10 +32,8 @@
 
 /datum/action/cooldown/spell/jaunt/mirror_walk/wizard/proc/check_health(mob/living/source)
 	SIGNAL_HANDLER
-	if (source.stat == CONSCIOUS)
-		return
-	//async this because it has a do_after in it
-	INVOKE_ASYNC(src, PROC_REF(exit_jaunt_involuntarily), source)
+	if (IS_UNCONSCIOUS_OR_CRIT(source))
+		INVOKE_ASYNC(src, PROC_REF(exit_jaunt_involuntarily), source)
 
 /**
  * Drops you out of the mirror realm near a reflective surface

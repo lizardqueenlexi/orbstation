@@ -207,7 +207,7 @@
 
 	if(HAS_TRAIT(target, TRAIT_XCARD_XENO_IMMUNE)) ///ORBSTATION EDIT: if you have an xcard, get bitten, and then it falls off
 		venomous_bite(target)
-		GoIdle()
+		go_idle()
 		target.dropItemToGround(src)
 		return
 

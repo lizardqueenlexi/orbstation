@@ -265,6 +265,7 @@ def main() -> int:
 
     code_dirs = [
         repo_root / 'code',
+        repo_root / 'orbstation' / 'code' # orbstation addition: please build our files
     ]
 
     for code_dir in code_dirs:

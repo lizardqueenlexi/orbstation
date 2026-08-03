@@ -70,7 +70,7 @@
 	ethereal_heart.respawn_count++
 	if (ethereal_heart.respawn_count > ETHEREAL_PENALTY_PARAPLEGIA)
 		return FALSE
-	var/datum/ethereal_penalty/penalty = ETHEREAL_RESPAWN_PENALTIES[ethereal_heart.respawn_count]
+	var/datum/ethereal_penalty/penalty = ETHEREAL_RESPAWN_PENALTIES["[ethereal_heart.respawn_count]"]
 	if (penalty.apply(ethereal_heart.owner))
 		return TRUE
 	return apply_new_penalty()
