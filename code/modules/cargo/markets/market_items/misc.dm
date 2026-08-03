@@ -231,6 +231,7 @@
 	stock_max = 3
 	availability_prob = 25
 
+/** ORBSTATION EDIT: does nothing without fat code
 /datum/market_item/misc/nutrient_pump
 	name = "Nutriment Pump Implant Plus Plus Plus"
 	desc = "We turned this thing up as far as it'll go, and then some. Guaranteed to keep you well fed at all times."
@@ -239,6 +240,7 @@
 	item = /obj/item/organ/cyberimp/chest/nutriment/black_market
 	stock_max = 2
 	availability_prob = 60
+	*/
 
 /datum/market_item/misc/hexacrete
 	name = "Jerrycan of Hexacrete"

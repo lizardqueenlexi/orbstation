@@ -21,7 +21,10 @@
 	// give us some space between clothing examine and the rest
 	ADD_NEWLINE_IF_NECESSARY(.)
 
-	. += get_short_description_examine_info() //ORBSTATION ADDITION
+	//ORBSTATION ADDITION, ugly typecheck to keep its position
+	var/mob/living/carbon/human_us = src
+	if (istype(human_us))
+		. += human_us.get_short_description_examine_info()
 
 	var/appears_dead = FALSE
 	var/just_sleeping = FALSE

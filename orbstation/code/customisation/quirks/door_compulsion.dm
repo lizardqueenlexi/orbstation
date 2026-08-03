@@ -40,7 +40,7 @@
 /datum/element/door_closer_quirk/proc/close_door(mob/living/leaver, turf/old_turf)
 	SIGNAL_HANDLER
 
-	if(leaver.stat != CONSCIOUS)
+	if(IS_UNCONSCIOUS(leaver))
 		return
 	if(HAS_TRAIT(leaver, TRAIT_HANDS_BLOCKED))
 		return
