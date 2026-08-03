@@ -21,4 +21,4 @@
 
 /mob/living/basic/creature/docile/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/sedated_mob, /datum/ai_controller/basic_controller/creature)
+	AddElement(/datum/element/sedated_mob, /datum/ai_controller/basic_controller/simple/simple_hostile_obstacles)
