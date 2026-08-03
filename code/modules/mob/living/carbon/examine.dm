@@ -22,7 +22,7 @@
 	ADD_NEWLINE_IF_NECESSARY(.)
 
 	//ORBSTATION ADDITION, ugly typecheck to keep its position
-	var/mob/living/carbon/human_us = src
+	var/mob/living/carbon/human/human_us = src
 	if (istype(human_us))
 		. += human_us.get_short_description_examine_info()
 
