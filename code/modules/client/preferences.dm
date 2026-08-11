@@ -533,7 +533,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if (preference.type in do_not_apply)
 			continue
 
-		preference.apply_to_human(character, read_preference(preference.type))
+		preference.apply_to_human(character, read_preference(preference.type), src)
 
 	// ORBSTATION ADDITION START - middleware apply human prefs
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
