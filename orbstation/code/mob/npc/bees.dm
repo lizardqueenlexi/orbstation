@@ -2,7 +2,6 @@
 /mob/living/basic/bee/toxin/holo
 	name = "holographic bee"
 	desc = "Someone should probably turn that simulation off, huh?"
-	ai_controller = /datum/ai_controller/basic_controller/bee/holo
 
 /mob/living/basic/bee/toxin/holo/melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
