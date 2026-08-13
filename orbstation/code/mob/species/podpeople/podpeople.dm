@@ -1,11 +1,3 @@
-/datum/species/pod/get_scream_sound(mob/living/carbon/human/pod)
-	return pick(
-		'orbstation/sound/voice/pod/podscream1.ogg',
-		'orbstation/sound/voice/pod/podscream2.ogg',
-		'orbstation/sound/voice/pod/podscream3.ogg',
-	)
-
-
 /datum/species/pod/get_species_description()
 	return "A species of sentient plants, podpeople were created by a benevolent ancient society with the aim of 'spreading and nurturing life', their seed vaults \
 		being tossed to all the far corners of the system. Being dispersed across the galaxy has caused their culture to fracture somewhat, and the exact \

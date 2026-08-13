@@ -100,5 +100,8 @@
 	say_mod = "squeaks"
 	liked_foodtypes = FRUIT | NUTS | DAIRY
 	disliked_foodtypes = CLOTH | BUGS
+	emote_sounds = list(
+		/datum/emote/living/scream::key = 'orbstation/sound/voice/ratfolk/ratfolk_scream.ogg'
+	)
 
 #undef CHEESE_RUSH_HUNGER_MODIFIER
