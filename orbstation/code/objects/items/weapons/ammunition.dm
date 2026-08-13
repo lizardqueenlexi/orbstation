@@ -8,3 +8,4 @@
 	caliber = CALIBER_38
 	click_cooldown_override = 0.15 SECONDS
 	projectile_type = /obj/projectile/bullet/c38/special_hotload
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3)

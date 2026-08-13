@@ -1,12 +1,8 @@
 GLOBAL_VAR_INIT(LOOC_COLOR, null)//If this is null, use the CSS for OOC. Otherwise, use a custom colour.
 GLOBAL_VAR_INIT(NORMAL_LOOC_COLOR, "#f29180")
 
-///talking in Local OOC uses this
-/client/verb/looc(msg as text)
-	set name = "LOOC"
-	set desc = "Local OOC, seen only by those in view."
-	set category = "OOC"
-
+GAME_VERB(/client, looc, "LOOC", null)
+	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return

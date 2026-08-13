@@ -73,7 +73,7 @@
 /obj/item/buster_sword_core/proc/start_learning_recipe(mob/user)
 	if(!user.mind)
 		return
-	if(user.mind.has_crafting_recipe(user = user, potential_recipe = /datum/crafting_recipe/buster_sword))
+	if(user.mind.has_crafting_recipe(/datum/crafting_recipe/buster_sword))
 		return
 	balloon_alert(user, "reading inscription...")
 	if(do_after(user, 10 SECONDS, src))
