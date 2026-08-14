@@ -5,10 +5,6 @@
 /obj/item/bodypart/head/jelly
 	head_flags = HEAD_HAIR|HEAD_EYESPRITES|HEAD_EYECOLOR|HEAD_EYEHOLES|HEAD_DEBRAIN
 
-
-/datum/species/jelly/get_scream_sound(mob/living/carbon/human/jelly)
-	return 'orbstation/sound/voice/jelly/jelly_scream.ogg'
-
 /datum/species/jelly/get_species_description()
 	return "A relatively new race of sentient, humanoid slimes. \
 		The jellypeople are insatiably curious and yet to form a cultural identity of their own."

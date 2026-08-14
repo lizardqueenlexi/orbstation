@@ -13,7 +13,10 @@
 	bodypart_overlay = /datum/bodypart_overlay/mutant/rat_ears
 
 /datum/bodypart_overlay/mutant/rat_ears
-	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
+	layers = list(
+		EXTERNAL_FRONT = BODY_FRONT_LAYER,
+		EXTERNAL_ADJACENT = BODY_ADJ_LAYER
+	)
 	color_source = ORGAN_COLOR_INHERIT
 	feature_key = FEATURE_RAT_EARS
 	dyable = TRUE
@@ -24,8 +27,8 @@
 /datum/bodypart_overlay/mutant/rat_ears/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
 	return ..() && !(bodypart_owner.owner?.obscured_slots & HIDEHAIR)
 
-/datum/bodypart_overlay/mutant/rat_ears/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
-	if(draw_layer != all_layers[colorless_layer])
+/datum/bodypart_overlay/mutant/rat_ears/color_image(image/overlay, obj/item/bodypart/limb, layer_index)
+	if(layer_index != colorless_layer)
 		return ..()
 	return overlay
 
@@ -97,5 +100,8 @@
 	say_mod = "squeaks"
 	liked_foodtypes = FRUIT | NUTS | DAIRY
 	disliked_foodtypes = CLOTH | BUGS
+	emote_sounds = list(
+		/datum/emote/living/scream::key = 'orbstation/sound/voice/ratfolk/ratfolk_scream.ogg'
+	)
 
 #undef CHEESE_RUSH_HUNGER_MODIFIER

@@ -29,7 +29,7 @@
 	victim.gain_trauma(/datum/brain_trauma/severe/paralysis/paraplegic, TRAUMA_RESILIENCE_ABSOLUTE)
 	return TRUE
 
-#define ETHEREAL_RESPAWN_PENALTIES list( \
+#define ETHEREAL_RESPAWN_PENALTIES alist( \
 	ETHEREAL_PENALTY_FRAIL = new /datum/ethereal_penalty("You burst out of the crystal, feeling a phantom ache from your past wounds!", TRAIT_EASILY_WOUNDED), \
 	ETHEREAL_PENALTY_FRAGILE = new /datum/ethereal_penalty("You slip tentatively out of the crystal, your limbs feel like paper after their regrowth!", TRAIT_EASYDISMEMBER), \
 	ETHEREAL_PENALTY_CLUMSY = new /datum/ethereal_penalty("You fall face-first out of the crystal, but at least you are alive!", TRAIT_CLUMSY), \

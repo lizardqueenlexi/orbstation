@@ -15,7 +15,10 @@
 	organ_flags = parent_type::organ_flags | ORGAN_EXTERNAL
 
 /datum/bodypart_overlay/mutant/snout_rat
-	layers = EXTERNAL_FRONT | EXTERNAL_ADJACENT
+	layers = list(
+		EXTERNAL_FRONT = BODY_FRONT_LAYER,
+		EXTERNAL_ADJACENT = BODY_ADJ_LAYER
+	)
 	feature_key = FEATURE_RAT_SNOUT
 
 	/// We dont color the inner part, which is the front layer
@@ -24,8 +27,8 @@
 /datum/bodypart_overlay/mutant/snout_rat/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
 	return ..() && !(bodypart_owner.owner?.obscured_slots & HIDESNOUT)
 
-/datum/bodypart_overlay/mutant/snout_rat/color_image(image/overlay, draw_layer, obj/item/bodypart/limb)
-	if(draw_layer != all_layers[colorless_layer])
+/datum/bodypart_overlay/mutant/snout_rat/color_image(image/overlay, draw_layer, obj/item/bodypart/limb, layer_index)
+	if(layer_index != colorless_layer)
 		return ..()
 	return overlay
 

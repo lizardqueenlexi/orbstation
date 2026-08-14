@@ -3113,7 +3113,6 @@
 	},
 /area/station/command/vault)
 "bal" = (
-/obj/machinery/computer/upload/borg,
 /obj/item/radio/intercom/directional/north{
 	broadcasting = 1;
 	listening = 0;
@@ -9470,7 +9469,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "djH" = (
-/obj/item/food/grown/moonflower,
+/obj/item/food/grown/flower/moonflower,
 /turf/closed/mineral/random/stationside/asteroid/porus,
 /area/station/asteroid)
 "djN" = (
@@ -11595,7 +11594,12 @@
 /area/space/nearstation)
 "dUV" = (
 /obj/structure/table,
-/obj/item/ai_module/supplied/freeform,
+/obj/item/ai_module/law/supplied/freeform,
+/obj/item/ai_module/law/supplied/freeform{
+	pixel_y = 4;
+	pixel_x = 2
+	},
+/obj/item/paper/law_rack_tutorial,
 /turf/open/floor/circuit,
 /area/station/ai/upload/chamber)
 "dUX" = (
@@ -16864,7 +16868,7 @@
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "fME" = (
-/obj/item/food/grown/moonflower,
+/obj/item/food/grown/flower/moonflower,
 /obj/structure/flora/bush/flowers_yw,
 /turf/open/misc/asteroid/airless,
 /area/station/asteroid)
@@ -19357,7 +19361,6 @@
 "gDP" = (
 /obj/structure/table,
 /obj/item/aicard,
-/obj/item/ai_module/reset,
 /turf/open/floor/plating,
 /area/station/engineering/storage/tech)
 "gDS" = (
@@ -23664,8 +23667,15 @@
 /area/station/hallway/secondary/service)
 "igh" = (
 /obj/structure/table,
-/obj/item/ai_module/reset,
 /obj/machinery/light/directional/east,
+/obj/item/ai_module/law/supplied/freeform{
+	pixel_y = 5;
+	pixel_x = -2
+	},
+/obj/item/ai_module/law/supplied/freeform{
+	pixel_y = 4;
+	pixel_x = 2
+	},
 /turf/open/floor/circuit,
 /area/station/ai/upload/chamber)
 "igj" = (
@@ -24591,7 +24601,6 @@
 /turf/open/floor/iron/dark/airless,
 /area/station/science/ordnance/freezerchamber)
 "iwR" = (
-/obj/machinery/computer/upload/ai,
 /obj/machinery/airalarm/directional/north,
 /obj/machinery/status_display/ai/directional/north,
 /turf/open/floor/circuit/green,
@@ -24649,7 +24658,7 @@
 /turf/open/openspace,
 /area/station/service/hydroponics/garden)
 "iyl" = (
-/obj/item/food/grown/moonflower,
+/obj/item/food/grown/flower/moonflower,
 /turf/open/misc/asteroid/airless,
 /area/station/asteroid)
 "iyx" = (
@@ -25282,6 +25291,17 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
+"iKw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/ai_slipper{
+	uses = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/ai/upload/chamber)
 "iKA" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/effect/spawner/random/maintenance/two,
@@ -25782,11 +25802,11 @@
 "iUm" = (
 /obj/machinery/light/small/directional/east,
 /obj/structure/table/wood,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
 /turf/open/floor/carpet,
 /area/station/service/chapel/funeral)
 "iUv" = (
@@ -27326,7 +27346,7 @@
 /area/station/security/brig)
 "jvd" = (
 /obj/effect/spawner/random/structure/table,
-/obj/item/food/grown/watermelon,
+/obj/item/food/grown/melonlike/watermelon,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "jvj" = (
@@ -37229,7 +37249,10 @@
 /area/station/maintenance/fore/greater)
 "mIN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/effect/turf_decal/stripes/white/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/station/ai/upload/chamber)
 "mIQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -40640,11 +40663,11 @@
 /area/station/medical/pharmacy)
 "nRr" = (
 /obj/structure/table/wood,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
-/obj/item/food/grown/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
+/obj/item/food/grown/flower/harebell,
 /obj/machinery/light/warm/directional/east,
 /turf/open/floor/carpet/lone/star,
 /area/station/service/chapel)
@@ -43036,7 +43059,7 @@
 /turf/open/floor/iron/dark/airless,
 /area/station/science/ordnance/freezerchamber)
 "oGk" = (
-/obj/structure/closet/crate/goldcrate,
+/obj/structure/closet/crate/goldcrate/stocked,
 /turf/open/misc/beach/coast{
 	dir = 1
 	},
@@ -45910,7 +45933,10 @@
 /area/station/science/robotics/mechbay)
 "pGz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/catwalk_floor/iron_dark,
+/obj/effect/turf_decal/stripes/white/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/station/ai/upload/chamber)
 "pGK" = (
 /obj/effect/spawner/random/structure/tank_holder,
@@ -48958,6 +48984,17 @@
 	dir = 8
 	},
 /area/station/engineering/transit_tube)
+"qHE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/ai_slipper{
+	uses = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/ai/upload/chamber)
 "qHO" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/iron/dark,
@@ -50235,7 +50272,6 @@
 /turf/open/floor/iron/checker,
 /area/station/service/bar/backroom)
 "rcK" = (
-/obj/machinery/holopad/secure,
 /turf/open/floor/iron/dark,
 /area/station/ai/upload/chamber)
 "rcL" = (
@@ -50616,6 +50652,7 @@
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/machinery/light/warm/directional/east,
 /obj/item/radio/intercom/directional/north,
+/obj/item/storage/photo_album/bar,
 /turf/open/floor/bamboo/tatami/black{
 	dir = 1
 	},
@@ -56543,9 +56580,6 @@
 /area/station/cargo/storage)
 "tlu" = (
 /obj/structure/table/wood/fancy/red,
-/obj/item/ai_module/reset/purge{
-	pixel_y = 11
-	},
 /obj/effect/spawner/random/aimodule/harmful,
 /obj/machinery/door/window/brigdoor/left/directional/east{
 	name = "High-Risk Modules";
@@ -57373,6 +57407,13 @@
 /obj/effect/spawner/random/food_or_drink/three_course_meal,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/lesser)
+"tAm" = (
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/machinery/holopad/secure,
+/turf/open/floor/iron/dark,
+/area/station/ai/upload/chamber)
 "tAn" = (
 /obj/structure/falsewall,
 /obj/structure/disposalpipe/segment,
@@ -57430,7 +57471,7 @@
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/engineering)
 "tBl" = (
-/obj/item/food/grown/moonflower,
+/obj/item/food/grown/flower/moonflower,
 /obj/item/grown/novaflower,
 /obj/structure/flora/bush/flowers_yw,
 /turf/open/misc/asteroid/airless,
@@ -62592,7 +62633,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "vtH" = (
-/obj/structure/reagent_dispensers/beerkeg,
+/obj/effect/spawner/random/food_or_drink/keg,
 /turf/open/floor/iron/checker,
 /area/station/service/bar/backroom)
 "vtR" = (
@@ -62675,10 +62716,10 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "vwb" = (
-/obj/machinery/ai_slipper{
-	uses = 8
-	},
 /obj/effect/landmark/event_spawn,
+/obj/structure/cable,
+/obj/machinery/ai_law_rack/base/core,
+/obj/effect/turf_decal/stripes/white/full,
 /turf/open/floor/iron/dark,
 /area/station/ai/upload/chamber)
 "vwh" = (
@@ -66358,19 +66399,19 @@
 "wEY" = (
 /obj/machinery/airalarm/directional/north,
 /obj/structure/table/wood,
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
 /turf/open/floor/carpet,
@@ -67051,19 +67092,19 @@
 /area/station/science/xenobiology)
 "wRR" = (
 /obj/structure/table/wood,
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
-/obj/item/food/grown/poppy{
+/obj/item/food/grown/flower/poppy{
 	pixel_y = 2
 	},
 /turf/open/floor/carpet,
@@ -176164,7 +176205,7 @@ meU
 cFv
 iwR
 bNV
-mIN
+qHE
 mIN
 oKU
 meU
@@ -176422,7 +176463,7 @@ cFv
 nZf
 rcK
 vwb
-bNV
+tAm
 baG
 gQB
 dAB
@@ -176678,7 +176719,7 @@ meU
 cFv
 bal
 bNV
-pGz
+iKw
 pGz
 dng
 meU

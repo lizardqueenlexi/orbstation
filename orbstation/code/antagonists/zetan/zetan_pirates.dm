@@ -150,7 +150,7 @@
 		)
 
 /obj/machinery/zetan_pirate_experimentor/mouse_drop_receive(atom/target, mob/user, params)
-	if(user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_UI_BLOCKED) || !Adjacent(user) || !target.Adjacent(user))
+	if(IS_UNCONSCIOUS(user) || HAS_TRAIT(user, TRAIT_UI_BLOCKED) || !Adjacent(user) || !target.Adjacent(user))
 		return
 	if(!(ishuman(target) || iscow(target)))
 		return
@@ -174,7 +174,7 @@
 	do_teleport(target, dumpzone, asoundout = 'sound/items/weapons/zapbang.ogg')
 	say(pick(winquotes))
 
-	if(target.stat != CONSCIOUS)
+	if(!IS_UNCONSCIOUS(target))
 		target.heal_and_revive(0, "[target] appears in a flash of squeaky light, more emotionally harmed than ever before, but no worse for wear.")
 
 /obj/machinery/zetan_pirate_experimentor/proc/spit_cash(cashpath, cashamount)

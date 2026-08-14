@@ -9,8 +9,7 @@
 	transmittable = 1
 	level = 4
 	severity = 1
-	symptom_delay_min = 18
-	symptom_delay_max = 36
+	symptom_delay = 27
 
 	var/color = "#cc0000"
 
