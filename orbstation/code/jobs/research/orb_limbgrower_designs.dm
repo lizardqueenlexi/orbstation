@@ -3,7 +3,6 @@
 //Jellyperson limbs
 /datum/design/jelly_leftarm
 	name = "Left Arm"
-	id = "jelarm/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/arm/left/jelly
@@ -11,7 +10,6 @@
 
 /datum/design/jelly_rightarm
 	name = "Right Arm"
-	id = "jelarm/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/arm/right/jelly
@@ -19,7 +17,6 @@
 
 /datum/design/jelly_leftleg
 	name = "Left Leg"
-	id = "jelleg/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/leg/left/jelly
@@ -27,7 +24,6 @@
 
 /datum/design/jelly_rightleg
 	name = "Right Leg"
-	id = "jelleg/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/leg/right/jelly
@@ -36,7 +32,6 @@
 //Podperson limbs
 /datum/design/pod_leftarm
 	name = "Left Arm"
-	id = "podarm/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
 	build_path = /obj/item/bodypart/arm/left/pod
@@ -44,7 +39,6 @@
 
 /datum/design/pod_rightarm
 	name = "Right Arm"
-	id = "podarm/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
 	build_path = /obj/item/bodypart/arm/right/pod
@@ -52,7 +46,6 @@
 
 /datum/design/pod_leftleg
 	name = "Left Leg"
-	id = "podleg/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
 	build_path = /obj/item/bodypart/leg/left/pod
@@ -60,7 +53,6 @@
 
 /datum/design/pod_rightleg
 	name = "Right Leg"
-	id = "podleg/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 25)
 	build_path = /obj/item/bodypart/leg/right/pod
@@ -69,7 +61,6 @@
 //Slimeperson limbs
 /datum/design/slime_leftarm
 	name = "Left Arm"
-	id = "sliarm/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/arm/left
@@ -77,7 +68,6 @@
 
 /datum/design/slime_rightarm
 	name = "Right Arm"
-	id = "sliarm/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/arm/right
@@ -85,7 +75,6 @@
 
 /datum/design/slime_leftleg
 	name = "Left Leg"
-	id = "slileg/left"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/leg/left
@@ -93,7 +82,6 @@
 
 /datum/design/slime_rightleg
 	name = "Right Leg"
-	id = "slileg/right"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 25)
 	build_path = /obj/item/bodypart/leg/right
@@ -103,7 +91,6 @@
 
 /datum/design/head
 	name = "Head"
-	id = "head"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 30, /datum/reagent/medicine/neurine = 20)
 	build_path = /obj/item/bodypart/head
@@ -111,7 +98,6 @@
 
 /datum/design/jelly_head
 	name = "Head"
-	id = "jelhead"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 30, /datum/reagent/medicine/neurine = 20)
 	build_path = /obj/item/bodypart/head/jelly
@@ -119,7 +105,6 @@
 
 /datum/design/pod_head
 	name = "Head"
-	id = "podhead"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/cellulose = 30, /datum/reagent/medicine/neurine = 20)
 	build_path = /obj/item/bodypart/head/pod
@@ -130,7 +115,6 @@
 //Ratfolk organs
 /datum/design/rat_eyes
 	name = "Rat Eyes"
-	id = "rateyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10, /datum/reagent/yuck = 10) //organic slurry is the essence of crawling around maintenance, really
 	build_path = /obj/item/organ/eyes/ratfolk
@@ -138,7 +122,6 @@
 
 /datum/design/rat_ears
 	name = "Rat Ears"
-	id = "ratears"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10)
 	build_path = /obj/item/organ/ears/ratfolk
@@ -146,7 +129,6 @@
 
 /datum/design/rat_stomach
 	name = "Rat Stomach"
-	id = "ratstomach"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 15, /datum/reagent/consumable/enzyme = 10)
 	build_path = /obj/item/organ/stomach/ratfolk
@@ -155,7 +137,6 @@
 //Moth organ (there's only one!)
 /datum/design/moth_eyes
 	name = "Moth Eyes"
-	id = "motheyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10)
 	build_path = /obj/item/organ/eyes/moth
@@ -164,7 +145,6 @@
 //Jelly organs
 /datum/design/jelly_tongue
 	name = "Jelly Tongue"
-	id = "jellytongue"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 10)
 	build_path = /obj/item/organ/tongue/jelly
@@ -172,7 +152,6 @@
 
 /datum/design/jelly_eyes
 	name = "Jelly Eyes"
-	id = "jellyeyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 10)
 	build_path = /obj/item/organ/eyes/jelly
@@ -180,7 +159,6 @@
 
 /datum/design/jelly_lungs
 	name = "Vacuole"
-	id = "jellylungs"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/toxin/slimejelly = 10, /datum/reagent/toxin/plasma = 20)
 	build_path = /obj/item/organ/lungs/slime
@@ -190,7 +168,6 @@
 //I'd love if these had their own category, but the limbgrower UI is pretty bad and won't support that right now.
 /datum/design/xenomorph_tongue
 	name = "Alien Tongue"
-	id = "alientongue"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10, /datum/reagent/toxin/acid/fluacid = 20)
 	build_path = /obj/item/organ/tongue/alien
@@ -198,7 +175,6 @@
 
 /datum/design/xenomorph_eyes
 	name = "Alien Eyes"
-	id = "alieneyes"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 10, /datum/reagent/toxin/acid/fluacid = 20)
 	build_path = /obj/item/organ/eyes/alien
@@ -206,7 +182,6 @@
 
 /datum/design/xenomorph_liver
 	name = "Alien Liver"
-	id = "alienliver"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 20, /datum/reagent/toxin/acid/fluacid = 30)
 	build_path = /obj/item/organ/liver/alien
@@ -214,7 +189,6 @@
 
 /datum/design/plasma_vessel
 	name = "Plasma Vessel"
-	id = "alienplasmavessel"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 50, /datum/reagent/toxin/acid/fluacid = 50, /datum/reagent/toxin/plasma = 100)
 	build_path = /obj/item/organ/alien/plasmavessel
@@ -222,7 +196,6 @@
 
 /datum/design/hivenode
 	name = "Hive Node"
-	id = "hivenode"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 50, /datum/reagent/toxin/acid/fluacid = 50, /datum/reagent/consumable/ethanol/hiveminderaser = 100)
 	build_path = /obj/item/organ/alien/hivenode
@@ -230,7 +203,6 @@
 
 /datum/design/resinspinner
 	name = "Resin Spinner"
-	id = "resinspinner"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 50, /datum/reagent/toxin/acid/fluacid = 50, /datum/reagent/cellulose = 100) //cellulose might be a bit silly, but...
 	build_path = /obj/item/organ/alien/resinspinner
@@ -240,7 +212,6 @@
 
 /datum/design/moth_wings
 	name = "Moth Wings"
-	id = "mothwings"
 	build_type = LIMBGROWER
 	reagents_list = list(/datum/reagent/medicine/c2/synthflesh = 30)
 	build_path = /obj/item/organ/wings/moth
@@ -253,31 +224,27 @@
 /datum/design/limb_disk/basic
 	name = "Basic Non-human Design Disk"
 	desc = "Contains designs for the specialized organs of many of the species Nanotrasen employs."
-	id = "limbdesign_basic"
 	build_path = /obj/item/disk/design_disk/limbs/basic
 
 /datum/design/limb_disk/advanced
 	name = "Advanced Non-human Design Disk"
 	desc = "Contains designs for the specialized organs of many of the species Nanotrasen employs."
-	id = "limbdesign_advanced"
 	build_path = /obj/item/disk/design_disk/limbs/advanced
 
 /datum/design/limb_disk/heads
 	name = "Head Synthesis Design Disk"
 	desc = "Contains designs for growing synthetic heads for a variety of species."
-	id = "limbdesign_heads"
 	build_path = /obj/item/disk/design_disk/limbs/heads
 
 /datum/design/limb_disk/xeno
 	name = "Xeno-organ Design Disk"
 	desc = "Contains designs to replicate the basic organs of the xenomorph species."
-	id = "limbdesign_xeno"
 	build_path = /obj/item/disk/design_disk/limbs/xeno
 
 //The various species design disks combined.
 /obj/item/disk/design_disk/limbs/basic
 	name = "Basic Non-human Design Disk"
-	limb_designs = list(
+	blueprints = list(
 		/datum/design/cat_tail,
 		/datum/design/cat_ears,
 		/datum/design/lizard_tail,
@@ -294,7 +261,7 @@
 
 /obj/item/disk/design_disk/limbs/advanced
 	name = "Advanced Non-human Design Disk"
-	limb_designs = list(
+	blueprints = list(
 		/datum/design/plasmaman_lungs,
 		/datum/design/ethereal_stomach,
 		/datum/design/ethereal_lungs,
@@ -310,7 +277,7 @@
 
 /obj/item/disk/design_disk/limbs/heads
 	name = "Head Synthesis Design Disk"
-	limb_designs = list(
+	blueprints = list(
 		/datum/design/head,
 		/datum/design/jelly_head,
 		/datum/design/pod_head,
@@ -318,7 +285,7 @@
 
 /obj/item/disk/design_disk/limbs/xeno
 	name = "Xeno-organ Design Disk"
-	limb_designs = list(
+	blueprints = list(
 		/datum/design/xenomorph_tongue,
 		/datum/design/xenomorph_eyes,
 		/datum/design/xenomorph_liver,
@@ -340,25 +307,23 @@
 
 // Techweb nodes
 /datum/techweb_node/xenoorgan_biotech
-	id="xeno_basic"
-	design_ids = list(
-		"limbdesign_basic"
-	)
 	display_name = "Basic Non-human Biology"
 	description = "Study on the simpler organs of our non-human crewmates."
-	prereq_ids = list("bio_scan")
+	prerequisite_nodes = list(/datum/techweb_node/bio_scan)
+	unlocked_designs = list(
+		/datum/design/limb_disk/basic,
+	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS) //I really feel this one was too expensive at base, it's just organs
 	discount_experiments = list(
 		/datum/experiment/scanning/random/cytology/easy = TECHWEB_TIER_1_POINTS,
 	)
 
 /datum/techweb_node/nonhuman_advanced
-	id = "nonhuman_advanced"
 	display_name = "Advanced Non-human Biology"
 	description = "Deeper studies into the unique organs of our crewmates."
-	prereq_ids = list("xeno_basic")
-	design_ids = list(
-		"limbdesign_advanced",
+	prerequisite_nodes = list(/datum/techweb_node/xenoorgan_biotech)
+	unlocked_designs = list(
+		/datum/design/limb_disk/advanced,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	discount_experiments = list(
@@ -366,22 +331,20 @@
 	)
 
 /datum/techweb_node/head_synthesis
-	id = "head_synthesis"
 	display_name = "Head Synthesis"
 	description = "The limb grower might be more useful if it could grow new heads as well."
-	prereq_ids = list("nonhuman_advanced")
-	design_ids = list(
-		"limbdesign_heads",
+	prerequisite_nodes = list(/datum/techweb_node/nonhuman_advanced)
+	unlocked_designs = list(
+		/datum/design/limb_disk/heads,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
 
 /datum/techweb_node/xenomorph_biotech
-	id = "xenomorph_bio"
 	display_name = "Xeno-organ Biology"
 	description = "Preliminary research into the mysterious physiology of the xenomorph species."
-	prereq_ids = list("head_synthesis")
-	design_ids = list(
-		"limbdesign_xeno",
+	prerequisite_nodes = list(/datum/techweb_node/xenomorph_biotech)
+	unlocked_designs = list(
+		/datum/design/limb_disk/xeno,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	required_experiments = list(/datum/experiment/autopsy/xenomorph)

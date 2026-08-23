@@ -1,6 +1,5 @@
 /datum/design/special_hotload
 	name = ".38 Special Hot Load bullet (VERY LETHAL)"
-	id = "special_hotload"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3)
 	build_path = /obj/item/ammo_casing/c38/special_hotload
