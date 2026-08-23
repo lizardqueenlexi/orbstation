@@ -1,8 +1,6 @@
 // SNOUT
-/obj/item/organ/snout_rat
+/obj/item/organ/snout/rat
 	name = "ratfolk snout"
-	desc = "Take a closer look at that snout!"
-	icon_state = "snout"
 
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_SNOUT
@@ -11,8 +9,6 @@
 	dna_block = /datum/dna_block/feature/accessory/rat_snout
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/snout_rat
-
-	organ_flags = parent_type::organ_flags | ORGAN_EXTERNAL
 
 /datum/bodypart_overlay/mutant/snout_rat
 	layers = list(
@@ -23,9 +19,6 @@
 
 	/// We dont color the inner part, which is the front layer
 	var/colorless_layer = EXTERNAL_FRONT
-
-/datum/bodypart_overlay/mutant/snout_rat/can_draw_on_bodypart(obj/item/bodypart/bodypart_owner)
-	return ..() && !(bodypart_owner.owner?.obscured_slots & HIDESNOUT)
 
 /datum/bodypart_overlay/mutant/snout_rat/color_image(image/overlay, draw_layer, obj/item/bodypart/limb, layer_index)
 	if(layer_index != colorless_layer)

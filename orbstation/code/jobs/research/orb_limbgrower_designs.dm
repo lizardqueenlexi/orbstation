@@ -302,7 +302,7 @@
 	if(limb.limb_id == SPECIES_LIZARD)
 		snout_to_insert = new /obj/item/organ/snout(loc)
 	else
-		snout_to_insert = new /obj/item/organ/snout_rat(loc)
+		snout_to_insert = new /obj/item/organ/snout/rat(loc)
 	snout_to_insert.bodypart_insert(limb)
 
 // Techweb nodes
