@@ -1345,6 +1345,7 @@
 		return
 	return dna?.blood_type
 
+/* ORBSTATION removal
 /mob/living/carbon/update_nutrition()
 	. = ..()
 	// Force a weight update in case we're stasis'd and don't tick
@@ -1359,3 +1360,4 @@
 	if (overeatduration >= OVEREAT_TIME_LIMIT)
 		to_chat(src, span_danger("You suddenly feel blubbery!"))
 		add_traits(list(TRAIT_FAT, TRAIT_OFF_BALANCE_TACKLER), OBESITY)
+*/

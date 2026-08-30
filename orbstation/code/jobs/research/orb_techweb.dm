@@ -1,8 +1,8 @@
 // Framework for Orbstation additions to the techweb.
 /datum/techweb_node
 	//Extra items to be unlocked by an existing techweb node
-	var/list/orb_design_ids = list()
+	var/list/orb_unlocked_designs = list()
 
 /datum/techweb_node/New()
-	design_ids += orb_design_ids
+	unlocked_designs += orb_unlocked_designs
 	return ..()

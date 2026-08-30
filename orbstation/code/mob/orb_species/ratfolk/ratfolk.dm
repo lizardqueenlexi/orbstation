@@ -17,7 +17,7 @@
 	siemens_coeff = 0.75 // slightly resistant to shocks, but not as much as Ethereals
 
 	mutant_organs = list(
-		/obj/item/organ/snout_rat = "Round",
+		/obj/item/organ/snout/rat = "Round",
 		/obj/item/organ/tail/ratfolk = "High",
 	)
 	mutanteyes = /obj/item/organ/eyes/ratfolk

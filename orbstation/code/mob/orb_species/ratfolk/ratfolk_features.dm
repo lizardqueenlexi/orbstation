@@ -6,7 +6,7 @@
 	category = PREFERENCE_CATEGORY_FEATURES
 	main_feature_name = "Snout"
 	should_generate_icons = TRUE
-	relevant_organ = /obj/item/organ/snout_rat
+	relevant_organ = /obj/item/organ/snout/rat
 
 /datum/preference/choiced/species_feature/rat_snout/icon_for(value)
 	return generate_ratfolk_side_shot(get_accessory_for_value(value), "rat_snout", include_snout = FALSE)

@@ -1,7 +1,6 @@
 //Mech Fabricator designs
 /datum/design/digi_borg_l_leg
 	name = "Digitigrade Cyborg Left Leg"
-	id = "digi_borg_l_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/leg/left/robot/digitigrade
 	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*5)
@@ -12,7 +11,6 @@
 
 /datum/design/digi_borg_r_leg
 	name = "Digitigrade Cyborg Right Leg"
-	id = "digi_borg_r_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/leg/right/robot/digitigrade
 	materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT*5)
@@ -23,13 +21,12 @@
 
 //Research nodes
 /datum/techweb_node/digi_borg
-	id = "digi_borg"
-	starting_node = TRUE
+	node_flags = parent_type::node_flags | TECHWEB_NODE_STARTER
 	display_name = "Digitigrade Robotic Legs"
 	description = "Digitigrade robotic legs, as an alternative to the plantigrade model."
-	design_ids = list(
-		"digi_borg_l_leg",
-		"digi_borg_r_leg",
+	unlocked_designs = list(
+		/datum/design/digi_borg_l_leg,
+		/datum/design/digi_borg_r_leg,
 	)
 
 // Actual items

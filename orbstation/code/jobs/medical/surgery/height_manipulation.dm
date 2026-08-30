@@ -129,20 +129,18 @@
 // Allow it to be researched
 /datum/design/surgery/height_manipulation
 	name = "Height Increase"
-	id = "surgery_height_manip"
 	surgery = /datum/surgery_operation/limb/height_manipulation
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/height_manipulation/shorten
 	name = "Height Decrease"
-	id = "surgery_height_manip_shorten"
 	surgery = /datum/surgery_operation/limb/height_manipulation/shorten
 	research_icon_state = "surgery_chest"
 
 /datum/techweb_node/adv_surgery
-	orb_design_ids = list(
-		"surgery_height_manip",
-		"surgery_height_manip_shorten"
+	orb_unlocked_designs = list(
+		/datum/design/surgery/height_manipulation,
+		/datum/design/surgery/height_manipulation/shorten,
 	)
 
 #undef LENGTHEN_SPINE
