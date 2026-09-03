@@ -21,8 +21,6 @@
 #define FAST_CRAFTER_MOD 0.5
 // Makes you close doors behind you automatically
 #define TRAIT_DOOR_CLOSER "compulsive_door_closer"
-// Makes supplypods drop food relevant to your tastes
-#define TRAIT_NTGRUB_SUB "food_delivery_subscriber"
 // Makes you vulnerable to holy weapons and holy books.
 #define TRAIT_DAMNED "damned"
 // Used by the "Damned" quirk and the "damned halo" element.
