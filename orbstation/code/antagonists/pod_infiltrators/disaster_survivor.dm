@@ -7,17 +7,16 @@
 	name = "Disaster Survivor"
 	description = "A desperate survivor who spawns in a pod, and must do everything they can to stay alive."
 	category = EVENT_CATEGORY_FRIENDLY //they might not be helpful but they aren't an antag
-	typepath = /datum/round_event/ghost_role/disaster_survivor
+	typepath = /datum/round_event/disaster_survivor
 	weight = 10
 	earliest_start = 30 MINUTES
 	max_occurrences = 1
 
-/datum/round_event/ghost_role/disaster_survivor
-	role_name = "disaster survivor"
+/datum/round_event/disaster_survivor
+	fakeable = FALSE
 
-/datum/round_event/ghost_role/disaster_survivor/spawn_role()
-	spawn_infiltrator(INFIL_SPAWNER_SURVIVOR, "disaster survivor", ROLE_FUGITIVE, alert_pic = /obj/machinery/sleeper)
-	return SUCCESSFUL_SPAWN
+/datum/round_event/disaster_survivor/start()
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pod_infiltrator), INFIL_SPAWNER_SURVIVOR, "disaster survivor", ROLE_FUGITIVE, /obj/machinery/sleeper)
 
 /obj/effect/mob_spawn/ghost_role/human/infiltrator/survivor
 	name = "survival sleeper"
