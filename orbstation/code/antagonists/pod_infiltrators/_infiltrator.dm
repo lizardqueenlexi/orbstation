@@ -18,6 +18,7 @@
 /datum/map_template/shuttle/infiltrator_pod
 	name = "abandoned pod"
 	port_id = "infiltrator"
+	prefix="_maps/shuttles/infiltrator/"
 	suffix = "pod"
 
 /obj/machinery/computer/shuttle/infiltrator_pod
@@ -26,7 +27,7 @@
 	icon_screen = "commsyndie"
 	icon_keyboard = "syndie_key"
 	light_color = COLOR_SOFT_RED
-	possible_destinations = "infiltratorpod_away;infiltratorpod_home;infiltratorpod_custom"
+	possible_destinations = "infiltratorpod_custom"
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/infiltrator_pod
 	name = "abandoned pod navigation computer"
