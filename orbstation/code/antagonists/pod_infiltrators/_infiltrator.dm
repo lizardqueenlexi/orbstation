@@ -18,20 +18,21 @@
 /datum/map_template/shuttle/infiltrator_pod
 	name = "abandoned pod"
 	port_id = "infiltrator"
+	prefix="_maps/shuttles/infiltrator/"
 	suffix = "pod"
 
 /obj/machinery/computer/shuttle/infiltrator_pod
 	name = "abandoned pod console"
-	shuttleId = "infiltratorpod"
+	shuttleId = "infiltrator_pod"
 	icon_screen = "commsyndie"
 	icon_keyboard = "syndie_key"
 	light_color = COLOR_SOFT_RED
-	possible_destinations = "infiltratorpod_away;infiltratorpod_home;infiltratorpod_custom"
+	possible_destinations = "infiltratorpod_custom"
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/infiltrator_pod
 	name = "abandoned pod navigation computer"
 	desc = "Used to designate a precise transit location for the abandoned pod."
-	shuttleId = "infiltratorpod"
+	shuttleId = "infiltrator_pod"
 	lock_override = CAMERA_LOCK_STATION
 	shuttlePortId = "infiltratorpod_custom"
 	x_offset = 0
@@ -40,7 +41,7 @@
 
 /obj/docking_port/mobile/infiltrator_pod
 	name = "abandoned pod"
-	shuttle_id = "infiltratorpod"
+	shuttle_id = "infiltrator_pod"
 	rechargeTime = 10 MINUTES // long recharge time since you're not meant to use it too often
 
 //spawning landmark for the ghost spawner
@@ -48,9 +49,12 @@
 	name = "infiltrator spawn point"
 
 ///Proc that spawns the infiltrator's pod and makes the spawner spawn them. Also called by the infiltrator rulesets
-/proc/spawn_infiltrator(spawner_type, role_name, jobban, alert_pic)
+/proc/spawn_pod_infiltrator(spawner_type, role_name, jobban, alert_pic)
+
 	var/turf/picked_turf
-	var/datum/map_template/shuttle/infiltrator_pod/ship = new
+
+	var/datum/map_template/shuttle/infiltrator_pod/ship = SSmapping.shuttle_templates["infiltrator_pod"]
+
 	if(SSmapping.empty_space) // if there's an empty space z level, spawn the pod somewhere there
 		var/x = rand(TRANSITIONEDGE,world.maxx - TRANSITIONEDGE - ship.width)
 		var/y = rand(TRANSITIONEDGE,world.maxy - TRANSITIONEDGE - ship.height)

@@ -21,7 +21,7 @@
 	min_antag_cap = 0 // ship will spawn if there are no ghosts around
 
 /datum/dynamic_ruleset/midround/changeling_infiltrator/execute()
-	spawn_infiltrator(INFIL_SPAWNER_LING, name, jobban_flag, /obj/item/melee/arm_blade)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pod_infiltrator), INFIL_SPAWNER_LING, name, jobban_flag, /obj/item/melee/arm_blade)
 
 /// Midround Smuggled Syndicate Agent Ruleset (From Ghosts)
 /datum/dynamic_ruleset/midround/smuggled_syndicate_agent
@@ -37,7 +37,7 @@
 	min_antag_cap = 0 // ship will spawn if there are no ghosts around
 
 /datum/dynamic_ruleset/midround/smuggled_syndicate_agent/execute()
-	spawn_infiltrator(INFIL_SPAWNER_TRAITOR, name, jobban_flag, /obj/item/melee/energy/sword)
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(spawn_pod_infiltrator), INFIL_SPAWNER_LING, name, jobban_flag, /obj/item/melee/energy/sword)
 
 /// Midround Wizard Journeyman Ruleset (From Ghosts)
 /datum/dynamic_ruleset/midround/from_ghosts/wizard_journeyman
