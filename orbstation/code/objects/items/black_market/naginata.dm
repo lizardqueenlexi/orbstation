@@ -3,6 +3,7 @@
  */
 /obj/item/spear/naginata
 	icon_state = "naginata0"
+	inhand_icon_state = "naginata0"
 	base_icon_state = "naginata0"
 	icon_prefix = "naginata"
 	icon = 'orbstation/icons/obj/weapons/weapons.dmi'
