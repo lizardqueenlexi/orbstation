@@ -9,6 +9,7 @@
 	worn_icon_state = "toy_mouse"
 	desc = "A colorful toy mouse! Cats and felinids love them! Maybe they're on to something."
 	slot_flags = ITEM_SLOT_MASK
+	item_flags = CAN_BE_OVERSLOT
 
 //felinids like to hold the mouse
 /obj/item/toy/cattoy/equipped(mob/living/wearing, slot)

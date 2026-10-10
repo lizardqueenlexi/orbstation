@@ -6,6 +6,7 @@
 	icon = 'orbstation/icons/obj/items/clothing/suits.dmi'
 	worn_icon = 'orbstation/icons/obj/items/clothing/suits_worn.dmi'
 	body_parts_covered = CHEST|GROIN
+	item_flags = CAN_BE_OVERSLOT
 
 /obj/item/clothing/suit/hawaiian/blue
 	name = "blue hawaiian shirt"

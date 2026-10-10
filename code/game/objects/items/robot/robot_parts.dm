@@ -175,7 +175,7 @@
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/bot_assembly/ed209/assembly = new(drop_location())
 		to_chat(user, span_notice("You arm the robot frame."))
-		var/held_index = user.is_holding(src)
+		var/held_index = user.get_held_index_of_item(src)
 		qdel(src)
 		if (held_index)
 			user.put_in_hand(assembly, held_index)
@@ -265,10 +265,10 @@
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
-	if(istype(tool, /obj/item/mmi))
-		var/obj/item/mmi/potential_brain = tool
+	if(istype(tool, /obj/item/brain_processor))
+		var/obj/item/brain_processor/potential_brain = tool
 
-		if(potential_brain.brain && HAS_TRAIT(potential_brain.brain, TRAIT_XCARD_BORG_IMMUNE)) // ORBSTATION ADDITION
+		if(potential_brain.brainmob && HAS_TRAIT(potential_brain.brainmob, TRAIT_XCARD_BORG_IMMUNE)) // ORBSTATION ADDITION
 			balloon_alert(user, "incompatible!")
 			return
 		if(!check_completion())

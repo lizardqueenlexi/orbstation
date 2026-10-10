@@ -26,7 +26,6 @@
 /datum/antagonist/traitor/agent/on_gain()
 	. = ..()
 	uplink_handler.telecrystals = 25
-	uplink_handler.progression_points = SStraitor.current_global_progression
 
 /obj/effect/mob_spawn/ghost_role/human/infiltrator/traitor
 	name = "syndicate sleeper"

@@ -50,7 +50,7 @@
 		playsound(src, 'sound/effects/stonedoor_openclose.ogg', 25, vary = TRUE)
 		return
 	left_tile.break_tile()
-	playsound(src, 'sound/items/electronic_assembly_empty.ogg', 25, vary = TRUE)
+	playsound(src, 'sound/effects/break_stone.ogg', 25, vary = TRUE)
 
 /obj/item/buster_sword_core
 	name = "hyperdense core"
