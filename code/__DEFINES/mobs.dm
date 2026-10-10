@@ -128,10 +128,6 @@
 	"skeletal", \
 )
 
-//Lung respiration type flags
-#define RESPIRATION_OXYGEN (1 << 0)
-#define RESPIRATION_N2 (1 << 1)
-#define RESPIRATION_PLASMA (1 << 2)
 #define DEFAULT_BODYPART_ICON_ORGANIC 'icons/mob/human/bodyparts_greyscale.dmi'
 
 //Bodytype defines for surgery, and other misc things.
@@ -269,6 +265,8 @@
 #define COLD_GAS_DAMAGE_LEVEL_1 0.5 //Amount of damage applied when the current breath's temperature just passes the 260.15k safety point
 #define COLD_GAS_DAMAGE_LEVEL_2 1.5 //Amount of damage applied when the current breath's temperature passes the 200K point
 #define COLD_GAS_DAMAGE_LEVEL_3 3 //Amount of damage applied when the current breath's temperature passes the 120K point
+
+#define TEMPERATURE_LUNG_DAMAGE 3 //Amount of damage applied when lungs are breathing air (LEVEL_3) that is too hot or cold
 
 /// These are for the default lungs
 #define COLD_LEVEL_1_THRESHOLD 260
@@ -429,6 +427,8 @@
 #define SLIPPERY_WHEN_LYING_DOWN (1<<6)
 ///Like sliding, but it's short, it doesn't knockdown, it doesn't stun, it just staggers a bit.
 #define WEAK_SLIDE (1<<7)
+/// You can even slip if you're experiencing nograv or flying
+#define SLIP_IN_NOGRAV (1<<8)
 
 #define MAX_CHICKENS 50
 
@@ -861,6 +861,10 @@ GLOBAL_ALIST_INIT(human_heights_to_offsets, alist(
 #define UNIFORM_LAYER 19
 	/// The layer underneath the uniform
 	#define UNDER_UNIFORM_LAYER 19.1
+	/// Gauze specifically
+	#define GAUZE_LAYER 19.8
+	/// Damage indicators with overlays
+	#define DAMAGE_OVERLAY_LAYER 19.9
 /// Damage indicators (cuts and burns)
 #define DAMAGE_LAYER 20
 	/// Mutations that should appear above everything else (e.g. laser eyes)

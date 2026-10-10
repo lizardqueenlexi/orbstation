@@ -265,10 +265,10 @@
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
-	if(istype(tool, /obj/item/mmi))
-		var/obj/item/mmi/potential_brain = tool
+	if(istype(tool, /obj/item/brain_processor))
+		var/obj/item/brain_processor/potential_brain = tool
 
-		if(potential_brain.brain && HAS_TRAIT(potential_brain.brain, TRAIT_XCARD_BORG_IMMUNE)) // ORBSTATION ADDITION
+		if(potential_brain.brainmob && HAS_TRAIT(potential_brain.brainmob, TRAIT_XCARD_BORG_IMMUNE)) // ORBSTATION ADDITION
 			balloon_alert(user, "incompatible!")
 			return
 		if(!check_completion())

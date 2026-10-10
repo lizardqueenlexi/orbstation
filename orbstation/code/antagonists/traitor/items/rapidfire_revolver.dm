@@ -19,7 +19,6 @@
 	item = /obj/item/gun/ballistic/revolver/rapidfire
 	cost = 11
 	surplus = 50
-	progression_minimum = 30 MINUTES
 	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 
 /obj/item/ammo_box/c38/special_hotload //The speedloader
@@ -36,7 +35,6 @@
 	name = ".38 Special Hot Load Speed Loader"
 	desc = "A speed loader that contains seven additional .38 Special Hot Load rounds; usable with the DonkCo. New Syndie. \
 			For when you really need to fan that hammer."
-	progression_minimum = 30 MINUTES
 	item = /obj/item/ammo_box/c38/special_hotload
 	cost = 3
 	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND

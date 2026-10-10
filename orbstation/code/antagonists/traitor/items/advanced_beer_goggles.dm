@@ -8,8 +8,7 @@
 	inhand_icon_state = "sunglasses"
 	desc = "A pair of sunglasses outfitted with apparatus to scan reagents, as well as providing an innate understanding of liquid viscosity while in motion. They feel slightly heavier than you'd expect."
 	glass_colour_type = /datum/client_colour/glass_colour/gray
-	clothing_traits = list(TRAIT_BOOZE_SLIDER, TRAIT_REAGENT_SCANNER)
-	vision_flags = SEE_TURFS
+	clothing_traits = list(TRAIT_BOOZE_SLIDER, TRAIT_REAGENT_SCANNER, TRAIT_MESON_VISION)
 
 /datum/uplink_item/role_restricted/advanced_beer_goggles
 	name = "Advanced Beer Goggles"

@@ -50,7 +50,7 @@
 	id_trim = /datum/id_trim/job/assistant/sci
 	uniform = /obj/item/clothing/under/color/lightpurple
 	skirt = /obj/item/clothing/under/color/jumpskirt/lightpurple
-	belt = /obj/item/modular_computer/pda/science
+	belt = /obj/item/modular_computer/pda/crew/science
 	ears = /obj/item/radio/headset/headset_sci
 
 /datum/id_trim/job/assistant/sci
@@ -101,7 +101,7 @@
 	id_trim = /datum/id_trim/job/assistant/med
 	uniform = /obj/item/clothing/under/color/blue
 	skirt = /obj/item/clothing/under/color/jumpskirt/blue
-	belt = /obj/item/modular_computer/pda/medical
+	belt = /obj/item/modular_computer/pda/crew/medical
 	ears = /obj/item/radio/headset/headset_med
 
 /datum/id_trim/job/assistant/med
@@ -152,7 +152,7 @@
 	id_trim = /datum/id_trim/job/assistant/eng
 	uniform = /obj/item/clothing/under/color/yellow
 	skirt = /obj/item/clothing/under/color/jumpskirt/yellow
-	belt = /obj/item/modular_computer/pda/engineering
+	belt = /obj/item/modular_computer/pda/crew/engineering
 	ears = /obj/item/radio/headset/headset_eng
 
 /datum/id_trim/job/assistant/eng

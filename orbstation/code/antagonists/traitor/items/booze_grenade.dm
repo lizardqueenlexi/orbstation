@@ -53,6 +53,5 @@
 	cost = 4
 	restricted_roles = list(JOB_BARTENDER)
 	surplus = 20
-	progression_minimum = 30 MINUTES
 
 #undef BOOZENADE_CAPACITY
