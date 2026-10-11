@@ -2,14 +2,14 @@
 /mob/living/simple_animal/hostile/megafauna
 	/// Megafauna are asleep when spawned, and can be activated upon click.
 	var/dormant = TRUE
-	/// Store original damage coefficient, initial() should work for this but didn't for some reason
-	var/list/original_damage_coeff = list()
+	/// Store original physiology, initial() should work for this but didn't for some reason
+	var/list/original_physiology = list()
 	AIStatus = AI_OFF
 
 /mob/living/simple_animal/hostile/megafauna/Initialize(mapload)
 	. = ..()
-	original_damage_coeff = damage_coeff.Copy()
-	damage_coeff = list(BRUTE = 0, BURN = 0, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0) // Oh fuck it's invincible
+	original_physiology = physiology.Copy()
+	physiology  = list(BRUTE = 0, BURN = 0, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0) // Oh fuck it's invincible
 	add_filter("inactive_glow", 2, list("type" = "outline", "color" = "#ffff0048", "size" = 2))
 	update_appearance()
 
@@ -31,7 +31,7 @@
 	remove_filter("inactive_glow")
 	update_appearance()
 	toggle_ai(AI_ON)
-	damage_coeff = original_damage_coeff.Copy()
+	physiology = original_physiology.Copy()
 	FindTarget(list(future_corpse))
 
 /mob/living/simple_animal/hostile/megafauna/examine(mob/user)

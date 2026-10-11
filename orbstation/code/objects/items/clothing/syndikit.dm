@@ -42,6 +42,7 @@
 	desc = "A DonkCo brand variant of the normal push broom, it's bristles have been replaced with a carbon nanofiber that is dangerously sharp, plus it can still push dust!"
 	icon = 'orbstation/icons/obj/items/tactibroom.dmi'
 	icon_state = "tactbroom0"
+	inhand_icon_state = "tactbroom0"
 	base_icon_state = "tactbroom"
 	lefthand_file = 'orbstation/icons/obj/items/tactbroom_lefthand.dmi'
 	righthand_file = 'orbstation/icons/obj/items/tactbroom_righthand.dmi'

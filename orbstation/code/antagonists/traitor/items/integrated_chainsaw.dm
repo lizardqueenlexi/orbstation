@@ -20,7 +20,6 @@
 	cost = 12
 	restricted_roles = list(JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER, JOB_BOTANIST, JOB_ASSISTANT, JOB_ASSISTANT_ENG)
 	surplus = 15
-	progression_minimum = 30 MINUTES
 
 /obj/item/chainsaw/mounted_chainsaw/implanted
 	name = "implanted chainsaw"

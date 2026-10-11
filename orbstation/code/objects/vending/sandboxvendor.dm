@@ -26,7 +26,6 @@
 				/obj/item/toy/balloon/corgi = 999,
 				/obj/item/storage/box/hug/plushes = 999,
 				/obj/item/choice_beacon/music = 999,
-				/obj/item/choice_beacon/ingredient = 999,
 				/obj/item/pizzabox/infinite = 999,
 				/obj/item/stack/spacecash/c1000 = 999,
 			),

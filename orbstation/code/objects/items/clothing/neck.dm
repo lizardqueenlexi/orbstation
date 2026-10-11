@@ -5,6 +5,7 @@
 	icon = 'orbstation/icons/obj/items/clothing/neck.dmi'
 	worn_icon = 'orbstation/icons/obj/items/clothing/neck_worn.dmi'
 	icon_state = "mantle"
+	item_flags = CAN_BE_OVERSLOT
 
 /obj/item/clothing/neck/mantle/qm
 	name = "the quartermaster's mantle"
@@ -82,6 +83,7 @@
 	icon = 'orbstation/icons/obj/items/clothing/neck.dmi'
 	worn_icon = 'orbstation/icons/obj/items/clothing/neck_worn.dmi'
 	icon_state = "cape_white"
+	item_flags = CAN_BE_OVERSLOT
 
 /obj/item/clothing/neck/cape/black
 	name = "black cape"

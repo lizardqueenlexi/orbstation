@@ -250,8 +250,6 @@
 			continue
 		if(!uplink_item.surplus)
 			continue
-		if(uplink_item.progression_minimum)
-			continue
 		possible_items += uplink_item
 	var/obj/structure/closet/crate/secure/syndicrate/surplus_crate = new
 	var/tc_budget = 25

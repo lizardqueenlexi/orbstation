@@ -6,12 +6,8 @@
 	. = ..()
 	if (!.)
 		return
-
-	var/mob/living/carbon/human/new_zombie = owner
-	new_zombie.physiology.brute_mod *= 1.25
+	MODIFY_PHYSIOLOGY(owner, BRUTE, 1.25)
 
 /datum/status_effect/zombie/on_remove()
 	. = ..()
-
-	var/mob/living/carbon/human/new_zombie = owner
-	new_zombie.physiology.brute_mod /= 1.25
+	MODIFY_PHYSIOLOGY(owner, BRUTE, 0.8)

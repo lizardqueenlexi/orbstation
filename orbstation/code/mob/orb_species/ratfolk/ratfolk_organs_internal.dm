@@ -77,7 +77,7 @@
 	. = ..()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
-		human_owner.physiology.hunger_mod *= CHEESE_RUSH_HUNGER_MODIFIER // hunger increases faster in cheese rush mode
+		MODIFY_PHYSIOLOGY(human_owner, PHYS_COEFF_HUNGER_MOD, CHEESE_RUSH_HUNGER_MODIFIER)  // hunger increases faster in cheese rush mode
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/cheese_rush)
 	to_chat(owner, span_notice("The cheese gives you a sudden burst of energy!"))
 
@@ -85,7 +85,7 @@
 	. = ..()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
-		human_owner.physiology.hunger_mod /= CHEESE_RUSH_HUNGER_MODIFIER // hunger returns to normal
+		MODIFY_PHYSIOLOGY(human_owner, PHYS_COEFF_HUNGER_MOD, 1 / CHEESE_RUSH_HUNGER_MODIFIER) // hunger returns to normal
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/cheese_rush)
 	to_chat(owner, span_warning("You feel the effects of your cheese rush wear off."))
 
