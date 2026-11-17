@@ -104,7 +104,7 @@
 		rummaging = FALSE
 		return
 	rummaging = FALSE
-	playsound(owner, SFX_RUSTLE, 50, TRUE, -5)
+	playsound(owner, /datum/sound_effect/rustle, 50, TRUE, -5)
 	toggle_concealement()
 	update_display()
 	var/mob/living/carbon/carbon_owner = owner

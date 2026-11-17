@@ -3,14 +3,13 @@
 	desc = "A Donk Corporation take on the classic Syndicate choice of a .357 Magnum revolver. It has a match trigger and an extended, textured hammer designed for quick fanning, but the shortened barrel decreases effective accuracy outside of close quarters. It uses .38 Special Hot Load rounds instead of the usual .357 caliber rounds."
 	icon = 'orbstation/icons/obj/weapons/weapons.dmi'
 	icon_state = "rapidfire_revolver"
-	initial_caliber = CALIBER_38
 	spread = 23
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/cylinder/rapidfire_revolver
 
 /obj/item/ammo_box/magazine/internal/cylinder/rapidfire_revolver //The magazine
 	name = "DonkCo. New Syndie cylinder"
 	ammo_type = /obj/item/ammo_casing/c38/special_hotload
-	caliber = CALIBER_38
+	caliber = CALIBER_357_38
 	max_ammo = 6
 
 /datum/uplink_item/dangerous/rapidfire //Lets you buy it
@@ -26,7 +25,7 @@
 	desc = "Designed to quickly reload the DonkCo. New Syndie."
 	ammo_type = /obj/item/ammo_casing/c38/special_hotload
 	max_ammo = 6
-	caliber = CALIBER_38
+	caliber = CALIBER_357_38
 	multiple_sprites = AMMO_BOX_PER_BULLET
 	item_flags = NO_MAT_REDEMPTION
 	ammo_band_color = "#d01010"

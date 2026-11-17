@@ -36,6 +36,10 @@ SUBSYSTEM_DEF(atoms)
 
 /datum/controller/subsystem/atoms/Initialize()
 	init_start_time = world.time
+	#ifdef NAVMAP_BAKE_GENERATION
+	initialized = INITIALIZATION_INNEW_REGULAR
+	return SS_INIT_SUCCESS
+	#endif
 	setupGenetics() //to set the mutations' sequence
 
 	initialized = INITIALIZATION_INNEW_MAPLOAD
@@ -110,6 +114,9 @@ SUBSYSTEM_DEF(atoms)
 					stoplag()
 					if(mapload_source)
 						set_tracked_initalized(INITIALIZATION_INNEW_MAPLOAD, mapload_source)
+					// Another initializer may have completed this atom while we yielded.
+					if(A.flags_1 & INITIALIZED_1)
+						continue
 				PROFILE_INIT_ATOM_BEGIN()
 				InitAtom(A, TRUE, mapload_arg)
 				PROFILE_INIT_ATOM_END(A)

@@ -210,10 +210,6 @@ export type PreferencesMenuData = {
   antag_days_left?: Record<string, number>;
   selected_antags: string[];
 
-  biggest_head: Record<string, JobPriority>;
-  department_counts: Record<string, number>;
-  department_high: Record<string, number>;
-
   selected_languages: Language[];
   unselected_languages: Language[];
   total_language_points: number;
