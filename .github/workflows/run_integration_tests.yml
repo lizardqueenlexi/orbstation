@@ -65,9 +65,9 @@ jobs:
           - name: Restore or install BYOND
             uses: ./.github/actions/restore_or_install_byond
 
-        - name: Install rust-g
-          run: |
-            bash tools/ci/install_rust_g.sh
+          - name: Install rust-g
+            run: |
+              bash tools/ci/install_rust_g.sh
 
           - name: Install dreamluau
             run: |
