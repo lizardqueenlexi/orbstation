@@ -5,7 +5,6 @@ import {
   Button,
   Dropdown,
   Floating,
-  Section,
   Stack,
   Tooltip,
 } from 'tgui-core/components';
@@ -430,127 +429,6 @@ function JoblessRoleDropdown(props) {
   );
 }
 
-const DepartmentPopTracker = (props: { department: string }) => {
-  const { department: name } = props;
-
-  const prefData = useBackend<PreferencesMenuData>();
-  const hasSigned: boolean = !!prefData.data.department_counts[name];
-  if (!hasSigned) {
-    return <Section backgroundColor="#6a6a6a" ml={'-2px'} mr={'-2px'} />;
-  }
-
-  const signedCount: number = prefData.data.department_counts[name];
-  let highCount: number = 0;
-  if (prefData.data.department_high && prefData.data.department_high[name]) {
-    highCount = prefData.data.department_high[name];
-  }
-  return (
-    <Section backgroundColor="#6a6a6a" ml={'-2px'} mr={'-2px'}>
-      <Stack vertical>
-        <Stack.Item>
-          <b>{name}</b>
-        </Stack.Item>
-        <Stack.Item>{signedCount} ready.</Stack.Item>
-        <Stack.Item>{highCount} high priority.</Stack.Item>
-      </Stack>
-    </Section>
-  );
-};
-
-const DepartmentPopArea = (props) => {
-  const prefData = useBackend<PreferencesMenuData>();
-  const hasDepartments: boolean =
-    Object.keys(prefData.data.department_counts).length > 0;
-  if (!hasDepartments) {
-    return (
-      <Section mb={`5px`}>
-        Nobody who is ready has selected any jobs in departments yet!
-      </Section>
-    );
-  }
-  return (
-    <Section>
-      <Stack>
-        {Object.keys(prefData.data.department_counts).map((department) => (
-          <Stack.Item
-            key={department}
-            grow
-            textAlign="center"
-            className="options"
-          >
-            <DepartmentPopTracker department={department} />
-          </Stack.Item>
-        ))}
-      </Stack>
-    </Section>
-  );
-};
-
-const HeadPopTracker = (props: {
-  name: string;
-  colour: string;
-  heads: string[];
-}) => {
-  const { name, colour, heads } = props;
-  if (heads.length === 0) {
-    heads.push('None');
-  }
-  return (
-    <Section backgroundColor="#6a6a6a" ml={'-2px'} mr={'-2px'}>
-      <Stack vertical>
-        <Stack.Item backgroundColor={colour}>
-          <b>{name}</b>
-        </Stack.Item>
-        {heads.map((role) => (
-          <Stack.Item key={role}>{role}</Stack.Item>
-        ))}
-      </Stack>
-    </Section>
-  );
-};
-
-const HeadPopArea = (props) => {
-  const prefData = useBackend<PreferencesMenuData>();
-  const hasHeads: boolean = Object.keys(prefData.data.biggest_head).length > 0;
-  if (!hasHeads) {
-    return (
-      <Section mb={`5px`}>
-        Nobody who is ready has selected any Head of Staff jobs yet!
-      </Section>
-    );
-  }
-  const low: string[] = [];
-  const medium: string[] = [];
-  const high: string[] = [];
-  for (const head of Object.keys(prefData.data.biggest_head)) {
-    switch (prefData.data.biggest_head[head]) {
-      case 1:
-        low.push(head);
-        break;
-      case 2:
-        medium.push(head);
-        break;
-      case 3:
-        high.push(head);
-        break;
-    }
-  }
-  return (
-    <Section>
-      <Stack fill>
-        <Stack.Item grow textAlign="center" className="options">
-          <HeadPopTracker name="High" colour="#1b9638" heads={high} />
-        </Stack.Item>
-        <Stack.Item grow textAlign="center" className="options">
-          <HeadPopTracker name="Medium" colour="#d9b804" heads={medium} />
-        </Stack.Item>
-        <Stack.Item grow textAlign="center" className="options">
-          <HeadPopTracker name="Low" colour="#bd2020" heads={low} />
-        </Stack.Item>
-      </Stack>
-    </Section>
-  );
-};
 type CharacterSectionsProps = {
   dragging: number;
   setDragging: (dragging: number) => void;
@@ -720,54 +598,6 @@ export function JobsPage() {
               </Stack>
             </Stack.Item>
           </Stack>
-        </Stack.Item>
-        <Stack.Item>
-          <Section backgroundColor="#848484">
-            <Stack vertical fill>
-              <Stack.Item>
-                <Tooltip
-                  content={
-                    'A count of unique, readied players who have selected jobs in each department.'
-                  }
-                  position="bottom-start"
-                >
-                  <Section
-                    backgroundColor="#6a6a6a"
-                    mr={'-4px'}
-                    ml={'-4px'}
-                    mb={'2px'}
-                  >
-                    <b>Populated Departments</b>
-                  </Section>
-                </Tooltip>
-              </Stack.Item>
-              <Stack.Item>
-                <DepartmentPopArea />
-              </Stack.Item>
-
-              <Stack.Item>
-                <Tooltip
-                  content={
-                    'A display of the minimum priority any player has picked for a head of staff.'
-                  }
-                  position="bottom-start"
-                >
-                  <Section
-                    backgroundColor="#6a6a6a"
-                    mr={'-4px'}
-                    ml={'-4px'}
-                    mt={'-10px'}
-                    mb={'2px'}
-                  >
-                    <b>Heads of Staff</b>
-                  </Section>
-                </Tooltip>
-              </Stack.Item>
-              <Stack.Item>
-                <HeadPopArea />
-              </Stack.Item>
-            </Stack>
-          </Section>
         </Stack.Item>
       </Stack>
     </>

@@ -334,13 +334,9 @@ SUBSYSTEM_DEF(table_shuffle)
 		for(var/turf/place in table_turfs)
 			for(var/obj/item/item in place)
 				if(item.anchored || item.density) continue
-				if(opt & SHUFFLE_VISUAL)
-					if(prob(prob_visual))
-						item.moveToNullspace()
-						item.forceMove(place) //change position in turf contents list (over/under other items)
-					if(prob(prob_visual))
-						item.pixel_x += rand(-8,8) // shift appearance on table/rack
-						item.pixel_y += rand(-8,8)
+				if((opt & SHUFFLE_VISUAL)  && prob(prob_visual))
+					item.pixel_x += rand(-8,8) // shift appearance on table/rack
+					item.pixel_y += rand(-8,8)
 				candidate_items += item
 
 	// The process above created the list but also jostled things, so this is a separate logic check

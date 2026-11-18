@@ -82,7 +82,7 @@
 
 	GLOB.religion = new_religion
 	GLOB.bible_name = new_bible
-	GLOB.deity = holy_bible.deity_name
+	GLOB.deity = new_deity
 
 	human_spawned.equip_to_storage(holy_bible, ITEM_SLOT_BACK, indirect_action = TRUE, del_on_fail = TRUE)
 
