@@ -4,8 +4,7 @@
 /obj/item/spear/naginata
 	icon_state = "naginata0"
 	inhand_icon_state = "naginata0"
-	base_icon_state = "naginata0"
-	icon_prefix = "naginata"
+	base_icon_state = "naginata"
 	icon = 'orbstation/icons/obj/weapons/weapons.dmi'
 	lefthand_file = 'orbstation/icons/obj/weapons/inhand_left.dmi'
 	righthand_file = 'orbstation/icons/obj/weapons/inhand_right.dmi'

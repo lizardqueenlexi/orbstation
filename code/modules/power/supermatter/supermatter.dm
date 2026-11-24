@@ -197,6 +197,9 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 	/// Cooldown for sending emergency alerts to the common radio channel
 	COOLDOWN_DECLARE(common_radio_cooldown)
 
+	/// Tracks the number of times a healing emitter has hit the SM, is reset after not being hit for a certain duration.
+	VAR_FINAL/healing_emitter_hits = 0
+
 /obj/machinery/power/supermatter_crystal/Initialize(mapload)
 	. = ..()
 	current_gas_behavior = init_sm_gas()
@@ -619,6 +622,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			healed = TRUE
 		else if((i % 50) != 0 && i > 50) // A message once every 5 seconds until the final 5 seconds which count down individualy
 			sleep(1 SECONDS)
+			if(QDELETED(src))
+				return
 			continue
 		else if(i > 50)
 			message = "[DisplayTimeText(i, TRUE)] [count_down_messages[3]]"
@@ -642,6 +647,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 			return // delam averted
 		sleep(1 SECONDS)
+		if(QDELETED(src))
+			return
 
 	delamination_strategy.delaminate(src)
 

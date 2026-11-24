@@ -4,6 +4,7 @@
 
 // turn off entirely
 /datum/config_entry/flag/disable_table_shuffle
+	default = TRUE
 
 // limit to free vending only (vended objects can still decay, set eat_prob to 0 to disable)
 /datum/config_entry/flag/shuffle_vend_only

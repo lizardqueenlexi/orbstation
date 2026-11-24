@@ -3,7 +3,7 @@
 	name = "wizarding certificate"
 	desc = "An unearthly diploma confirming the achievements of a young wizard."
 	icon = 'icons/obj/signs.dmi'
-	icon_state = "blankplaque"
+	icon_state = "goldenplaque"
 	inhand_icon_state = "blankplaque"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
